@@ -1,0 +1,28 @@
+{
+  "require": {
+    "timber/timber": "^1.18",
+    "vlucas/phpdotenv": "^4.1"
+  },
+  "name": "19h47/rider404",
+  "description": "Rider.404's WordPress theme",
+  "type": "wordpress-theme",
+  "authors": [
+    {
+      "name": "Jérémy Levron",
+      "email": "jeremylevron@19h47.fr"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Rider404\\": "./inc"
+    },
+    "files": [
+      "./inc/helpers.php"
+    ]
+  },
+  "require-dev": {
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.6.2",
+    "squizlabs/php_codesniffer": "^3.5",
+    "wp-coding-standards/wpcs": "^2.2"
+  }
+}
