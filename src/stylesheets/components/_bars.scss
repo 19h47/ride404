@@ -1,0 +1,17 @@
+/**
+ * Bars
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.Bars {
+	@include size(30px);
+	@extend %margin-bottom-0;
+
+	svg {
+		@include size(100%);
+		min-width: 30px;
+
+		fill: currentColor;
+	}
+}

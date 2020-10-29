@@ -22,25 +22,14 @@ Timber::$dirname = array( 'views', 'templates', 'dist' );
 class Theme {
 
 	/**
-	 * The manifest of this theme
-	 *
-	 * @access private
-	 * @var    array
-	 */
-	private $theme_manifest;
-
-
-	/**
 	 * Constructor
 	 *
 	 * @return void
 	 */
 	public function run() : void {
-		$this->theme_manifest = get_theme_manifest();
-
 		add_filter( 'timber/twig', array( $this, 'add_to_twig' ) );
 		add_filter( 'timber_context', array( $this, 'add_socials_to_context' ) );
-		add_filter( 'timber_context', array( $this, 'add_manifest_to_context' ) );
+		add_filter( 'timber_context', array( $this, 'add_to_theme' ) );
 		add_filter( 'timber_context', array( $this, 'add_menus_to_context' ) );
 		add_filter( 'timber_context', array( $this, 'add_to_context' ) );
 	}
@@ -145,8 +134,8 @@ class Theme {
 	 *
 	 * @param array $context Timber context.
 	 */
-	public function add_manifest_to_context( array $context ) : array {
-		$context['manifest'] = get_theme_manifest();
+	public function add_to_theme( array $context ) : array {
+		$context['theme']->manifest = get_theme_manifest();
 
 		return $context;
 	}
@@ -236,6 +225,8 @@ class Theme {
 		$context['address']        = get_option( 'address' );
 		$context['business_hours'] = get_option( 'business_hours' );
 		$context['public_email']   = get_option( 'public_email' );
+
+		$context['cart'] = WC()->cart;
 
 		return $context;
 	}

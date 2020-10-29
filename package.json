@@ -20,6 +20,8 @@
   "dependencies": {
     "@19h47/architecture": "19h47/architecture",
     "bootstrap": "^4.5.3",
+    "flickity": "^2.2.1",
+    "locomotive-scroll": "^3.6.1",
     "ress": "^3.0.0",
     "starting-blocks": "^5.0.7"
   },
@@ -27,7 +29,6 @@
     "@19h47/prettier-config": "^1.0.0",
     "@babel/core": "^7.12.0",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-    "purgecss-webpack-plugin": "^3.0.0",
     "@babel/plugin-transform-parameters": "^7.10.5",
     "@babel/plugin-transform-runtime": "^7.12.0",
     "@babel/preset-env": "^7.12.0",
@@ -43,7 +44,7 @@
     "eslint": "^7.12.1",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.11.0",
-    "eslint-config-standard": "^15.0.0",
+    "eslint-config-standard": "^16.0.0",
     "eslint-import-resolver-webpack": "^0.13.0",
     "eslint-loader": "^4.0.2",
     "eslint-plugin-import": "^2.22.0",
@@ -58,6 +59,7 @@
     "postcss-loader": "^4.0.4",
     "postcss-object-fit-images": "^1.1.2",
     "prettier": "^2.1.2",
+    "purgecss-webpack-plugin": "^3.0.0",
     "sass-loader": "^10.0.4",
     "svg-sprite-loader": "4",
     "svg-transform-loader": "^2.0.13",

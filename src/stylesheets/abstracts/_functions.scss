@@ -1,0 +1,19 @@
+/**
+ * Viewport height size
+ *
+ *
+ *
+ */
+@function vh_size($size) {
+	@return #{($size * 100) / $prototype-height-unitless}vh;
+}
+
+/**
+ * Viewport width size
+ *
+ *
+ *
+ */
+@function vw_size($size) {
+	@return #{($size * 100) / $prototype-width-unitless}vw;
+}

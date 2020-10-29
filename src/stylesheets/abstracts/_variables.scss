@@ -1,0 +1,168 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+/**
+ * Color variation
+ *
+ * Each colors used in the theme.
+ *
+ * @uses get_color( $key, $value ) to retrieve color value
+ * @type nested map
+ * @see http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/
+ * @see http://www.colorhexa.com/ to pickup color name
+ * @see https://brandcolors.net/
+ */
+$color-variations: (
+	black: #000,
+	white: #fff,
+	gray: (
+		very-dark: #111111,
+	),
+	red: (
+		pure: #ff0000,
+	),
+	blue: (
+		pure: #0000ff,
+	),
+	socials: (
+		facebook: #3b5998,
+		twitter: #1da1f2,
+		google-plus: #dd4b39,
+		linkedin: #0077b5,
+		viadeo: #f07355,
+	),
+);
+
+/**
+ * Font
+ *
+ * A map containing all information about fonts
+ *
+ * @type map
+ */
+$font: (
+	/**
+	 * Font
+	 *
+	 * All fonts families found in the site are listed here
+	 *
+	 * @uses map-get( $font, $key ) to retrieve font value from map
+	 * @type map
+	 */
+		families:
+		(
+			body: (
+				'"Catamaran", sans-serif',
+			),
+			title: (
+				'"Cambon", serif',
+			),
+		),
+	/**
+	 * Font weights
+	 *
+	 * Each font weight used in the theme.
+	 *
+	 * @uses map-get( $font, weights ) to retrieve font weight value
+	 * @type map
+	 */
+		weights:
+		(
+			extralight: 100,
+			ultralight: 200,
+			fine: 250,
+			light: 265,
+			book: 350,
+			regular: 400,
+			medium: 500,
+			semibold: 600,
+			bold: 700,
+			extrabold: 800,
+			extrablack: 900,
+		),
+	/**
+	 * Font styles
+	 *
+	 * Each font style used in the theme.
+	 *
+	 * @uses map-get( $font, styles ) to retrieve font style value
+	 * @type list
+	 */
+		styles: italic normal,
+	/**
+	 * Font sizes
+	 *
+	 * Each font size used in the theme.
+	 *
+	 * @uses map-get( $font, sizes ) to retrieve font size value
+	 * @type list
+	 */
+		sizes: 16
+);
+
+/**
+ * Base
+ */
+$base-font-size: 18;
+$base-font-size-px: $base-font-size * 1px;
+$base-line-height: 28;
+$base-line-height-px: $base-line-height * 1px;
+
+/**
+ * Outer gutter width
+ *
+ * (Most of the time it's the size of a gutter divide by 2.)
+ * Useful for the container.
+ */
+$grid-outer-gutter-width-unitless: $grid-gutter-width-unitless;
+$grid-outer-gutter-width: $grid-outer-gutter-width-unitless * 1px;
+
+/**
+ * Prototype width
+ *
+ * From Photoshop, Sketch, Illustrator, Paint maybe? 😝
+ */
+$prototype-width-unitless: 1440;
+$prototype-width: $prototype-width-unitless * 1px;
+
+/**
+ * Container width without grid outer gutter width
+ *
+ * Width keep from prototype
+ */
+$container-width-without-outer-gutter-unitless: 1600;
+$container-width: $container-width-without-outer-gutter-unitless * 1px;
+
+/**
+ * Container sizes
+ *
+ * Sizes keep from prototype (grid + outer gutter * 2 )
+ */
+$container-width-unitless: $container-width-without-outer-gutter-unitless +
+	($grid-outer-gutter-width-unitless * 2);
+$container-width: $container-width-unitless * 1px;
+
+/**
+ * Prototype height
+ */
+$prototype-height-unitless: 952;
+$prototype-height: $prototype-height-unitless * 1px;
+
+/**
+ * Directories
+ *
+ * Each directories used in this theme.
+ *
+ * @uses 	map-get( $directories, $key ) to retrieve directory value
+ * @type 	map
+ * @author 	Jérémy Levron <jeremylevron@19h47.fr>
+ */
+$directories: (
+	fonts: '../fonts/',
+	img: '../img/',
+	svg: '../img/svg/',
+	jpg: '../img/jpg/',
+	png: '../img/png/',
+	gif: '../img/gif/',
+);

@@ -1,0 +1,61 @@
+/**
+ * Basic typography style for copy text
+ */
+
+// @include reset-selection( get_color( black ), get_color( white ) );
+
+h1,
+.h1 {
+	@extend %font-weight-extrablack, %font-family-title;
+	@include margin(top 1em bottom 2em);
+
+	@include media-breakpoint-up(md) {
+		font-size: 100px;
+		line-height: 1;
+	}
+}
+
+h2,
+.h2 {
+	@extend %font-weight-extrablack, %font-family-title;
+	@include margin(top 1em bottom 1em);
+
+	@include media-breakpoint-up(md) {
+		font-size: 50px;
+		line-height: (65/50);
+	}
+}
+
+h3,
+.h3 {
+	@extend %font-weight-extrablack, %font-family-title;
+	@include margin(top 1em bottom 0);
+
+	@include media-breakpoint-up(md) {
+		font-size: 40px;
+		line-height: (52/40);
+	}
+}
+
+h4,
+.h4 {
+	@extend %font-weight-extrablack, %font-family-title;
+	@include margin(top 1em bottom 0);
+
+	font-size: 36px;
+	line-height: 39px;
+}
+
+h5,
+.h5 {
+	@extend %font-weight-extrablack, %font-family-title;
+
+	@include media-breakpoint-up(md) {
+		font-size: 30px;
+		line-height: (39/30);
+	}
+}
+
+// h6,
+// .h6 {
+// }

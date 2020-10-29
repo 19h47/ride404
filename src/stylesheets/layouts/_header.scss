@@ -1,0 +1,46 @@
+/**
+ * Header
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.Site-header {
+	@include padding(top 60px bottom 60px);
+
+	color: the_color(white);
+	z-index: 10;
+
+	@include media-breakpoint-up(md) {
+		@include padding(top 75px bottom 75px);
+	}
+
+	@include media-breakpoint-up(lg) {
+		@include padding(top 95px bottom 95px);
+	}
+
+	@include media-breakpoint-up(hd) {
+		@include padding(top 170px bottom 170px);
+	}
+
+	&__smiley {
+		@include size(70px);
+		@extend .d-block;
+		@include margin(right auto left auto);
+
+		svg {
+			@include size(100%);
+
+			min-width: 70px;
+
+			fill: currentColor;
+		}
+	}
+
+	&__2-ride-4 {
+		@include size(99px, 12px);
+	}
+
+	&__bars {
+		@include margin(right percentage(100/ ((1440/12) * 2)) left 40px);
+	}
+}

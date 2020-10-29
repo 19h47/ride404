@@ -1,0 +1,48 @@
+/*
+ * Guid
+ *
+ * @file stylesheets/components/guid
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ */
+.Guid {
+	@extend %Pointer-events-none;
+
+	z-index: 10000;
+
+	@include absolute(top 0 right 0 bottom 0 left 0);
+
+	// background-size: 100% #{$base-line-height}px;
+	// background-repeat: repeat;
+	// background-position: top left;
+	// background-image: linear-gradient(
+	// 	rgba(160, 160, 160, 0.3) 0px,
+	// 	transparent 1px,
+	// 	transparent 100%
+	// );
+
+	/**
+	 * Match all classes starting by col-
+	 */
+	[class^='col-'] .Guid__column {
+		background: {
+			color: rgba(the_color(blue, pure), 0.2);
+		}
+	}
+
+	[class^='col-']:nth-child(odd) .Guid__column {
+		background: {
+			color: rgba(the_color(red, pure), 0.2);
+		}
+	}
+
+	/**
+	 * Guid
+	 *
+	 * @uses .Guid__column
+	 */
+	&__column {
+		color: rgba($black, 0.2);
+
+		@include size(100%);
+	}
+}

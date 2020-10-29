@@ -1,0 +1,38 @@
+/**
+ * Socials
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ */
+.Socials {
+	@extend %list-style-type-none;
+	@extend .d-flex, .justify-content-center;
+
+	&__item {
+		@include margin(right 10px left 10px);
+
+		&:last-child {
+			@include margin(right 0);
+		}
+		&:first-child {
+			@include margin(left 0);
+		}
+	}
+
+	&__link {
+		@extend .d-flex, .align-items-center, .justify-content-center;
+		@include size(20px);
+
+		svg {
+			@include size(100%);
+
+			transition: 0.8s fill map-get($easings, ease-out-expo);
+			fill: currentColor;
+		}
+
+		&:hover {
+			svg {
+				fill: the_color(white);
+			}
+		}
+	}
+}

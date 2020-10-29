@@ -1,0 +1,20 @@
+/**
+ * WYSIWYG
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ */
+.Wysiwyg {
+	$this: &;
+
+	& > *:first-child {
+		@include margin(top 0);
+	}
+	& > *:last-child {
+		@include margin(bottom 0);
+	}
+
+	ul {
+		@include margin(top 1em bottom 1em);
+		@include padding(left 1em);
+	}
+}

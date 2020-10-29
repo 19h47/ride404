@@ -29,7 +29,7 @@ class Init {
 			Setup\Supports::class,
 			Setup\Textdomain::class,
 			Setup\PostStates::class,
-			Setup\Settings::class,
+			Plugins\WooCommerce::class,
 			Api\Customizer\Contact::class,
 			Custom\Extras::class,
 			Custom\QueryVars::class,
