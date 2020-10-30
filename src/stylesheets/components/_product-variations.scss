@@ -1,0 +1,66 @@
+/**
+ * Product variations
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.Product-variations {
+	$this: &;
+
+	[role='radiogroup'] {
+		@extend .d-flex;
+	}
+
+	&__item {
+		@extend %position-relative;
+		// @extend %text-transform-uppercase;
+		@include margin(right 30px left 30px);
+
+		transition: 0.4s color map-get($easings, ease-out-expo);
+		color: the_color(gray, very-dark-02);
+
+		font-size: 14px;
+		line-height: (28/14);
+
+		&:first-child {
+			@include margin(left 0);
+		}
+
+		&:last-child {
+			@include margin(right 0);
+		}
+
+		svg {
+			@include absolute(top 50% left 50%);
+			@include size(56px, 28px);
+			@include autoAlpha(0);
+
+			transition: 0.4s opacity map-get($easings, ease-out-expo),
+				0.4s visibility map-get($easings, ease-out-expo),
+				0.4s fill map-get($easings, ease-out-expo);
+			transform: translate3d(-50%, -50%, 0);
+		}
+
+		&:focus,
+		&:hover {
+			@extend %cursor-pointer;
+
+			color: the_color(white);
+			outline: none;
+
+			svg {
+				@include autoAlpha(1);
+				fill: the_color(red, bright);
+			}
+		}
+
+		&.is-selected {
+			color: the_color(white);
+
+			svg {
+				@include autoAlpha(1);
+				fill: the_color(gray, very-dark-02);
+			}
+		}
+	}
+}

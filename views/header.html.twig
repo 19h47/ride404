@@ -5,6 +5,8 @@
  # @package Rider404
  #}
 
+ 
+
 <header class="Site-header">
     <div class="row">
         <div class="col-2">
@@ -17,7 +19,7 @@
         </div>
         <div class="col-2 offset-3 d-flex align-items-center justify-content-end">
             <{{ ( cart.is_empty ? 'p' : "a href=\"#{cart_url}\"" ) | raw }} class="Site-header__min-cart Mini-cart js-total">
-                <span class="d-none js-cart-contents-count">{{- cart.get_cart_contents_count() -}}</span>
+                {% include 'partials/cart-contents-count.html.twig' with { count: cart.get_cart_contents_count() } only %}
                 {% include 'svg/use.html.twig' with { icon: 'cart' } only %}
             </{{ ( cart.is_empty ? 'p' : 'a' ) | raw }}>
             

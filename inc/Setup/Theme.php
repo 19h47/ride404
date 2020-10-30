@@ -226,7 +226,8 @@ class Theme {
 		$context['business_hours'] = get_option( 'business_hours' );
 		$context['public_email']   = get_option( 'public_email' );
 
-		$context['cart'] = WC()->cart;
+		$context['cart']     = WC()->cart;
+		$context['cart_url'] = wc_get_cart_url();
 
 		return $context;
 	}

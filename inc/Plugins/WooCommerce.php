@@ -8,6 +8,8 @@
 
 namespace Rider404\Plugins;
 
+use Timber\{ Timber };
+
 /**
  * WordPress
  */
@@ -19,6 +21,12 @@ class WooCommerce {
 	 */
 	public function run() {
 		add_filter( 'woocommerce_add_to_cart_fragments', array( $this, 'add_to_cart_fragments' ), 10, 1 );
+
+		// Before main content.
+		remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
+
+		// Single product summary.
+		remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
 	}
 
 
@@ -30,7 +38,12 @@ class WooCommerce {
 	 * @return array $fragments
 	 */
 	public function add_to_cart_fragments( array $fragments ) : array {
-		$fragments['span.js-cart-contents-count'] = '<span class="js-cart-contents-count">(' . WC()->cart->get_cart_contents_count() . ')</span>';
+		$fragments['span.js-cart-contents-count'] = Timber::compile(
+			'partials/cart-contents-count.html.twig',
+			array(
+				'count' => WC()->cart->get_cart_contents_count(),
+			),
+		);
 
 		return $fragments;
 	}

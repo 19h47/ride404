@@ -1,0 +1,40 @@
+{#
+ # Single: product
+ #
+ # @package Driver404
+ #}
+{% extends 'index.html.twig' %}
+
+{% block hero %}
+    <div class="row">
+        <div class="col-10 offset-1">
+            <h1>{{- post.title -}}</h1>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    
+    {% do action( 'woocommerce_after_single_product' ) %}
+
+    <div class="row">
+        <div class="col-8 offset-2">
+    
+            <div id="product-{{ post.id }}" class="{{ product_class | join( ' ' ) }}">
+
+                {% do action( 'woocommerce_before_single_product_summary' ) %}
+
+                <div class="summary entry-summary">
+                    {% do action( 'woocommerce_single_product_summary' ) %}
+                </div>
+
+                {% do action( 'woocommerce_after_single_product_summary' ) %}
+
+            </div>
+
+        </div>
+    </div>
+
+    {% do action( 'woocommerce_after_single_product' ) %}
+
+{% endblock  %}

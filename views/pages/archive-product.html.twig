@@ -1,0 +1,47 @@
+{#
+ # Archive product
+ #
+ #
+ #}
+{% extends 'index.html.twig' %}
+
+{% block content %}
+	
+	{% if product_loop %}
+
+		{#
+			# Hook: woocommerce_before_shop_loop.
+			#
+			# @hooked woocommerce_output_all_notices - 10
+			#}
+		{% do action( 'woocommerce_before_shop_loop' ) %}
+
+		{{- fn( 'woocommerce_product_loop_start', false ) -}}
+
+		{% for product in products %}
+			{#
+				# Hook: woocommerce_shop_loop.
+				#}
+			{% do action( 'woocommerce_shop_loop' ) %}
+
+			{% include 'woocommerce/product-content.html.twig' %}
+		{% endfor %}
+
+		{{- fn( 'woocommerce_product_loop_end', false ) -}}
+
+		{#
+			# Hook: woocommerce_after_shop_loop.
+			#
+			# @hooked woocommerce_pagination - 10
+			#}
+		{% do action( 'woocommerce_after_shop_loop' ) %}
+	{% else %}
+		{#
+			# Hook: woocommerce_no_products_found.
+			#
+			# @hooked wc_no_products_found - 10
+			#}
+		{% do action( 'woocommerce_no_products_found' ) %}
+	{% endif %}
+
+{% endblock  %}

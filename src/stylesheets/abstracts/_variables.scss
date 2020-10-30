@@ -17,10 +17,12 @@ $color-variations: (
 	black: #000,
 	white: #fff,
 	gray: (
-		very-dark: #111111,
+		very-dark-01: #111111,
+		very-dark-02: #646464,
 	),
 	red: (
 		pure: #ff0000,
+		bright: #fd3e2d,
 	),
 	blue: (
 		pure: #0000ff,
@@ -53,10 +55,10 @@ $font: (
 		families:
 		(
 			body: (
-				'"Catamaran", sans-serif',
+				'"Poppins", sans-serif',
 			),
 			title: (
-				'"Cambon", serif',
+				'"Whyte Inktrap", sans-serif',
 			),
 		),
 	/**
@@ -123,7 +125,7 @@ $grid-outer-gutter-width: $grid-outer-gutter-width-unitless * 1px;
  *
  * From Photoshop, Sketch, Illustrator, Paint maybe? 😝
  */
-$prototype-width-unitless: 1440;
+$prototype-width-unitless: 1600;
 $prototype-width: $prototype-width-unitless * 1px;
 
 /**
@@ -146,7 +148,7 @@ $container-width: $container-width-unitless * 1px;
 /**
  * Prototype height
  */
-$prototype-height-unitless: 952;
+$prototype-height-unitless: 1000;
 $prototype-height: $prototype-height-unitless * 1px;
 
 /**

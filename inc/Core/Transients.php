@@ -18,7 +18,7 @@ class Transients {
 	/**
 	 * Posts
 	 *
-	 * @return array $transient
+	 * @return array $posts
 	 */
 	public static function posts() : array {
 		$transient = get_transient( 'rider404_posts' );
@@ -29,16 +29,40 @@ class Transients {
 
 		$posts = Timber::get_posts(
 			array(
-				'post_type'           => 'post',
-				'posts_per_page'      => -1,
-				'no_found_rows'       => true,
-				'post__not_in'        => get_option( 'sticky_posts' ),
-				'ignore_sticky_posts' => 1,
+				'post_type'      => 'post',
+				'posts_per_page' => -1,
+				'no_found_rows'  => true,
 			),
 		);
 
 		set_transient( 'rider404_posts', $posts );
 
 		return $posts;
+	}
+
+
+	/**
+	 * Products
+	 *
+	 * @return array $products
+	 */
+	public static function products() : array {
+		$transient = get_transient( 'rider404_products' );
+
+		if ( $transient ) {
+			return $transient;
+		}
+
+		$products = Timber::get_posts(
+			array(
+				'post_type'      => 'product',
+				'posts_per_page' => -1,
+				'no_found_rows'  => true,
+			)
+		);
+
+		set_transient( 'rider404_products', $products );
+
+		return $products;
 	}
 }

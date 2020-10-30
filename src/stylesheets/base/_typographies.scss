@@ -10,8 +10,8 @@ h1,
 	@include margin(top 1em bottom 2em);
 
 	@include media-breakpoint-up(md) {
-		font-size: 100px;
-		line-height: 1;
+		font-size: vw_size(100);
+		line-height: vw_size(110);
 	}
 }
 

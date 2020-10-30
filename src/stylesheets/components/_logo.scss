@@ -1,0 +1,10 @@
+/**
+ * Logo
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.Logo {
+	@include margin(right percentage(0.5/10) left percentage(1/10));
+	@extend .d-block;
+}

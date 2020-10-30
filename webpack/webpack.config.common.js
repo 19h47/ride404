@@ -33,6 +33,9 @@ module.exports = {
 		disableHostCheck: true,
 		writeToDisk: true,
 	},
+	externals: {
+		jquery: 'jQuery',
+	},
 	resolve: {
 		alias: {
 			'@': resolve('src'),

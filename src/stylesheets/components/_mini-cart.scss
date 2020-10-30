@@ -6,7 +6,7 @@
  */
 .Mini-cart {
 	@include size(30px);
-	@extend %margin-0;
+	@extend %margin-0, %position-relative;
 
 	svg {
 		@include size(100%);
@@ -14,5 +14,14 @@
 		min-width: 30px;
 
 		fill: currentColor;
+	}
+
+	span {
+		@extend .d-flex, .align-items-center, .justify-content-center;
+		@include absolute(top 0 right 0 bottom 0 left 0);
+		@include margin(top 8px);
+
+		color: the_color(white);
+		font-size: 12px;
 	}
 }

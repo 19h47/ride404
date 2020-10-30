@@ -18,7 +18,8 @@ body {
 	font-size: #{$base-font-size}px;
 	line-height: $base-line-height / $base-font-size;
 
-	background-color: the_color(gray, very-dark);
+	background-color: the_color(gray, very-dark-01);
+	color: the_color(white);
 }
 
 a,

@@ -9,12 +9,25 @@
     bootstrap "^4.5.2"
     ress "3.0.0"
 
+"@19h47/keycode@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@19h47/keycode/-/keycode-3.0.3.tgz#c8861d411ad509d656a53ec87d54eb0556181e6e"
+  integrity sha512-a0lzC/oCRDVcqlefX528QXzEvXjE1hFFgkAk/K3NaORYNcTiAazS8SjfUf0HiD+gOXn+NaNv4gpFmOWHkQAmDw==
+
 "@19h47/prettier-config@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@19h47/prettier-config/-/prettier-config-1.0.0.tgz#2073b3bb375a1879680518572250730befd3ed10"
   integrity sha512-knLlEfp7BF7qIqcA1DyD5QgqhKFjnAxq629zkb/bVEf4ykQaJ35dTeu7Ys1FTIiNWFIqp5BvveA/JPp6yq2LBQ==
   dependencies:
     prettier "^1.x.x"
+
+"@19h47/radiogroup@^5.2.2":
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/@19h47/radiogroup/-/radiogroup-5.2.2.tgz#e620a2804a5b4dc87977b29b2fdcd8911adf1388"
+  integrity sha512-aLLIQPeNIxMXxc80jVi7pOlVrm2ukcCyU6e6TyHGoCil0uz9LFeFTLo95dq66kQTkXr9rrRCWxeBHf5PgNiQvQ==
+  dependencies:
+    "@19h47/keycode" "^3.0.3"
+    events "^3.2.0"
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.4":
   version "7.10.4"
@@ -3351,7 +3364,7 @@ ev-emitter@^1.0.1, ev-emitter@^1.1.1:
   resolved "https://registry.yarnpkg.com/ev-emitter/-/ev-emitter-1.1.1.tgz#8f18b0ce5c76a5d18017f71c0a795c65b9138f2a"
   integrity sha512-ipiDYhdQSCZ4hSbX4rMW+XzNKMD1prg/sTvoVmSLkuQ1MVlwjJQQA+sW8tMYR3BLUr9KjodFV4pvzunvRhd33Q==
 
-events@^3.0.0:
+events@^3.0.0, events@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/events/-/events-3.2.0.tgz#93b87c18f8efcd4202a461aec4dfc0556b639379"
   integrity sha512-/46HWwbfCX2xTawVfkKLGxMifJYQBWMwY1mjywRtb4c9x8l5NP3KoJtnIOiL1hfdRkIuYhETxQlo62IF8tcnlg==

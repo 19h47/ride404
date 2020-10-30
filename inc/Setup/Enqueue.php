@@ -34,12 +34,11 @@ class Enqueue {
 	 */
 	public function enqueue_scripts() : void {
 		wp_deregister_script( 'wp-embed' );
-		wp_deregister_script( 'jquery' );
 
 		wp_register_script( // phpcs:ignore
 			get_theme_text_domain() . '-main',
 			get_template_directory_uri() . '/' . get_theme_manifest()['main.js'],
-			array(),
+			array( 'jquery' ),
 			null,
 			true
 		);

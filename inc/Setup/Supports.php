@@ -52,6 +52,8 @@ class Supports {
 				'caption',
 			)
 		);
+
+		add_theme_support( 'woocommerce' );
 	}
 
 

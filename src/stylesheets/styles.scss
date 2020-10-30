@@ -52,10 +52,12 @@
 @import 'components/menu';
 @import 'components/mini-cart';
 @import 'components/bars';
+@import 'components/logo';
+@import 'components/product-variations';
 
 // Utilities.
 @import '~@19h47/architecture/src/stylesheets/utilities/colors';
-// @import '~@19h47/architecture/src/stylesheets/utilities/cursors';
+@import '~@19h47/architecture/src/stylesheets/utilities/cursors';
 // @import	'~@19h47/architecture/src/stylesheets/utilities/displays',
 // @import '~@19h47/architecture/src/stylesheets/utilities/floats';
 @import '~@19h47/architecture/src/stylesheets/utilities/fonts';

@@ -1,0 +1,87 @@
+{#
+ # Variable
+ #
+ #}
+
+{#
+ # Hook: woocommerce_before_add_to_cart_form.
+ #}
+{% do action( 'woocommerce_before_add_to_cart_form' ) %}
+
+<form class="variations_form cart" action="{{ form_action }}" method="post" enctype='multipart/form-data' data-product_id="{{ product.get_id() }}" data-product_variations="{{ variations_attr }}">
+	{#
+	 # Hook: woocommerce_before_variations_form.
+	 #}
+	{% do action( 'woocommerce_before_variations_form' ) %}
+
+	{% if product.get_available_variations() %}
+
+		{% for attribute_name, options in attributes %}
+		
+			<div id="product-variations-{{ sanitize_title( attribute_name ) }}" class="Product-variations variations page-block" data-node-type="ProductVariationsBlock">
+
+				{{-
+					fn( 'wc_dropdown_variation_attribute_options',
+						{
+							options: options,
+							attribute: attribute_name,
+							product: product,
+							class: 'd-none',
+							show_option_none: false,
+						}
+					)
+				-}}
+
+				{% set options = fn( 'wc_get_product_terms', product.get_id(), attribute_name, { 'fields': 'all' } ) %}
+
+				<div role="radiogroup">
+					{% for option in options %}
+						<div class="Product-variations__item{{ ( options | length ) == 1 ? ' is-selected' }}" role="radio" aria-checked="{{ ( options | length ) == 1 ? 'true' : 'false' }}" tabindex="{{ ( options | length ) == 1 ? '0' : '-1' }}">
+							<span>{{- option.name -}}</span>
+							{% include 'svg/use.html.twig' with { icon: 'oval' } only %}
+							<input class="d-none" type="radio" name="attribute_{{ sanitize_title( attribute_name ) }}" value="{{ option.slug }}"{{ ( options | length ) == 1 ? ' checked' : '' }}>
+						</div>
+					{% endfor %}
+				</div>
+
+			</div>
+		{% endfor %}
+
+		<div class="single_variation_wrap">
+			{#
+			 # Hook: woocommerce_before_single_variation.
+			 #}
+			{% do action( 'woocommerce_before_single_variation' ) %}
+
+			{#
+			 # Hook: woocommerce_single_variation. Used to output the cart button and placeholder for variation data.
+			 #
+			 # @hooked woocommerce_single_variation - 10 Empty div for variation data.
+			 # @hooked woocommerce_single_variation_add_to_cart_button - 20 Qty and cart button.
+			 #}
+			{% do action( 'woocommerce_single_variation' ) %}
+
+			{#
+			 # Hook: woocommerce_after_single_variation.
+			 #}
+			{% do action( 'woocommerce_after_single_variation' ) %}
+		</div>
+		
+	{% else %}
+		<p class="stock out-of-stock">
+			{% filter apply_filters( 'woocommerce_out_of_stock_message' ) %}
+				{{- __( 'This product is currently out of stock and unavailable.', 'rider404' ) -}}
+			{% endfilter %}
+		</p>
+	{% endif %}
+
+	{#
+	 # Hook: woocommerce_after_variations_form.
+	 #}
+	{% do action( 'woocommerce_after_variations_form' ) %}
+</form>
+
+{#
+ # Hook: woocommerce_after_add_to_cart_form.
+ #}
+{% do action( 'woocommerce_after_add_to_cart_form' ) %}

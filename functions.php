@@ -9,4 +9,3 @@
 require_once get_template_directory() . '/vendor/autoload.php';
 
 Rider404\Init::run_services();
-
