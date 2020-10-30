@@ -5,10 +5,11 @@
  */
 .Socials {
 	@extend %list-style-type-none;
-	@extend .d-flex, .justify-content-center;
+	@extend .d-flex;
 
 	&__item {
 		@include margin(right 10px left 10px);
+		@extend .d-flex, .align-items-center, .justify-content-center;
 
 		&:last-child {
 			@include margin(right 0);
@@ -20,19 +21,21 @@
 
 	&__link {
 		@extend .d-flex, .align-items-center, .justify-content-center;
-		@include size(20px);
+		@include size(70px);
+
+		border-radius: 35px;
+		border: 1px solid the_color(gray, very-dark-03);
+		transition: 0.4s border-color map-get($easings, ease-out-expo);
 
 		svg {
-			@include size(100%);
+			@include size(30px);
 
-			transition: 0.8s fill map-get($easings, ease-out-expo);
-			fill: currentColor;
+			fill: the_color(white);
 		}
 
+		&:focus,
 		&:hover {
-			svg {
-				fill: the_color(white);
-			}
+			border-color: the_color(white);
 		}
 	}
 }

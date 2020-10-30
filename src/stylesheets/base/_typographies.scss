@@ -17,12 +17,12 @@ h1,
 
 h2,
 .h2 {
-	@extend %font-weight-extrablack, %font-family-title;
+	@extend %font-weight-light, %font-family-title;
 	@include margin(top 1em bottom 1em);
 
 	@include media-breakpoint-up(md) {
-		font-size: 50px;
-		line-height: (65/50);
+		font-size: 44px;
+		line-height: (52/44);
 	}
 }
 
@@ -32,8 +32,8 @@ h3,
 	@include margin(top 1em bottom 0);
 
 	@include media-breakpoint-up(md) {
-		font-size: 40px;
-		line-height: (52/40);
+		font-size: 38px;
+		line-height: (23/38);
 	}
 }
 

@@ -1,0 +1,19 @@
+{#
+ #Socials
+ #
+ # @package GroobeBoxKaraoke
+ #}
+
+{% if socials is iterable %}
+	<ul class="Socials{{ classes ? ' ' ~ classes | join( ' ' ) }}">
+		{% for social in socials %}
+			{% if social.url %}
+				<li class="Socials__item">
+					<a class="Socials__link" href="{{ social.url }}" target="_blank" title="{{ social.title }}" aria-label="{{ social.title }}" rel="noopener noreferrer">
+						{% include 'svg/use.html.twig' with { icon: social.slug } only %}
+					</a>
+				</li>
+			{% endif %}
+		{% endfor %}
+	</ul>
+{% endif %}

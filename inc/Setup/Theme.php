@@ -151,23 +151,11 @@ class Theme {
 		// Share and Socials links.
 		$socials = array(
 			array(
-				'title' => 'Twitter',
-				'slug'  => 'twitter',
-				'name'  => __( 'Share on Twitter', 'rider404' ),
-				'link'  => 'https://twitter.com/intent/tweet?url=',
-				'url'   => get_option( 'twitter' ),
-			),
-			array(
 				'title' => 'Facebook',
 				'slug'  => 'facebook',
-				'name'  => __( 'Share on Facebook', 'rider404' ),
+				'name'  => __( 'Share on Facebook', 'grooveboxkaraoke' ),
 				'link'  => 'https://www.facebook.com/sharer.php?u=',
 				'url'   => get_option( 'facebook' ),
-			),
-			array(
-				'title' => 'YouTube',
-				'slug'  => 'youtube',
-				'url'   => get_option( 'youtube' ),
 			),
 			array(
 				'title' => 'Instagram',
@@ -175,19 +163,27 @@ class Theme {
 				'url'   => get_option( 'instagram' ),
 			),
 			array(
-				'title' => 'LinkedIn',
-				'slug'  => 'linkedin',
-				'name'  => __( 'Share on LinkedIn', 'rider404' ),
-				'link'  => 'https://www.linkedin.com/sharing/share-offsite/?url=',
-				'url'   => get_option( 'linkedin' ),
+				'title' => 'YouTube',
+				'slug'  => 'youtube',
+				'url'   => get_option( 'youtube' ),
+			),
+			array(
+				'title' => 'TikTok',
+				'slug'  => 'tiktok',
+				'url'   => get_option( 'tiktok' ),
+			),
+			array(
+				'title' => 'Strava',
+				'slug'  => 'strava',
+				'url'   => get_option( 'strava' ),
 			),
 		);
 
 		foreach ( $socials as $social ) {
 			if ( ! empty( $social['url'] ) ) {
-				$context['socials'][ $social['slug'] ] = $social;
+				$context['shares'][ $social['slug'] ] = $social;
 			}
-			$context['shares'][ $social['slug'] ] = $social;
+			$context['socials'][ $social['slug'] ] = $social;
 		}
 
 		return $context;

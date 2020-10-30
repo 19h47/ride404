@@ -80,9 +80,9 @@ class Contact {
 			)
 		);
 
-		// LinkedIn.
+		// YouTube.
 		$wp_customize->add_setting(
-			'linkedin',
+			'youtube',
 			array(
 				'type'      => 'option',
 				'transport' => 'postMessage',
@@ -90,12 +90,50 @@ class Contact {
 		);
 
 		$wp_customize->add_control(
-			'linkedin',
+			'youtube',
 			array(
-				'label'       => __( 'LinkedIn', 'rider404' ),
-				'description' => __( 'LinkedIn URL', 'rider404' ),
+				'label'       => __( 'YouTube', 'rider404' ),
+				'description' => __( 'YouTube URL', 'rider404' ),
 				'section'     => 'contact',
-				'settings'    => 'linkedin',
+				'settings'    => 'youtube',
+			)
+		);
+
+		// TikTok.
+		$wp_customize->add_setting(
+			'tiktok',
+			array(
+				'type'      => 'option',
+				'transport' => 'postMessage',
+			)
+		);
+
+		$wp_customize->add_control(
+			'tiktok',
+			array(
+				'label'       => __( 'TikTok', 'rider404' ),
+				'description' => __( 'TikTok URL', 'rider404' ),
+				'section'     => 'contact',
+				'settings'    => 'tiktok',
+			)
+		);
+		
+		// Strava.
+		$wp_customize->add_setting(
+			'strava',
+			array(
+				'type'      => 'option',
+				'transport' => 'postMessage',
+			)
+		);
+
+		$wp_customize->add_control(
+			'strava',
+			array(
+				'label'       => __( 'Strava', 'rider404' ),
+				'description' => __( 'Strava URL', 'rider404' ),
+				'section'     => 'contact',
+				'settings'    => 'strava',
 			)
 		);
 
