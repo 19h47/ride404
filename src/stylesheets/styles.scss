@@ -54,6 +54,9 @@
 @import 'components/bars';
 @import 'components/logo';
 @import 'components/product-variations';
+@import 'components/variation-add-to-cart';
+@import 'components/variation';
+@import 'components/price';
 
 // Utilities.
 @import '~@19h47/architecture/src/stylesheets/utilities/colors';
@@ -67,7 +70,7 @@
 @import '~@19h47/architecture/src/stylesheets/utilities/positions';
 @import '~@19h47/architecture/src/stylesheets/utilities/sizes';
 @import '~@19h47/architecture/src/stylesheets/utilities/text-aligns';
-// @import '~@19h47/architecture/src/stylesheets/utilities/text-decorations';
+@import '~@19h47/architecture/src/stylesheets/utilities/text-decorations';
 @import '~@19h47/architecture/src/stylesheets/utilities/text-transforms';
 @import '~@19h47/architecture/src/stylesheets/utilities/vertical-aligns';
 // @import '~@19h47/architecture/src/stylesheets/utilities/visibilities';

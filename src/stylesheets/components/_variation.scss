@@ -1,0 +1,30 @@
+/**
+ * Variation
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.Variation {
+	$this: &;
+
+	@extend %font-weight-regular, %text-align-center;
+
+	font-size: 12px;
+	line-height: (28/12);
+
+	&__description {
+	}
+
+	&__price {
+	}
+
+	@at-root #{$this} #{$this}__availability {
+		.stock {
+			&.out-of-stock {
+				color: the_color(red, bright);
+			}
+			&.in-stock {
+			}
+		}
+	}
+}

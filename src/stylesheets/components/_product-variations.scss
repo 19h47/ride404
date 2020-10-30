@@ -7,8 +7,11 @@
 .Product-variations {
 	$this: &;
 
+	@extend %font-weight-regular;
+
 	[role='radiogroup'] {
-		@extend .d-flex;
+		@extend .d-flex, .justify-content-center;
+		@include margin(top 40px bottom 40px);
 	}
 
 	&__item {

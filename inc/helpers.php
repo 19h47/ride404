@@ -69,7 +69,7 @@ function html_class( $class = '' ) : string {
  */
 function get_webfonts() : array {
 	return array(
-		'catamaran' => 'https://fonts.googleapis.com/css2?family=Catamaran:wght@500;700;900&display=swap',
+		'poppins' => 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap',
 	);
 }
 

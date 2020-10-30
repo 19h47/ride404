@@ -1,0 +1,43 @@
+{
+    "key": "group_5f9c0ea738b8a",
+    "title": "Titre long du Produit",
+    "fields": [
+        {
+            "key": "field_5f9c0ebb43ed8",
+            "label": "Titre",
+            "name": "long_title",
+            "type": "textarea",
+            "instructions": "Indiquer le titre long du Produit.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": "br"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "product"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1604063047
+}

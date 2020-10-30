@@ -1,0 +1,29 @@
+/**
+ * Variation add to cart
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.Variation-add-to-cart {
+	$this: &;
+
+	@extend %text-align-center;
+	@include padding(top 0 right 0 bottom 0 left 0);
+
+	&__button {
+		svg {
+			@include size(30px);
+
+			transition: 0.4s fill map-get($easings, ease-out-expo);
+			fill: the_color(white);
+		}
+
+		&.wc-variation-is-unavailable {
+			@extend %cursor-not-allowed;
+
+			svg {
+				fill: the_color(red, bright);
+			}
+		}
+	}
+}

@@ -2,6 +2,31 @@
  * Footer
  *
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider.404
  */
 .Site-footer {
+	@include margin(top 100px bottom 100px);
+
+	&__copyright {
+		@include margin(top 100px);
+		@extend .d-flex, .justify-content-between, .align-items-center;
+
+		color: the_color(gray, very-dark-02);
+		font-size: 12px;
+		line-height: (17/12);
+
+		p {
+			@extend %margin-0;
+		}
+
+		a {
+			@extend %text-decoration-underline;
+		}
+
+		svg {
+			@include size(58px, 37px);
+
+			fill: currentColor;
+		}
+	}
 }
