@@ -34,6 +34,7 @@ class Init {
 			Custom\Extras::class,
 			Custom\QueryVars::class,
 			Core\Product::class,
+			Core\ProductCat::class,
 		);
 	}
 

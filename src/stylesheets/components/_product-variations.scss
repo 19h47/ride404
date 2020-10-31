@@ -33,6 +33,11 @@
 			@include margin(right 0);
 		}
 
+		span {
+			@extend %position-relative;
+			z-index: 2;
+		}
+
 		svg {
 			@include absolute(top 50% left 50%);
 			@include size(56px, 28px);
@@ -42,6 +47,7 @@
 				0.4s visibility map-get($easings, ease-out-expo),
 				0.4s fill map-get($easings, ease-out-expo);
 			transform: translate3d(-50%, -50%, 0);
+			z-index: 1;
 		}
 
 		&:focus,

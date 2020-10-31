@@ -6,9 +6,11 @@
 {% extends 'index.html.twig' %}
 
 {% block hero %}
-    <div class="row">
-        <div class="col-10 offset-1">
-            <h1 class="text-align-center margin-0">{{- post.meta( 'long_title' ) ? post.meta( 'long_title' ) : post.title -}}</h1>
+    <div class="Hero">
+        <div class="row">
+            <div class="col-10 offset-1">
+                <h1 class="text-align-center margin-0">{{- post.meta( 'long_title' ) ? post.meta( 'long_title' ) : post.title -}}</h1>
+            </div>
         </div>
     </div>
 {% endblock %}
@@ -28,6 +30,11 @@
                     {% do action( 'woocommerce_single_product_summary' ) %}
                 </div>
 
+                {#  
+                 # Hook: woocommerce_after_single_product_summary.
+                 #
+                 # @hooked woocommerce_output_related_products - 20
+                 #}
                 {% do action( 'woocommerce_after_single_product_summary' ) %}
 
             </div>

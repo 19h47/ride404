@@ -1,0 +1,12 @@
+{# 
+ # Loop price
+ #
+ # @package Rider404
+ # @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ #}
+{% if ( price_html ) %}
+	<div class="Loop-price price">
+		<span>{{- price_html -}}</span>
+		{% include 'svg/use.html.twig' with { icon: 'plus' } only %}
+	</div>
+{% endif %}

@@ -3,17 +3,15 @@
  #
  # @package Rider404
  #}
-
-{% if product is not empty or product.is_visible() %}
-
-    {{ fn( 'set_product_global', product ) }}
+{{ fn( 'set_product_global', product ) }}    
+{# {% if product and product.is_visible() %} #}
     
-    <li {{ fn( 'wc_product_class', '', product ) }}>
-
+    <li {{ fn( 'wc_product_class' ) }}>
+        
         {#
          # Hook: woocommerce_before_shop_loop_item.
          #
-         # @hooked woocommerce_template_loop_product_link_open - 10
+         # @hooked Rider404\Plugins\WooCommerce::template_loop_product_link_open - 10
          #}
         {% do action( 'woocommerce_before_shop_loop_item' ) %}
 
@@ -28,7 +26,7 @@
         {#
          # Hook: woocommerce_shop_loop_item_title.
          #
-         # @hooked woocommerce_template_loop_product_title - 10
+         # @hooked Rider404\Plugins\WooCommerce::template_loop_product_title - 10
          #}
         {% do action( 'woocommerce_shop_loop_item_title' ) %}
 
@@ -36,7 +34,7 @@
          # Hook: woocommerce_after_shop_loop_item_title.
          #
          # @hooked woocommerce_template_loop_rating - 5
-         # @hooked woocommerce_template_loop_price - 10
+         # @hooked Rider404\Plugins\WooCommerce::template_loop_price - 10
          #}
         {% do action( 'woocommerce_after_shop_loop_item_title' ) %}
 
@@ -44,9 +42,8 @@
          # Hook: woocommerce_after_shop_loop_item.
          #
          # @hooked woocommerce_template_loop_product_link_close - 5
-         # @hooked woocommerce_template_loop_add_to_cart - 10
          #}
         {% do action( 'woocommerce_after_shop_loop_item' ) %}
 
     </li>
-{% endif %}
+{# {% endif %} #}

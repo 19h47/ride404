@@ -20,14 +20,31 @@ class WooCommerce {
 	 * @return void
 	 */
 	public function run() {
-		// add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
+		add_action( 'wp', array( $this, 'enqueue_styles' ) );
+		add_action( 'after_setup_theme', array( $this, 'hooks' ) );
+		
 		add_filter( 'woocommerce_add_to_cart_fragments', array( $this, 'add_to_cart_fragments' ), 10, 1 );
+	}
 
+
+	/**
+	 * Customize WooCommerce.
+	 *
+	 * Add your hooks to customize WooCommerce here.
+	 *
+	 * Everything here is hooked to `after_setup_theme`, because child theme functionality runs
+	 * before parent theme functionality. By hooking it, we make sure it runs after all hooks in
+	 * the parent theme were registered.
+	 *
+	 * @see plugins/woocommerce/includes/wc-template-hooks.php for a list of available actions.
+	 */
+	public function hooks() : void {
 		// Before main content.
 		remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
 
 		// Single product summary.
 		remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
+		remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
 		remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
 
 		// Single variation.
@@ -39,6 +56,43 @@ class WooCommerce {
 
 		// Before single product summary.
 		remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20 );
+
+		// Shop loop item title.
+		remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
+		add_action( 'woocommerce_shop_loop_item_title', array( $this, 'template_loop_product_title' ), 10 );
+
+		// After single product summary.
+		remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
+		remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
+		remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+
+		// Before shop loop.
+		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
+		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+
+		// Before shop loop item.
+		remove_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open', 10 );
+		add_action( 'woocommerce_before_shop_loop_item', array( $this, 'template_loop_product_link_open' ), 10 );
+
+		// After shop loop item.
+		remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
+
+		// After shop loop item title.
+		remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 );
+		add_action( 'woocommerce_after_shop_loop_item_title', array( $this, 'template_loop_price' ), 10 );
+
+	}
+
+
+	/**
+	 * Enqueue styles
+	 *
+	 * @return void
+	 */
+	public function enqueue_styles() : void {
+		if ( is_product() || is_shop() || is_product_category() ) {
+			add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
+		}
 	}
 
 
@@ -62,11 +116,46 @@ class WooCommerce {
 
 	/**
 	 * Output placeholders for the single variation
-	 * 
+	 *
 	 * @return string
 	 */
 	public function single_variation() : string {
 		return Timber::render( 'partials/variation.html.twig' );
+	}
+
+
+	/**
+	 * Show the product title in the product loop.
+	 *
+	 * @return string
+	 */
+	public function template_loop_product_title() : string {
+		global $product;
+
+		return Timber::render( 'woocommerce/loop/loop-product-title.html.twig', array( 'title' => $product->get_title() ) );
+	}
+
+	/**
+	 * Insert the opening anchor tag for products in the loop.
+	 * 
+	 * @return string
+	 */
+	public function template_loop_product_link_open() : string {
+		global $product;
+
+		return Timber::render( 'woocommerce/loop/loop-product-link-open.html.twig', array( 'link' => $product->get_permalink() ) );
+	}
+
+
+	/**
+	 * Get the product price for the loop.
+	 * 
+	 * @return string
+	 */
+	public function template_loop_price() : string {
+		global $product;
+
+		return Timber::render( 'woocommerce/loop/loop-price.html.twig', array( 'price_html' => $product->get_price_html() ) );
 	}
 }
 

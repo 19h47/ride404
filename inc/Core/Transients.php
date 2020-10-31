@@ -65,4 +65,30 @@ class Transients {
 
 		return $products;
 	}
+
+
+	/**
+	 * Product cats
+	 * 
+	 * @see https://developer.wordpress.org/reference/functions/get_terms/
+	 * @return array $product_cats
+	 */
+	public static function product_cats() : array {
+		$transient = get_transient( 'rider404_product_cats' );
+
+		if ( $transient ) {
+			return $transient;
+		}
+
+		$product_cats = Timber::get_terms(
+			array(
+				'taxonomy'   => 'product_cat',
+				'hide_empty' => false,
+			)
+		);
+
+		set_transient( 'rider404_product_cats', $product_cats );
+
+		return $product_cats;
+	}
 }

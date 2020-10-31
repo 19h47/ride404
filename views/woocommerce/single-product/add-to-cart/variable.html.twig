@@ -16,7 +16,7 @@
 			{% for attribute, options in attributes %}
 				{% set radios = fn( 'wc_get_product_terms', product.get_id(), attribute, { 'fields': 'all' } ) %}
 
-				<div{{ ( radios | length ) > 1 ? " id=\"quick-product-variations-#{ sanitize_title( attribute ) }\"" : '' }} class="variations{{ ( radios | length ) > 1 ? ' page-block' : '' }}"{{ ( options | length ) > 1 ? ' data-node-type="ProductVariationsBlock"' : '' }}>
+				<div id="quick-product-variations-#{ sanitize_title( attribute ) }" class="variations page-block" data-node-type="ProductVariationsBlock">
 
 					{{-
 						fn( 'wc_dropdown_variation_attribute_options',
@@ -32,8 +32,8 @@
 
 					<div role="radiogroup">
 						{% for radio in radios %}
-							<div class="{{ ( radios | length ) == 1 ? 'is-selected' }}" role="radio" aria-checked="{{ ( radios | length ) == 1 ? 'true' : 'false' }}" tabindex="{{ ( radios | length ) == 1 ? '0' : '-1' }}">
-								<span>{{- radio.name -}}</span>
+							<div role="radio" aria-checked="false" tabindex="-1">
+								<span class="white-space-nowrap">{{- radio.name -}}</span>
 								<input class="d-none" type="radio" name="attribute_{{ sanitize_title( attribute ) }}" value="{{ radio.slug }}"{{ ( radios | length ) == 1 ? ' checked' : '' }}>
 							</div>
 						{% endfor %}
@@ -66,7 +66,7 @@
 		
 			{% set radios = fn( 'wc_get_product_terms', product.get_id(), attribute, { 'fields': 'all' } ) %}
 
-			<div{{ ( radios | length ) > 1 ? " id=\"product-variations-#{ sanitize_title( attribute ) }\"" : '' }} class="Product-variations variations{{ ( radios | length ) > 1 ? ' page-block' : '' }}"{{ ( options | length ) > 1 ? ' data-node-type="ProductVariationsBlock"' : '' }}>
+			<div id="product-variations-#{ sanitize_title( attribute ) }" class="Product-variations variations page-block" data-node-type="ProductVariationsBlock">
 
 				{{-
 					fn( 'wc_dropdown_variation_attribute_options',
@@ -82,7 +82,7 @@
 
 				<div role="radiogroup">
 					{% for radio in radios %}
-						<div class="Product-variations__item{{ ( radios | length ) == 1 ? ' is-selected' }}" role="radio" aria-checked="{{ ( radios | length ) == 1 ? 'true' : 'false' }}" tabindex="{{ ( radios | length ) == 1 ? '0' : '-1' }}">
+						<div class="Product-variations__item" role="radio" aria-checked="false" tabindex="-1">
 							<span>{{- radio.name -}}</span>
 							{% include 'svg/use.html.twig' with { icon: 'oval' } only %}
 							<input class="d-none" type="radio" name="attribute_{{ sanitize_title( attribute ) }}" value="{{ radio.slug }}"{{ ( radios | length ) == 1 ? ' checked' : '' }}>

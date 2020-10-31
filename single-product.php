@@ -9,7 +9,7 @@ global $product;
 
 use Timber\{ Timber, Post };
 
-$context = Timber::get_context();
+$context = Timber::context();
 
 $context['post'] = new Post();
 

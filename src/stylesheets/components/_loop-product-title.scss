@@ -1,0 +1,13 @@
+/**
+ * Loop product title
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.Loop-product-title {
+	@extend %font-family-body, %font-weight-semibold;
+	@include margin(top 40px);
+
+	font-size: 18px;
+	line-height: (28/18);
+}

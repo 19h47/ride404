@@ -28,10 +28,10 @@ class Theme {
 	 */
 	public function run() : void {
 		add_filter( 'timber/twig', array( $this, 'add_to_twig' ) );
-		add_filter( 'timber_context', array( $this, 'add_socials_to_context' ) );
-		add_filter( 'timber_context', array( $this, 'add_to_theme' ) );
-		add_filter( 'timber_context', array( $this, 'add_menus_to_context' ) );
-		add_filter( 'timber_context', array( $this, 'add_to_context' ) );
+		add_filter( 'timber/context', array( $this, 'add_socials_to_context' ) );
+		add_filter( 'timber/context', array( $this, 'add_to_theme' ) );
+		add_filter( 'timber/context', array( $this, 'add_menus_to_context' ) );
+		add_filter( 'timber/context', array( $this, 'add_to_context' ) );
 	}
 
 
@@ -222,8 +222,14 @@ class Theme {
 		$context['business_hours'] = get_option( 'business_hours' );
 		$context['public_email']   = get_option( 'public_email' );
 
-		$context['cart']     = WC()->cart;
+		$context['cart'] = WC()->cart;
+
 		$context['cart_url'] = wc_get_cart_url();
+		$context['shop_url'] = wc_get_page_permalink( 'shop' );
+		
+		$context['is_product']    = is_product();
+		$context['is_shop']       = is_shop();
+		$context['is_front_page'] = is_front_page();
 
 		return $context;
 	}

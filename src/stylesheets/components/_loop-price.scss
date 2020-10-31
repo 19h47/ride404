@@ -1,0 +1,16 @@
+/**
+ * Loop price
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.Loop-price {
+	@extend .d-flex, .justify-content-between, .align-items-center;
+	@extend %font-weight-light;
+
+	svg {
+		@include size(16px);
+
+		fill: the_color(white);
+	}
+}

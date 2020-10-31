@@ -39,6 +39,10 @@ class Extras {
 			$classes[] = 'Page';
 		}
 
+		if ( is_product() ) {
+			$classes[] = 'Single-product';
+		}
+
 		return $classes;
 	}
 

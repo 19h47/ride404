@@ -10,11 +10,16 @@
 	@extend .d-flex, .align-items-center;
 	@include padding(top 20px right 30px bottom 20px left 30px);
 
+	@include fixed(top 0 right 0 left 0);
+	@include margin(top 75px right auto left auto);
+	@extend %text-align-center;
+
 	border-radius: 35px;
 	border: 1px solid the_color(gray, very-dark-03);
 	background-color: the_color(gray, very-dark-01);
 
 	width: min-content;
+	z-index: 10;
 
 	.Price {
 		@include margin(right 45px bottom 0);

@@ -1,0 +1,11 @@
+/**
+ * Loop product link open
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.Loop-product-link-open {
+	img {
+		@extend .d-block;
+	}
+}

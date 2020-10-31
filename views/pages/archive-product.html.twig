@@ -16,12 +16,30 @@
 		 #}
 		{% do action( 'woocommerce_before_shop_loop' ) %}
 
+		<ul>
+			<li>
+				<a class="{{ product_cat_current ? '' : 'is-active' }}" href="{{ shop_url }}">
+					{{ __( 'All', 'rider404' ) }}
+					<sup>{{ count_products }}</sup>
+				</a>
+			</li>
+			{% for product_cat in product_cats %}
+				<li>
+					<a class="{{ product_cat_current and product_cat_current.id == product_cat.id ? 'is-active' : '' }}" href="{{ product_cat.link }}">
+						{{- product_cat.name -}}
+						<sup>{{ product_cat.count }}</sup>
+					</a>
+				</li>
+			{% endfor %}
+		</ul>
+
 		{{- fn( 'woocommerce_product_loop_start', false ) -}}
 
 		{% for product in products %}
 			{% do action( 'woocommerce_shop_loop' ) %}
 
 			{% include 'woocommerce/content-product.html.twig' %}
+			
 		{% endfor %}
 
 		{{- fn( 'woocommerce_product_loop_end', false ) -}}

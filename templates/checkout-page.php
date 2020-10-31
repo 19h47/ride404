@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Cart page
+ * Template Name: Checkout page
  *
  * @package Rider404
  * @author  Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
@@ -12,6 +12,6 @@ $context = Timber::context();
 
 $context['post'] = new Post();
 
-$templates = array( 'pages/cart-page.html.twig' );
+$templates = array( 'pages/checkout-page.html.twig' );
 
 Timber::render( $templates, $context );

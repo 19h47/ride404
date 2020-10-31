@@ -14,9 +14,21 @@
                 {% include 'svg/use.html.twig' with { icon: 'smiley' } only %}
             </a>
         </div>
+
         <div class="d-none d-md-flex col-2 offset-3 align-items-center justify-content-center">
-            <img class="Site-header__2-ride-4" src="{{ theme.link }}/{{ theme.manifest['img/svg/2-ride-4.svg'] }}" alt="♥ 2 Ride 4 ♥">
+            {% if is_product %}
+                <a class="font-family-title font-weight-extrablack text-transform-uppercase" href="{{ shop_url }}">{{- __( 'Return', 'rider404' ) -}}</a>
+            {% elseif is_shop %}
+                <p class="font-family-title font-weight-extrablack text-transform-uppercase margin-0">{{- __( 'Shop', 'rider404' ) -}}</p>
+            {% elseif is_front_page %}
+                <img class="Site-header__2-ride-4" src="{{ theme.link }}/{{ theme.manifest['img/svg/2-ride-4.svg'] }}" alt="♥ 2 Ride 4 ♥">
+            {% else %}
+                <p class="font-family-title font-weight-extrablack text-transform-uppercase margin-0">{{- post.title -}}</p>
+            {% endif %}
         </div>
+
+
+
         <div class="col-3 offset-5 col-md-2 offset-md-3 d-flex align-items-center justify-content-end">
             <{{ ( cart.is_empty ? 'p' : "a href=\"#{cart_url}\"" ) | raw }} class="Site-header__min-cart Mini-cart js-total">
                 {% include 'partials/cart-contents-count.html.twig' with { count: cart.get_cart_contents_count() } only %}
