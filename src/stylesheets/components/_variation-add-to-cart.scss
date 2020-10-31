@@ -12,6 +12,8 @@
 
 	&__button {
 		svg {
+			@extend .d-inline-block;
+			@extend %vertical-align-middle;
 			@include size(30px);
 
 			transition: 0.4s fill map-get($easings, ease-out-expo);

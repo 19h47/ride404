@@ -8,10 +8,10 @@
 	$this: &;
 
 	@extend %font-weight-regular;
+	@include margin(top 40px bottom 40px);
 
 	[role='radiogroup'] {
 		@extend .d-flex, .justify-content-center;
-		@include margin(top 40px bottom 40px);
 	}
 
 	&__item {

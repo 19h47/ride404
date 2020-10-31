@@ -1,0 +1,88 @@
+/**
+ * Quick variations form
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.Quick-variations-form {
+	$this: &;
+
+	@extend .d-flex, .align-items-center;
+	@include padding(top 20px right 30px bottom 20px left 30px);
+
+	border-radius: 35px;
+	border: 1px solid the_color(gray, very-dark-03);
+	background-color: the_color(gray, very-dark-01);
+
+	width: min-content;
+
+	.Price {
+		@include margin(right 45px bottom 0);
+	}
+
+	.Variation-add-to-cart {
+		@include margin(left 45px);
+
+		&__button svg {
+			@include size(24px);
+		}
+	}
+
+	[role='radiogroup'] {
+		@extend .d-flex;
+		@extend %font-weight-regular;
+		@include margin(right 15px left 15px);
+
+		font-size: 14px;
+		line-height: (28/14);
+
+		color: the_color(gray, very-dark-02);
+
+		[role='radio'] {
+			@extend %position-relative;
+			@include margin(right 15px left 15px);
+			@extend %cursor-pointer;
+
+			transition: 0.4s color map-get($easings, ease-out-expo);
+
+			&:first-child {
+				@include margin(left 0);
+			}
+			&:last-child {
+				@include margin(right 0);
+			}
+
+			&:after {
+				@include absolute(top 100% right 0 left 0);
+				@include size(100%, 1px);
+				@include margin(top -4px);
+				@extend .d-block;
+
+				background-color: currentColor;
+				content: '';
+				opacity: 0;
+
+				transition: 0.4s opacity map-get($easings, ease-out-expo),
+					0.4s background-color map-get($easings, ease-out-expo);
+			}
+
+			&:hover,
+			&.is-focus {
+				outline: none;
+
+				&::after {
+					opacity: 1;
+				}
+			}
+
+			&.is-selected {
+				color: the_color(white);
+
+				&::after {
+					opacity: 1;
+					background-color: the_color(white);
+				}
+			}
+		}
+	}
+}

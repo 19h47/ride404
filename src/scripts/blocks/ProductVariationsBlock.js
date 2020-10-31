@@ -1,6 +1,6 @@
 import { AbstractBlock } from 'starting-blocks';
 import RadioGroup from '@19h47/radiogroup';
-import $ from 'jquery';
+import $ from 'jquery'; // eslint-disable-line
 
 /**
  *
@@ -19,9 +19,8 @@ export default class ProductVariationsBlock extends AbstractBlock {
 
 		this.radiogroup = null;
 		this.$radiogroup = this.rootElement.querySelector('[role="radiogroup"');
+		this.selects = [...document.querySelectorAll('.variations select')];
 		this.$select = this.rootElement.querySelector('select');
-
-		console.log(this.$select.options);
 
 		this.initPlugins();
 	}
@@ -31,31 +30,34 @@ export default class ProductVariationsBlock extends AbstractBlock {
 
 		this.radiogroup.radios.forEach(radio => {
 			radio.on('Radio.activate', ({ value }) => {
-				[...this.$select.options].forEach(option => {
-					if (value === option.value) {
-						option.selected = true;
-
-						$(radio.$input.form).trigger('woocommerce_variation_select_change');
-						$(radio.$input.form).trigger('check_variations');
-					} else {
-						option.selected = false;
-					}
+				this.selects.forEach($select => {
+					[...$select.options].forEach(option => {
+						if (value === option.value) {
+							$($select).val(value).trigger('change');
+						}
+					});
 				});
 			});
 		});
 
-		if (1 < this.$select.length && this.$select.selectedIndex) {
-			[...this.$select.options].forEach(({ selected, value }) => {
-				this.radiogroup.radios.forEach(radio => {
-					if (radio.$input.value === value && selected) {
-						this.radiogroup.deactivateAll();
-						radio.activate();
-					}
-				});
+		[...this.$select.options].forEach(({ selected, value }) => {
+			this.radiogroup.radios.forEach(radio => {
+				if (radio.$input.value === value && selected) {
+					this.radiogroup.deactivateAll();
+					radio.activate();
+				}
 			});
-		}
+		});
 
-		$(this.radiogroup.radios[0].$input.form).trigger('woocommerce_variation_select_change');
+		$(this.$select).on('change', ({ target: { value } }) => {
+			this.radiogroup.radios.forEach(radio => {
+				if (radio.$input.value === value) {
+					this.radiogroup.deactivateAll();
+					radio.activate();
+				}
+			});
+		});
+
 		$(this.radiogroup.radios[0].$input.form).trigger('check_variations');
 	}
 

@@ -1,30 +1,78 @@
 {#
  # Variable
  #
+ # @package Rider404
+ # @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  #}
 
-{#
- # Hook: woocommerce_before_add_to_cart_form.
- #}
 {% do action( 'woocommerce_before_add_to_cart_form' ) %}
 
-<form class="variations_form cart" action="{{ form_action }}" method="post" enctype='multipart/form-data' data-product_id="{{ product.get_id() }}" data-product_variations="{{ variations_attr }}">
-	{#
-	 # Hook: woocommerce_before_variations_form.
-	 #}
+
+	<form class="Quick-variations-form variations_form cart" action="{{ form_action }}" method="post" enctype="multipart/form-data" data-product_id="{{ product.get_id() }}" data-product_variations="{{ variations_attr }}">
+		{% if product.get_available_variations() %}
+
+			{% include 'woocommerce/single-product/price.html.twig' %}
+
+			{% for attribute, options in attributes %}
+				{% set radios = fn( 'wc_get_product_terms', product.get_id(), attribute, { 'fields': 'all' } ) %}
+
+				<div{{ ( radios | length ) > 1 ? " id=\"quick-product-variations-#{ sanitize_title( attribute ) }\"" : '' }} class="variations{{ ( radios | length ) > 1 ? ' page-block' : '' }}"{{ ( options | length ) > 1 ? ' data-node-type="ProductVariationsBlock"' : '' }}>
+
+					{{-
+						fn( 'wc_dropdown_variation_attribute_options',
+							{
+								options: options,
+								attribute: attribute,
+								product: product,
+								class: 'd-none',
+								show_option_none: false,
+							}
+						)
+					-}}
+
+					<div role="radiogroup">
+						{% for radio in radios %}
+							<div class="{{ ( radios | length ) == 1 ? 'is-selected' }}" role="radio" aria-checked="{{ ( radios | length ) == 1 ? 'true' : 'false' }}" tabindex="{{ ( radios | length ) == 1 ? '0' : '-1' }}">
+								<span>{{- radio.name -}}</span>
+								<input class="d-none" type="radio" name="attribute_{{ sanitize_title( attribute ) }}" value="{{ radio.slug }}"{{ ( radios | length ) == 1 ? ' checked' : '' }}>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+				
+			{% endfor %}
+
+			<div class="single_variation_wrap">
+				{% include 'woocommerce/single-product/add-to-cart/variation-add-to-cart-button.html.twig' %}
+				<div class="Variation woocommerce-variation single_variation d-none"></div>
+			</div>
+
+		{% else %}
+			<p class="stock out-of-stock">
+				{% filter apply_filters( 'woocommerce_out_of_stock_message' ) %}
+					{{- __( 'This product is currently out of stock and unavailable.', 'rider404' ) -}}
+				{% endfilter %}
+			</p>
+		{% endif %}
+	</form>
+
+<form class="variations_form cart" action="{{ form_action }}" method="post" enctype="multipart/form-data" data-product_id="{{ product.get_id() }}" data-product_variations="{{ variations_attr }}">
+	
 	{% do action( 'woocommerce_before_variations_form' ) %}
 
 	{% if product.get_available_variations() %}
 
-		{% for attribute_name, options in attributes %}
+		{% for attribute, options in attributes %}
 		
-			<div id="product-variations-{{ sanitize_title( attribute_name ) }}" class="Product-variations variations page-block" data-node-type="ProductVariationsBlock">
+			{% set radios = fn( 'wc_get_product_terms', product.get_id(), attribute, { 'fields': 'all' } ) %}
+
+			<div{{ ( radios | length ) > 1 ? " id=\"product-variations-#{ sanitize_title( attribute ) }\"" : '' }} class="Product-variations variations{{ ( radios | length ) > 1 ? ' page-block' : '' }}"{{ ( options | length ) > 1 ? ' data-node-type="ProductVariationsBlock"' : '' }}>
 
 				{{-
 					fn( 'wc_dropdown_variation_attribute_options',
 						{
 							options: options,
-							attribute: attribute_name,
+							attribute: attribute,
 							product: product,
 							class: 'd-none',
 							show_option_none: false,
@@ -32,25 +80,22 @@
 					)
 				-}}
 
-				{% set options = fn( 'wc_get_product_terms', product.get_id(), attribute_name, { 'fields': 'all' } ) %}
-
 				<div role="radiogroup">
-					{% for option in options %}
-						<div class="Product-variations__item{{ ( options | length ) == 1 ? ' is-selected' }}" role="radio" aria-checked="{{ ( options | length ) == 1 ? 'true' : 'false' }}" tabindex="{{ ( options | length ) == 1 ? '0' : '-1' }}">
-							<span>{{- option.name -}}</span>
+					{% for radio in radios %}
+						<div class="Product-variations__item{{ ( radios | length ) == 1 ? ' is-selected' }}" role="radio" aria-checked="{{ ( radios | length ) == 1 ? 'true' : 'false' }}" tabindex="{{ ( radios | length ) == 1 ? '0' : '-1' }}">
+							<span>{{- radio.name -}}</span>
 							{% include 'svg/use.html.twig' with { icon: 'oval' } only %}
-							<input class="d-none" type="radio" name="attribute_{{ sanitize_title( attribute_name ) }}" value="{{ option.slug }}"{{ ( options | length ) == 1 ? ' checked' : '' }}>
+							<input class="d-none" type="radio" name="attribute_{{ sanitize_title( attribute ) }}" value="{{ radio.slug }}"{{ ( radios | length ) == 1 ? ' checked' : '' }}>
 						</div>
 					{% endfor %}
 				</div>
 
 			</div>
+
 		{% endfor %}
 
 		<div class="single_variation_wrap">
-			{#
-			 # Hook: woocommerce_before_single_variation.
-			 #}
+			
 			{% do action( 'woocommerce_before_single_variation' ) %}
 
 			{#
@@ -61,9 +106,7 @@
 			 #}
 			{% do action( 'woocommerce_single_variation' ) %}
 
-			{#
-			 # Hook: woocommerce_after_single_variation.
-			 #}
+			{# woocommerce_after_single_variation #}
 			{% do action( 'woocommerce_after_single_variation' ) %}
 		</div>
 		
@@ -75,13 +118,8 @@
 		</p>
 	{% endif %}
 
-	{#
-	 # Hook: woocommerce_after_variations_form.
-	 #}
 	{% do action( 'woocommerce_after_variations_form' ) %}
+
 </form>
 
-{#
- # Hook: woocommerce_after_add_to_cart_form.
- #}
 {% do action( 'woocommerce_after_add_to_cart_form' ) %}
