@@ -33,6 +33,7 @@ class Init {
 			Api\Customizer\Contact::class,
 			Custom\Extras::class,
 			Custom\QueryVars::class,
+			Core\Product::class,
 		);
 	}
 

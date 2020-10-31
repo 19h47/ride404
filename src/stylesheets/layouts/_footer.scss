@@ -5,15 +5,26 @@
  * @package Rider.404
  */
 .Site-footer {
-	@include margin(top 100px bottom 100px);
+	&__title {
+		@include margin(bottom 50px);
+		@extend .h2, .margin-top-0;
+
+		@include media-breakpoint-up(md) {
+			@include margin(bottom 65px);
+		}
+	}
 
 	&__copyright {
-		@include margin(top 100px);
+		@include margin(top 70px);
 		@extend .d-flex, .justify-content-between, .align-items-center;
 
 		color: the_color(gray, very-dark-02);
 		font-size: 12px;
-		line-height: (17/12);
+		line-height: (18/12);
+
+		@include media-breakpoint-up(md) {
+			@include margin(top 100px);
+		}
 
 		p {
 			@extend %margin-0;
@@ -27,6 +38,7 @@
 			@include size(58px, 37px);
 
 			fill: currentColor;
+			min-width: 58px;
 		}
 	}
 }

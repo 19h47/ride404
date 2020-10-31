@@ -20,7 +20,7 @@ class WooCommerce {
 	 * @return void
 	 */
 	public function run() {
-		add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
+		// add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 		add_filter( 'woocommerce_add_to_cart_fragments', array( $this, 'add_to_cart_fragments' ), 10, 1 );
 
 		// Before main content.

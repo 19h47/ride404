@@ -4,19 +4,19 @@
  # @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  # @package Rider404
  #}
-<div id="footer" class="Site-footer" data-scroll-section>
+<div id="footer" class="Site-footer Section" data-scroll-section>
     <div class="row">
         <div class="col-10 offset-1">
-            <p class="h2">Follow<br>Rider.404</p>
+            <p class="Site-footer__title">Follow<br>Rider.404</p>
 
             {% include 'partials/socials.html.twig' %}
         </div>    
     </div>
 
     <div class="row">
-        <div class="col-7 offset-4">
+        <div class="col-10 offset-1 col-md-7 offset-md-4">
             <div class="Site-footer__copyright">
-                <p>© 2020 RIDER.404. All rights reserved. Created by <a href="https://maaad.studio/" target="_blank" rel="noopener noreferer">Maaad.studio</a> & <a href="https://19h47.fr" target="_blank" rel="noopener noreferer">19h47</a></p>
+                <p>© 2020 RIDER.404. All rights reserved.<br class="d-md-none"> Created by <a href="https://maaad.studio/" target="_blank" rel="noopener noreferer">Maaad.studio</a> & <a href="https://19h47.fr" target="_blank" rel="noopener noreferer">19h47</a></p>
                 {% include 'svg/use.html.twig' with { icon: 'globe' } only %}
             </div>
         </div>

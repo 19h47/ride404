@@ -4,33 +4,49 @@
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  */
 .Socials {
-	@extend %list-style-type-none;
-	@extend .d-flex;
+	@extend %list-style-type-none, %margin-md-0;
+	@extend .d-flex, .flex-wrap, .flex-md-nowrap;
+
+	@include margin(top -8px right -8px bottom -8px left -8px);
 
 	&__item {
-		@include margin(right 10px left 10px);
+		@include margin(top 8px right 8px bottom 8px left 8px);
 		@extend .d-flex, .align-items-center, .justify-content-center;
 
-		&:last-child {
-			@include margin(right 0);
-		}
-		&:first-child {
-			@include margin(left 0);
+		@include media-breakpoint-up(md) {
+			@include margin(top 0 right 10px bottom 0 left 10px);
+
+			&:last-child {
+				@include margin(right 0);
+			}
+			&:first-child {
+				@include margin(left 0);
+			}
 		}
 	}
 
 	&__link {
 		@extend .d-flex, .align-items-center, .justify-content-center;
-		@include size(70px);
+		@include size(50px);
 
-		border-radius: 35px;
+		border-radius: 25px;
 		border: 1px solid the_color(gray, very-dark-03);
 		transition: 0.4s border-color map-get($easings, ease-out-expo);
 
+		@include media-breakpoint-up(md) {
+			@include size(70px);
+
+			border-radius: 35px;
+		}
+
 		svg {
-			@include size(30px);
+			@include size(22px);
 
 			fill: the_color(white);
+
+			@include media-breakpoint-up(md) {
+				@include size(30px);
+			}
 		}
 
 		&:focus,

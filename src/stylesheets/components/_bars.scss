@@ -5,13 +5,21 @@
  * @package Rider404
  */
 .Bars {
-	@include size(30px);
+	@include size(20px);
 	@extend %margin-bottom-0;
+
+	@include media-breakpoint-up(md) {
+		@include size(30px);
+	}
 
 	svg {
 		@include size(100%);
-		min-width: 30px;
 
+		min-width: 20px;
 		fill: currentColor;
+
+		@include media-breakpoint-up(md) {
+			min-width: 30px;
+		}
 	}
 }

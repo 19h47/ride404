@@ -105,3 +105,17 @@ function get_theme_name() : string {
 function get_theme_text_domain() : string {
 	return wp_get_theme()->get( 'TextDomain' );
 }
+
+
+/**
+ * Set product global
+ *
+ * @param  mixed $post
+ * @return void
+ * @see https://timber.github.io/docs/guides/woocommerce/#tease-product
+ */
+function set_product_global( $post ) {
+	global $product;
+
+	$product = wc_get_product( $post->ID );
+}
