@@ -109,7 +109,7 @@ class Transients {
 		$product_cats = Timber::get_terms(
 			array(
 				'taxonomy'   => 'product_cat',
-				'hide_empty' => false,
+				'hide_empty' => true,
 			)
 		);
 

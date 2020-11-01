@@ -9,7 +9,7 @@ global $product;
 
 use TImber\{ Timber };
 
-$context = Timber::get_context();
+$context = Timber::context();
 
 $variations_json            = wp_json_encode( $available_variations );
 $context['variations_attr'] = wc_esc_json( $variations_json );

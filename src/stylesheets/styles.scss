@@ -41,6 +41,7 @@
 @import 'layouts/header';
 @import 'layouts/section';
 @import 'layouts/hero';
+@import 'layouts/about';
 
 // Pages
 @import 'pages/page';
@@ -57,14 +58,20 @@
 @import 'components/logo';
 @import 'components/product-variations';
 @import 'components/product-categories';
+@import 'components/product-thumbnail';
 @import 'components/variation-add-to-cart';
 @import 'components/variation';
 @import 'components/price';
 @import 'components/quick-variations-form';
+@import 'components/quick-product-categories';
 @import 'components/loop-product-title';
 @import 'components/loop-price';
 @import 'components/loop-product-link-open';
 @import 'components/partners';
+@import 'components/faq';
+@import 'components/video';
+@import 'components/simple';
+@import 'components/add-to-cart';
 
 // Utilities.
 @import '~@19h47/architecture/src/stylesheets/utilities/colors';

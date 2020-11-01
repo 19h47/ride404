@@ -27,10 +27,10 @@
 
 	.Variation-add-to-cart {
 		@include margin(left 45px);
+	}
 
-		&__button svg {
-			@include size(24px);
-		}
+	.Add-to-cart {
+		@include size(24px);
 	}
 
 	[role='radiogroup'] {

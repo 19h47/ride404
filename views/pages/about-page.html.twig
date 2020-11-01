@@ -1,0 +1,52 @@
+{#
+ # About page
+ #
+ # @package Rider404
+ #}
+{% extends 'index.html.twig' %}
+
+{% block hero %}{% endblock %}
+
+{% block content %}
+    {# <div class="Section">
+        <div class="row">
+            <div class="col-10 offset-1">
+                {{ post.content }}
+            </div>
+        </div>
+    </div>  #}
+
+    <div class="Section margin-top-0">
+        <div class="row">
+            <div class="col-8 offset-2">
+                <p class="h1 text-align-center margin-0">{{ post.meta( 'introduction' ) }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="faq" class="Section Faq page-block" data-node-type="FaqBlock">
+        <div class="row">
+            <div class="col-4 offset-1 sticky-top h-100">
+                <ul class="Faq__answers">
+                    {% for item in post.meta( 'faq' ) %}
+                        <li class="Faq__answers__item js-answer{{ loop.first ? ' is-active' : '' }}">
+                            <a href="#{{ item.question | sanitize }}">
+                                {{- item.question -}}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+             <div class="col-4 offset-1">
+                <ul class="Faq__questions">
+                    {% for item in post.meta( 'faq' ) %}
+                        <li id="{{ item.question | sanitize }}" class="Faq__questions__item js-question">
+                            {{- item.answer -}}
+                        </li>
+                    {% endfor %}
+                </ul>
+             </div>
+        </div>
+    </div>
+
+{% endblock  %}

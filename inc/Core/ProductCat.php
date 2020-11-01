@@ -33,5 +33,6 @@ class ProductCat {
 	 */
 	public function edit( int $term_id, int $tt_id ) : void {
 		delete_transient( 'rider404_product_cats' );
+		delete_transient( 'rider404_products' );
 	}
 }

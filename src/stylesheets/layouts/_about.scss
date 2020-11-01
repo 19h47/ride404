@@ -1,0 +1,49 @@
+/**
+ * About
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider.404
+ */
+.About {
+	&__content {
+		@extend %position-relative, %text-align-center, %font-family-title, %font-weight-light;
+
+		font-size: 28px;
+		min-height: (38/28);
+
+		@include media-breakpoint-up(md) {
+			font-size: 44px;
+			min-height: (52/44);
+		}
+
+		@include media-breakpoint-up(lg) {
+			font-size: 48px;
+			min-height: (58/48);
+		}
+
+		@include media-breakpoint-up(hd) {
+			font-size: 78px;
+			min-height: (92/78);
+		}
+
+		img {
+			@include absolute(top 0 right 0 bottom 0 left 0);
+			@include margin(top auto right auto bottom auto left auto);
+			@include size(100%, auto);
+
+			opacity: 0.1;
+		}
+	}
+
+	&__link {
+		@extend %font-weight-extrablack, %font-family-title, %text-decoration-underline;
+
+		font-size: 19px;
+		line-height: (11/19);
+
+		@include media-breakpoint-up(md) {
+			font-size: 34.5px;
+			line-height: (19/34.5);
+		}
+	}
+}

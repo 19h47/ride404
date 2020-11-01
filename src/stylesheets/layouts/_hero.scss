@@ -10,4 +10,27 @@
 			@include margin(top 100px bottom 30px);
 		}
 	}
+
+	@at-root .Front-page & {
+		.Logo {
+			@extend %position-relative;
+
+			z-index: 2;
+		}
+
+		.Video {
+			@extend %position-relative;
+			@include margin(top -50px);
+
+			z-index: 1;
+		}
+
+		&__arrow {
+			@include absolute(top 0 bottom 0 left 0);
+			@include margin(top auto bottom auto);
+			@include size(7px, 84.36px);
+
+			fill: the_color(white);
+		}
+	}
 }

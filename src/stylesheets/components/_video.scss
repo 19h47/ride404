@@ -1,0 +1,40 @@
+/**
+ * Video
+
+ * @package Rider404
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ */
+.Video {
+	$this: &;
+
+	@extend %position-relative;
+	@include margin(right percentage(0.5/10) left percentage(0.5/10));
+
+	video {
+		@include size(100%, auto);
+		@extend %position-relative;
+
+		z-index: 1;
+	}
+
+	button {
+		@include size(140px);
+		@extend .d-flex, .align-items-center, .justify-content-center;
+
+		border-radius: 70px;
+		border: 1px solid the_color(white);
+
+		svg {
+			@include margin(left 4px);
+			@include size(30px);
+			fill: the_color(red, bright);
+		}
+	}
+
+	&__overlay {
+		@include absolute(top 0 right 0 bottom 0 left 0);
+		@extend .d-flex, .align-items-center, .justify-content-center;
+
+		z-index: 2;
+	}
+}

@@ -1,0 +1,55 @@
+/**
+ * Add to cart
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.Add-to-cart {
+	@extend %position-relative;
+	@include size(30px);
+
+	svg {
+		@include absolute(top 0 right 0 bottom 0 left 0);
+		@include size(100%);
+		@extend .d-block;
+
+		transition: 0.4s fill map-get($easings, ease-out-expo);
+		fill: the_color(white);
+	}
+
+	svg.add-to-cart-danger {
+		@extend .d-none;
+	}
+
+	&.wc-variation-is-unavailable {
+		@extend %cursor-not-allowed;
+
+		svg.add-to-cart-danger {
+			@extend .d-inline-block;
+		}
+
+		svg.add-to-cart {
+			@extend .d-none;
+		}
+
+		svg {
+			fill: the_color(red, bright);
+		}
+	}
+
+	&.wc-variation-selection-needed {
+		@extend %cursor-not-allowed;
+
+		svg.add-to-cart-danger {
+			@extend .d-inline-block;
+		}
+
+		svg.add-to-cart {
+			@extend .d-none;
+		}
+
+		svg {
+			fill: the_color(gray, very-dark-02);
+		}
+	}
+}

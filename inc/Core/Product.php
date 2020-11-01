@@ -36,5 +36,6 @@ class Product {
 	 */
 	public function save( int $post_ID, WP_Post $post, bool $update ) : void {
 		delete_transient( 'rider404_products' );
+		delete_transient( 'rider404_product_cats' );
 	}
 }

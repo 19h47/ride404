@@ -21,9 +21,10 @@
      #}
     {% do action( 'woocommerce_after_add_to_cart_quantity' ) %}
 
-    <button type="submit" value="{{ product.get_id() }}" class="Variation-add-to-cart__button single_add_to_cart_button button alt">
+    <button type="submit" value="{{ product.get_id() }}" class="Add-to-cart single_add_to_cart_button button alt">
         <span class="d-none">{{- product.single_add_to_cart_text() -}}</span>
         {% include 'svg/use.html.twig' with { icon: 'add-to-cart', classes: [ 'Pointer-events-none' ] } only %}
+        {% include 'svg/use.html.twig' with { icon: 'add-to-cart-danger', classes: [ 'Pointer-events-none' ] } only %}
     </button>
 
     {#

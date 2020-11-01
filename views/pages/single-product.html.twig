@@ -28,13 +28,12 @@
 
                 <div class="summary entry-summary">
                     {% do action( 'woocommerce_single_product_summary' ) %}
+
+                    <div class="Section">
+                        {% include 'partials/image.html.twig' with { image: post.thumbnail, classes: [ 'Product-thumbnail' ] } only %}
+                    </div>
                 </div>
 
-                {#  
-                 # Hook: woocommerce_after_single_product_summary.
-                 #
-                 # @hooked woocommerce_output_related_products - 20
-                 #}
                 {% do action( 'woocommerce_after_single_product_summary' ) %}
 
             </div>

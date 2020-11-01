@@ -111,7 +111,7 @@
 		</div>
 		
 	{% else %}
-		<p class="stock out-of-stock">
+		<p class="stock out-of-stock white-space-nowrap">
 			{% filter apply_filters( 'woocommerce_out_of_stock_message' ) %}
 				{{- __( 'This product is currently out of stock and unavailable.', 'rider404' ) -}}
 			{% endfilter %}

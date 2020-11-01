@@ -1,0 +1,23 @@
+/**
+ * Quick product categories
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.Quick-product-categories {
+	$this: &;
+
+	@extend .d-flex, .align-items-center;
+	@extend %list-style-type-none, %font-weight-regular;
+	@include padding(top 20px right 30px bottom 20px left 30px);
+
+	@include fixed(top 0 right 0 left 0);
+	@include margin(top 75px right auto left auto);
+
+	border-radius: 35px;
+	border: 1px solid the_color(gray, very-dark-03);
+	background-color: the_color(gray, very-dark-01);
+
+	width: min-content;
+	z-index: 10;
+}

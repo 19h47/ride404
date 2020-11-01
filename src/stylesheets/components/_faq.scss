@@ -1,0 +1,67 @@
+/**
+ * FAQ
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.Faq {
+	$this: &;
+
+	&__answers {
+		@extend %list-style-type-none, %font-weight-light;
+		@include padding(top 130px);
+
+		font-size: 44px;
+		line-height: (52/44);
+
+		&__item {
+			@include margin(left percentage(0.5/4));
+			@include padding(left percentage(0.5/4));
+			@extend %position-relative;
+
+			border-left: 1px solid the_color(gray, very-dark-03);
+
+			&:first-child {
+				a {
+					@include padding(top 0);
+				}
+			}
+
+			&:last-child {
+				a {
+					@include padding(bottom 0);
+				}
+			}
+
+			&.is-active {
+				a {
+					color: the_color(white);
+				}
+
+				&::before {
+					@include absolute(top 0 bottom 0 left 0);
+					@include size(1px, 100%);
+
+					content: '';
+					background-color: the_color(white);
+				}
+			}
+
+			a {
+				@include padding(top 15px bottom 15px);
+				@extend .d-block;
+
+				color: the_color(gray, very-dark-03);
+				transition: 0.4s color map-get($easings, ease-out-expo);
+			}
+		}
+	}
+
+	&__questions {
+		@extend %list-style-type-none, %font-weight-light;
+
+		&__item {
+			@include padding(top 130px);
+		}
+	}
+}

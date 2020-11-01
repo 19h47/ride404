@@ -12,10 +12,39 @@
                 <img class="Logo" src="{{ theme.link }}/{{ theme.manifest['img/svg/rider-404.svg'] }}" alt="">
             </div>
         </div>
+        <div class="row">
+            <div class="col-10 offset-1">
+                {% include 'svg/use.html.twig' with { icon: 'arrow-down', classes: [ 'Hero__arrow' ] } only %}
+                <div class="Video">
+                    <div class="Video__overlay">
+                        <button type="button">
+                            {% include 'svg/use.html.twig' with { icon: 'play' } only %}
+                        </button>
+                    </div>
+                    <video class="d-none d-md-block js-player" autoplay preload="auto" muted>
+                        <source src="{{ post.meta( 'video' ).url }}" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
 
 {% block content %}
+    <div class="Section About">
+        <div class="row">
+            <div class="col-6 offset-3">
+                <div class="About__content">
+                    {{- post.meta( 'about' ).content -}}
+                    <img src="{{ theme.link }}/{{ theme.manifest['img/svg/about.svg'] }}" width="719" height="585">
+                </div>
+            </div>
+            <div class="col-10 offset-1">
+                <h2 class="h1 text-align-center">{{ post.meta( 'about' ).title }}</h2>
+                <a class="About__link" href="{{ post.meta( 'about' ).link.url }}">{{- post.meta( 'about' ).link.title -}}</a>
+            </div>
+        </div>
+    </div>
     <div class="Section position-relative">
         <img class="Partners__decor" src="{{ theme.link }}/{{ theme.manifest['img/svg/partners.svg'] }}" alt="" height="134" width="76">
         <div class="row">

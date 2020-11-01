@@ -1,0 +1,12 @@
+/**
+ * Product thumbnail
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.Product-thumbnail {
+	@extend .d-block;
+
+	height: auto;
+	max-width: 100%;
+}
