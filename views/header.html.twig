@@ -20,6 +20,8 @@
                 <a class="font-family-title font-weight-extrablack text-transform-uppercase" href="{{ shop_url }}">{{- __( 'Return', 'rider404' ) -}}</a>
             {% elseif is_shop %}
                 <p class="font-family-title font-weight-extrablack text-transform-uppercase margin-0">{{- __( 'Shop', 'rider404' ) -}}</p>
+            {% elseif is_product_category %}
+                <p class="font-family-title font-weight-extrablack text-transform-uppercase margin-0">{{- product_cat_current.name -}}</p>
             {% elseif is_front_page %}
                 <img class="Site-header__2-ride-4" src="{{ theme.link }}/{{ theme.manifest['img/svg/2-ride-4.svg'] }}" alt="♥ 2 Ride 4 ♥">
             {% else %}

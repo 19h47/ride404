@@ -1,0 +1,53 @@
+/**
+ * Product categories
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.Product-categories {
+	@extend %list-style-type-none, %font-weight-regular;
+	@extend .d-flex;
+
+	color: the_color(gray, very-dark-02);
+	font-size: 14px;
+	line-height: (28/14);
+
+	&__item {
+		@include margin(right 25px left 25px);
+
+		&:first-child {
+			@include margin(left 0);
+		}
+
+		&:last-child {
+			@include margin(right 0);
+		}
+
+		p,
+		a {
+			@extend %margin-0;
+
+			transition: 0.4s color map-get($easings, ease-out-expo);
+
+			&.is-active {
+				color: the_color(white);
+
+				span {
+					@extend %text-decoration-underline;
+				}
+			}
+
+			&:focus,
+			&:hover {
+				color: the_color(white);
+			}
+
+			sup {
+				@include margin(left 12px);
+
+				font-size: 14px;
+				line-height: (28/14);
+			}
+		}
+	}
+}

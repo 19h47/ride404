@@ -226,10 +226,11 @@ class Theme {
 
 		$context['cart_url'] = wc_get_cart_url();
 		$context['shop_url'] = wc_get_page_permalink( 'shop' );
-		
-		$context['is_product']    = is_product();
-		$context['is_shop']       = is_shop();
-		$context['is_front_page'] = is_front_page();
+
+		$context['is_product']          = is_product();
+		$context['is_shop']             = is_shop();
+		$context['is_front_page']       = is_front_page();
+		$context['is_product_category'] = is_product_category();
 
 		return $context;
 	}
