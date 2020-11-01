@@ -1,0 +1,45 @@
+/**
+ * Partners
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.Partners {
+	$this: &;
+
+	@include margin(right percentage(0.5/6));
+
+	&__decor {
+		@include margin(top auto left -14px bottom auto);
+		@include absolute(top 0 bottom 0 left 0);
+	}
+
+	&__items {
+		@include margin(top -20px right -20px bottom -20px left -20px);
+		@extend %list-style-type-none;
+		@extend .d-flex, .flex-wrap;
+	}
+
+	&__item {
+		@include size(percentage(1/4), 80px);
+
+		img {
+			@include padding(top 20px right 20px bottom 20px left 20px);
+			@include size(100%);
+
+			object-fit: contain;
+			object-position: center;
+			opacity: 0.3;
+			transition: opacity 0.4s map-get($easings, ease-out-expo);
+		}
+
+		a {
+			&:focus,
+			&:hover {
+				img {
+					opacity: 1;
+				}
+			}
+		}
+	}
+}

@@ -35,6 +35,7 @@ class Init {
 			Custom\QueryVars::class,
 			Core\Product::class,
 			Core\ProductCat::class,
+			Core\Partner::class,
 		);
 	}
 

@@ -1,0 +1,44 @@
+{#
+ # Page: front
+ #
+ # @package Driver404
+ #}
+{% extends 'index.html.twig' %}
+
+{% block hero %}
+    <div class="Hero">
+        <div class="row">
+            <div class="col-12 col-md-10 offset-md-1">
+                <img class="Logo" src="{{ theme.link }}/{{ theme.manifest['img/svg/rider-404.svg'] }}" alt="">
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="Section position-relative">
+        <img class="Partners__decor" src="{{ theme.link }}/{{ theme.manifest['img/svg/partners.svg'] }}" alt="" height="134" width="76">
+        <div class="row">
+            <div class="col-3 offset-6">
+                <h2>
+                    {{- __( 'Partners & Collaboraters', 'rider404' ) -}}
+                </h2>
+            </div>
+
+            <div class="col-6 offset-6">
+                <div class="Partners">
+                    <ul class="Partners__items">
+                        {% for partner in partners %}
+                            <li class="Partners__item">
+                                {{ partner.meta( 'link' ).url ? "<a href=\"#{ partner.meta( 'link' ).url }\"#{ partner.meta( 'link' ).target ? ' target="_blank" rel="noopener noreferer"' : '' }>" : '' }}
+                                {% include 'partials/image.html.twig' with { image: partner.thumbnail } only %}
+                                {{ partner.meta( 'link' ).url ? '</a>' : '' }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock  %}

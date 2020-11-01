@@ -1,0 +1,39 @@
+{
+    "key": "group_5f9ed6d050c2a",
+    "title": "Options",
+    "fields": [
+        {
+            "key": "field_5f9ed6e674057",
+            "label": "Lien",
+            "name": "link",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "partner"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Options d'un Partenaire",
+    "modified": 1604245238
+}

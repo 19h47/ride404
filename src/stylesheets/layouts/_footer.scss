@@ -32,6 +32,13 @@
 
 		a {
 			@extend %text-decoration-underline;
+
+			transition: color 0.4s map-get($easings, ease-out-expo);
+
+			&:focus,
+			&:hover {
+				color: the_color(white);
+			}
 		}
 
 		svg {

@@ -39,15 +39,7 @@
 
 			{% include 'header.html.twig' %}
 
-			{% block hero %}
-				<div class="Hero">
-					<div class="row">
-						<div class="col-12 col-md-10 offset-md-1">
-							<img class="Logo" src="{{ theme.link }}/{{ theme.manifest['img/svg/rider-404.svg'] }}" alt="">
-						</div>
-					</div>
-				</div>
-			{% endblock %}
+			{% block hero %}{% endblock %}
 			
 			{# woocommerce_before_main_content hook. #}
 			{% do action( 'woocommerce_before_main_content' ) %}

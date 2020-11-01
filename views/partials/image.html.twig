@@ -1,0 +1,22 @@
+{#
+ # Image
+ #
+ # @param array classes
+ # @param string loading
+ # @param array image
+ # @param array attributes
+ #
+ # @package Rider404
+ #}
+{% if image %}
+	<img
+		class="{{ classes ? classes | join( ' ' ) }}"
+		loading="{{ loading | default( 'lazy' ) }}"
+		src="{{ Image( image ).src }}"
+		alt="{{ Image( image ).alt }}"
+		width="{{ Image( image ).width }}"
+		height="{{ Image( image ).height }}"
+		srcset="{{ Image( image ).srcset }}"
+		{{ attributes ? attributes | map( ( value, key ) => "#{key}=\"#{value}\"" ) | join( ' ' )  | raw }}
+	>
+{% endif %}

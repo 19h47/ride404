@@ -68,6 +68,32 @@ class Transients {
 
 
 	/**
+	 * Partners
+	 *
+	 * @return array $partners
+	 */
+	public static function partners() : array {
+		$transient = get_transient( 'rider404_partners' );
+
+		if ( $transient ) {
+			return $transient;
+		}
+
+		$partners = Timber::get_posts(
+			array(
+				'post_type'      => 'partner',
+				'posts_per_page' => -1,
+				'no_found_rows'  => true,
+			)
+		);
+
+		set_transient( 'rider404_partners', $partners );
+
+		return $partners;
+	}
+
+
+	/**
 	 * Product cats
 	 * 
 	 * @see https://developer.wordpress.org/reference/functions/get_terms/
