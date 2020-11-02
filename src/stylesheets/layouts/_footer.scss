@@ -5,6 +5,12 @@
  * @package Rider.404
  */
 .Site-footer {
+	@include padding(top 40px bottom 40px);
+
+	@include media-breakpoint-up(md) {
+		@include padding(top 100px bottom 100px);
+	}
+
 	&__title {
 		@include margin(bottom 50px);
 		@extend .h2, .margin-top-0;

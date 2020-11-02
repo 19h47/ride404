@@ -1,4 +1,5 @@
 import { AbstractBlock } from 'starting-blocks';
+import Scroll from 'common/Scroll';
 
 /**
  *
@@ -15,39 +16,30 @@ export default class FaqBlock extends AbstractBlock {
 	init() {
 		super.init();
 
-		this.questions = [...this.rootElement.querySelectorAll('.js-question')];
 		this.answers = [...this.rootElement.querySelectorAll('.js-answer')];
-		console.log(this.answers);
 
-		this.intersectionObserver = new IntersectionObserver(entries => this.callback(entries), {
-			threshold: 0.45,
-		});
-
-		this.questions.forEach($item => this.intersectionObserver.observe($item));
+		// this.initEvents();
 	}
 
-	// initEvents() {
-	// 	this.answers.forEach($answer => {
-	// 		$answer.addEventListener('click', () => {
-	// 			this.deactiveAnswers();
-	// 			$answer.parentElement.classList.add('is-active');
-	// 		});
-	// 	});
-	// }
+	initEvents() {
+		super.initEvents();
 
-	callback(entries) {
-		entries.forEach(entry => {
-			const hash = `#${entry.target.id}`;
-			const $parent = this.rootElement.querySelector(`a[href="${hash}"]`).parentElement;
+		Scroll.on('call', (value, way, obj) => {
+			if ('answer' === value && 'enter' === way) {
+				const hash = `#${obj.el.id}`;
+				const $parent = document.querySelector(`a[href="${hash}"]`).parentElement;
 
-			if (entry.isIntersecting && 0.45 <= entry.intersectionRatio) {
 				this.deactiveAnswers();
 				$parent.classList.add('is-active');
 			}
+		});
 
-			// if (window.location.hash !== hash) {
-			// 	history.pushState({}, window.title, hash);
-			// }
+		this.answers.forEach($answer => {
+			$answer.addEventListener('click', event => {
+				const target = document.querySelector(event.target.hash);
+
+				Scroll.scrollTo(target);
+			});
 		});
 	}
 

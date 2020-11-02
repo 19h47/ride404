@@ -29,40 +29,35 @@
 	<body class="{{ body_class }}{{ post.body_classes ? ( ' ' ~ post.body_classes | join( ' ' ) ) }}">
 		<div id="svg-sprite" class="d-none">{% include 'icons.svg' %}</div>
 
+		{% do action( 'woocommerce_before_main_content' ) %}
+		
+
 		<div
 			id="{{ post.id ? "page-#{post.id}" : 'page' }}"
-			class="page-content"
+			class="Site-content page-content"
 			data-node-type="{{ post.node_type | default( 'DefaultPage' ) }}"
 			data-scroll-container
-			data-meta-title="{{ wp_get_document_title() }}"
 		>
-
 			{% include 'header.html.twig' %}
-
-			{% block hero %}{% endblock %}
 			
-			{# woocommerce_before_main_content hook. #}
-			{% do action( 'woocommerce_before_main_content' ) %}
+			{% block hero %}{% endblock %}
 
 			{% block content %}
 
-				<div class="Page__content{{ post.thumbnail ? ' has-thumbnail' : '' }}" data-scroll-section >
-					<div class="row">
-						<div class="col-8 offset-2">
-							<div class="Wysiwyg">{{- post.content -}}</div>
-						</div>
+				<div class="row" data-scroll-section>
+					<div class="col-8 offset-2">
+						<div class="Wysiwyg">{{- post.content -}}</div>
 					</div>
 				</div>
-
-
+				
 			{% endblock %}
-
-			{# woocommerce_after_main_content hook. #}
-			{% do action( 'woocommerce_after_main_content' ) %}
 
 			{% include 'footer.html.twig' %}
 
+
 		</div>
+		
+		{% do action( 'woocommerce_after_main_content' ) %}
 
 		{{ wp_footer }}
 

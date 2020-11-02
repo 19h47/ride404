@@ -1,0 +1,25 @@
+/**
+ * Content
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider.404
+ */
+.Site-content {
+	@include padding(top 180px);
+
+	@include media-breakpoint-up(md) {
+		@include padding(top 240px);
+	}
+
+	@include media-breakpoint-up(lg) {
+		@include padding(top 266px);
+	}
+
+	@include media-breakpoint-up(lg) {
+		@include padding(top 266px);
+	}
+
+	@include media-breakpoint-up(hd) {
+		@include padding(top 423px);
+	}
+}

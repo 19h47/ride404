@@ -5,7 +5,9 @@
  * @package Rider404
  */
 .Site-header {
+	@include fixed(top 0 right 0 left 0);
 	@include padding(top 60px bottom 60px);
+	@extend %Pointer-events-none;
 
 	color: the_color(white);
 	z-index: 10;
@@ -26,6 +28,7 @@
 		@include size(50px);
 		@extend .d-block;
 		@include margin(right auto left auto);
+		@extend %Pointer-events-auto;
 
 		@include media-breakpoint-up(md) {
 			@include size(70px);
@@ -47,13 +50,38 @@
 		@include size(99px, 12px);
 
 		fill: the_color(white);
+
+		g {
+			opacity: 0;
+			transform: translate3d(0, -100%, 0);
+			transition: transform 0.4s map-get($easings, ease-out-expo),
+				opacity 0.4s map-get($easings, ease-out-expo);
+		}
+
+		@for $i from 1 through 3 {
+			g:nth-child(#{$i}) {
+				transition-delay: 0.4s + ($i * 0.1);
+			}
+		}
+
+		@at-root .is-loaded & {
+			g {
+				opacity: 1;
+				transform: translate3d(0, 0, 0);
+			}
+		}
 	}
 
 	&__bars {
+		@extend %Pointer-events-auto;
 		@include margin(left 30px);
 
 		@include media-breakpoint-up(md) {
 			@include margin(right percentage(100/ ((1440/12) * 2)) left 40px);
 		}
+	}
+
+	&__mini-cart {
+		@extend %Pointer-events-auto;
 	}
 }

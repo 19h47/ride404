@@ -6,7 +6,7 @@
 {% extends 'index.html.twig' %}
 
 {% block hero %}
-    <div class="Hero">
+    <div class="Hero" data-scroll-section>
         <div class="row">
             <div class="col-12 col-md-10 offset-md-1">
                 <img class="Logo" src="{{ theme.link }}/{{ theme.manifest['img/svg/rider-404.svg'] }}" alt="">
@@ -31,7 +31,8 @@
 {% endblock %}
 
 {% block content %}
-    <div class="Section About">
+    
+    <div class="Section About" data-scroll-section>
         <div class="row">
             <div class="col-10 offset-1 col-md-6 offset-md-3">
                 <div class="About__content">
@@ -45,7 +46,8 @@
             </div>
         </div>
     </div>
-    <div class="Section position-relative">
+
+    <div class="Section position-relative" data-scroll-section>
         <img class="Partners__decor d-none d-md-block" src="{{ theme.link }}/{{ theme.manifest['img/svg/partners.svg'] }}" alt="" height="134" width="76">
         <div class="row">
             <div class="col-10 offset-1 col-md-3 offset-md-6">

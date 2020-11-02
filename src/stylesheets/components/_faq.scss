@@ -7,9 +7,26 @@
 .Faq {
 	$this: &;
 
-	&__answers {
+	&__questions {
 		@extend %list-style-type-none, %font-weight-light;
-		@include padding(top 130px);
+
+		@include padding(top 180px);
+
+		@include media-breakpoint-up(md) {
+			@include padding(top 240px);
+		}
+
+		@include media-breakpoint-up(lg) {
+			@include padding(top 266px);
+		}
+
+		@include media-breakpoint-up(lg) {
+			@include padding(top 266px);
+		}
+
+		@include media-breakpoint-up(hd) {
+			@include padding(top 423px);
+		}
 
 		font-size: 44px;
 		line-height: (52/44);
@@ -57,11 +74,27 @@
 		}
 	}
 
-	&__questions {
+	&__answers {
 		@extend %list-style-type-none, %font-weight-light;
 
 		&__item {
-			@include padding(top 130px);
+			@include padding(top 180px);
+
+			@include media-breakpoint-up(md) {
+				@include padding(top 240px);
+			}
+
+			@include media-breakpoint-up(lg) {
+				@include padding(top 266px);
+			}
+
+			@include media-breakpoint-up(lg) {
+				@include padding(top 266px);
+			}
+
+			@include media-breakpoint-up(hd) {
+				@include padding(top 423px);
+			}
 		}
 	}
 }

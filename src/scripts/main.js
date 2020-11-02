@@ -4,6 +4,8 @@ import WebpackAsyncBlockBuilder from 'services/WebpackAsyncBlockBuilder';
 
 import Guid from 'common/Guid';
 
+import DefaultPage from 'scripts/pages/DefaultPage';
+
 const production = 'production' !== process.env.NODE_ENV;
 
 (() => {
@@ -22,6 +24,8 @@ const production = 'production' !== process.env.NODE_ENV;
 
 	startingBlocks.provider('BlockBuilder', WebpackAsyncBlockBuilder);
 
+	startingBlocks.instanceFactory('DefaultPage', c => new DefaultPage(c));
+
 	if (production) {
 		const guid = new Guid();
 
@@ -29,4 +33,11 @@ const production = 'production' !== process.env.NODE_ENV;
 	}
 
 	startingBlocks.boot();
+
+	document.documentElement.classList.add('is-loaded');
+	document.documentElement.classList.remove('is-loading');
+
+	setTimeout(() => {
+		document.documentElement.classList.add('is-ready');
+	}, 300);
 })();

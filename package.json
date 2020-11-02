@@ -22,6 +22,7 @@
     "@19h47/radiogroup": "^5.2.2",
     "bootstrap": "^4.5.3",
     "flickity": "^2.2.1",
+    "imagesloaded": "^4.1.4",
     "locomotive-scroll": "^3.6.1",
     "ress": "^3.0.0",
     "starting-blocks": "^5.0.7"

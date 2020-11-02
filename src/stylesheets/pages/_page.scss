@@ -5,4 +5,27 @@
  * @package Rider404
  */
 .Page {
+	&__title {
+		@extend %overflow-hidden,
+			%font-family-title,
+			%font-weight-extrablack,
+			%text-transform-uppercase,
+			%margin-0,
+			%text-align-center;
+
+		span {
+			@extend .d-inline-block;
+
+			transform: translate3d(0, -100%, 0);
+			transition: transform 0.4s map-get($easings, ease-out-expo) 0.5s,
+				opacity 0.4s map-get($easings, ease-out-expo) 0.5s;
+		}
+
+		@at-root .is-loaded & {
+			span {
+				opacity: 1;
+				transform: translate3d(0, 0, 0);
+			}
+		}
+	}
 }
