@@ -29,8 +29,8 @@
             <div class="col-4 offset-1 sticky-top h-100">
                 <ul class="Faq__answers">
                     {% for item in post.meta( 'faq' ) %}
-                        <li class="Faq__answers__item js-answer{{ loop.first ? ' is-active' : '' }}">
-                            <a href="#{{ item.question | sanitize }}">
+                        <li class="Faq__answers__item{{ loop.first ? ' is-active' : '' }}">
+                            <a class="js-answer" href="#{{ item.question | sanitize }}">
                                 {{- item.question -}}
                             </a>
                         </li>

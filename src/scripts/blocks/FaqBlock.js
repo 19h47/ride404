@@ -26,13 +26,22 @@ export default class FaqBlock extends AbstractBlock {
 		this.questions.forEach($item => this.intersectionObserver.observe($item));
 	}
 
+	// initEvents() {
+	// 	this.answers.forEach($answer => {
+	// 		$answer.addEventListener('click', () => {
+	// 			this.deactiveAnswers();
+	// 			$answer.parentElement.classList.add('is-active');
+	// 		});
+	// 	});
+	// }
+
 	callback(entries) {
 		entries.forEach(entry => {
 			const hash = `#${entry.target.id}`;
 			const $parent = this.rootElement.querySelector(`a[href="${hash}"]`).parentElement;
 
 			if (entry.isIntersecting && 0.45 <= entry.intersectionRatio) {
-				this.answers.forEach(answer => answer.classList.remove('is-active'));
+				this.deactiveAnswers();
 				$parent.classList.add('is-active');
 			}
 
@@ -40,5 +49,9 @@ export default class FaqBlock extends AbstractBlock {
 			// 	history.pushState({}, window.title, hash);
 			// }
 		});
+	}
+
+	deactiveAnswers() {
+		return this.answers.forEach(answer => answer.parentElement.classList.remove('is-active'));
 	}
 }

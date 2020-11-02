@@ -20,8 +20,8 @@ h2,
 	@extend %font-weight-light, %font-family-title;
 	@include margin(top 1em bottom 1em);
 
-	font-size: 44px;
-	line-height: (38/28);
+	font-size: 28px;
+	line-height: (32/28);
 
 	@include media-breakpoint-up(md) {
 		font-size: 44px;

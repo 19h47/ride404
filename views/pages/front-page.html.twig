@@ -13,15 +13,15 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-10 offset-1">
-                {% include 'svg/use.html.twig' with { icon: 'arrow-down', classes: [ 'Hero__arrow' ] } only %}
+            <div class="col-12 col-md-10 offset-md-1">
+                {% include 'svg/use.html.twig' with { icon: 'arrow-down', classes: [ 'Hero__arrow', 'd-none', 'd-md-block' ] } only %}
                 <div class="Video">
                     <div class="Video__overlay">
                         <button type="button">
                             {% include 'svg/use.html.twig' with { icon: 'play' } only %}
                         </button>
                     </div>
-                    <video class="d-none d-md-block js-player" autoplay preload="auto" muted>
+                    <video autoplay preload="auto" muted>
                         <source src="{{ post.meta( 'video' ).url }}" type="video/mp4">
                     </video>
                 </div>
@@ -33,7 +33,7 @@
 {% block content %}
     <div class="Section About">
         <div class="row">
-            <div class="col-6 offset-3">
+            <div class="col-10 offset-1 col-md-6 offset-md-3">
                 <div class="About__content">
                     {{- post.meta( 'about' ).content -}}
                     <img src="{{ theme.link }}/{{ theme.manifest['img/svg/about.svg'] }}" width="719" height="585">
@@ -46,15 +46,15 @@
         </div>
     </div>
     <div class="Section position-relative">
-        <img class="Partners__decor" src="{{ theme.link }}/{{ theme.manifest['img/svg/partners.svg'] }}" alt="" height="134" width="76">
+        <img class="Partners__decor d-none d-md-block" src="{{ theme.link }}/{{ theme.manifest['img/svg/partners.svg'] }}" alt="" height="134" width="76">
         <div class="row">
-            <div class="col-3 offset-6">
+            <div class="col-10 offset-1 col-md-3 offset-md-6">
                 <h2>
-                    {{- __( 'Partners & Collaboraters', 'rider404' ) -}}
+                    {{- __( 'Partners &\nCollaboraters', 'rider404' ) | nl2br -}}
                 </h2>
             </div>
 
-            <div class="col-6 offset-6">
+            <div class="col-10 offset-1 col-md-6 offset-md-6">
                 <div class="Partners">
                     <ul class="Partners__items">
                         {% for partner in partners %}

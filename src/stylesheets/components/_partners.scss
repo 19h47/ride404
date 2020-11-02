@@ -7,7 +7,9 @@
 .Partners {
 	$this: &;
 
-	@include margin(right percentage(0.5/6));
+	@include media-breakpoint-up(md) {
+		@include margin(right percentage(0.5/6));
+	}
 
 	&__decor {
 		@include margin(top auto left -14px bottom auto);

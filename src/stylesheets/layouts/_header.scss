@@ -45,6 +45,8 @@
 
 	&__2-ride-4 {
 		@include size(99px, 12px);
+
+		fill: the_color(white);
 	}
 
 	&__bars {

@@ -5,6 +5,8 @@
  * @package Rider.404
  */
 .About {
+	@extend %overflow-hidden, %overflow-md-visible;
+
 	&__content {
 		@extend %position-relative, %text-align-center, %font-family-title, %font-weight-light;
 
@@ -27,11 +29,22 @@
 		}
 
 		img {
-			@include absolute(top 0 right 0 bottom 0 left 0);
-			@include margin(top auto right auto bottom auto left auto);
-			@include size(100%, auto);
+			@include absolute(top 0 right 0 bottom 0 left 50%);
+			@include margin(top auto bottom auto);
+			@include size(auto, 100%);
+
+			transform: translate3d(-50%, 0, 0);
 
 			opacity: 0.1;
+
+			@include media-breakpoint-up(md) {
+				@include size(100%, auto);
+				@include margin(right auto left auto);
+
+				right: 0;
+				left: 0;
+				transform: none;
+			}
 		}
 	}
 
