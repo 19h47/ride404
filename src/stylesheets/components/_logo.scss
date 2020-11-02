@@ -7,4 +7,6 @@
 .Logo {
 	@include margin(right percentage(0.5/10) left percentage(1/10));
 	@extend .d-block;
+
+	fill: the_color(white);
 }

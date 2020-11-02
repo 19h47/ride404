@@ -9,7 +9,7 @@
     <div class="Hero" data-scroll-section>
         <div class="row">
             <div class="col-12 col-md-10 offset-md-1">
-                <img class="Logo" src="{{ theme.link }}/{{ theme.manifest['img/svg/rider-404.svg'] }}" alt="">
+                {% include 'svg/rider-404.svg.twig' with { classes: [ 'Logo' ] } %}
             </div>
         </div>
         <div class="row">
@@ -21,7 +21,7 @@
                             {% include 'svg/use.html.twig' with { icon: 'play' } only %}
                         </button>
                     </div>
-                    <video autoplay preload="auto" muted>
+                    <video autoplay loop preload="auto" muted>
                         <source src="{{ post.meta( 'video' ).url }}" type="video/mp4">
                     </video>
                 </div>

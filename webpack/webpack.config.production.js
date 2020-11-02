@@ -13,8 +13,8 @@ const glob = require('glob'); // eslint-disable-line import/no-extraneous-depend
 const resolve = require('./webpack.utils');
 
 const safelist = () => ({
-	standard: [/^is-/, /^has/, /^c-/],
-	deep: [/^is-/, /^has/, /^c-/, /^flickity-/],
+	standard: [/^is-/, /^has/, /^c-/, /^wc-/],
+	deep: [/^is-/, /^has/, /^c-/, /^flickity-/, /^wc-/],
 	greedy: [
 		/^is/,
 		/^has/,
