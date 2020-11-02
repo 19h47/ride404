@@ -19,7 +19,9 @@
     <div class="Section margin-top-0" data-scroll-section>
         <div class="row">
             <div class="col-8 offset-2">
-                <p class="h1 text-align-center margin-0">{{ post.meta( 'introduction' ) }}</p>
+                <div id="split-text-{{ fn( 'uniqid' ) }}" class="Split-text h1 text-align-center margin-0 page-block" data-node-type="SplitTextBlock" data-scroll>
+                    {{- post.meta( 'introduction' ) -}}
+                </div>
             </div>
         </div>
     </div>

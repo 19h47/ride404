@@ -28,6 +28,7 @@ const safelist = () => ({
 		/Page-hours-and-prices/,
 		/Hero/,
 		/Navigation/,
+		/line/,
 	],
 });
 

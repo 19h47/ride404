@@ -3,7 +3,9 @@
  */
 
 html {
-	scroll-behavior: smooth;
+	&:not(.has-scroll-init) {
+		@extend %cursor-wait, %overflow-hidden;
+	}
 }
 
 body {

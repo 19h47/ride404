@@ -36,7 +36,7 @@
         <div class="row">
             <div class="col-10 offset-1 col-md-6 offset-md-3">
                 <div class="About__content">
-                    {{- post.meta( 'about' ).content -}}
+                    <div id="split-text-{{ fn( 'uniqid' ) }}" class="Split-text page-block" data-scroll data-node-type="SplitTextBlock">{{- post.meta( 'about' ).content -}}</div>
                     <img src="{{ theme.link }}/{{ theme.manifest['img/svg/about.svg'] }}" width="719" height="585">
                 </div>
             </div>

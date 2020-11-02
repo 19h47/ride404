@@ -6,6 +6,8 @@ import Guid from 'common/Guid';
 
 import DefaultPage from 'scripts/pages/DefaultPage';
 
+require('common/Scroll');
+
 const production = 'production' !== process.env.NODE_ENV;
 
 (() => {
