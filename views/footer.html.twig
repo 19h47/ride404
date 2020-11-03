@@ -7,8 +7,7 @@
 <div id="footer" class="Site-footer" data-scroll-section>
     <div class="row">
         <div class="col-10 offset-1">
-            <p class="Site-footer__title">Follow<br>Rider.404</p>
-
+            {% include 'partials/split-text.html.twig' with { classes: [ 'Site-footer__title' ], title: 'Follow<br>Rider.404' } %}
             {% include 'partials/socials.html.twig' %}
         </div>    
     </div>
