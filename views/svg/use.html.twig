@@ -13,6 +13,7 @@
 	class="{{ icon }}{{ classes is defined ? ' ' ~ classes | join(' ') }}"
 	{{ id is defined ? "id=\"#{ id }\"" }}
 	aria-label="{{ site.description }}"
+	{{ attributes ? attributes | map( ( value, key ) => "#{key}=\"#{value}\"" ) | join( ' ' )  | raw }}
 >
 	<use xlink:href="#{{ icon }}" href="#{{ icon }}"></use>
 </svg>

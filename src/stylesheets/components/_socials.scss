@@ -4,6 +4,8 @@
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  */
 .Socials {
+	$this: &;
+
 	@extend %list-style-type-none, %margin-md-0;
 	@extend .d-flex, .flex-wrap, .flex-md-nowrap;
 
@@ -27,31 +29,62 @@
 
 	&__link {
 		@extend .d-flex, .align-items-center, .justify-content-center;
+		@extend %position-relative;
 		@include size(50px);
-
-		border-radius: 25px;
-		border: 1px solid the_color(gray, very-dark-03);
-		transition: 0.4s border-color map-get($easings, ease-out-expo);
 
 		@include media-breakpoint-up(md) {
 			@include size(70px);
-
-			border-radius: 35px;
 		}
 
 		svg {
 			@include size(22px);
 
 			fill: the_color(white);
+			transform: scale(0);
+			transition: transform 0.4s map-get($easings, ease-out-expo);
 
 			@include media-breakpoint-up(md) {
 				@include size(30px);
 			}
 		}
 
+		span {
+			@include absolute(top 0 right 0 bottom 0 left 0);
+
+			border: 1px solid the_color(gray, very-dark-03);
+			border-radius: 50%;
+
+			transform: scale(0);
+			transition: border-color 0.4s map-get($easings, ease-out-expo),
+				transform 1.4s map-get($easings, ease-out-expo);
+
+			z-index: 1;
+		}
+
+		&::after {
+			@include absolute(top 0 right 0 bottom 0 left 0);
+			@extend .d-block;
+
+			border: 1px solid rgba(the_color(white), 0);
+			border-radius: 50%;
+			transition: border-color 0.4s map-get($easings, ease-out-expo);
+			content: '';
+			z-index: 2;
+		}
+
 		&:focus,
 		&:hover {
-			border-color: the_color(white);
+			&::after {
+				border-color: rgba(the_color(white), 1);
+			}
+		}
+
+		@at-root #{ $this }.is-inview #{ $this }__link svg {
+			transform: scale(1);
+		}
+
+		@at-root #{ $this }.is-inview #{ $this }__link span {
+			transform: scale(1);
 		}
 	}
 }

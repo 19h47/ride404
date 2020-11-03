@@ -34,6 +34,17 @@
 
 		p {
 			@extend %margin-0;
+
+			transform: translate3d(0, 100%, 0);
+			opacity: 0;
+
+			transition: transform 0.4s map-get($easings, ease-out-expo),
+				opacity 0.8s map-get($easings, ease-out-expo) 0.4s;
+
+			&.is-inview {
+				transform: translate3d(0, 0, 0);
+				opacity: 1;
+			}
 		}
 
 		a {

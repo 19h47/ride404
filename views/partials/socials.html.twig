@@ -5,12 +5,20 @@
  #}
 
 {% if socials is iterable %}
-	<ul class="Socials{{ classes ? ' ' ~ classes | join( ' ' ) }}">
+	<ul class="Socials{{ classes ? ' ' ~ classes | join( ' ' ) }}" data-scroll>
 		{% for social in socials %}
 			{% if social.url %}
 				<li class="Socials__item">
-					<a class="Socials__link" href="{{ social.url }}" target="_blank" title="{{ social.title }}" aria-label="{{ social.title }}" rel="noopener noreferrer">
-						{% include 'svg/use.html.twig' with { icon: social.slug } only %}
+					<a 
+						class="Socials__link" 
+						href="{{ social.url }}" 
+						target="_blank" 
+						title="{{ social.title }}" 
+						aria-label="{{ social.title }}" 
+						rel="noopener noreferrer"
+					>
+						{% include 'svg/use.html.twig' with { icon: social.slug, attributes: { style: "transition-delay: #{ loop.index * 0.1 + 0.3 }s;" } } only %}
+						<span style="transition-delay: {{ loop.index * 0.1 + 0.3 }}s;"></span>
 					</a>
 				</li>
 			{% endif %}
