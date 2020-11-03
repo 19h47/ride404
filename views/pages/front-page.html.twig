@@ -9,12 +9,12 @@
     <div class="Hero" data-scroll-section>
         <div class="row">
             <div class="col-12 col-md-10 offset-md-1">
-                {% include 'svg/rider-404.svg.twig' with { classes: [ 'Logo' ] } %}
+                <div id="rider-404" class="Rider-404 page-block" data-node-type="Rider404Block" data-lottie-json="rider-404"></div>
             </div>
         </div>
         <div class="row">
             <div class="col-12 col-md-10 offset-md-1">
-                {% include 'svg/use.html.twig' with { icon: 'arrow-down', classes: [ 'Hero__arrow', 'd-none', 'd-md-block' ] } only %}
+                <div id="arrow" class="Hero__arrow d-none d-md-block page-block" data-scroll data-scroll-repeat data-scroll-call="arrow" data-node-type="ArrowBlock" data-lottie-json="arrow"></div>
                 <div class="Video">
                     <div class="Video__overlay">
                         <button type="button">
@@ -64,7 +64,7 @@
                         {% for partner in partners %}
                             <li class="Partners__item" style="transition-delay: {{ loop.index * 0.1 }}s;">
                                 {{ partner.meta( 'link' ).url ? "<a href=\"#{ partner.meta( 'link' ).url }\"#{ partner.meta( 'link' ).target ? ' target="_blank" rel="noopener noreferer"' : '' }>" : '' }}
-                                {% include 'partials/image.html.twig' with { image: partner.thumbnail } only %}
+                                    {% include 'partials/image.html.twig' with { image: partner.thumbnail } only %}
                                 {{ partner.meta( 'link' ).url ? '</a>' : '' }}
                             </li>
                         {% endfor %}

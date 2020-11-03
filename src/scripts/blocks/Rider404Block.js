@@ -1,17 +1,19 @@
 import AbstractLottieBlock from 'blocks/AbstractLottieBlock';
+import Scroll from 'common/Scroll';
 
 /**
  *
  * @constructor
  * @param {object} container
  */
-export default class LogoBlock extends AbstractLottieBlock {
+export default class Rider404 extends AbstractLottieBlock {
 	constructor(container) {
 		super(container, { autoplay: true });
 	}
 
-	initEvents() {
-		super.initEvents();
-		this.rootElement.addEventListener('mouseover', () => this.animation.goToAndPlay(0));
+	init() {
+		super.init();
+
+		this.json.then(() => Scroll.update());
 	}
 }

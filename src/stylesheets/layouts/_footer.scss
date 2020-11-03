@@ -57,17 +57,5 @@
 				color: the_color(white);
 			}
 		}
-
-		// svg {
-		// 	@include size(58px, 37px);
-
-		// 	fill: currentColor;
-		// 	min-width: 58px;
-		// }
-
-		img {
-			@extend .d-inline-block;
-			@include size(58px, 37px);
-		}
 	}
 }

@@ -1,12 +1,20 @@
 /**
- * Logo
+ * Rider 404
  *
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  * @package Rider404
  */
-.Logo {
+.Rider-404 {
+	@extend %position-relative;
 	@include margin(right percentage(0.5/10) left percentage(1/10));
 	@extend .d-block;
 
 	fill: the_color(white);
+	z-index: 10;
+
+	@include padding(bottom percentage(310/1200));
+
+	svg {
+		@include absolute(top 0 right 0 bottom 0 left 0);
+	}
 }

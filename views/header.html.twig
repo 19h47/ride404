@@ -7,8 +7,8 @@
 <header class="Site-header">
     <div class="row">
         <div class="col-3 col-md-2">
-            <a id="logo" class="Site-header__smiley page-block" href="{{ site.link }}" data-node-type="LogoBlock">
-                <div></div>
+            <a id="logo" class="Site-header__smiley " href="{{ site.link }}" >
+                <div id="logo" class="page-block" data-node-type="LogoBlock" data-lottie-json="logo"></div>
             </a>
         </div>
 
@@ -20,8 +20,7 @@
             {% elseif is_product_category %}
                 <p class="font-family-title font-weight-extrablack text-transform-uppercase margin-0">{{- product_cat_current.name -}}</p>
             {% elseif is_front_page %}
-                {% include 'svg/2-ride-4.svg.twig' with { classes: [ 'Site-header__2-ride-4' ] } %}
-                {# <img class="Site-header__2-ride-4" src="{{ theme.link }}/{{ theme.manifest['img/svg/2-ride-4.svg'] }}" alt="♥ 2 Ride 4 ♥"> #}
+                <div id="love-two-ride-four-love" class="Site-header__love-two-ride-four-love page-block" data-node-type="LoveTwoRideFourLoveBlock" data-lottie-json="love-two-ride-four-love"></div>
             {% else %}
                 <p class="Page__title"><span>{{- post.title -}}</span></p>
             {% endif %}
