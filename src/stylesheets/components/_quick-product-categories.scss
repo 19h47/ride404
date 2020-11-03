@@ -8,6 +8,7 @@
 	$this: &;
 
 	@extend .d-flex, .align-items-center;
+	@include autoAlpha(1);
 	@extend %list-style-type-none, %font-weight-regular;
 	@include padding(top 20px right 30px bottom 20px left 30px);
 
@@ -20,4 +21,11 @@
 
 	width: min-content;
 	z-index: 10;
+
+	transition: opacity 0.8s map-get($easings, ease-out-expo),
+		visibility 0.8s map-get($easings, ease-out-expo);
+
+	@at-root .is-ontop & {
+		@include autoAlpha(0);
+	}
 }

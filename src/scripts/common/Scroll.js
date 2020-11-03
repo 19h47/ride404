@@ -9,6 +9,7 @@ const el = document.querySelector('[data-scroll-container]');
  *
  * @author  Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  */
+
 setTimeout(() => {
 	const Scroll = new LocomotiveScroll({
 		el,
@@ -17,10 +18,23 @@ setTimeout(() => {
 	});
 
 	setTimeout(() => {
-		imagesLoaded(el, () => Scroll.update());
+		imagesLoaded(el, () => {
+			document.documentElement.classList.add('is-ready');
+			Scroll.update();
+		});
 	}, 1000);
 
 	const answers = [...document.querySelectorAll('.js-answer')];
+
+	Scroll.on('scroll', obj => {
+		// console.log(obj);
+
+		if (0 >= obj.scroll.y) {
+			document.documentElement.classList.add('is-ontop');
+		} else {
+			document.documentElement.classList.remove('is-ontop');
+		}
+	});
 
 	Scroll.on('call', (value, way, obj) => {
 		if ('answer' === value && 'enter' === way) {

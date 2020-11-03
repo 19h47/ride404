@@ -60,6 +60,7 @@ module.exports = {
 			// img
 			jpg: resolve('src/img/jpg'),
 			png: resolve('src/img/png'),
+			gif: resolve('src/img/gif'),
 			svg: resolve('src/img/svg'),
 			icons: resolve('src/icons'),
 		},

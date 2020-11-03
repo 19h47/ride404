@@ -7,8 +7,8 @@
 <header class="Site-header">
     <div class="row">
         <div class="col-3 col-md-2">
-            <a class="Site-header__smiley" href="{{ site.link }}">
-                {% include 'svg/use.html.twig' with { icon: 'smiley' } only %}
+            <a id="logo" class="Site-header__smiley page-block" href="{{ site.link }}" data-node-type="LogoBlock">
+                <div></div>
             </a>
         </div>
 
@@ -30,6 +30,7 @@
 
 
         <div class="col-3 offset-5 col-md-2 offset-md-3 d-flex align-items-center justify-content-end">
+
             <{{ ( cart.is_empty ? 'p' : "a href=\"#{cart_url}\"" ) | raw }} class="Site-header__mini-cart Mini-cart js-total">
                 {% include 'partials/cart-contents-count.html.twig' with { count: cart.get_cart_contents_count() } only %}
                 {% include 'svg/use.html.twig' with { icon: 'cart' } only %}

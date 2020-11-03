@@ -38,8 +38,4 @@ const production = 'production' !== process.env.NODE_ENV;
 
 	document.documentElement.classList.add('is-loaded');
 	document.documentElement.classList.remove('is-loading');
-
-	setTimeout(() => {
-		document.documentElement.classList.add('is-ready');
-	}, 300);
 })();

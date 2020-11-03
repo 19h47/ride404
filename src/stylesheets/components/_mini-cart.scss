@@ -18,8 +18,18 @@
 		min-width: 20px;
 		fill: currentColor;
 
+		opacity: 0;
+		transform: translate3d(0, -100%, 0);
+		transition: transform 0.4s map-get($easings, ease-out-expo) 0.6s,
+			opacity 0.4s map-get($easings, ease-out-expo) 0.6s;
+
 		@include media-breakpoint-up(md) {
 			min-width: 30px;
+		}
+
+		@at-root .is-loaded & {
+			opacity: 1;
+			transform: translate3d(0, 0, 0);
 		}
 	}
 
@@ -30,10 +40,16 @@
 
 		color: the_color(white);
 		font-size: 8px;
+		opacity: 0;
+		transition: opacity 0.8s map-get($easings, ease-out-expo) 0.7s;
 
 		@include media-breakpoint-up(md) {
 			@include margin(top 8px);
 			font-size: 12px;
+		}
+
+		@at-root .is-loaded & {
+			opacity: 1;
 		}
 	}
 }

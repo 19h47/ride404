@@ -28,10 +28,22 @@
 		@include size(50px);
 		@extend .d-block;
 		@include margin(right auto left auto);
-		@extend %Pointer-events-auto;
+		@extend %Pointer-events-auto, %overflow-hidden;
 
 		@include media-breakpoint-up(md) {
 			@include size(70px);
+		}
+
+		div {
+			opacity: 0;
+			transform: translate3d(0, -100%, 0);
+			transition: transform 0.4s map-get($easings, ease-out-expo) 0.5s,
+				opacity 0.4s map-get($easings, ease-out-expo) 0.5s;
+
+			@at-root .is-loaded & {
+				opacity: 1;
+				transform: translate3d(0, 0, 0);
+			}
 		}
 
 		svg {
@@ -60,7 +72,7 @@
 
 		@for $i from 1 through 3 {
 			g:nth-child(#{$i}) {
-				transition-delay: 0.4s + ($i * 0.1);
+				transition-delay: 0.5s + ($i * 0.1);
 			}
 		}
 
@@ -72,16 +84,26 @@
 		}
 	}
 
-	&__bars {
+	&__mini-cart {
 		@extend %Pointer-events-auto;
+	}
+
+	&__bars {
+		@extend %Pointer-events-auto, %overflow-hidden;
 		@include margin(left 30px);
+
+		opacity: 0;
+		transform: translate3d(0, -100%, 0);
+		transition: transform 0.4s map-get($easings, ease-out-expo) 0.7s,
+			opacity 0.4s map-get($easings, ease-out-expo) 0.7s;
 
 		@include media-breakpoint-up(md) {
 			@include margin(right percentage(100/ ((1440/12) * 2)) left 40px);
 		}
-	}
 
-	&__mini-cart {
-		@extend %Pointer-events-auto;
+		@at-root .is-loaded & {
+			opacity: 1;
+			transform: translate3d(0, 0, 0);
+		}
 	}
 }

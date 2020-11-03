@@ -6,7 +6,7 @@
 {% extends 'index.html.twig' %}
 
 {% block hero %}
-    <div class="Hero">
+    <div class="Hero" data-scroll-section>
         <div class="row">
             <div class="col-10 offset-1">
                 <h1 class="text-align-center margin-0">{{- post.meta( 'long_title' ) ? post.meta( 'long_title' ) : post.title -}}</h1>
@@ -17,9 +17,9 @@
 
 {% block content %}
     
-    {% do action( 'woocommerce_after_single_product' ) %}
+    {% do action( 'woocommerce_before_single_product' ) %}
 
-    <div class="row">
+    <div class="row" data-scroll-section>
         <div class="col-8 offset-2">
     
             <div id="product-{{ post.id }}" class="{{ product_class | join( ' ' ) }}">

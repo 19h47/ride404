@@ -21,6 +21,13 @@
 	width: min-content;
 	z-index: 10;
 
+	transition: opacity 0.8s map-get($easings, ease-out-expo),
+		visibility 0.8s map-get($easings, ease-out-expo);
+
+	@at-root .is-ontop & {
+		@include autoAlpha(0);
+	}
+
 	.Price {
 		@include margin(right 45px bottom 0);
 	}

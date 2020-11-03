@@ -8,53 +8,53 @@
 {% do action( 'woocommerce_before_add_to_cart_form' ) %}
 
 
-	<form class="Quick-variations-form variations_form cart" action="{{ form_action }}" method="post" enctype="multipart/form-data" data-product_id="{{ product.get_id() }}" data-product_variations="{{ variations_attr }}">
-		{% if product.get_available_variations() %}
+<form class="Quick-variations-form variations_form cart" action="{{ form_action }}" method="post" enctype="multipart/form-data" data-product_id="{{ product.get_id() }}" data-product_variations="{{ variations_attr }}">
+	{% if product.get_available_variations() %}
 
-			{% include 'woocommerce/single-product/price.html.twig' %}
+		{% include 'woocommerce/single-product/price.html.twig' %}
 
-			{% for attribute, options in attributes %}
-				{% set radios = fn( 'wc_get_product_terms', product.get_id(), attribute, { 'fields': 'all' } ) %}
+		{% for attribute, options in attributes %}
+			{% set radios = fn( 'wc_get_product_terms', product.get_id(), attribute, { 'fields': 'all' } ) %}
 
-				<div id="quick-product-variations-#{ sanitize_title( attribute ) }" class="variations page-block" data-node-type="ProductVariationsBlock">
+			<div id="quick-product-variations-{{ sanitize_title( attribute ) }}" class="variations page-block" data-node-type="ProductVariationsBlock">
 
-					{{-
-						fn( 'wc_dropdown_variation_attribute_options',
-							{
-								options: options,
-								attribute: attribute,
-								product: product,
-								class: 'd-none',
-								show_option_none: false,
-							}
-						)
-					-}}
+				{{-
+					fn( 'wc_dropdown_variation_attribute_options',
+						{
+							options: options,
+							attribute: attribute,
+							product: product,
+							class: 'd-none',
+							show_option_none: false,
+						}
+					)
+				-}}
 
-					<div role="radiogroup">
-						{% for radio in radios %}
-							<div role="radio" aria-checked="false" tabindex="-1">
-								<span class="white-space-nowrap">{{- radio.name -}}</span>
-								<input class="d-none" type="radio" name="attribute_{{ sanitize_title( attribute ) }}" value="{{ radio.slug }}"{{ ( radios | length ) == 1 ? ' checked' : '' }}>
-							</div>
-						{% endfor %}
-					</div>
+				<div role="radiogroup">
+					{% for radio in radios %}
+						<div role="radio" aria-checked="false" tabindex="-1">
+							<span class="white-space-nowrap">{{- radio.name -}}</span>
+							<input class="d-none" type="radio" name="attribute_{{ sanitize_title( attribute ) }}" value="{{ radio.slug }}"{{ ( radios | length ) == 1 ? ' checked' : '' }}>
+						</div>
+					{% endfor %}
 				</div>
-				
-			{% endfor %}
-
-			<div class="single_variation_wrap">
-				{% include 'woocommerce/single-product/add-to-cart/variation-add-to-cart-button.html.twig' %}
-				<div class="Variation woocommerce-variation single_variation d-none"></div>
 			</div>
+			
+		{% endfor %}
 
-		{% else %}
-			<p class="stock out-of-stock">
-				{% filter apply_filters( 'woocommerce_out_of_stock_message' ) %}
-					{{- __( 'This product is currently out of stock and unavailable.', 'rider404' ) -}}
-				{% endfilter %}
-			</p>
-		{% endif %}
-	</form>
+		<div class="single_variation_wrap">
+			{% include 'woocommerce/single-product/add-to-cart/variation-add-to-cart-button.html.twig' %}
+			<div class="Variation woocommerce-variation single_variation d-none"></div>
+		</div>
+
+	{% else %}
+		<p class="stock out-of-stock">
+			{% filter apply_filters( 'woocommerce_out_of_stock_message' ) %}
+				{{- __( 'This product is currently out of stock and unavailable.', 'rider404' ) -}}
+			{% endfilter %}
+		</p>
+	{% endif %}
+</form>
 
 <form class="variations_form cart" action="{{ form_action }}" method="post" enctype="multipart/form-data" data-product_id="{{ product.get_id() }}" data-product_variations="{{ variations_attr }}">
 	
@@ -66,7 +66,7 @@
 		
 			{% set radios = fn( 'wc_get_product_terms', product.get_id(), attribute, { 'fields': 'all' } ) %}
 
-			<div id="product-variations-#{ sanitize_title( attribute ) }" class="Product-variations variations page-block" data-node-type="ProductVariationsBlock">
+			<div id="product-variations-{{ sanitize_title( attribute ) }}" class="Product-variations variations page-block" data-node-type="ProductVariationsBlock">
 
 				{{-
 					fn( 'wc_dropdown_variation_attribute_options',

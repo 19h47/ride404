@@ -8,8 +8,12 @@
 	@include size(20px);
 	@extend %margin-bottom-0;
 
+	min-width: 20px;
+
 	@include media-breakpoint-up(md) {
 		@include size(30px);
+
+		min-width: 30px;
 	}
 
 	svg {
