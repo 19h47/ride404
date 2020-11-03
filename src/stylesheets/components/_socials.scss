@@ -79,11 +79,11 @@
 			}
 		}
 
-		@at-root #{ $this }.is-inview #{ $this }__link svg {
+		@at-root #{ $this }.is-inview & svg {
 			transform: scale(1);
 		}
 
-		@at-root #{ $this }.is-inview #{ $this }__link span {
+		@at-root #{ $this }.is-inview & span {
 			transform: scale(1);
 		}
 	}

@@ -25,6 +25,11 @@
 	&__item {
 		@include size(percentage(1/4), 80px);
 
+		transform: translate3d(0, 100%, 0);
+		opacity: 0;
+		transition: opacity 0.4s map-get($easings, ease-out-expo),
+			transform 1.4s map-get($easings, ease-out-expo);
+
 		img {
 			@include padding(top 20px right 20px bottom 20px left 20px);
 			@include size(100%);
@@ -42,6 +47,11 @@
 					opacity: 1;
 				}
 			}
+		}
+
+		@at-root #{$this}.is-inview & {
+			transform: translate3d(0, 0, 0);
+			opacity: 1;
 		}
 	}
 }

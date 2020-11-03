@@ -38,7 +38,7 @@
 			transform: translate3d(0, 100%, 0);
 			opacity: 0;
 
-			transition: transform 0.4s map-get($easings, ease-out-expo),
+			transition: transform 0.4s map-get($easings, ease-out-expo) 0.4s,
 				opacity 0.8s map-get($easings, ease-out-expo) 0.4s;
 
 			&.is-inview {

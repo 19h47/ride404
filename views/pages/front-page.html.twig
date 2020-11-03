@@ -36,12 +36,14 @@
         <div class="row">
             <div class="col-10 offset-1 col-md-6 offset-md-3">
                 <div class="About__content">
-                    <div id="split-text-{{ fn( 'uniqid' ) }}" class="Split-text page-block" data-scroll data-node-type="SplitTextBlock">{{- post.meta( 'about' ).content -}}</div>
+                    {% include 'partials/split-text.html.twig' with { title: post.meta( 'about' ).content } %}
                     <img src="{{ theme.link }}/{{ theme.manifest['img/svg/about.svg'] }}" width="719" height="585">
                 </div>
             </div>
             <div class="col-10 offset-1">
-                <h2 class="h1 text-align-center">{{ post.meta( 'about' ).title }}</h2>
+                <h2 class="h1 text-align-center">
+                    {%- include 'partials/split-text.html.twig' with { title: post.meta( 'about' ).title } -%}
+                </h2>
                 <a class="About__link" href="{{ post.meta( 'about' ).link.url }}">{{- post.meta( 'about' ).link.title -}}</a>
             </div>
         </div>
@@ -52,15 +54,15 @@
         <div class="row">
             <div class="col-10 offset-1 col-md-3 offset-md-6">
                 <h2>
-                    {{- __( 'Partners &\nCollaboraters', 'rider404' ) | nl2br -}}
+                    {% include 'partials/split-text.html.twig' with { title: __( 'Partners &\nCollaboraters', 'rider404' ) | nl2br } %}
                 </h2>
             </div>
 
             <div class="col-10 offset-1 col-md-6 offset-md-6">
-                <div class="Partners">
+                <div class="Partners" data-scroll>
                     <ul class="Partners__items">
                         {% for partner in partners %}
-                            <li class="Partners__item">
+                            <li class="Partners__item" style="transition-delay: {{ loop.index * 0.1 }}s;">
                                 {{ partner.meta( 'link' ).url ? "<a href=\"#{ partner.meta( 'link' ).url }\"#{ partner.meta( 'link' ).target ? ' target="_blank" rel="noopener noreferer"' : '' }>" : '' }}
                                 {% include 'partials/image.html.twig' with { image: partner.thumbnail } only %}
                                 {{ partner.meta( 'link' ).url ? '</a>' : '' }}
