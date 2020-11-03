@@ -36,13 +36,13 @@
         <div class="row">
             <div class="col-10 offset-1 col-md-6 offset-md-3">
                 <div class="About__content">
-                    {% include 'partials/split-text.html.twig' with { title: post.meta( 'about' ).content } %}
+                    {% include 'partials/split-text.html.twig' with { id: fn( 'uniqid' ), title: post.meta( 'about' ).content } %}
                     <img src="{{ theme.link }}/{{ theme.manifest['img/svg/about.svg'] }}" width="719" height="585">
                 </div>
             </div>
             <div class="col-10 offset-1">
                 <h2 class="h1 text-align-center">
-                    {%- include 'partials/split-text.html.twig' with { title: post.meta( 'about' ).title } -%}
+                    {%- include 'partials/split-text.html.twig' with { id: fn( 'uniqid' ), title: post.meta( 'about' ).title } -%}
                 </h2>
                 <a class="About__link" href="{{ post.meta( 'about' ).link.url }}">{{- post.meta( 'about' ).link.title -}}</a>
             </div>

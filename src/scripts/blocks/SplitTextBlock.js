@@ -1,5 +1,10 @@
 import { AbstractBlock } from 'starting-blocks';
+import { gsap } from 'gsap';
+
 import SplitText from 'vendors/SplitText';
+import Scroll from 'common/Scroll';
+
+gsap.registerPlugin(SplitText);
 
 /**
  *
@@ -20,11 +25,23 @@ export default class SplitTextBlock extends AbstractBlock {
 	}
 
 	initPlugins() {
-		new SplitText(this.rootElement, { type: 'lines', linesClass: 'line' }); // eslint-disable-line no-new
-		const splitText2 = new SplitText(this.rootElement, { type: 'lines' });
+		const { lines } = new SplitText(this.rootElement, { type: 'lines', linesClass: 'line' });
+		new SplitText(this.rootElement, { type: 'lines' }); // eslint-disable-line no-new
 
-		splitText2.lines.forEach(($lines, i) =>
-			$lines.children[0].style.setProperty('transition-delay', `${0.15 * (i + 1)}s`),
-		);
+		this.timeline = gsap.timeline({ paused: true });
+
+		this.timeline.fromTo(lines, { yPercent: 110 }, { yPercent: 0, stagger: 0.15 });
+	}
+
+	initEvents() {
+		super.initEvents();
+
+		Scroll.on('call', (value, way) => {
+			if (this.rootElement.id === value && 'enter' === way) {
+				console.log(this.rootElement.id);
+
+				this.timeline.play();
+			}
+		});
 	}
 }

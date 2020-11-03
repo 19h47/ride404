@@ -1,0 +1,17 @@
+/**
+ * Smiley 404
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ */
+.Smiley-404 {
+	@extend %position-relative;
+
+	// height: 900px;
+
+	canvas {
+		// @include absolute(top 0 right 0 bottom 0 left 0);
+		@extend .d-block;
+
+		width: 100% !important;
+	}
+}

@@ -4,9 +4,10 @@
  # @package Rider404
  #}
 <div 
-    id="split-text-{{ fn( 'uniqid' ) }}" 
+    id="split-text-{{ id }}" 
     class="Split-text page-block{{ classes ? ' ' ~ classes | join( ' ' ) }}" 
     data-scroll 
+    data-scroll-call="split-text-{{ id }}"
     data-node-type="SplitTextBlock"
 >
     {{- title -}}

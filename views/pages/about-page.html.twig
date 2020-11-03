@@ -19,11 +19,20 @@
     <div class="Section margin-top-0" data-scroll-section>
         <div class="row">
             <div class="col-8 offset-2">
-                <div id="split-text-{{ fn( 'uniqid' ) }}" class="Split-text h1 text-align-center margin-0 page-block" data-node-type="SplitTextBlock" data-scroll>
-                    {{- post.meta( 'introduction' ) -}}
-                </div>
+                {% 
+                    include 'partials/split-text.html.twig' 
+                    with { 
+                        title: post.meta( 'introduction' ), 
+                        id: fn( 'uniqid' ), 
+                        classes: [ 'h1', 'text-align-center', 'margin-0' ]  
+                    } 
+                %}
             </div>
         </div>
+    </div>
+
+    <div class="Smiley-404" data-scroll-section>
+        <canvas id="smiley-404" class="page-block" data-node-type="Smiley404Block" height="900"></canvas>
     </div>
 
     <div id="faq" class="Section Faq page-block" data-scroll-section data-node-type="FaqBlock">

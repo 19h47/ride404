@@ -43,6 +43,16 @@ class Enqueue {
 			true
 		);
 
+		if ( is_page_template( 'templates/about-page.php' ) ) {
+			wp_register_script( // phpcs:ignore
+				get_theme_text_domain() . '-patch',
+				get_template_directory_uri() . '/' . get_theme_manifest()['patch.js'],
+				array(),
+				null,
+				true
+			);
+		}
+
 		$args = array(
 			'template_directory_uri' => get_template_directory_uri(),
 			'base_url'               => site_url(),
@@ -82,6 +92,7 @@ class Enqueue {
 		}
 
 		wp_enqueue_script( get_theme_text_domain() . '-main' );
+		wp_enqueue_script( get_theme_text_domain() . '-patch' );
 	}
 
 

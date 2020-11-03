@@ -10,6 +10,7 @@ const webpack = require('webpack');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
+const CopyPlugin = require('copy-webpack-plugin');
 const dotenv = require('dotenv');
 
 const resolve = require('./webpack.utils');
@@ -197,6 +198,12 @@ module.exports = {
 		}),
 		new webpack.DefinePlugin({
 			'process.env': dotenv.parsed,
+		}),
+		new CopyPlugin({
+			patterns: [
+				{ from: 'static/patch.js', to: 'patch.js' },
+				{ from: 'static/smiley404.glb', to: 'assets/smiley404.glb' },
+			],
 		}),
 	],
 };
