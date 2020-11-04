@@ -26,7 +26,7 @@
 
 	</head>
 
-	<body class="test {{ body_class }}{{ post.body_classes ? ( ' ' ~ post.body_classes | join( ' ' ) ) }}">
+	<body class="position-relative {{ body_class }}{{ post.body_classes ? ( ' ' ~ post.body_classes | join( ' ' ) ) }}">
 		<div id="svg-sprite" class="d-none">{% include 'icons.svg' %}</div>
 
 		{% do action( 'woocommerce_before_main_content' ) %}
@@ -35,34 +35,35 @@
 			<div></div>
 			<div></div>
 		</div>
-		
 
+
+		
 		<div
 			id="{{ post.id ? "page-#{post.id}" : 'page' }}"
-			class="Site-content page-content"
+			class="Site-content page-content position-relative"
 			data-node-type="{{ post.node_type | default( 'DefaultPage' ) }}"
 			data-scroll-container
 		>	
-			<div data-scroll-section>
-				{% include 'header.html.twig' %}
 			
-				{% include 'components/menu.html.twig' with { menu: nav_menus.main } %}
+			{% include 'header.html.twig' %}
+		
+			{% include 'components/menu.html.twig' with { menu: nav_menus.main } %}
 
-				{% block hero %}{% endblock %}
+			{% block hero %}{% endblock %}
 
-				{% block content %}
+			{% block content %}
 
-					<div class="row" >
-						<div class="col-8 offset-2">
-							<div class="Wysiwyg">{{- post.content -}}</div>
-						</div>
+				<div class="row" data-scroll-section>
+					<div class="col-8 offset-2">
+						<div class="Wysiwyg">{{- post.content -}}</div>
 					</div>
-					
-				{% endblock %}
+				</div>
+				
+			{% endblock %}
 
-				{% include 'footer.html.twig' %}
+			{% include 'footer.html.twig' %}
 
-			</div>	
+				
 		</div>
 		
 		{% do action( 'woocommerce_after_main_content' ) %}

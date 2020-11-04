@@ -1,0 +1,59 @@
+/**
+ * Button play
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.Button-play {
+	@include size(140px);
+	@extend .d-flex, .align-items-center, .justify-content-center;
+	@extend %position-relative;
+
+	&::after {
+		@include absolute(top 0 right 0 bottom 0 left 0);
+		@include size(100%);
+		@extend .d-block;
+
+		border-radius: 50%;
+		border: 1px solid the_color(white);
+		content: '';
+		transform: scale(1);
+		transition: transform 0.5s map-get($easings, ease-out-expo);
+	}
+
+	span {
+		@extend .d-block;
+		@extend %overflow-hidden;
+		@include margin(left 3px);
+		@include size(30px);
+
+		svg {
+			@include size(30px);
+			@extend .d-block;
+
+			transition: transform 0.5s map-get($easings, ease-out-expo);
+		}
+
+		svg:nth-child(1) {
+			fill: the_color(red, bright);
+		}
+
+		svg:nth-child(2) {
+			fill: the_color(white);
+		}
+	}
+
+	&:hover {
+		svg:nth-child(1) {
+			transform: translate3d(0, -100%, 0);
+		}
+
+		svg:nth-child(2) {
+			transform: translate3d(0, -100%, 0);
+		}
+
+		&::after {
+			transform: scale(1.1);
+		}
+	}
+}

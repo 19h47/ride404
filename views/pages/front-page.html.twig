@@ -6,7 +6,7 @@
 {% extends 'index.html.twig' %}
 
 {% block hero %}
-    <div class="Hero">
+    <div class="Hero" data-scroll-section>
         <div class="row">
             <div class="col-12 col-md-10 offset-md-1">
                 <div id="rider-404" class="Rider-404 page-block" data-scroll data-scroll-call="rider-404" data-node-type="Rider404Block" data-lottie-json="rider-404" data-lottie-autoplay="false"></div>
@@ -17,9 +17,7 @@
                 <div id="arrow" class="Hero__arrow d-none d-md-block page-block" data-scroll data-scroll-repeat data-scroll-call="arrow" data-node-type="ArrowBlock" data-lottie-json="arrow"></div>
                 <div class="Video">
                     <div class="Video__overlay">
-                        <button type="button">
-                            {% include 'svg/use.html.twig' with { icon: 'play' } only %}
-                        </button>
+                        {% include 'components/button-play.html.twig' %}
                     </div>
                     <video autoplay loop preload="auto" muted>
                         <source src="{{ post.meta( 'video' ).url }}" type="video/mp4">
@@ -32,7 +30,7 @@
 
 {% block content %}
     
-    <div class="Section About">
+    <div class="Section About" data-scroll-section>
         <ul class="About__stars">
             <li data-scroll>{% include 'svg/use.html.twig' with { icon: 'star' } only %}</li>
             <li data-scroll>{% include 'svg/use.html.twig' with { icon: 'star' } only %}</li>
@@ -59,7 +57,7 @@
         </div>
     </div>
 
-    <div class="Section position-relative">
+    <div class="Section position-relative" data-scroll-section>
         <img class="Partners__decor d-none d-md-block" src="{{ theme.link }}/{{ theme.manifest['img/svg/partners.svg'] }}" alt="" height="134" width="76">
         <div class="row">
             <div class="col-10 offset-1 col-md-3 offset-md-6">
