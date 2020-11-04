@@ -17,6 +17,7 @@
 		width="{{ Image( image ).width }}"
 		height="{{ Image( image ).height }}"
 		srcset="{{ Image( image ).srcset }}"
+		sizes="{{ Image( image ).img_sizes }}"
 		{{ attributes ? attributes | map( ( value, key ) => "#{key}=\"#{value}\"" ) | join( ' ' )  | raw }}
 	>
 {% endif %}

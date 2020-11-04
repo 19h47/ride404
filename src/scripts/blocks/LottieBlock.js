@@ -7,28 +7,21 @@ import lottie from 'lottie-web';
  * @param {object} container
  */
 export default class AbstractLottieBlock extends AbstractBlock {
-	constructor(container, params = {}) {
+	constructor(container) {
 		super(container, 'AbstractLottieBlock');
 
 		this.animation = null;
-
-		this.params = {
-			renderer: 'svg',
-			loop: false,
-			autoplay: false,
-			...params,
-		};
 	}
 
 	init() {
 		super.init();
 
 		this.params = {
-			...this.params,
-			...{
-				container: this.rootElement,
-				name: `${this.rootElement.getAttribute('id')}_animation`,
-			},
+			renderer: 'svg',
+			loop: JSON.parse(this.rootElement.getAttribute('data-lottie-loop')) || false,
+			autoplay: JSON.parse(this.rootElement.getAttribute('data-lottie-autoplay')) || false,
+			name: `${this.rootElement.getAttribute('id')}_animation`,
+			container: this.rootElement,
 		};
 
 		this.json = import(`@/json/${this.rootElement.getAttribute('data-lottie-json')}.json`);

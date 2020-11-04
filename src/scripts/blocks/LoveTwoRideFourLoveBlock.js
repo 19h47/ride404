@@ -1,11 +1,10 @@
-import AbstractLottieBlock from 'blocks/AbstractLottieBlock';
+import LottieBlock from 'blocks/LottieBlock';
 
 /**
  *
  * @constructor
- * @param {object} container
  */
-export default class LoveTwoRideFourLove extends AbstractLottieBlock {
+export default class LoveTwoRideFourLove extends LottieBlock {
 	init() {
 		super.init();
 

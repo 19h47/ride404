@@ -51,8 +51,8 @@
 			transform: translate3d(0, 100%, 0);
 			opacity: 0;
 
-			transition: transform 0.4s map-get($easings, ease-out-expo) 0.4s,
-				opacity 0.8s map-get($easings, ease-out-expo) 0.4s;
+			transition: transform 0.5s map-get($easings, ease-out-expo) 0.5s,
+				opacity 1s map-get($easings, ease-out-expo) 0.5s;
 
 			&.is-inview {
 				transform: translate3d(0, 0, 0);
@@ -63,7 +63,7 @@
 		a {
 			@extend %text-decoration-underline;
 
-			transition: color 0.4s map-get($easings, ease-out-expo);
+			transition: color 0.5s map-get($easings, ease-out-expo);
 
 			&:focus,
 			&:hover {
