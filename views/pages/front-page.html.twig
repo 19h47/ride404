@@ -25,15 +25,20 @@
                         <source src="{{ post.meta( 'video' ).url }}" type="video/mp4">
                     </video>
                 </div>
-                
+
             </div>
         </div>
     </div>
 {% endblock %}
 
 {% block content %}
+
+    <div class="Section Push" data-scroll-section>
+
+    </div>
     
     <div class="Section About" data-scroll-section>
+    
         <ul class="About__stars">
             <li data-scroll>{% include 'svg/use.html.twig' with { icon: 'star' } only %}</li>
             <li data-scroll>{% include 'svg/use.html.twig' with { icon: 'star' } only %}</li>

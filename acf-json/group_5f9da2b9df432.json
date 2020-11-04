@@ -59,7 +59,7 @@
                     "key": "field_5f9da307e8fa0",
                     "label": "Produits",
                     "name": "products",
-                    "type": "post_object",
+                    "type": "relationship",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -72,10 +72,11 @@
                         "product"
                     ],
                     "taxonomy": "",
-                    "allow_null": 0,
-                    "multiple": 0,
-                    "return_format": "object",
-                    "ui": 1
+                    "filters": "",
+                    "elements": "",
+                    "min": "",
+                    "max": 2,
+                    "return_format": "object"
                 }
             ]
         },
@@ -167,5 +168,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "Options de la Front page",
-    "modified": 1604485999
+    "modified": 1604513960
 }

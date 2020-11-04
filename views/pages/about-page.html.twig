@@ -16,23 +16,49 @@
         </div>
     </div>  #}
 
-    <div class="Section margin-top-0" data-scroll-section>
-        <div class="row">
-            <div class="col-8 offset-2">
-                {% 
-                    include 'partials/split-text.html.twig' 
-                    with { 
-                        title: post.meta( 'introduction' ), 
-                        id: fn( 'uniqid' ), 
-                        classes: [ 'h1', 'text-align-center', 'margin-0' ],
-                        delay: 1.5,  
-                    } 
-                %}
+    <div class="Section About-page__introduction margin-top-0" data-scroll-section>
+
+        <div class="About-page__introduction__body">
+            <div class="row">
+                <div class="col-8 offset-2">
+                    {% 
+                        include 'partials/split-text.html.twig' 
+                        with { 
+                            title: post.meta( 'introduction' ), 
+                            id: fn( 'uniqid' ), 
+                            classes: [ 'h1', 'text-align-center', 'margin-0' ],
+                            delay: 1.5,  
+                        } 
+                    %}
+                </div>
             </div>
         </div>
+
+        <div class="About-page__introduction__images">
+            <div class="row h-100">
+                <div class="col-6 d-flex align-items-start" data-scroll data-scroll-speed="1.5">
+                    {% include 'partials/image.html.twig' with { image: post.meta( 'images' )[0] } %}
+                </div>
+                <div class="col-3 offset-8 d-flex align-items-end" data-scroll data-scroll-speed="1.5">
+                    {% include 'partials/image.html.twig' with { image: post.meta( 'images' )[1] } %}
+                </div>
+            </div>
+        </div>
+        
     </div>
 
-    <div class="Smiley-404" data-scroll-section>
+    <div class="Smiley-404 Section" data-scroll-section>
+        <div class="Smiley-404__images">
+            <div class="row h-100">
+                <div class="col-3 offset-2 d-flex" data-scroll data-scroll-speed="1.5">
+                    {% include 'partials/image.html.twig' with { image: post.meta( 'images' )[2], classes: [ 'top' ] } only %}
+                </div>
+           
+                <div class="col-2 offset-6 d-flex" data-scroll data-scroll-speed="1.5">
+                    {% include 'partials/image.html.twig' with { image: post.meta( 'images' )[3], classes: [ 'bottom' ] } only %}
+                </div>
+            </div>
+        </div>
         <canvas id="smiley-404" class="page-block" data-node-type="Smiley404Block" height="900"></canvas>
     </div>
 

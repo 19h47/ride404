@@ -8,8 +8,6 @@ import Grain from 'common/Grain';
  */
 export default class VideoBlock extends AbstractBlock {
 	constructor(container) {
-		// console.info('VideoBlock.constructor');
-
 		super(container, 'VideoBlock');
 	}
 
@@ -27,14 +25,16 @@ export default class VideoBlock extends AbstractBlock {
 	initEvents() {
 		super.initEvents();
 
+		this.rootElement.addEventListener('mouseout', ({ target }) => {
+			if ('BUTTON' === target.nodeName) {
+				this.rootElement.classList.remove('is-over');
+			}
+		});
+
 		this.rootElement.addEventListener('mouseover', ({ target }) => {
 			if ('BUTTON' === target.nodeName) {
 				this.rootElement.classList.add('is-over');
-			} else {
-				this.rootElement.classList.remove('is-over');
 			}
-
-			return false;
 		});
 	}
 }

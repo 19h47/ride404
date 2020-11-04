@@ -7,17 +7,26 @@
 	<div class="row h-100 d-flex align-items-center">
 		<div class="col-6 offset-3">
 			<ul class="Menu__items" itemscope itemtype="http://schema.org/SiteNavigationElement">
-				{% for item in menu.items %}
+				{% for item in menu.get_items() %}
 					<li class="Menu__item js-item">
 
-						<{{ item.url == '#' ? 'button type="button"' : "a href=\"#{ item.url }\" target=\"#{ item.target | default( '_self' ) }\" itemprop=\"url\"" }} class="Menu__link{{ item.current ? ' is-active' }}">
+						<a href="{{ item.url }}" {{ item.is_external() or item.is_target_blank() ? 'target="_blank"' }} itemprop="url" class="Menu__link{{ item.current ? ' is-active' }}">
+							{% include 'svg/use.html.twig' with { icon: 'oval-large' } only %}
 							{{- item.title -}}
-						</{{ item.url == '#' ? 'button' : 'a' }}>
+						</a>
 					</li>
 				{% endfor %}
 			</ul>
 		</div>
 	</div>
+
+	<footer class="Menu__footer">
+		<div class="row">
+			<div class="col-2 offset-5">
+				<a href="{{ terms_url }}">{{- __( 'Terms & legal', 'rider404' ) -}}</a>
+			</div>
+		</div>
+	</footer>
 
 	<div id="video-menu" class="Video page-block" data-node-type="VideoBlock">
 		<canvas></canvas>

@@ -9,9 +9,32 @@
 	// height: 900px;
 
 	canvas {
-		// @include absolute(top 0 right 0 bottom 0 left 0);
+		@extend %position-relative;
 		@extend .d-block;
 
 		width: 100% !important;
+		height: 900px !important;
+		z-index: 1;
+	}
+
+	&__images {
+		@include absolute(top 0 right 0 bottom 0 left 0);
+
+		z-index: 2;
+
+		img {
+			@include size(100%, auto);
+			@extend .d-block;
+
+			&.top {
+				transform: translate3d(0, -50%, 0);
+			}
+
+			&.bottom {
+				@include margin(top auto);
+
+				transform: translate3d(0, 50%, 0);
+			}
+		}
 	}
 }

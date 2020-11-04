@@ -30,8 +30,6 @@ export default class SplitTextBlock extends AbstractBlock {
 		const { lines } = new SplitText(this.rootElement, { type: 'lines', linesClass: 'line' });
 		new SplitText(this.rootElement, { type: 'lines' }); // eslint-disable-line no-new
 
-		console.log(this.delay);
-
 		this.timeline = gsap.timeline({ paused: true, delay: this.delay });
 		this.timeline.fromTo(lines, { yPercent: 110 }, { yPercent: 0, stagger: 0.15 });
 	}

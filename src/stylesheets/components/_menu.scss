@@ -33,8 +33,51 @@
 		@extend %text-align-center;
 
 		a {
-			@extend %font-family-title, %margin-0;
+			@extend %font-family-title, %margin-0, %position-relative;
 			@extend .h1, .d-inline-block;
+
+			line-height: (140/110);
+
+			&::after {
+				@include absolute(bottom 0 right 0 left 0);
+				@include margin(bottom 30px);
+				@include size(100%, 2px);
+				@extend .d-none;
+
+				background-color: currentColor;
+				content: '';
+			}
+
+			svg {
+				@include absolute(top 50% left 50%);
+				@include size(342px, 171px);
+				@include autoAlpha(0);
+
+				transform: translate3d(-50%, -50%, 0);
+				fill: the_color(red, bright);
+
+				transition: opacity 0.5s map-get($easings, ease-out-expo),
+					visibility 0.5s map-get($easings, ease-out-expo);
+			}
+
+			&.is-active::after {
+				@extend .d-block;
+			}
+			&:focus,
+			&:hover {
+				svg {
+					@include autoAlpha(1);
+				}
+			}
 		}
+	}
+
+	&__footer {
+		@include absolute(right 0 bottom 0 left 0);
+		@include margin(bottom 80px);
+		@extend %text-align-center, %text-decoration-underline;
+
+		color: the_color(gray, very-dark-02);
+		z-index: 3;
 	}
 }

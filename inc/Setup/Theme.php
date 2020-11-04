@@ -224,8 +224,9 @@ class Theme {
 
 		$context['cart'] = WC()->cart;
 
-		$context['cart_url'] = wc_get_cart_url();
-		$context['shop_url'] = wc_get_page_permalink( 'shop' );
+		$context['cart_url']  = wc_get_cart_url();
+		$context['shop_url']  = wc_get_page_permalink( 'shop' );
+		$context['terms_url'] = get_permalink( get_option( 'woocommerce_terms_page_id' ) ); 
 
 		$context['is_product']          = is_product();
 		$context['is_shop']             = is_shop();

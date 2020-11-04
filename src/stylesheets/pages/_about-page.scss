@@ -1,0 +1,28 @@
+/**
+ * About page
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.About-page {
+	&__introduction {
+		@extend %position-relative;
+
+		&__body {
+			@extend %position-relative;
+
+			z-index: 2;
+		}
+
+		&__images {
+			@include absolute(top 0 right 0 bottom 0 left 0);
+
+			z-index: 1;
+
+			img {
+				@include size(100%, auto);
+				@extend .d-block;
+			}
+		}
+	}
+}

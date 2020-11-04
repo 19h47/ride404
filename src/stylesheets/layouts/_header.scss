@@ -5,7 +5,8 @@
  * @package Rider404
  */
 .Site-header {
-	// @include fixed(top 0 right 0 left 0);
+	$this: &;
+
 	@include padding(top 60px bottom 60px);
 	@extend %Pointer-events-none, %position-relative;
 
@@ -73,6 +74,7 @@
 
 		svg {
 			@include size(100%);
+			@extend .d-block;
 
 			min-width: 99px;
 			fill: currentColor;
@@ -82,6 +84,12 @@
 					fill: the_color(black) !important; // Lottie
 				}
 			}
+		}
+	}
+
+	&__title {
+		@at-root .Menu--is-open #{ $this } & {
+			@extend .d-none;
 		}
 	}
 

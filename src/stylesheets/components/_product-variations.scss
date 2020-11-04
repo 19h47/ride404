@@ -19,7 +19,7 @@
 		// @extend %text-transform-uppercase;
 		@include margin(right 30px left 30px);
 
-		transition: 0.4s color map-get($easings, ease-out-expo);
+		transition: color 0.5s map-get($easings, ease-out-expo);
 		color: the_color(gray, very-dark-02);
 
 		font-size: 14px;
@@ -43,9 +43,9 @@
 			@include size(56px, 28px);
 			@include autoAlpha(0);
 
-			transition: 0.4s opacity map-get($easings, ease-out-expo),
-				0.4s visibility map-get($easings, ease-out-expo),
-				0.4s fill map-get($easings, ease-out-expo);
+			transition: opacity 0.5s map-get($easings, ease-out-expo),
+				visibility 0.5s map-get($easings, ease-out-expo),
+				fill 0.5s map-get($easings, ease-out-expo);
 			transform: translate3d(-50%, -50%, 0);
 			z-index: 1;
 		}

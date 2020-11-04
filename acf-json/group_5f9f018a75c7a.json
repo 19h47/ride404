@@ -22,6 +22,33 @@
             "new_lines": ""
         },
         {
+            "key": "field_5fa2f1e54c49d",
+            "label": "Images",
+            "name": "images",
+            "type": "gallery",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "insert": "append",
+            "library": "all",
+            "min": "",
+            "max": 4,
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
             "key": "field_5f9f01db1b793",
             "label": "FAQ",
             "name": "faq",
@@ -98,5 +125,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "Options du template de page About",
-    "modified": 1604263941
+    "modified": 1604514304
 }

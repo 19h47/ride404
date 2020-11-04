@@ -84,7 +84,7 @@
 					{% for radio in radios %}
 						<div class="Product-variations__item" role="radio" aria-checked="false" tabindex="-1">
 							<span>{{- radio.name -}}</span>
-							{% include 'svg/use.html.twig' with { icon: 'oval' } only %}
+							{% include 'svg/use.html.twig' with { icon: 'oval-small' } only %}
 							<input class="d-none" type="radio" name="attribute_{{ sanitize_title( attribute ) }}" value="{{ radio.slug }}"{{ ( radios | length ) == 1 ? ' checked' : '' }}>
 						</div>
 					{% endfor %}
