@@ -7,11 +7,33 @@
 .Video {
 	$this: &;
 
-	@extend %position-relative;
+	@extend %position-relative, %overflow-hidden;
+
+	transition: transform 1.5s map-get($easings, ease-out-expo);
+	will-change: transform;
+
+	&.is-over {
+		transform: scale(0.9);
+
+		video {
+			transform: scale((1/0.9));
+		}
+
+		canvas {
+			transform: scale((1/0.9));
+		}
+
+		#{ $this }__overlay {
+			transform: scale((1/0.9));
+		}
+	}
 
 	video {
 		@include absolute(top 0 right 0 bottom 0 left 0);
 		@include size(100%);
+
+		transition: transform 1.5s map-get($easings, ease-out-expo);
+		will-change: transform;
 
 		object-fit: cover;
 		object-position: center;
@@ -23,12 +45,18 @@
 		@include absolute(top 0 right 0 bottom 0 left 0);
 		@include size(100%);
 
+		transition: transform 1.5s map-get($easings, ease-out-expo);
+		will-change: transform;
+
 		z-index: 2;
 	}
 
 	&__overlay {
 		@include absolute(top 0 right 0 bottom 0 left 0);
 		@extend .d-flex, .align-items-center, .justify-content-center;
+
+		transition: transform 1.5s map-get($easings, ease-out-expo);
+		will-change: transform;
 
 		z-index: 3;
 	}

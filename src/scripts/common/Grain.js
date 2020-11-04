@@ -1,5 +1,10 @@
 import { gsap } from 'gsap';
 
+/**
+ *
+ *
+ * @see https://codepen.io/renarsvilnis/pen/YWKRvE
+ */
 class Grain {
 	constructor(el) {
 		/**
@@ -10,7 +15,7 @@ class Grain {
 		this.patternScaleX = 1;
 		this.patternScaleY = 1;
 		this.patternRefreshInterval = 3; // 8
-		this.patternAlpha = 15; // int between 0 and 255,
+		this.patternAlpha = 30; // int between 0 and 255,
 
 		/**
 		 * Create canvas
@@ -87,7 +92,6 @@ class Grain {
 		const shouldDraw = 0 === this.frame % this.patternRefreshInterval;
 
 		if (shouldDraw) {
-			console.info('Grain.loop');
 			this.update();
 			this.draw();
 		}
