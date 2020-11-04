@@ -15,10 +15,11 @@
         <div class="row">
             <div class="col-12 col-md-10 offset-md-1">
                 <div id="arrow" class="Hero__arrow d-none d-md-block page-block" data-scroll data-scroll-repeat data-scroll-call="arrow" data-node-type="ArrowBlock" data-lottie-json="arrow"></div>
-                <div class="Video">
+                <div id="video-hero" class="Video page-block" data-node-type="VideoBlock">
                     <div class="Video__overlay">
                         {% include 'components/button-play.html.twig' %}
                     </div>
+                    <canvas></canvas>
                     <video autoplay loop preload="auto" muted>
                         <source src="{{ post.meta( 'video' ).url }}" type="video/mp4">
                     </video>

@@ -19,10 +19,14 @@
 		@include autoAlpha(1);
 	}
 
+	.Video {
+		@include absolute(top 0 right 0 bottom 0 left 0);
+	}
+
 	&__items {
 		@extend %list-style-type-none, %position-relative;
 
-		z-index: 2;
+		z-index: 3;
 	}
 
 	&__item {
@@ -32,15 +36,5 @@
 			@extend %font-family-title, %margin-0;
 			@extend .h1, .d-inline-block;
 		}
-	}
-
-	&__video {
-		@include absolute(top 0 right 0 bottom 0 left 0);
-		@include size(100%);
-
-		object-fit: cover;
-		object-position: center;
-
-		z-index: 1;
 	}
 }

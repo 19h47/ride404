@@ -20,7 +20,8 @@
 
 		.Video {
 			@extend %position-relative;
-			@include margin(top -11px);
+			@include margin(top -11px right percentage(0.5/10) left percentage(0.5/10));
+			@include padding(bottom percentage(600/1076));
 
 			z-index: 1;
 
