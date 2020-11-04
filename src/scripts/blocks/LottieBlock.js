@@ -6,9 +6,9 @@ import lottie from 'lottie-web';
  * @constructor
  * @param {object} container
  */
-export default class AbstractLottieBlock extends AbstractBlock {
+export default class LottieBlock extends AbstractBlock {
 	constructor(container) {
-		super(container, 'AbstractLottieBlock');
+		super(container, 'LottieBlock');
 
 		this.animation = null;
 	}

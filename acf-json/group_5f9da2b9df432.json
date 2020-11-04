@@ -98,7 +98,7 @@
                     "key": "field_5f9f215c02dae",
                     "label": "Titre",
                     "name": "title",
-                    "type": "text",
+                    "type": "textarea",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -109,9 +109,9 @@
                     },
                     "default_value": "",
                     "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "rows": 2,
+                    "new_lines": "br"
                 },
                 {
                     "key": "field_5f9f216502daf",
@@ -167,5 +167,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "Options de la Front page",
-    "modified": 1604265285
+    "modified": 1604485999
 }
