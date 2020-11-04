@@ -5,10 +5,17 @@
  * @package Rider.404
  */
 .About {
-	@extend %overflow-hidden, %overflow-md-visible;
+	@extend %overflow-hidden, %overflow-md-visible, %position-relative;
+	@include padding(top 200px);
+
+	&__body {
+		@extend %position-relative;
+
+		z-index: 2;
+	}
 
 	&__content {
-		@extend %position-relative, %text-align-center, %font-family-title, %font-weight-light;
+		@extend %text-align-center, %font-family-title, %font-weight-light;
 
 		font-size: 28px;
 		min-height: (38/28);
@@ -28,6 +35,12 @@
 			min-height: (92/78);
 		}
 
+		& > div {
+			@extend %position-relative;
+
+			z-index: 2;
+		}
+
 		img {
 			@include absolute(top 0 right 0 bottom 0 left 50%);
 			@include margin(top auto bottom auto);
@@ -36,6 +49,7 @@
 			transform: translate3d(-50%, 0, 0);
 
 			opacity: 0.1;
+			z-index: 1;
 
 			@include media-breakpoint-up(md) {
 				@include size(100%, auto);
@@ -89,5 +103,54 @@
 	&__title {
 		@extend .h1;
 		@include margin(top 80px bottom 60px);
+	}
+
+	&__stars {
+		@extend %list-style-type-none, %Pointer-events-none;
+		@include absolute(top 0 right 0 bottom 0 left 0);
+
+		z-index: 1;
+
+		li {
+			position: absolute;
+
+			svg {
+				@include size(100%);
+
+				fill: the_color(gray, very-dark-03);
+				transform: rotate(45deg);
+				opacity: 0;
+				transition: transform 1s map-get($easings, ease-out-expo) 0.5s,
+					opacity 1s map-get($easings, ease-out-expo) 0.5s;
+			}
+
+			&.is-inview {
+				svg {
+					transform: none;
+					opacity: 1;
+				}
+			}
+
+			&:nth-child(1) {
+				@include size(130px);
+
+				top: 0;
+				left: percentage(7.5/12);
+			}
+
+			&:nth-child(2) {
+				@include size(250px);
+
+				top: 300px;
+				left: percentage(-0.5/12);
+			}
+
+			&:nth-child(3) {
+				@include size(130px);
+
+				top: 550px;
+				left: percentage(10.5/12);
+			}
+		}
 	}
 }

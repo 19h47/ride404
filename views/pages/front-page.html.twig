@@ -34,24 +34,27 @@
     
     <div class="Section About" data-scroll-section>
         <ul class="About__stars">
-            <li class="page-block" data-node-type="">{% include 'svg/use.html.twig' with { icon: 'star' } only %}</li>
-            <li class="page-block" data-node-type="">{% include 'svg/use.html.twig' with { icon: 'star' } only %}</li>
-            <li class="page-block" data-node-type="">{% include 'svg/use.html.twig' with { icon: 'star' } only %}</li>
+            <li data-scroll>{% include 'svg/use.html.twig' with { icon: 'star' } only %}</li>
+            <li data-scroll>{% include 'svg/use.html.twig' with { icon: 'star' } only %}</li>
+            <li data-scroll>{% include 'svg/use.html.twig' with { icon: 'star' } only %}</li>
         </ul>
-        <div class="row">
-            <div class="col-10 offset-1 col-md-6 offset-md-3">
-                <div class="About__content">
-                    {% include 'partials/split-text.html.twig' with { id: fn( 'uniqid' ), title: post.meta( 'about' ).content } %}
-                    <img src="{{ theme.link }}/{{ theme.manifest['img/svg/about.svg'] }}" width="719" height="585">
+
+        <div class="About__body">
+            <div class="row">
+                <div class="col-10 offset-1 col-md-6 offset-md-3">
+                    <div class="About__content">
+                        {% include 'partials/split-text.html.twig' with { id: fn( 'uniqid' ), title: post.meta( 'about' ).content } %}
+                        <img src="{{ theme.link }}/{{ theme.manifest['img/svg/about.svg'] }}" width="719" height="585">
+                    </div>
                 </div>
-            </div>
-            <div class="col-10 offset-1 text-align-center">
-                <h2 class="About__title">
-                    {%- include 'partials/split-text.html.twig' with { id: fn( 'uniqid' ), title: post.meta( 'about' ).title } -%}
-                </h2>
-                <a class="About__link d-inline-block" href="{{ post.meta( 'about' ).link.url }}">
-                    {% include 'partials/split-text.html.twig' with { id: fn( 'uniqid' ), title: post.meta( 'about' ).link.title | default( __( 'About', 'rider404' ) ) } %}
-                </a>
+                <div class="col-10 offset-1 text-align-center">
+                    <h2 class="About__title">
+                        {%- include 'partials/split-text.html.twig' with { id: fn( 'uniqid' ), title: post.meta( 'about' ).title } -%}
+                    </h2>
+                    <a class="About__link d-inline-block" href="{{ post.meta( 'about' ).link.url }}">
+                        {% include 'partials/split-text.html.twig' with { id: fn( 'uniqid' ), title: post.meta( 'about' ).link.title | default( __( 'About', 'rider404' ) ) } %}
+                    </a>
+                </div>
             </div>
         </div>
     </div>
