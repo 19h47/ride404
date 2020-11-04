@@ -5,10 +5,23 @@
  * @package Rider.404
  */
 .Site-footer {
+	@extend %position-relative;
 	@include padding(top 40px bottom 40px);
 
 	@include media-breakpoint-up(md) {
 		@include padding(top 100px bottom 100px);
+	}
+
+	&__button {
+		@extend .d-block;
+		@include size(7px, 84.4px);
+		@include margin(right 25.5px);
+
+		svg {
+			@include size(100%);
+
+			fill: the_color(white);
+		}
 	}
 
 	&__title {

@@ -5,11 +5,18 @@
  # @package Rider404
  #}
 <div id="footer" class="Site-footer" data-scroll-section>
+            
+
     <div class="row">
-        <div class="col-10 offset-1">
+        <div class="col-9 offset-1">
             {% include 'partials/split-text.html.twig' with { id: fn( 'uniqid' ), classes: [ 'Site-footer__title' ], title: 'Follow<br>Rider.404' } %}
             {% include 'partials/socials.html.twig' %}
-        </div>    
+        </div>  
+        <div class="col-1 d-flex align-items-end justify-content-end">
+            <a class="Site-footer__button" data-scroll-to href="top">
+                {% include 'svg/use.html.twig' with { icon: 'arrow-up' } only %}
+            </a>
+        </div>  
     </div>
 
     <div class="row">
