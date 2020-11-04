@@ -10,7 +10,7 @@
 	@extend .d-block;
 
 	fill: the_color(white);
-	z-index: 10;
+	z-index: 5;
 
 	@include padding(bottom percentage(310/1200));
 

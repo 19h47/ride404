@@ -4,13 +4,14 @@ import Scroll from 'common/Scroll';
 /**
  *
  * @constructor
+ * @param {object} container
  */
-export default class LoveTwoRideFourLoveBlock extends LottieBlock {
+export default class Rider404Block extends LottieBlock {
 	initEvents() {
 		super.initEvents();
 
 		Scroll.on('call', (value, way) => {
-			if ('love-two-ride-four-love' === value && 'enter' === way) {
+			if ('rider-404' === value && 'enter' === way) {
 				setTimeout(() => this.animation.play(), 1500);
 			}
 		});

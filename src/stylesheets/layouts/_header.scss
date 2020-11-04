@@ -5,12 +5,12 @@
  * @package Rider404
  */
 .Site-header {
-	@include fixed(top 0 right 0 left 0);
+	// @include fixed(top 0 right 0 left 0);
 	@include padding(top 60px bottom 60px);
-	@extend %Pointer-events-none;
+	@extend %Pointer-events-none, %position-relative;
 
 	color: the_color(white);
-	z-index: 10;
+	z-index: 15;
 
 	@at-root .Menu--is-open & {
 		color: the_color(black);

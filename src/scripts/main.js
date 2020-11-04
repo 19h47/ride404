@@ -1,14 +1,9 @@
 import StartingBlocks, { polyfills } from 'starting-blocks';
 
+import SplashScreen from 'services/SplashScreen';
 import WebpackAsyncBlockBuilder from 'services/WebpackAsyncBlockBuilder';
 
 import Guid from 'common/Guid';
-
-import { elements } from 'scripts/config';
-
-import DefaultPage from 'pages/DefaultPage';
-
-require('common/Scroll');
 
 const production = 'production' !== process.env.NODE_ENV;
 
@@ -28,7 +23,7 @@ const production = 'production' !== process.env.NODE_ENV;
 
 	startingBlocks.provider('BlockBuilder', WebpackAsyncBlockBuilder);
 
-	startingBlocks.instanceFactory('DefaultPage', c => new DefaultPage(c));
+	startingBlocks.bootableProvider('Splashscreen', SplashScreen);
 
 	if (production) {
 		const guid = new Guid();
@@ -37,7 +32,4 @@ const production = 'production' !== process.env.NODE_ENV;
 	}
 
 	startingBlocks.boot();
-
-	elements.html.classList.add('is-loaded');
-	elements.html.classList.remove('is-loading');
 })();

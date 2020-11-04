@@ -1,4 +1,4 @@
-import { AbstractBlock } from 'starting-blocks';
+import { AbstractBlock, EventTypes } from 'starting-blocks';
 import Scroll from 'common/Scroll';
 
 /**
@@ -27,17 +27,20 @@ export default class FaqBlock extends AbstractBlock {
 		});
 	}
 
-	initEvents() {
-		super.initEvents();
+	onPageReady() {
+		window.addEventListener(EventTypes.AFTER_SPLASHSCREEN_HIDE, () => {
+			Scroll.on('call', (value, way, obj) => {
+				if ('answer' === value && 'enter' === way) {
+					const hash = `#${obj.el.id}`;
+					const $parent = this.rootElement.querySelector(`a[href="${hash}"]`)
+						.parentElement;
 
-		Scroll.on('call', (value, way, obj) => {
-			if ('answer' === value && 'enter' === way) {
-				const hash = `#${obj.el.id}`;
-				const $parent = this.rootElement.querySelector(`a[href="${hash}"]`).parentElement;
-
-				this.answers.forEach(answer => answer.parentElement.classList.remove('is-active'));
-				$parent.classList.add('is-active');
-			}
+					this.answers.forEach(answer =>
+						answer.parentElement.classList.remove('is-active'),
+					);
+					$parent.classList.add('is-active');
+				}
+			});
 		});
 	}
 }

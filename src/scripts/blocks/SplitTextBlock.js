@@ -1,8 +1,8 @@
 import { AbstractBlock } from 'starting-blocks';
 import { gsap } from 'gsap';
 
-import SplitText from 'vendors/SplitText';
 import Scroll from 'common/Scroll';
+import SplitText from 'vendors/SplitText';
 
 gsap.registerPlugin(SplitText);
 
@@ -21,6 +21,8 @@ export default class SplitTextBlock extends AbstractBlock {
 	init() {
 		super.init();
 
+		this.delay = JSON.parse(this.rootElement.getAttribute('data-delay')) || 0;
+
 		this.initPlugins();
 	}
 
@@ -28,8 +30,9 @@ export default class SplitTextBlock extends AbstractBlock {
 		const { lines } = new SplitText(this.rootElement, { type: 'lines', linesClass: 'line' });
 		new SplitText(this.rootElement, { type: 'lines' }); // eslint-disable-line no-new
 
-		this.timeline = gsap.timeline({ paused: true });
+		console.log(this.delay);
 
+		this.timeline = gsap.timeline({ paused: true, delay: this.delay });
 		this.timeline.fromTo(lines, { yPercent: 110 }, { yPercent: 0, stagger: 0.15 });
 	}
 

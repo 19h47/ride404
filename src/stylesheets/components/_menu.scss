@@ -9,8 +9,9 @@
 
 	@include fixed(top 0 right 0 bottom 0 left 0);
 	@include autoAlpha(0);
+	@include size(100%, 100vh);
 
-	z-index: 5;
+	z-index: 10;
 	background-color: the_color(white);
 	color: the_color(black);
 

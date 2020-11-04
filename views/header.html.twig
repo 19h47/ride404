@@ -4,7 +4,8 @@
  # @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  # @package Rider404
  #}
-<header class="Site-header">
+<header class="Site-header" data-scroll data-scroll-sticky data-scroll-target="#primary">
+
     <div class="row">
         <div class="col-3 col-md-2">
             <a id="logo" class="Site-header__smiley " href="{{ site.link }}" >
@@ -20,7 +21,14 @@
             {% elseif is_product_category %}
                 <p class="font-family-title font-weight-extrablack text-transform-uppercase margin-0">{{- product_cat_current.name -}}</p>
             {% elseif is_front_page %}
-                <div id="love-two-ride-four-love" class="Site-header__love-two-ride-four-love page-block" data-node-type="LoveTwoRideFourLoveBlock" data-lottie-json="love-two-ride-four-love"></div>
+                <div 
+                    id="love-two-ride-four-love" 
+                    class="Site-header__love-two-ride-four-love page-block" 
+                    data-scroll
+                    data-scroll-call="love-two-ride-four-love" 
+                    data-node-type="LoveTwoRideFourLoveBlock" 
+                    data-lottie-json="love-two-ride-four-love"
+                ></div>
             {% else %}
                 <p class="Page__title"><span>{{- post.title -}}</span></p>
             {% endif %}

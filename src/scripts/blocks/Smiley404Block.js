@@ -33,8 +33,6 @@ export default class Smiley404Block extends AbstractBlock {
 	initEvents() {
 		super.initEvents();
 
-		console.log(`#${this.rootElement.id}`);
-
 		document.addEventListener('CABLES.jsLoaded', () => {
 			CABLES.patch = new window.CABLES.Patch({
 				patch: CABLES.exportedPatch,
