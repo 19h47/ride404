@@ -1,4 +1,5 @@
 import LocomotiveScroll from 'locomotive-scroll';
+import { elements } from 'scripts/config';
 
 const imagesLoaded = require('imagesloaded');
 
@@ -17,15 +18,15 @@ const Scroll = new LocomotiveScroll({
 });
 
 imagesLoaded(el, () => {
-	document.documentElement.classList.add('is-ready');
+	elements.html.classList.add('is-ready');
 	Scroll.update();
 });
 
 Scroll.on('scroll', obj => {
 	if (0 >= obj.scroll.y) {
-		document.documentElement.classList.add('is-ontop');
+		elements.html.classList.add('is-ontop');
 	} else {
-		document.documentElement.classList.remove('is-ontop');
+		elements.html.classList.remove('is-ontop');
 	}
 });
 

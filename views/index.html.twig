@@ -40,6 +40,10 @@
 		>
 			{% include 'header.html.twig' %}
 			
+			{% include 'components/menu.html.twig' with { menu: nav_menus.main } %}
+
+
+			
 			{% block hero %}{% endblock %}
 
 			{% block content %}
@@ -53,7 +57,6 @@
 			{% endblock %}
 
 			{% include 'footer.html.twig' %}
-
 
 		</div>
 		

@@ -9,7 +9,9 @@
     <div class="Hero" data-scroll-section>
         <div class="row">
             <div class="col-10 offset-1">
-                <h1 class="text-align-center margin-0">{{- post.meta( 'long_title' ) ? post.meta( 'long_title' ) : post.title -}}</h1>
+                <h1 class="text-align-center margin-0">
+                    {% include 'partials/split-text.html.twig' with { title: post.meta( 'long_title' ) ? post.meta( 'long_title' ) : post.title, id: fn( 'uniqid' ) } %}
+                </h1>
             </div>
         </div>
     </div>

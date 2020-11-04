@@ -12,6 +12,10 @@
 	color: the_color(white);
 	z-index: 10;
 
+	@at-root .Menu--is-open & {
+		color: the_color(black);
+	}
+
 	@include media-breakpoint-up(md) {
 		@include padding(top 75px bottom 75px);
 	}
@@ -44,16 +48,22 @@
 				opacity: 1;
 				transform: translate3d(0, 0, 0);
 			}
-		}
 
-		svg {
-			@include size(100%);
+			svg {
+				@include size(100%);
 
-			min-width: 50px;
-			fill: currentColor;
+				min-width: 50px;
+				fill: currentColor;
 
-			@include media-breakpoint-up(md) {
-				min-width: 70px;
+				@include media-breakpoint-up(md) {
+					min-width: 70px;
+				}
+
+				@at-root .Menu--is-open & {
+					path {
+						fill: the_color(black) !important; // Lottie
+					}
+				}
 			}
 		}
 	}
@@ -61,44 +71,18 @@
 	&__love-two-ride-four-love {
 		@include size(99px, 12px);
 
-		// div {
-		// 	opacity: 0;
-		// 	transform: translate3d(0, -100%, 0);
-		// 	transition: transform 0.4s map-get($easings, ease-out-expo),
-		// 		opacity 0.4s map-get($easings, ease-out-expo);
-
-		// 	@at-root .is-loaded & {
-		// 		opacity: 1;
-		// 		transform: translate3d(0, 0, 0);
-		// 	}
-		// }
-
 		svg {
 			@include size(100%);
 
 			min-width: 99px;
 			fill: currentColor;
+
+			@at-root .Menu--is-open & {
+				path {
+					fill: the_color(black) !important; // Lottie
+				}
+			}
 		}
-
-		// g {
-		// 	opacity: 0;
-		// 	transform: translate3d(0, -100%, 0);
-		// 	transition: transform 0.4s map-get($easings, ease-out-expo),
-		// 		opacity 0.4s map-get($easings, ease-out-expo);
-		// }
-
-		// @for $i from 1 through 3 {
-		// 	g:nth-child(#{$i}) {
-		// 		transition-delay: 0.5s + ($i * 0.1);
-		// 	}
-		// }
-
-		// @at-root .is-loaded & {
-		// 	g {
-		// 		opacity: 1;
-		// 		transform: translate3d(0, 0, 0);
-		// 	}
-		// }
 	}
 
 	&__mini-cart {

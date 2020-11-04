@@ -38,8 +38,6 @@ export default class SplitTextBlock extends AbstractBlock {
 
 		Scroll.on('call', (value, way) => {
 			if (this.rootElement.id === value && 'enter' === way) {
-				console.log(this.rootElement.id);
-
 				this.timeline.play();
 			}
 		});

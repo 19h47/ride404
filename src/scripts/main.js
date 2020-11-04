@@ -4,7 +4,9 @@ import WebpackAsyncBlockBuilder from 'services/WebpackAsyncBlockBuilder';
 
 import Guid from 'common/Guid';
 
-import DefaultPage from 'scripts/pages/DefaultPage';
+import { elements } from 'scripts/config';
+
+import DefaultPage from 'pages/DefaultPage';
 
 require('common/Scroll');
 
@@ -36,6 +38,6 @@ const production = 'production' !== process.env.NODE_ENV;
 
 	startingBlocks.boot();
 
-	document.documentElement.classList.add('is-loaded');
-	document.documentElement.classList.remove('is-loading');
+	elements.html.classList.add('is-loaded');
+	elements.html.classList.remove('is-loading');
 })();

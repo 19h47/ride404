@@ -38,7 +38,7 @@
 		@include absolute(top 0 right 0 bottom 0 left 0);
 		@include margin(top 6px);
 
-		color: the_color(white);
+		// color: the_color(white);
 		font-size: 8px;
 		opacity: 0;
 		transition: opacity 0.8s map-get($easings, ease-out-expo) 0.7s;

@@ -1,0 +1,27 @@
+{#
+ # Menu
+ #
+ # @package Error404
+ #}
+<div id="menu" class="Menu page-block{{ classes is defined ? ' ' ~ classes | join(' ') }}" data-node-type="MenuBlock">
+	<div class="row h-100 d-flex align-items-center">
+		<div class="col-6 offset-3">
+			<ul class="Menu__items" itemscope itemtype="http://schema.org/SiteNavigationElement">
+				{% for item in menu.items %}
+					<li class="Menu__item js-item">
+
+						<{{ item.url == '#' ? 'button type="button"' : "a href=\"#{ item.url }\" target=\"#{ item.target | default( '_self' ) }\" itemprop=\"url\"" }} class="Menu__link{{ item.current ? ' is-active' }}">
+							{{- item.title -}}
+						</{{ item.url == '#' ? 'button' : 'a' }}>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+
+	<video class="Menu__video" autoplay loop preload="auto" muted>
+		<source src="{{ Image( nav_menus.main.meta('video') ).src }}" type="video/mp4">
+	</video>
+
+	
+</div>

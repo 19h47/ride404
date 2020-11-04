@@ -54,7 +54,7 @@
         <div class="row">
             <div class="col-10 offset-1 col-md-3 offset-md-6">
                 <h2>
-                    {% include 'partials/split-text.html.twig' with { title: __( 'Partners &\nCollaboraters', 'rider404' ) | nl2br } %}
+                    {% include 'partials/split-text.html.twig' with { title: __( 'Partners &\nCollaboraters', 'rider404' ) | nl2br, id: fn( 'uniqid' ) } %}
                 </h2>
             </div>
 

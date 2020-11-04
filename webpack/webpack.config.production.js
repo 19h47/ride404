@@ -29,6 +29,7 @@ const safelist = () => ({
 		/Hero/,
 		/Navigation/,
 		/line/,
+		/Menu/,
 	],
 });
 

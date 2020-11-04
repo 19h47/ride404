@@ -35,7 +35,7 @@
                 {% include 'svg/use.html.twig' with { icon: 'cart' } only %}
             </{{ ( cart.is_empty ? 'p' : 'a' ) | raw }}>
             
-            <button class="Site-header__bars Bars" type="button">
+            <button class="Site-header__bars Bars js-menu-button" type="button">
                 {% include 'svg/use.html.twig' with { icon: 'bars' } only %}
             </button>
 
