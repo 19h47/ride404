@@ -11,8 +11,6 @@ export default class CarouselBlock extends AbstractBlock {
 	constructor(container) {
 		super(container, 'CarouselBlock');
 
-		this.up = this.up.bind(this);
-		this.down = this.down.bind(this);
 		this.render = this.render.bind(this);
 	}
 
@@ -20,8 +18,7 @@ export default class CarouselBlock extends AbstractBlock {
 		super.init();
 
 		this.$items = this.rootElement.querySelector('.js-items');
-
-		// this.$cursor = document.querySelector('.js-cursor');
+		this.$cursor = document.querySelector('.js-cursor');
 
 		// this.itemsRect = this.$items.getBoundingClientRect();
 		this.clientX = 0;
@@ -32,7 +29,7 @@ export default class CarouselBlock extends AbstractBlock {
 
 		this.initPlugins();
 
-		// requestAnimationFrame(this.render);
+		gsap.ticker.add(this.render);
 	}
 
 	initEvents() {
@@ -48,36 +45,89 @@ export default class CarouselBlock extends AbstractBlock {
 			this.clientY = event.clientY;
 		});
 
+		this.carousel.nextButton.element.addEventListener('pointerdown', () =>
+			this.carousel.viewport.classList.add('is-pointer-down'),
+		);
+		this.carousel.nextButton.element.addEventListener('pointerup', () =>
+			this.carousel.viewport.classList.remove('is-pointer-down'),
+		);
+
+		this.carousel.prevButton.element.addEventListener('pointerdown', () =>
+			this.carousel.viewport.classList.add('is-pointer-down'),
+		);
+		this.carousel.prevButton.element.addEventListener('pointerup', () =>
+			this.carousel.viewport.classList.remove('is-pointer-down'),
+		);
+
 		// this.$items.addEventListener('mouseenter', () => gsap.to(this.$cursor, { scale: 1 }));
 		// this.$items.addEventListener('mouseleave', () => gsap.to(this.$cursor, { scale: 0 }));
 
-		// this.carousel.on('dragStart', this.down);
-		// this.carousel.on('pointerDown', this.down);
-		// this.carousel.on('dragEnd', this.up);
-		// this.carousel.on('pointerUp', this.up);
+		this.carousel.prevButton.element.addEventListener('mouseenter', () => {
+			this.$cursor.classList.add('is-active');
+			this.$cursor.classList.add('previous');
+		});
+
+		this.carousel.prevButton.element.addEventListener('mouseleave', () => {
+			this.$cursor.classList.remove('is-active');
+			this.$cursor.classList.remove('previous');
+		});
+
+		this.carousel.prevButton.element.addEventListener('click', () => {
+			if (false === this.carousel.prevButton.isEnabled) {
+				this.$cursor.classList.remove('is-active');
+				this.$cursor.classList.remove('previous');
+			}
+		});
+
+		this.carousel.prevButton.element.addEventListener('pointerdown', () => {
+			gsap.to(this.$cursor, { scale: 0.7 });
+		});
+
+		this.carousel.prevButton.element.addEventListener('pointerup', () => {
+			gsap.to(this.$cursor, { scale: 1 });
+		});
+
+		this.carousel.nextButton.element.addEventListener('mouseenter', () => {
+			this.$cursor.classList.add('is-active');
+			this.$cursor.classList.add('next');
+		});
+
+		this.carousel.nextButton.element.addEventListener('mouseleave', () => {
+			this.$cursor.classList.remove('is-active');
+			this.$cursor.classList.remove('next');
+		});
+
+		this.carousel.nextButton.element.addEventListener('click', () => {
+			if (false === this.carousel.nextButton.isEnabled) {
+				this.$cursor.classList.remove('is-active');
+				this.$cursor.classList.remove('next');
+			}
+		});
+
+		this.carousel.nextButton.element.addEventListener('pointerdown', () => {
+			gsap.to(this.$cursor, { scale: 0.7 });
+		});
+
+		this.carousel.nextButton.element.addEventListener('pointerup', () => {
+			gsap.to(this.$cursor, { scale: 1 });
+		});
 	}
 
 	render() {
-		gsap.to(this.$cursor, { x: this.clientX, y: this.clientY, duration: 0.1 });
+		gsap.to(this.$cursor, { x: this.clientX, y: this.clientY, duration: 0.1, force3D: true });
 
-		return requestAnimationFrame(this.render);
-	}
-
-	down() {
-		return gsap.to(this.$cursor, { scale: 0.7 });
-	}
-
-	up() {
-		return gsap.to(this.$cursor, { scale: 1 });
+		return gsap.ticker.add(this.render);
 	}
 
 	initPlugins() {
 		this.options = {
 			pageDots: false,
-			prevNextButtons: false,
+			prevNextButtons: true,
 			cellSelector: '.js-item',
 			draggable: true,
 			freeScroll: false,
+			initialIndex: 1,
+			arrowShape: '',
 		};
 
 		this.carousel = new Flickity(this.$items, this.options);

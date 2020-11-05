@@ -5,16 +5,63 @@
  * @package Rider.404
  */
 .Carousel {
+	$this: &;
+
+	@extend %overflow-hidden, %position-relative;
+
 	&__items {
 		height: 634px;
+
+		.flickity-viewport {
+			overflow: visible;
+		}
+
+		.flickity-button {
+			@include absolute(top 0 bottom 0);
+			@include size(percentage(2/8), 100%);
+
+			transform: none;
+			border-radius: 0;
+			background-color: transparent;
+
+			&.previous {
+				right: 100%;
+				left: auto;
+			}
+			&.next {
+				right: auto;
+				left: 100%;
+			}
+
+			&:hover {
+				background-color: transparent;
+			}
+		}
 	}
 	&__item {
+		@include size(100%);
+		@include margin(right percentage(0.75/8) left percentage(0.75/8));
+		@extend %overflow-hidden;
+
+		transition: transform 1.5s map-get($easings, ease-out-expo);
+
 		img {
 			@extend .d-block;
 			@include size(100%);
 
 			object-fit: cover;
 			object-position: center;
+
+			transition: transform 1.5s map-get($easings, ease-out-expo);
+			will-change: transform;
+		}
+
+		@at-root #{ $this }__items .is-pointer-down & {
+			transform: scale(0.9);
+
+			img {
+				transform: scale(((1/0.9)) + 0.1) rotate(7deg);
+			}
 		}
 	}
 }

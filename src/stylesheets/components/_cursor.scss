@@ -1,0 +1,69 @@
+/**
+ * Cursor
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider.404
+ */
+.Cursor {
+	$this: &;
+
+	@extend %Pointer-events-none;
+	@extend .d-flex, .align-items-center, .justify-content-center;
+	@include size(140px);
+	@include fixed(top -70px left -70px);
+
+	will-change: transform;
+	z-index: 15;
+
+	svg {
+		@include size(14px);
+		@include autoAlpha(0);
+
+		transition: opacity 0.5s map-get($easings, ease-out-expo),
+			visibility 0.5s map-get($easings, ease-out-expo);
+		fill: the_color(red, bright);
+
+		@at-root #{ $this }.is-active svg {
+			@include autoAlpha(1);
+		}
+
+		@at-root #{ $this }.previous svg {
+			&.chevron-right {
+				@extend .d-none;
+			}
+			&.chevron-left {
+				@extend .d-block;
+			}
+		}
+		@at-root #{ $this }.next svg {
+			&.chevron-right {
+				@extend .d-block;
+			}
+
+			&.chevron-left {
+				@extend .d-none;
+			}
+		}
+	}
+
+	&::after {
+		@include absolute(top 0 right 0 bottom 0 left 0);
+		@extend .d-block;
+
+		border: 1px solid the_color(white);
+		border-radius: 50%;
+		content: '';
+
+		transform: scale(0);
+		transition: transform 0.5s map-get($easings, ease-out-expo);
+		will-change: transform;
+
+		@at-root #{ $this }.is-active::after {
+			transform: scale(1);
+		}
+	}
+
+	&.is-active {
+		@include autoAlpha(1);
+	}
+}
