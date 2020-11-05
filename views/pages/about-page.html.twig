@@ -37,10 +37,19 @@
         <div class="About-page__introduction__images">
             <div class="row h-100">
                 <div class="col-6 d-flex align-items-start" data-scroll data-scroll-speed="1.5">
-                    {% include 'partials/image.html.twig' with { image: post.meta( 'images' )[0] } %}
+                    <div class="Image-reveal" data-scroll>
+                        {# @TODO remove this ugly inline style #}
+                        <div class="Image-reveal__content" style="transition-delay: 1.5s;">
+                            {% include 'partials/image.html.twig' with { image: post.meta( 'images' )[0] } %}
+                        </div>
+                    </div>
                 </div>
                 <div class="col-3 offset-8 d-flex align-items-end" data-scroll data-scroll-speed="1.5">
-                    {% include 'partials/image.html.twig' with { image: post.meta( 'images' )[1] } %}
+                     <div class="Image-reveal" data-scroll>
+                        <div class="Image-reveal__content">
+                            {% include 'partials/image.html.twig' with { image: post.meta( 'images' )[1] } %}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

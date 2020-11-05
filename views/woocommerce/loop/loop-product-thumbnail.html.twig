@@ -4,6 +4,10 @@
  # @package Rider404
  # @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  #}
-<div class="Loop-product-thumbnail">
-    {{ product.get_image( 'woocommerce_single' ) }}
-</div>
+{% extends 'partials/image-reveal.html.twig' %}
+
+{% block content %}
+    <div class="Loop-product-thumbnail">
+        {{ product.get_image( 'woocommerce_single' ) }}
+    </div>
+{% endblock %}

@@ -45,6 +45,7 @@
 @import 'layouts/content';
 @import 'layouts/splash-screen';
 @import 'layouts/push';
+@import 'layouts/carousel';
 
 // Pages
 @import 'pages/page';
@@ -91,6 +92,7 @@
 @import 'components/smiley-404';
 @import 'components/button-play';
 @import 'components/link-underline';
+@import 'components/image-reveal';
 
 // Utilities.
 @import '~@19h47/architecture/src/stylesheets/utilities/colors';

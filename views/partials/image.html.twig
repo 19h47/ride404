@@ -5,6 +5,7 @@
  # @param string loading
  # @param array image
  # @param array attributes
+ # @param string size Optional. The requested image size. This can be a size that was in WordPress. Example: medium or large. Default full.
  #
  # @package Rider404
  #}
@@ -12,7 +13,7 @@
 	<img
 		class="{{ classes ? classes | join( ' ' ) }}"
 		loading="{{ loading | default( 'lazy' ) }}"
-		src="{{ Image( image ).src }}"
+		src="{{ Image( image ).src( size | default( 'full' ) ) }}"
 		alt="{{ Image( image ).alt }}"
 		width="{{ Image( image ).width }}"
 		height="{{ Image( image ).height }}"

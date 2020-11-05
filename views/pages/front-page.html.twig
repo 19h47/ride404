@@ -112,4 +112,22 @@
         </div>
     </div>
 
+    <div id="carousel" class="Section Carousel page-block" data-scroll-section data-node-type="CarouselBlock">
+        <div class="row">
+            <div class="col-8 offset-2">
+                <div class="Carousel__items js-items">
+                    {% for image in post.meta( 'carousel' ) %}
+                        <div class="Carousel__item js-item">
+                            {% embed "partials/image-reveal.html.twig" %}
+                                {% block content %}
+                                    {% include 'partials/image.html.twig' with { image: image } only %}
+                                {% endblock %}
+                            {% endembed %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock  %}

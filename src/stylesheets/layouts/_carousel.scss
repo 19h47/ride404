@@ -1,0 +1,20 @@
+/**
+ * Carousel
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider.404
+ */
+.Carousel {
+	&__items {
+		height: 634px;
+	}
+	&__item {
+		img {
+			@extend .d-block;
+			@include size(100%);
+
+			object-fit: cover;
+			object-position: center;
+		}
+	}
+}
