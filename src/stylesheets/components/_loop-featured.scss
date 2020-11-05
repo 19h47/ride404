@@ -1,0 +1,19 @@
+/**
+ * Loop featured
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.Loop-featured {
+	@include size(136px);
+
+	transform-origin: center;
+	will-change: transform;
+
+	svg {
+		@include size(100%);
+		@extend .d-block;
+
+		fill: the_color(red, bright);
+	}
+}

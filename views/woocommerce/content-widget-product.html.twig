@@ -1,0 +1,23 @@
+{#  
+ # Content widget product
+ #
+ # @package Rider404
+ #}
+<li class="">
+	{% do action( 'woocommerce_widget_product_item_start', template_args ) %}
+
+    {% include 'woocommerce/loop/loop-featured.html.twig' with { product: product } only %}
+
+	<a href="{{ product.get_permalink() }}">
+		{{ product.get_image() }}
+        {% include 'woocommerce/loop/loop-product-title.html.twig' with { title: product.get_name() } only %}
+	</a>
+    
+	{% if show_rating %}
+		{{- fn( 'wc_get_rating_html', product.get_average_rating() ) -}}
+	{% endif %}
+    
+    {% include 'woocommerce/loop/loop-price.html.twig' with { product: product, price_html: product.get_price_html() } only %}
+
+	{% do action( 'woocommerce_widget_product_item_end', template_args ) %}
+</li>

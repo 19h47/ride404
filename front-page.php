@@ -17,6 +17,7 @@ $context = Timber::context();
 $context['post']      = new Post();
 $context['partners']  = Transients::partners();
 $context['namespace'] = 'front-page';
+$context['sidebar']   = Timber::get_widgets( 'front-page-sidebar' );
 
 $templates = array( 'pages/front-page.html.twig' );
 

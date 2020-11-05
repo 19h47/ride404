@@ -22,7 +22,7 @@ class WooCommerce {
 	public function run() {
 		add_action( 'wp', array( $this, 'enqueue_styles' ) );
 		add_action( 'after_setup_theme', array( $this, 'hooks' ) );
-		
+
 		add_filter( 'woocommerce_add_to_cart_fragments', array( $this, 'add_to_cart_fragments' ), 10, 1 );
 	}
 
@@ -76,6 +76,9 @@ class WooCommerce {
 
 		// After shop loop item.
 		remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
+
+		// Before shop loop item title.
+		add_action( 'woocommerce_before_shop_loop_item_title', array( $this, 'template_loop_featured' ), 15 );
 
 		// After shop loop item title.
 		remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 );
@@ -137,7 +140,7 @@ class WooCommerce {
 
 	/**
 	 * Insert the opening anchor tag for products in the loop.
-	 * 
+	 *
 	 * @return string
 	 */
 	public function template_loop_product_link_open() : string {
@@ -149,13 +152,36 @@ class WooCommerce {
 
 	/**
 	 * Get the product price for the loop.
-	 * 
+	 *
 	 * @return string
 	 */
 	public function template_loop_price() : string {
 		global $product;
 
-		return Timber::render( 'woocommerce/loop/loop-price.html.twig', array( 'price_html' => $product->get_price_html() ) );
+		return Timber::render(
+			'woocommerce/loop/loop-price.html.twig',
+			array(
+				'price_html' => $product->get_price_html(),
+				'product'    => $product,
+			)
+		);
+	}
+
+
+	/**
+	 * Featured
+	 *
+	 * @return string
+	 */
+	public function template_loop_featured() : string {
+		global $product;
+
+		return Timber::render(
+			'woocommerce/loop/loop-featured.html.twig',
+			array(
+				'product' => $product,
+			)
+		);
 	}
 }
 
