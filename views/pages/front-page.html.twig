@@ -87,7 +87,34 @@
         </div>
     </div>
 
-    <div class="Section position-relative" data-scroll-section>
+    <div id="carousel" class="Section Carousel page-block" data-scroll-section data-node-type="CarouselBlock">
+        <img class="Carousel__background" src="{{ theme.link }}/{{ theme.manifest['img/png/carousel.png'] }}" alt="" width="1440" height="1153">
+        <div class="row">
+            <div class="col-8 offset-2">
+                <div class="Carousel__items js-items">
+                    {% for image in post.meta( 'carousel' ) %}
+                        <div class="Carousel__item js-item">
+                            {% embed "partials/image-reveal.html.twig" %}
+                                {% block content %}
+                                    {% include 'partials/image.html.twig' with { image: image, size: 'medium', loading: 'eager' } only %}
+                                {% endblock %}
+                            {% endembed %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="Carousel__footer">
+            <div class="row">
+                <div class="col-2 offset-5 text-align-center">
+                    <img src="{{ theme.link }}/{{ theme.manifest['img/svg/ews-pro-rider.svg'] }}" alt="" width="171.3" height="61">
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div class="Section position-relative" data-scroll-section>
         <img class="Partners__decor d-none d-md-block" src="{{ theme.link }}/{{ theme.manifest['img/svg/partners.svg'] }}" alt="" height="134" width="76">
         <div class="row">
             <div class="col-10 offset-1 col-md-3 offset-md-6">
@@ -107,24 +134,6 @@
                             </li>
                         {% endfor %}
                     </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="carousel" class="Section Carousel page-block" data-scroll-section data-node-type="CarouselBlock">
-        <div class="row">
-            <div class="col-8 offset-2">
-                <div class="Carousel__items js-items">
-                    {% for image in post.meta( 'carousel' ) %}
-                        <div class="Carousel__item js-item">
-                            {% embed "partials/image-reveal.html.twig" %}
-                                {% block content %}
-                                    {% include 'partials/image.html.twig' with { image: image } only %}
-                                {% endblock %}
-                            {% endembed %}
-                        </div>
-                    {% endfor %}
                 </div>
             </div>
         </div>

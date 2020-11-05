@@ -2,6 +2,8 @@ import { AbstractBlock } from 'starting-blocks';
 import Flickity from 'flickity';
 import { gsap } from 'gsap';
 
+import Scroll from 'common/Scroll';
+
 /**
  *
  * @constructor
@@ -20,7 +22,6 @@ export default class CarouselBlock extends AbstractBlock {
 		this.$items = this.rootElement.querySelector('.js-items');
 		this.$cursor = document.querySelector('.js-cursor');
 
-		// this.itemsRect = this.$items.getBoundingClientRect();
 		this.clientX = 0;
 		this.clientY = 0;
 
@@ -40,77 +41,99 @@ export default class CarouselBlock extends AbstractBlock {
 			this.clientY = event.clientY;
 		});
 
-		this.carousel.on('dragMove', event => {
-			this.clientX = event.clientX;
-			this.clientY = event.clientY;
-		});
+		this.rootElement.addEventListener(
+			'mouseleave',
+			({ target }) => {
+				if (target.matches('.next')) {
+					console.log(target.matches('.next'));
+					this.$cursor.classList.remove('is-active');
+					this.$cursor.classList.remove('next');
 
-		this.carousel.nextButton.element.addEventListener('pointerdown', () =>
-			this.carousel.viewport.classList.add('is-pointer-down'),
+					this.carousel.viewport.classList.remove('is-pointer-down');
+
+					gsap.to(this.$cursor, { scale: 1 });
+				}
+				if (target.matches('.previous')) {
+					this.$cursor.classList.remove('is-active');
+					this.$cursor.classList.remove('previous');
+
+					this.carousel.viewport.classList.remove('is-pointer-down');
+
+					gsap.to(this.$cursor, { scale: 1 });
+				}
+			},
+			true,
 		);
-		this.carousel.nextButton.element.addEventListener('pointerup', () =>
-			this.carousel.viewport.classList.remove('is-pointer-down'),
+
+		this.rootElement.addEventListener(
+			'mouseleave',
+			({ target }) => {
+				if (target.matches('.next')) {
+					this.$cursor.classList.remove('is-active');
+					this.$cursor.classList.remove('next');
+				}
+				if (target.matches('.previous')) {
+					this.$cursor.classList.remove('is-active');
+					this.$cursor.classList.remove('previous');
+				}
+			},
+			true,
 		);
 
-		this.carousel.prevButton.element.addEventListener('pointerdown', () =>
-			this.carousel.viewport.classList.add('is-pointer-down'),
+		this.rootElement.addEventListener(
+			'mouseenter',
+			({ target }) => {
+				if (target.matches('.next')) {
+					this.$cursor.classList.add('is-active');
+					this.$cursor.classList.add('next');
+				}
+				if (target.matches('.previous')) {
+					this.$cursor.classList.add('is-active');
+					this.$cursor.classList.add('previous');
+				}
+			},
+			true,
 		);
-		this.carousel.prevButton.element.addEventListener('pointerup', () =>
-			this.carousel.viewport.classList.remove('is-pointer-down'),
+
+		this.rootElement.addEventListener(
+			'pointerdown',
+			({ target }) => {
+				if (target.matches('.next') || target.matches('.previous')) {
+					this.carousel.viewport.classList.add('is-pointer-down');
+
+					gsap.to(this.$cursor, { scale: 0.7 });
+				}
+			},
+			false,
 		);
 
-		// this.$items.addEventListener('mouseenter', () => gsap.to(this.$cursor, { scale: 1 }));
-		// this.$items.addEventListener('mouseleave', () => gsap.to(this.$cursor, { scale: 0 }));
+		this.rootElement.addEventListener(
+			'pointerup',
+			({ target }) => {
+				if (target.matches('.previous') || target.matches('.next')) {
+					this.carousel.viewport.classList.remove('is-pointer-down');
 
-		this.carousel.prevButton.element.addEventListener('mouseenter', () => {
-			this.$cursor.classList.add('is-active');
-			this.$cursor.classList.add('previous');
-		});
+					gsap.to(this.$cursor, { scale: 1 });
+				}
+			},
+			false,
+		);
 
-		this.carousel.prevButton.element.addEventListener('mouseleave', () => {
-			this.$cursor.classList.remove('is-active');
-			this.$cursor.classList.remove('previous');
-		});
+		this.rootElement.addEventListener(
+			'click',
+			({ target }) => {
+				if (target.matches('.next') && false === this.carousel.nextButton.isEnabled) {
+					this.$cursor.classList.remove('is-active');
+					this.$cursor.classList.remove('next');
+				}
 
-		this.carousel.prevButton.element.addEventListener('click', () => {
-			if (false === this.carousel.prevButton.isEnabled) {
-				this.$cursor.classList.remove('is-active');
-				this.$cursor.classList.remove('previous');
-			}
-		});
-
-		this.carousel.prevButton.element.addEventListener('pointerdown', () => {
-			gsap.to(this.$cursor, { scale: 0.7 });
-		});
-
-		this.carousel.prevButton.element.addEventListener('pointerup', () => {
-			gsap.to(this.$cursor, { scale: 1 });
-		});
-
-		this.carousel.nextButton.element.addEventListener('mouseenter', () => {
-			this.$cursor.classList.add('is-active');
-			this.$cursor.classList.add('next');
-		});
-
-		this.carousel.nextButton.element.addEventListener('mouseleave', () => {
-			this.$cursor.classList.remove('is-active');
-			this.$cursor.classList.remove('next');
-		});
-
-		this.carousel.nextButton.element.addEventListener('click', () => {
-			if (false === this.carousel.nextButton.isEnabled) {
-				this.$cursor.classList.remove('is-active');
-				this.$cursor.classList.remove('next');
-			}
-		});
-
-		this.carousel.nextButton.element.addEventListener('pointerdown', () => {
-			gsap.to(this.$cursor, { scale: 0.7 });
-		});
-
-		this.carousel.nextButton.element.addEventListener('pointerup', () => {
-			gsap.to(this.$cursor, { scale: 1 });
-		});
+				if (target.matches('.previous') && false === this.carousel.prevButton.isEnabled) {
+					this.$cursor.classList.remove('is-active');
+					this.$cursor.classList.remove('previous');
+				}
+			},
+			false,
+		);
 	}
 
 	render() {
@@ -128,6 +151,18 @@ export default class CarouselBlock extends AbstractBlock {
 			freeScroll: false,
 			initialIndex: 1,
 			arrowShape: '',
+			on: {
+				ready() {
+					if (1 === window.startingBlocksDebugLevel) {
+						console.debug(
+							`%c[SB]\t\t%c✳️ Flickity ready`,
+							'color:#749f73',
+							'color:debug',
+						);
+					}
+					Scroll.update();
+				},
+			},
 		};
 
 		this.carousel = new Flickity(this.$items, this.options);
