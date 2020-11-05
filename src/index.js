@@ -3,4 +3,4 @@ require('scripts/main');
 
 require.context('icons/', true);
 require.context('svg/', true);
-// require.context('gif/', true);
+require.context('png/', true);

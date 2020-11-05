@@ -1,0 +1,41 @@
+/**
+ * Product list widget
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.Product-list-widget {
+	@extend .row;
+	@extend %list-style-type-none;
+
+	li:nth-child(1) {
+		@extend .col-3, .offset-1;
+
+		@include media-breakpoint-up(md) {
+			@include margin(top -125px);
+		}
+
+		@include media-breakpoint-up(lg) {
+			@include margin(top -115px);
+		}
+
+		@include media-breakpoint-up(hd) {
+			@include margin(top -205px);
+		}
+	}
+	li:nth-child(2) {
+		@extend .col-6, .offset-6;
+
+		@include media-breakpoint-up(md) {
+			@include margin(top -170px);
+		}
+
+		@include media-breakpoint-up(lg) {
+			@include margin(top -350px);
+		}
+
+		@include media-breakpoint-up(hd) {
+			@include margin(top -570px);
+		}
+	}
+}

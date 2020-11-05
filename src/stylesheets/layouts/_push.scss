@@ -1,0 +1,50 @@
+/**
+ * Push
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider.404
+ */
+.Push {
+	@include media-breakpoint-up(md) {
+		@include margin(top 230px);
+	}
+
+	@include media-breakpoint-up(hd) {
+		@include margin(top 310px);
+	}
+
+	.Link-underline {
+		@include media-breakpoint-up(md) {
+			@include margin(top 50px);
+		}
+
+		@include media-breakpoint-up(hd) {
+			@include margin(top 100px);
+		}
+	}
+
+	&__background {
+		@include absolute(top 0 right 0 bottom 0 left 0);
+
+		z-index: 1;
+
+		img {
+			@include size(100%);
+
+			object-fit: contain;
+			object-position: center;
+		}
+	}
+
+	&__body {
+		@extend %position-relative;
+
+		z-index: 2;
+	}
+
+	&__footer {
+		@extend %position-relative;
+
+		z-index: 2;
+	}
+}

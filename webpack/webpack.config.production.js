@@ -30,6 +30,7 @@ const safelist = () => ({
 		/Navigation/,
 		/line/,
 		/Menu/,
+		/Product-list-widget/,
 	],
 });
 

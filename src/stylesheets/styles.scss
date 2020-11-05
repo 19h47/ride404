@@ -44,6 +44,7 @@
 @import 'layouts/about';
 @import 'layouts/content';
 @import 'layouts/splash-screen';
+@import 'layouts/push';
 
 // Pages
 @import 'pages/page';
@@ -59,18 +60,27 @@
 @import 'components/mini-cart';
 @import 'components/bars';
 @import 'components/rider-404';
+
 @import 'components/product-variations';
 @import 'components/product-categories';
 @import 'components/product-thumbnail';
+@import 'components/product-list-widget';
+
 @import 'components/variation-add-to-cart';
 @import 'components/variation';
+
 @import 'components/price';
+
 @import 'components/quick-variations-form';
 @import 'components/quick-product-categories';
+
+@import 'components/loop-product';
 @import 'components/loop-product-title';
 @import 'components/loop-price';
-@import 'components/loop-product-link-open';
+@import 'components/loop-product-link';
 @import 'components/loop-featured';
+@import 'components/loop-product-thumbnail';
+
 @import 'components/partners';
 @import 'components/faq';
 @import 'components/video';
@@ -80,6 +90,7 @@
 @import 'components/globe';
 @import 'components/smiley-404';
 @import 'components/button-play';
+@import 'components/link-underline';
 
 // Utilities.
 @import '~@19h47/architecture/src/stylesheets/utilities/colors';

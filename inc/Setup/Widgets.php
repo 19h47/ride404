@@ -28,14 +28,21 @@ class Widgets {
 	 * @return void
 	 */
 	public function register_sidebars() {
+		$uniqid = uniqid();
+
+		$before_title  = '<div class="row"><div class="col-3 offset-6">';
+		$before_title .= '<h2 class="margin-0"><div id="split-text-' . $uniqid . '" ';
+		$before_title .= 'class="Split-text page-block" data-scroll ';
+		$before_title .= 'data-scroll-call="split-text-' . $uniqid . '" data-node-type="SplitTextBlock">';
+
 		register_sidebar(
 			array(
 				'name'          => __( 'Front Page Sidebar', 'rider404' ),
 				'id'            => 'front-page-sidebar',
 				'before_widget' => '',
 				'after_widget'  => '',
-				// 'before_title'  => '<h3 class="widget-title">',
-				// 'after_title'   => '</h3>',
+				'before_title'  => $before_title,
+				'after_title'   => '</div></h2></div></div>',
 			)
 		);
 	}

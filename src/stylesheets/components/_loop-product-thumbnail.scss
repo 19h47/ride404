@@ -1,0 +1,20 @@
+/**
+ * Loop product thumbnail
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.Loop-product-thumbnail {
+	@extend %overflow-hidden;
+
+	transition: transform 1.5s map-get($easings, ease-out-expo);
+	will-change: transform;
+
+	img {
+		@extend .d-block;
+		@include size(100%, auto);
+
+		transition: transform 1.5s map-get($easings, ease-out-expo);
+		will-change: transform;
+	}
+}

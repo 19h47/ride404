@@ -32,9 +32,31 @@
 {% endblock %}
 
 {% block content %}
-
+    
     <div class="Section Push" data-scroll-section>
-        {{ sidebar }}
+        
+        <div class="Push__background">
+            <div class="row h-100">
+                <div class="col-8 offset-2 h-100">
+                    <img src="{{ theme.link }}/{{ theme.manifest['img/png/push.png'] }}" alt="" height="1523" height="1473">
+                </div>
+            </div>
+        </div>
+
+        <div class="Push__body">
+            {{ sidebar }}
+        </div>
+
+        <div class="Push__footer">
+            <div class="row">
+                <div class="col-10 offset-1">
+                    <a class="Link-underline d-inline-block" href="{{ shop_url }}">
+                        {% include 'partials/split-text.html.twig' with { id: fn( 'uniqid' ), delay: 0.1, title: __( 'All products', 'rider404' ) } %}
+                    </a>
+                </div>
+            </div>
+        </div>
+
     </div>
     
     <div class="Section About" data-scroll-section>
@@ -57,8 +79,8 @@
                     <h2 class="About__title">
                         {%- include 'partials/split-text.html.twig' with { id: fn( 'uniqid' ), title: post.meta( 'about' ).title } -%}
                     </h2>
-                    <a class="About__link d-inline-block" href="{{ post.meta( 'about' ).link.url }}">
-                        {% include 'partials/split-text.html.twig' with { id: fn( 'uniqid' ), title: post.meta( 'about' ).link.title | default( __( 'About', 'rider404' ) ) } %}
+                    <a class="Link-underline d-inline-block" href="{{ post.meta( 'about' ).link.url }}">
+                        {% include 'partials/split-text.html.twig' with { id: fn( 'uniqid' ), delay: 0.1, title: post.meta( 'about' ).link.title | default( __( 'About', 'rider404' ) ) } %}
                     </a>
                 </div>
             </div>

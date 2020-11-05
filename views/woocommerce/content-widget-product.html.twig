@@ -3,13 +3,13 @@
  #
  # @package Rider404
  #}
-<li class="">
+<li {{ fn( 'wc_product_class', 'Loop-product' ) }}>
 	{% do action( 'woocommerce_widget_product_item_start', template_args ) %}
 
     {% include 'woocommerce/loop/loop-featured.html.twig' with { product: product } only %}
 
-	<a href="{{ product.get_permalink() }}">
-		{{ product.get_image() }}
+	{% include 'woocommerce/loop/loop-product-link-open.html.twig' with { link: product.get_permalink() } only %}
+		{% include 'woocommerce/loop/loop-product-thumbnail.html.twig' with { product: product } only %}
         {% include 'woocommerce/loop/loop-product-title.html.twig' with { title: product.get_name() } only %}
 	</a>
     

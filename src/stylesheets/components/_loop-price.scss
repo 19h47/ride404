@@ -9,6 +9,7 @@
 	@extend %font-weight-light;
 
 	svg {
+		@extend .d-block;
 		@include size(16px);
 
 		fill: the_color(white);

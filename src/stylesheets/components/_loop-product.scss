@@ -1,0 +1,26 @@
+/**
+ * Loop product
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.Loop-product {
+	$this: &;
+
+	& &-link {
+		@extend .d-block;
+		@extend %position-relative;
+
+		z-index: 1;
+
+		&:hover {
+			#{$this}-thumbnail {
+				transform: scale(0.9);
+			}
+
+			#{$this}-thumbnail img {
+				transform: scale((1/0.9));
+			}
+		}
+	}
+}

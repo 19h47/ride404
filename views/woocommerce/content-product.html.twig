@@ -6,7 +6,7 @@
 {{ fn( 'set_product_global', product ) }}    
 {# {% if product and product.is_visible() %} #}
     
-    <li {{ fn( 'wc_product_class' ) }}>
+    <li {{ fn( 'wc_product_class', 'Loop-product' ) }}>
         
         {#
          # Hook: woocommerce_before_shop_loop_item.
@@ -19,7 +19,7 @@
          # Hook: woocommerce_before_shop_loop_item_title.
          #
          # @hooked woocommerce_show_product_loop_sale_flash - 10
-         # @hooked woocommerce_template_loop_product_thumbnail - 10
+         # @hooked Rider404\Plugins\WooCommerce::template_loop_product_thumbnail - 10
          # @hooked Rider404\Plugins\WooCommerce::template_loop_featured - 15
          #}
         {% do action( 'woocommerce_before_shop_loop_item_title' ) %}

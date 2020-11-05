@@ -24,6 +24,7 @@ class WooCommerce {
 		add_action( 'after_setup_theme', array( $this, 'hooks' ) );
 
 		add_filter( 'woocommerce_add_to_cart_fragments', array( $this, 'add_to_cart_fragments' ), 10, 1 );
+		add_filter( 'woocommerce_before_widget_product_list', array( $this, 'before_widget_product_list' ) );
 	}
 
 
@@ -78,12 +79,13 @@ class WooCommerce {
 		remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
 
 		// Before shop loop item title.
+		remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10 );
+		add_action( 'woocommerce_before_shop_loop_item_title', array( $this, 'template_loop_product_thumbnail' ), 15 );
 		add_action( 'woocommerce_before_shop_loop_item_title', array( $this, 'template_loop_featured' ), 15 );
 
 		// After shop loop item title.
 		remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 );
 		add_action( 'woocommerce_after_shop_loop_item_title', array( $this, 'template_loop_price' ), 10 );
-
 	}
 
 
@@ -169,7 +171,24 @@ class WooCommerce {
 
 
 	/**
-	 * Featured
+	 * Loop product thumbnail
+	 *
+	 * @return string
+	 */
+	public function template_loop_product_thumbnail() : string {
+		global $product;
+
+		return Timber::render(
+			'woocommerce/loop/loop-product-thumbnail.html.twig',
+			array(
+				'product' => $product,
+			)
+		);
+	}
+
+
+	/**
+	 * Loop featured
 	 *
 	 * @return string
 	 */
@@ -182,6 +201,15 @@ class WooCommerce {
 				'product' => $product,
 			)
 		);
+	}
+
+	/**
+	 * Before widget product list
+	 *
+	 * @return string
+	 */
+	public function before_widget_product_list() {
+		return '<ul class="Product-list-widget product_list_widget">';
 	}
 }
 
