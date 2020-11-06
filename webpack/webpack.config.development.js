@@ -50,7 +50,6 @@ module.exports = {
 	plugins: [
 		new MiniCssExtractPlugin({
 			filename: 'css/main.css',
-			publicPath: '../',
 		}),
 	],
 };
