@@ -19,13 +19,14 @@ export default class CarouselBlock extends AbstractCarouselBlock {
 		super.init();
 
 		this.$cursor = document.querySelector('.js-cursor');
-		this.options.initialIndex = 1;
 
 		this.clientX = 0;
 		this.clientY = 0;
 	}
 
 	onResize() {
+		this.options.initialIndex = 1;
+
 		if (1 === window.startingBlocksDebugLevel) {
 			console.debug(`%c[SB]\t\t%c✳️ CarouselBlock.onResize`, 'color:#749f73', 'color:debug');
 		}

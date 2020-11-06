@@ -5,7 +5,7 @@
  * @package Rider.404
  */
 .Push {
-	@extend %position-relative, %overflow-hidden;
+	@extend %position-relative, %overflow-hidden, %overflow-md-visible;
 
 	@include media-breakpoint-up(md) {
 		@include margin(top 230px);
