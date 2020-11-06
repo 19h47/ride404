@@ -9,12 +9,25 @@
 
 	transition: transform 1.5s map-get($easings, ease-out-expo);
 	will-change: transform;
+	height: 420px;
+
+	@include media-breakpoint-up(sm) {
+		height: auto;
+	}
 
 	img {
 		@extend .d-block;
-		@include size(100%, auto);
+		@include size(100%);
 
 		transition: transform 1.5s map-get($easings, ease-out-expo);
 		will-change: transform;
+		object-fit: cover;
+		object-position: center;
+
+		@include media-breakpoint-up(sm) {
+			@include size(100%, auto);
+
+			object-fit: fill;
+		}
 	}
 }

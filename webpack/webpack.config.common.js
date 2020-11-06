@@ -43,6 +43,7 @@ module.exports = {
 
 			// scripts
 			scripts: resolve('src/scripts'),
+			abstracts: resolve('src/scripts/abstracts'),
 			common: resolve('src/scripts/common'),
 			pages: resolve('src/scripts/pages'),
 			transitions: resolve('src/scripts/transitions'),
@@ -51,7 +52,6 @@ module.exports = {
 			utils: resolve('src/scripts/utils'),
 			blocks: resolve('src/scripts/blocks'),
 			polyfills: resolve('src/scripts/polyfills'),
-			abstracts: resolve('src/scripts/abstracts'),
 			vendors: resolve('src/scripts/vendors'),
 			videos: resolve('src/videos'),
 

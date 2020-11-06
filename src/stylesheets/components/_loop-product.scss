@@ -7,6 +7,8 @@
 .Loop-product {
 	$this: &;
 
+	@extend %position-relative;
+
 	& &-link {
 		@extend .d-block;
 		@extend %position-relative;

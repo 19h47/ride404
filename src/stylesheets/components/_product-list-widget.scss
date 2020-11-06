@@ -7,9 +7,36 @@
 .Product-list-widget {
 	@extend .row;
 	@extend %list-style-type-none;
+	@include margin(top 20px);
+
+	height: 516px;
+
+	.flickity-viewport {
+		width: 100%;
+		overflow: visible;
+	}
+
+	@include media-breakpoint-up(sm) {
+		@include margin(top 0);
+		height: auto;
+	}
+
+	li {
+		@include size(percentage(10/12), 100%);
+		@include margin(right percentage(0.25/10) left percentage(0.25/10));
+
+		@include media-breakpoint-up(sm) {
+			@include margin(right 0 left 0);
+			@include size(auto);
+		}
+	}
 
 	li:nth-child(1) {
-		@extend .col-3, .offset-1;
+		@extend .offset-sm-1;
+
+		@include media-breakpoint-up(sm) {
+			width: percentage(3/12);
+		}
 
 		@include media-breakpoint-up(md) {
 			@include margin(top -125px);
@@ -24,7 +51,11 @@
 		}
 	}
 	li:nth-child(2) {
-		@extend .col-6, .offset-6;
+		@extend .offset-sm-6;
+
+		@include media-breakpoint-up(sm) {
+			width: percentage(6/12);
+		}
 
 		@include media-breakpoint-up(md) {
 			@include margin(top -170px);

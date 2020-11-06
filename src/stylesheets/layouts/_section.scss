@@ -5,7 +5,7 @@
  * @package Rider404
  */
 .Section {
-	@include margin(top 40px bottom 40px);
+	@include margin(top 80px bottom 80px);
 
 	@include media-breakpoint-up(md) {
 		@include margin(top 100px bottom 100px);

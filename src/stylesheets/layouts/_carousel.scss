@@ -9,22 +9,46 @@
 
 	@extend %overflow-hidden, %position-relative;
 
-	@include padding(top 260px bottom 260px);
+	@include padding(top 117px bottom 170px);
+
+	@include media-breakpoint-up(md) {
+		@include padding(top 260px bottom 260px);
+	}
+
+	@include media-breakpoint-up(lg) {
+		@include padding(top 290px bottom 290px);
+	}
+
+	@include media-breakpoint-up(hd) {
+		@include padding(top 460px bottom 460px);
+	}
 
 	&__background {
 		@include absolute(top 0 right 0 bottom 0 left 0);
 		@include size(100%);
 
-		object-fit: contain;
+		object-fit: cover;
 		object-position: center;
-	}
 
-	&__footer {
-		@include margin(top 120px);
+		@include media-breakpoint-up(md) {
+			object-fit: contain;
+		}
 	}
 
 	&__items {
-		height: 634px;
+		height: 230px;
+
+		@include media-breakpoint-up(md) {
+			height: 635px;
+		}
+
+		@include media-breakpoint-up(lg) {
+			height: 705px;
+		}
+
+		@include media-breakpoint-up(hd) {
+			height: 1130px;
+		}
 
 		.flickity-viewport {
 			overflow: visible;
@@ -58,10 +82,18 @@
 	}
 	&__item {
 		@include size(100%);
-		@include margin(right percentage(0.75/8) left percentage(0.75/8));
+		@include margin(right percentage(0.25/10) left percentage(0.25/10));
 		@extend %overflow-hidden;
 
 		transition: transform 1.5s map-get($easings, ease-out-expo);
+
+		@include media-breakpoint-up(md) {
+			@include margin(right percentage(0.75/8) left percentage(0.75/8));
+		}
+
+		.Image-reveal {
+			@include size(100%);
+		}
 
 		img {
 			@extend .d-block;
@@ -80,6 +112,27 @@
 			img {
 				transform: scale(((1/0.9)) + 0.1) rotate(7deg);
 			}
+		}
+	}
+
+	&__footer {
+		@include margin(top 105px);
+
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+
+		@include media-breakpoint-up(md) {
+			height: 120px;
+		}
+
+		@include media-breakpoint-up(lg) {
+			height: 130px;
+		}
+
+		@include media-breakpoint-up(hd) {
+			height: 210px;
 		}
 	}
 }

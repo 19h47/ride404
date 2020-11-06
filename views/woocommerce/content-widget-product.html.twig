@@ -3,7 +3,7 @@
  #
  # @package Rider404
  #}
-<li {{ fn( 'wc_product_class', 'Loop-product' ) }}>
+<li {{ fn( 'wc_product_class', 'Loop-product js-item' ) }}>
 	{% do action( 'woocommerce_widget_product_item_start', template_args ) %}
 
     {% include 'woocommerce/loop/loop-featured.html.twig' with { product: product } only %}

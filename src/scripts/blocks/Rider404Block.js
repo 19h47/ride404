@@ -1,4 +1,4 @@
-import LottieBlock from 'blocks/LottieBlock';
+import AbstractLottieBlock from 'abstracts/AbstractLottieBlock';
 import Scroll from 'common/Scroll';
 
 /**
@@ -6,7 +6,7 @@ import Scroll from 'common/Scroll';
  * @constructor
  * @param {object} container
  */
-export default class Rider404Block extends LottieBlock {
+export default class Rider404Block extends AbstractLottieBlock {
 	initEvents() {
 		super.initEvents();
 

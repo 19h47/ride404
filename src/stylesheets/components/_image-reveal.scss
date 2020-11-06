@@ -10,6 +10,8 @@
 	@extend %overflow-hidden;
 
 	&__content {
+		@include size(100%);
+
 		transform: translate3d(100%, 0, 0);
 		transition: transform 1.5s map-get($easings, ease-out-expo);
 		will-change: transform;

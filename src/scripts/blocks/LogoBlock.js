@@ -1,10 +1,10 @@
-import LottieBlock from 'blocks/LottieBlock';
+import AbstractLottieBlock from 'abstracts/AbstractLottieBlock';
 
 /**
  *
  * @constructor
  */
-export default class LogoBlock extends LottieBlock {
+export default class LogoBlock extends AbstractLottieBlock {
 	initEvents() {
 		super.initEvents();
 		this.rootElement.addEventListener('mouseover', () => this.animation.goToAndPlay(0));

@@ -43,7 +43,7 @@
             </div>
         </div>
 
-        <div class="Push__body">
+        <div id="push" class="Push__body page-block" data-node-type="PushBlock">
             {{ sidebar }}
         </div>
 
@@ -90,7 +90,7 @@
     <div id="carousel" class="Section Carousel page-block" data-scroll-section data-node-type="CarouselBlock">
         <img class="Carousel__background" src="{{ theme.link }}/{{ theme.manifest['img/png/carousel.png'] }}" alt="" width="1440" height="1153">
         <div class="row">
-            <div class="col-8 offset-2">
+            <div class="col-10 offset-1 col-md-8 offset-md-2">
                 <div class="Carousel__items js-items">
                     {% for image in post.meta( 'carousel' ) %}
                         <div class="Carousel__item js-item">
@@ -107,7 +107,7 @@
 
         <div class="Carousel__footer">
             <div class="row">
-                <div class="col-2 offset-5 text-align-center">
+                <div class="col-4 offset-4 col-md-2 offset-md-5 text-align-center">
                     <img src="{{ theme.link }}/{{ theme.manifest['img/svg/ews-pro-rider.svg'] }}" alt="" width="171.3" height="61">
                 </div>
             </div>

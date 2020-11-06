@@ -6,13 +6,17 @@
  */
 .Loop-featured {
 	@include absolute(top 0 right 0);
-	@include margin(top 40px right -40px);
+	@include margin(top 20px right -20px);
 	@include size(136px);
 
 	transform-origin: center;
 	will-change: transform;
 
 	z-index: 2;
+
+	@include media-breakpoint-up(md) {
+		@include margin(top 40px right -40px);
+	}
 
 	svg {
 		@include size(100%);

@@ -10,4 +10,8 @@
 
 	font-size: 18px;
 	line-height: (28/18);
+
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }

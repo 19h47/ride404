@@ -1,15 +1,14 @@
-import { AbstractBlock } from 'starting-blocks';
-import Flickity from 'flickity';
 import { gsap } from 'gsap';
 
-import Scroll from 'common/Scroll';
+import AbstractCarouselBlock from 'abstracts/AbstractCarouselBlock';
+import mediaBreakpointUp from 'utils/mediaBreakpointUp';
 
 /**
  *
  * @constructor
  * @param {object} container
  */
-export default class CarouselBlock extends AbstractBlock {
+export default class CarouselBlock extends AbstractCarouselBlock {
 	constructor(container) {
 		super(container, 'CarouselBlock');
 
@@ -19,18 +18,28 @@ export default class CarouselBlock extends AbstractBlock {
 	init() {
 		super.init();
 
-		this.$items = this.rootElement.querySelector('.js-items');
 		this.$cursor = document.querySelector('.js-cursor');
+		this.options.initialIndex = 1;
 
 		this.clientX = 0;
 		this.clientY = 0;
+	}
 
-		this.carousel = false;
-		this.options = {};
+	onResize() {
+		if (1 === window.startingBlocksDebugLevel) {
+			console.debug(`%c[SB]\t\t%c✳️ CarouselBlock.onResize`, 'color:#749f73', 'color:debug');
+		}
 
-		this.initPlugins();
+		if (mediaBreakpointUp('sm')) {
+			this.options.prevNextButtons = true;
+			gsap.ticker.add(this.render);
+		}
 
-		gsap.ticker.add(this.render);
+		if (this.carousel) {
+			this.carousel.destroy();
+		}
+
+		super.onResize();
 	}
 
 	initEvents() {
@@ -45,7 +54,6 @@ export default class CarouselBlock extends AbstractBlock {
 			'mouseleave',
 			({ target }) => {
 				if (target.matches('.next')) {
-					console.log(target.matches('.next'));
 					this.$cursor.classList.remove('is-active');
 					this.$cursor.classList.remove('next');
 
@@ -140,31 +148,5 @@ export default class CarouselBlock extends AbstractBlock {
 		gsap.to(this.$cursor, { x: this.clientX, y: this.clientY, duration: 0.1, force3D: true });
 
 		return gsap.ticker.add(this.render);
-	}
-
-	initPlugins() {
-		this.options = {
-			pageDots: false,
-			prevNextButtons: true,
-			cellSelector: '.js-item',
-			draggable: true,
-			freeScroll: false,
-			initialIndex: 1,
-			arrowShape: '',
-			on: {
-				ready() {
-					if (1 === window.startingBlocksDebugLevel) {
-						console.debug(
-							`%c[SB]\t\t%c✳️ Flickity ready`,
-							'color:#749f73',
-							'color:debug',
-						);
-					}
-					Scroll.update();
-				},
-			},
-		};
-
-		this.carousel = new Flickity(this.$items, this.options);
 	}
 }

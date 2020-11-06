@@ -18,21 +18,21 @@
 		@extend %text-align-center, %font-family-title, %font-weight-light;
 
 		font-size: 28px;
-		min-height: (38/28);
+		line-height: (38/28);
 
 		@include media-breakpoint-up(md) {
 			font-size: 44px;
-			min-height: (52/44);
+			line-height: (52/44);
 		}
 
 		@include media-breakpoint-up(lg) {
 			font-size: 48px;
-			min-height: (58/48);
+			line-height: (58/48);
 		}
 
 		@include media-breakpoint-up(hd) {
 			font-size: 78px;
-			min-height: (92/78);
+			line-height: (92/78);
 		}
 
 		& > div {

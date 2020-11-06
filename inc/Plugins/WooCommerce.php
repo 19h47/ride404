@@ -209,7 +209,7 @@ class WooCommerce {
 	 * @return string
 	 */
 	public function before_widget_product_list() {
-		return '<ul class="Product-list-widget product_list_widget">';
+		return '<ul class="Product-list-widget product_list_widget js-items">';
 	}
 }
 

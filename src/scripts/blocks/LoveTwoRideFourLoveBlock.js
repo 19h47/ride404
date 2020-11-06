@@ -1,11 +1,11 @@
 import { EventTypes } from 'starting-blocks';
-import LottieBlock from 'blocks/LottieBlock';
+import AbstractLottieBlock from 'abstracts/AbstractLottieBlock';
 
 /**
  *
  * @constructor
  */
-export default class LoveTwoRideFourLoveBlock extends LottieBlock {
+export default class LoveTwoRideFourLoveBlock extends AbstractLottieBlock {
 	initEvents() {
 		super.initEvents();
 

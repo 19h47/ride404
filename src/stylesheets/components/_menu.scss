@@ -10,6 +10,7 @@
 	@include fixed(top 0 right 0 bottom 0 left 0);
 	@include autoAlpha(0);
 	@include size(100%, 100vh);
+	@include padding(bottom env(safe-area-inset-bottom));
 
 	z-index: 10;
 	background-color: the_color(white);
@@ -40,12 +41,15 @@
 
 			&::after {
 				@include absolute(bottom 0 right 0 left 0);
-				@include margin(bottom 30px);
 				@include size(100%, 2px);
 				@extend .d-none;
 
 				background-color: currentColor;
 				content: '';
+
+				@include media-breakpoint-up(md) {
+					@include margin(bottom 30px);
+				}
 			}
 
 			svg {
@@ -79,5 +83,13 @@
 
 		color: the_color(gray, very-dark-02);
 		z-index: 3;
+
+		font-size: 12px;
+		line-height: 17px;
+
+		@include media-breakpoint-up(md) {
+			font-size: 18px;
+			line-height: 28px;
+		}
 	}
 }
