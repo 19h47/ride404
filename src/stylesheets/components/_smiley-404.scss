@@ -6,7 +6,7 @@
 .Smiley-404 {
 	@extend %position-relative;
 
-	// height: 900px;
+	background-color: the_color(gray, very-dark-02);
 
 	canvas {
 		@extend %position-relative;
@@ -19,6 +19,7 @@
 
 	&__images {
 		@include absolute(top 0 right 0 bottom 0 left 0);
+		@extend %Pointer-events-none;
 
 		z-index: 2;
 
@@ -35,6 +36,19 @@
 
 				transform: translate3d(0, 50%, 0);
 			}
+		}
+	}
+
+	&__background {
+		@include absolute(top 0 right 0 left 0 bottom 0);
+		@include margin(top 245px bottom 245px);
+
+		img {
+			@include absolute(top 0 right 0 bottom 0 left 0);
+			@include margin(right auto left auto);
+			@include size(auto, 100%);
+
+			will-change: transform;
 		}
 	}
 }

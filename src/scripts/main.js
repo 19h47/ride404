@@ -1,4 +1,5 @@
 import StartingBlocks, { polyfills } from 'starting-blocks';
+import { gsap } from 'gsap';
 
 import SplashScreen from 'services/SplashScreen';
 import WebpackAsyncBlockBuilder from 'services/WebpackAsyncBlockBuilder';
@@ -30,6 +31,13 @@ const production = 'production' !== process.env.NODE_ENV;
 
 		guid.init();
 	}
+
+	window.onbeforeunload = () => {
+		gsap.to(document.querySelector('.page-content'), {
+			duration: 0.5,
+			opacity: 0,
+		});
+	};
 
 	startingBlocks.boot();
 })();

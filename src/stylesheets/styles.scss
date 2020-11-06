@@ -46,6 +46,7 @@
 @import 'layouts/splash-screen';
 @import 'layouts/push';
 @import 'layouts/carousel';
+@import 'layouts/tags';
 
 // Pages
 @import 'pages/page';
@@ -94,6 +95,7 @@
 @import 'components/link-underline';
 @import 'components/image-reveal';
 @import 'components/cursor';
+@import 'components/products';
 
 // Utilities.
 @import '~@19h47/architecture/src/stylesheets/utilities/colors';

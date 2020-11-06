@@ -36,12 +36,14 @@
 			<div></div>
 		</div>
 
-		<div class="Cursor js-cursor">
-            {% include 'svg/use.html.twig' with { icon: 'chevron-right' } only %}
-            {% include 'svg/use.html.twig' with { icon: 'chevron-left' } only %}
-        </div>
+		{% if is_front_page %}
+			<div class="Cursor js-cursor">
+				{% include 'svg/use.html.twig' with { icon: 'chevron-right' } only %}
+				{% include 'svg/use.html.twig' with { icon: 'chevron-left' } only %}
+			</div>
+		{% endif %}
 
-		
+
 		<div
 			id="{{ post.id ? "page-#{post.id}" : 'page' }}"
 			class="Site-content page-content position-relative"
@@ -66,9 +68,9 @@
 			{% endblock %}
 
 			{% include 'footer.html.twig' %}
-
-				
+		
 		</div>
+
 		
 		{% do action( 'woocommerce_after_main_content' ) %}
 

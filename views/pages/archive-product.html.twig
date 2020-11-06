@@ -29,7 +29,7 @@
 		{% do action( 'woocommerce_before_shop_loop' ) %}
 
 
-		{{- fn( 'woocommerce_product_loop_start', false ) -}}
+		{{- fn( 'woocommerce_product_loop_start' ) -}}
 
 		{% for product in products %}
 			{% do action( 'woocommerce_shop_loop' ) %}
@@ -38,7 +38,7 @@
 			
 		{% endfor %}
 
-		{{- fn( 'woocommerce_product_loop_end', false ) -}}
+		{{- fn( 'woocommerce_product_loop_end' ) -}}
 
 		{#
 		 # Hook: woocommerce_after_shop_loop.

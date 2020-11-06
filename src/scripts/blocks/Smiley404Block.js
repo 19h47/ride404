@@ -1,6 +1,9 @@
 /* global CABLES, rider404 */
 import { AbstractBlock } from 'starting-blocks';
+// import { gsap } from 'gsap';
+
 import Scroll from 'common/Scroll';
+// import getViewportSize from 'utils/getViewportSize';
 
 const showError = (errId, errMsg) => {
 	console.log(`An error occured: ${errId}, ${errMsg}`);
@@ -28,6 +31,8 @@ export default class Smiley404Block extends AbstractBlock {
 
 	init() {
 		super.init();
+
+		// this.$background = this.rootElement.querySelector('.js-background');
 	}
 
 	initEvents() {
@@ -38,7 +43,7 @@ export default class Smiley404Block extends AbstractBlock {
 				patch: CABLES.exportedPatch,
 				prefixAssetPath: `${rider404.template_directory_uri}/dist/`,
 				// patchFile: `${rider404.template_directory_uri}/dist/smiley.json`,
-				glCanvasId: this.rootElement.id,
+				glCanvasId: `${this.rootElement.id}-canvas`,
 				glCanvasResizeToWindow: false,
 				silent: true,
 				onError: showError,
@@ -47,5 +52,9 @@ export default class Smiley404Block extends AbstractBlock {
 				canvas: { alpha: true, premultipliedAlpha: true },
 			});
 		});
+
+		// Scroll.on('scroll', ({ scroll: { y }, limit }) => {
+		// 	gsap.to(this.$background, { duration: 0.1, x: (y * getViewportSize().width) / limit });
+		// });
 	}
 }

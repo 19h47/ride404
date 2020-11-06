@@ -31,8 +31,12 @@
                         } 
                     %}
                 </div>
+                <div class="col-4 offset-4">
+                    <p class="h2 text-align-center">{{ __( "That's it the leitmotiv of the Rider.404", 'rider404'  ) }}</p>
+                </div>
             </div>
         </div>
+
 
         <div class="About-page__introduction__images">
             <div class="row h-100">
@@ -56,7 +60,7 @@
         
     </div>
 
-    <div class="Smiley-404 Section" data-scroll-section>
+    <div id="smiley-404" class="Smiley-404 Section page-block" data-scroll-section data-node-type="Smiley404Block">
         <div class="Smiley-404__images">
             <div class="row h-100">
                 <div class="col-3 offset-2 d-flex" data-scroll data-scroll-speed="1.5">
@@ -68,7 +72,10 @@
                 </div>
             </div>
         </div>
-        <canvas id="smiley-404" class="page-block" data-node-type="Smiley404Block" height="900"></canvas>
+        <canvas id="smiley-404-canvas"  height="900"></canvas>
+        <div class="Smiley-404__background">
+            <img data-scroll data-scroll-direction="horizontal" data-scroll-target="#smiley-404" data-scroll-speed="9" src="{{ theme.link }}/{{ theme.manifest['img/svg/rider-404.svg'] }}" alt="" width="3204.3" height="410.6">
+        </div>
     </div>
 
     <div id="faq" class="Section Faq page-block" data-node-type="FaqBlock" data-scroll-section>
@@ -94,6 +101,18 @@
                 </ul>
              </div>
         </div>
+    </div>
+
+    <div id="tags" class="Tags" data-scroll-section>
+        <ul class="Tags__items">
+            {% for i in 0..5 %}
+                <li class="Tags__item">
+                    <span data-scroll data-scroll-direction="horizontal" data-scroll-target="#tags" data-scroll-speed="{{ random( -20, 20 ) }}">
+                        <img src="{{ theme.link }}/{{ theme.manifest['img/svg/rider-404.svg'] }}" alt="" width="3204.3" height="410.6">
+                    </span>
+                </li>
+            {% endfor %}
+        </ul>
     </div>
 
 {% endblock  %}

@@ -1,0 +1,47 @@
+/**
+ * Products
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.Products {
+	@extend .row;
+	@extend %list-style-type-none;
+	@include margin(top -60px bottom -60px);
+
+	li {
+		@include margin(top 60px bottom 60px);
+	}
+
+	li:nth-child(8n + 1) {
+		@extend .col-4, .offset-1;
+	}
+
+	li:nth-child(8n + 2) {
+		@extend .col-3, .offset-1;
+	}
+
+	li:nth-child(8n + 3) {
+		@extend .col-10, .offset-1;
+	}
+
+	li:nth-child(8n + 4) {
+		@extend .col-3, .offset-1;
+	}
+
+	li:nth-child(8n + 5) {
+		@extend .col-6, .offset-1;
+	}
+
+	li:nth-child(8n + 6) {
+		@extend .col-3, .offset-1;
+	}
+
+	li:nth-child(8n + 7) {
+		@extend .col-4, .offset-1;
+	}
+
+	li:nth-child(8n + 8) {
+		@extend .col-6, .offset-1;
+	}
+}

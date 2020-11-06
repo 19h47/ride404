@@ -20,12 +20,16 @@
 	background-color: the_color(gray, very-dark-01);
 
 	width: min-content;
-	z-index: 10;
+	z-index: 20;
 
 	transition: opacity 0.8s map-get($easings, ease-out-expo),
 		visibility 0.8s map-get($easings, ease-out-expo);
 
 	@at-root .is-ontop & {
 		@include autoAlpha(0);
+	}
+
+	@at-root .Menu--is-open & {
+		@extend .d-none;
 	}
 }
