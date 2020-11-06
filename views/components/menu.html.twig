@@ -35,5 +35,7 @@
 		</video>
 	</div>
 
+	{% include 'components/video.html.twig' with { id: 'video-menu', preview: Image( nav_menus.main.meta('video') ).src } %}
+
 	
 </div>

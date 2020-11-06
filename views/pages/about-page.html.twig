@@ -57,18 +57,17 @@
                 </div>
             </div>
         </div>
-        
     </div>
 
     <div id="smiley-404" class="Smiley-404 Section page-block" data-scroll-section data-node-type="Smiley404Block">
         <div class="Smiley-404__images">
             <div class="row h-100">
-                <div class="col-3 offset-2 d-flex" data-scroll data-scroll-speed="1.5">
-                    {% include 'partials/image.html.twig' with { image: post.meta( 'images' )[2], classes: [ 'top' ] } only %}
+                <div class="col-3 offset-2 d-flex">
+                    {% include 'partials/image.html.twig' with { image: post.meta( 'images' )[2], attributes: { 'data-scroll': '', 'data-scroll-speed': 1.5 } } only %}
                 </div>
            
-                <div class="col-2 offset-6 d-flex" data-scroll data-scroll-speed="1.5">
-                    {% include 'partials/image.html.twig' with { image: post.meta( 'images' )[3], classes: [ 'bottom' ] } only %}
+                <div class="col-2 offset-6 d-flex">
+                    {% include 'partials/image.html.twig' with { image: post.meta( 'images' )[3], attributes: { 'data-scroll': '', 'data-scroll-speed': 1.5 } } only %}
                 </div>
             </div>
         </div>
@@ -77,6 +76,25 @@
             <img data-scroll data-scroll-direction="horizontal" data-scroll-target="#smiley-404" data-scroll-speed="9" src="{{ theme.link }}/{{ theme.manifest['img/svg/rider-404.svg'] }}" alt="" width="3204.3" height="410.6">
         </div>
     </div>
+
+    <div data-scroll-section>
+        <div class="row">
+            <div class="col-12 col-md-10 offset-md-1">
+                {% embed 'components/video.html.twig' with { id: 'video', preview: post.meta( 'video' ).preview.url, overlay: true } %}
+                    {% block caption %} 
+                        <div class="Video__caption">
+                            {{- __( 'All video Rider.404 Project on', 'rider404' ) }}
+                            &nbsp;
+                            <a href="{{ socials.youtube.url }}">
+                                {% include 'svg/use.html.twig' with { icon: 'youtube' } only %}
+                                &nbsp;&nbsp;<span>YouTube</span>
+                            </a>
+                        </div>
+                    {% endblock %}
+                {% endembed %}
+            </div>
+        </div>
+    </div> 
 
     <div id="faq" class="Section Faq page-block" data-node-type="FaqBlock" data-scroll-section>
         <div class="row">

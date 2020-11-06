@@ -7,20 +7,29 @@
 .Video {
 	$this: &;
 
-	@extend %position-relative, %overflow-hidden;
+	&__body {
+		@extend %position-relative, %overflow-hidden;
+		@include padding(bottom percentage(611/416));
 
-	transition: transform 1.5s map-get($easings, ease-out-expo);
-	will-change: transform;
+		transition: transform 1.5s map-get($easings, ease-out-expo);
+		will-change: transform;
+
+		@include media-breakpoint-up(md) {
+			@include padding(bottom percentage(600/1076));
+		}
+	}
 
 	&.is-over {
-		transform: scale(0.9);
-
 		video {
 			transform: scale((1/0.9));
 		}
 
 		canvas {
 			transform: scale((1/0.9));
+		}
+
+		#{ $this }__body {
+			transform: scale(0.9);
 		}
 
 		#{ $this }__overlay {
@@ -59,5 +68,41 @@
 		will-change: transform;
 
 		z-index: 3;
+	}
+
+	&__caption {
+		@include margin(top 50px);
+		@extend .d-flex, .justify-content-center, .align-items-center;
+
+		font-size: 14px;
+		line-height: (28/14);
+		color: the_color(gray, very-dark-02);
+
+		a {
+			@extend .d-flex, .align-items-center;
+
+			transition: color 0.5s map-get($easings, ease-out-expo);
+
+			span {
+				@extend %text-decoration-underline;
+			}
+
+			svg {
+				@extend .d-block;
+				@include size(30px);
+
+				fill: the_color(gray, very-dark-02);
+				transition: fill 0.5s map-get($easings, ease-out-expo);
+			}
+
+			&:focus,
+			&:hover {
+				color: the_color(white);
+
+				svg {
+					fill: the_color(white);
+				}
+			}
+		}
 	}
 }

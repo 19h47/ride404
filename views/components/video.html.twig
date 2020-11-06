@@ -1,0 +1,31 @@
+{#  
+ # Video
+ #
+ # @package Rider404
+ #}
+
+{% macro box(content) %}
+    <div class="box indent">
+      <div class="padding">
+         {{ content | raw }}
+      </div>
+    </div>
+{% endmacro %}
+
+<div id="{{ id }}" class="Video page-block" data-node-type="VideoBlock">
+    
+    <div class="Video__body">
+        {% if overlay %}
+            <div class="Video__overlay">
+                {% include 'components/button-play.html.twig' %}
+            </div>
+        {% endif %}
+
+        <canvas></canvas>
+        <video autoplay loop preload="auto" muted>
+            <source src="{{ preview }}" type="video/mp4">
+        </video>
+    </div>
+
+    {% block caption %}{% endblock %}
+</div>
