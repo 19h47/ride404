@@ -20,14 +20,14 @@
 
         <div class="About-page__introduction__body">
             <div class="row">
-                <div class="col-8 offset-2">
+                <div class="col-10 offset-1 col-md-8 offset-md-2">
                     {% 
                         include 'partials/split-text.html.twig' 
                         with { 
                             title: post.meta( 'introduction' ), 
                             id: fn( 'uniqid' ), 
                             classes: [ 'h1', 'text-align-center', 'margin-0' ],
-                            delay: 1.5,  
+                            delay: 0.5,  
                         } 
                     %}
                 </div>
@@ -41,39 +41,46 @@
         <div class="About-page__introduction__images">
             <div class="row h-100">
                 <div class="col-6 d-flex align-items-start" data-scroll data-scroll-speed="1.5">
-                    <div class="Image-reveal" data-scroll>
-                        {# @TODO remove this ugly inline style #}
-                        <div class="Image-reveal__content" style="transition-delay: 1.5s;">
-                            {% include 'partials/image.html.twig' with { image: post.meta( 'images' )[0] } %}
-                        </div>
-                    </div>
+                    {% embed 'partials/image-reveal.html.twig' with { attributes: { style: 'transition-delay: 1.5s;' } } %}
+                        {% block content %}
+                            {% include 'partials/image.html.twig' with { image: post.meta( 'images' )[0] } only %}
+                        {% endblock %}
+                    {% endembed %}
                 </div>
                 <div class="col-3 offset-8 d-flex align-items-end" data-scroll data-scroll-speed="1.5">
-                     <div class="Image-reveal" data-scroll>
-                        <div class="Image-reveal__content">
-                            {% include 'partials/image.html.twig' with { image: post.meta( 'images' )[1] } %}
-                        </div>
-                    </div>
+                     {% embed 'partials/image-reveal.html.twig' %}
+                        {% block content %}
+                            {% include 'partials/image.html.twig' with { image: post.meta( 'images' )[1] } only %}
+                        {% endblock %}
+                    {% endembed %}
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="smiley-404" class="Smiley-404 Section page-block" data-scroll-section data-node-type="Smiley404Block">
+    <div id="smiley-404" class="Smiley-404 Section page-block" data-scroll-section data-node-type="Smiley404Block" style="transform-style: preserve-3d;">
         <div class="Smiley-404__images">
             <div class="row h-100">
-                <div class="col-3 offset-2 d-flex">
-                    {% include 'partials/image.html.twig' with { image: post.meta( 'images' )[2], attributes: { 'data-scroll': '', 'data-scroll-speed': 1.5 } } only %}
+                <div class="col-3 offset-2 d-flex align-items-start" data-scroll data-scroll-speed="1.5">
+                    {% embed 'partials/image-reveal.html.twig' %}
+                        {% block content %}
+                            {% include 'partials/image.html.twig' with { image: post.meta( 'images' )[2] } only %}
+                        {% endblock %}
+                    {% endembed %}
                 </div>
            
-                <div class="col-2 offset-6 d-flex">
-                    {% include 'partials/image.html.twig' with { image: post.meta( 'images' )[3], attributes: { 'data-scroll': '', 'data-scroll-speed': 1.5 } } only %}
+                <div class="col-2 offset-6 d-flex align-items-end" data-scroll data-scroll-speed="1.5">
+                    {% embed 'partials/image-reveal.html.twig' %}
+                        {% block content %}
+                            {% include 'partials/image.html.twig' with { image: post.meta( 'images' )[3] } only %}
+                        {% endblock %}
+                    {% endembed %}
                 </div>
             </div>
         </div>
         <canvas id="smiley-404-canvas"  height="900"></canvas>
         <div class="Smiley-404__background">
-            <img data-scroll data-scroll-direction="horizontal" data-scroll-target="#smiley-404" data-scroll-speed="9" src="{{ theme.link }}/{{ theme.manifest['img/svg/rider-404.svg'] }}" alt="" width="3204.3" height="410.6">
+            <img data-scroll data-scroll-direction="horizontal" data-scroll-target="#smiley-404" data-scroll-speed="9" src="{{ theme.link }}/{{ theme.manifest['img/svg/rider-404.svg'] }}" width="3204.3" height="410.6">
         </div>
     </div>
 

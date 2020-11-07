@@ -103,7 +103,6 @@
 			object-position: center;
 
 			transition: transform 1.5s map-get($easings, ease-out-expo);
-			will-change: transform;
 		}
 
 		@at-root #{ $this }__items .is-pointer-down & {

@@ -27,6 +27,9 @@
 			@include size(100%, auto);
 			@extend .d-block;
 
+			object-fit: contain;
+			object-position: center;
+
 			&.top {
 				transform: translate3d(0, -50%, 0);
 			}
@@ -47,8 +50,6 @@
 			@include absolute(top 0 right 0 bottom 0 left 0);
 			@include margin(right auto left auto);
 			@include size(auto, 100%);
-
-			will-change: transform;
 		}
 	}
 }

@@ -12,7 +12,6 @@
 	@include size(140px);
 	@include fixed(top -70px left -70px);
 
-	will-change: transform;
 	z-index: 15;
 
 	svg {
@@ -56,7 +55,6 @@
 
 		transform: scale(0);
 		transition: transform 0.5s map-get($easings, ease-out-expo);
-		will-change: transform;
 
 		@at-root #{ $this }.is-active::after {
 			transform: scale(1);

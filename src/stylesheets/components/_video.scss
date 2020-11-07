@@ -12,7 +12,6 @@
 		@include padding(bottom percentage(611/416));
 
 		transition: transform 1.5s map-get($easings, ease-out-expo);
-		will-change: transform;
 
 		@include media-breakpoint-up(md) {
 			@include padding(bottom percentage(600/1076));
@@ -42,7 +41,6 @@
 		@include size(100%);
 
 		transition: transform 1.5s map-get($easings, ease-out-expo);
-		will-change: transform;
 
 		object-fit: cover;
 		object-position: center;
@@ -55,8 +53,6 @@
 		@include size(100%);
 
 		transition: transform 1.5s map-get($easings, ease-out-expo);
-		will-change: transform;
-
 		z-index: 2;
 	}
 
@@ -65,8 +61,6 @@
 		@extend .d-flex, .align-items-center, .justify-content-center;
 
 		transition: transform 1.5s map-get($easings, ease-out-expo);
-		will-change: transform;
-
 		z-index: 3;
 	}
 

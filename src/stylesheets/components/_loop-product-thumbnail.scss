@@ -8,7 +8,7 @@
 	@extend %overflow-hidden;
 
 	transition: transform 1.5s map-get($easings, ease-out-expo);
-	will-change: transform;
+
 	height: 420px;
 
 	@include media-breakpoint-up(sm) {
@@ -20,7 +20,7 @@
 		@include size(100%);
 
 		transition: transform 1.5s map-get($easings, ease-out-expo);
-		will-change: transform;
+
 		object-fit: cover;
 		object-position: center;
 

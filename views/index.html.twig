@@ -26,7 +26,7 @@
 
 	</head>
 
-	<body class="position-relative {{ body_class }}{{ post.body_classes ? ( ' ' ~ post.body_classes | join( ' ' ) ) }}">
+	<body class="{{ body_class }}{{ post.body_classes ? ( ' ' ~ post.body_classes | join( ' ' ) ) }}">
 		<div id="svg-sprite" class="d-none">{% include 'icons.svg' %}</div>
 
 		{% do action( 'woocommerce_before_main_content' ) %}
@@ -51,16 +51,24 @@
 			data-scroll-container
 		>	
 			
+			<div class="Coordinates" data-scroll-section>
+				{% for i in 0..9 %}
+					<span id="coordinate-{{ i }}" class="page-block" data-number="{{ random( 1, 100000 ) }}" data-scroll data-scroll-call="coordinate-{{ i }}" style="top: {{ i + random( 0, 100 ) }}%; left: {{ i + random( 0, 100 ) }}%;" data-node-type="CoordinateBlock">0</span>
+				{% endfor %}
+			</div>	
+
+
 			{% include 'header.html.twig' %}
 		
 			{% include 'components/menu.html.twig' with { menu: nav_menus.main } %}
+
 
 			{% block hero %}{% endblock %}
 
 			{% block content %}
 
 				<div class="row" data-scroll-section>
-					<div class="col-8 offset-2">
+					<div class="col-10 offset-1 col-md-8 offset-md-2">
 						<div class="Wysiwyg">{{- post.content -}}</div>
 					</div>
 				</div>

@@ -27,7 +27,9 @@ export default class FaqBlock extends AbstractBlock {
 		});
 	}
 
-	onPageReady() {
+	initEvents() {
+		super.initEvents();
+
 		window.addEventListener(EventTypes.AFTER_SPLASHSCREEN_HIDE, () => {
 			Scroll.on('call', (value, way, obj) => {
 				if ('answer' === value && 'enter' === way) {
