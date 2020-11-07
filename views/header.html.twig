@@ -15,11 +15,17 @@
 
         <div class="d-none d-md-flex col-2 offset-3 align-items-center justify-content-center">
             {% if is_product %}
-                <a class="Site-header__title font-family-title font-weight-extrablack text-transform-uppercase Pointer-events-auto" href="{{ shop_url }}">{{- __( 'Return', 'rider404' ) -}}</a>
+                <a class="Site-header__title Page__title font-family-title font-weight-extrablack text-transform-uppercase Pointer-events-auto" href="{{ shop_url }}">
+                    <span>{{- __( 'Return', 'rider404' ) -}}</span>
+                </a>
             {% elseif is_shop %}
-                <p class="Site-header__title font-family-title font-weight-extrablack text-transform-uppercase margin-0">{{- __( 'Shop', 'rider404' ) -}}</p>
+                <p class="Site-header__title Page__title font-family-title font-weight-extrablack text-transform-uppercase margin-0">
+                    <span>{{- __( 'Shop', 'rider404' ) -}}</span>
+                </p>
             {% elseif is_product_category %}
-                <p class="Site-header__title font-family-title font-weight-extrablack text-transform-uppercase margin-0">{{- product_cat_current.name -}}</p>
+                <p class="Site-header__title Page__title font-family-title font-weight-extrablack text-transform-uppercase margin-0">
+                    <span>{{- product_cat_current.name -}}</span>
+                </p>
             {% elseif is_front_page %}
                 <div 
                     class="Site-header__title Site-header__love-two-ride-four-love page-block" 

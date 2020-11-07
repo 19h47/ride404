@@ -28,14 +28,6 @@
 		</div>
 	</footer>
 
-	<div id="video-menu" class="Video page-block" data-node-type="VideoBlock">
-		<canvas></canvas>
-		<video autoplay loop preload="auto" muted>
-			<source src="{{ Image( nav_menus.main.meta('video') ).src }}" type="video/mp4">
-		</video>
-	</div>
-
 	{% include 'components/video.html.twig' with { id: 'video-menu', preview: Image( nav_menus.main.meta('video') ).src } %}
-
-	
+		
 </div>

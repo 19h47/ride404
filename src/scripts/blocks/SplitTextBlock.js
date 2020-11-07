@@ -1,4 +1,4 @@
-import { AbstractBlock } from 'starting-blocks';
+import { AbstractBlock, EventTypes } from 'starting-blocks';
 import { gsap } from 'gsap';
 
 import Scroll from 'common/Scroll';
@@ -41,10 +41,12 @@ export default class SplitTextBlock extends AbstractBlock {
 	initEvents() {
 		super.initEvents();
 
-		Scroll.on('call', (value, way) => {
-			if (this.rootElement.id === value && 'enter' === way) {
-				this.timeline.play();
-			}
+		window.addEventListener(EventTypes.START_SPLASHSCREEN_HIDE, () => {
+			Scroll.on('call', (value, way) => {
+				if (this.rootElement.id === value && 'enter' === way) {
+					this.timeline.play();
+				}
+			});
 		});
 	}
 }

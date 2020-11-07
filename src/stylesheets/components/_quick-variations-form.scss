@@ -19,12 +19,16 @@
 	background-color: the_color(gray, very-dark-01);
 
 	width: min-content;
-	z-index: 10;
+	z-index: 20;
 
-	transition: opacity 0.8s map-get($easings, ease-out-expo),
-		visibility 0.8s map-get($easings, ease-out-expo);
+	transition: opacity 1s map-get($easings, ease-out-expo),
+		visibility 1s map-get($easings, ease-out-expo);
 
 	@at-root .is-ontop & {
+		@include autoAlpha(0);
+	}
+
+	@at-root .Menu--is-open & {
 		@include autoAlpha(0);
 	}
 
@@ -55,7 +59,7 @@
 			@include margin(right 15px left 15px);
 			@extend %cursor-pointer;
 
-			transition: 0.4s color map-get($easings, ease-out-expo);
+			transition: color 0.5s map-get($easings, ease-out-expo);
 
 			&:first-child {
 				@include margin(left 0);
@@ -74,8 +78,8 @@
 				content: '';
 				opacity: 0;
 
-				transition: 0.4s opacity map-get($easings, ease-out-expo),
-					0.4s background-color map-get($easings, ease-out-expo);
+				transition: opacity 0.5s map-get($easings, ease-out-expo),
+					background-color 0.5s map-get($easings, ease-out-expo);
 			}
 
 			&:hover,

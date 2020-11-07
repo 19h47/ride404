@@ -9,9 +9,12 @@ h1,
 	@extend %font-weight-extrablack, %font-family-title;
 	@include margin(top 1em bottom 2em);
 
+	font-size: 50;
+	line-height: (55/50);
+
 	@include media-breakpoint-up(md) {
 		font-size: vw_size(110);
-		line-height: vw_size(120);
+		line-height: vw_size(130);
 	}
 }
 

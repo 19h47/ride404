@@ -6,40 +6,63 @@
 {% extends 'index.html.twig' %}
 
 {% block hero %}
+    {% do action( 'rider_single_product_before_hero' ) %}
+
     <div class="Hero" data-scroll-section>
         <div class="row">
             <div class="col-10 offset-1">
-                <h1 class="text-align-center margin-0">
-                    {% include 'partials/split-text.html.twig' with { title: post.meta( 'long_title' ) ? post.meta( 'long_title' ) : post.title, id: fn( 'uniqid' ) } %}
-                </h1>
+                {{- fn( 'woocommerce_template_single_title' ) -}}
             </div>
         </div>
     </div>
+
+    {% do action( 'rider_single_product_after_hero' ) %}
 {% endblock %}
 
 {% block content %}
     
     {% do action( 'woocommerce_before_single_product' ) %}
 
-    <div class="row" data-scroll-section>
-        <div class="col-8 offset-2">
-    
-            <div id="product-{{ post.id }}" class="{{ product_class | join( ' ' ) }}">
+    <div class="Section" data-scroll-section>
+        <div class="row">
+            <div class="col-8 offset-2">
+        
+                <div id="product-{{ post.id }}" class="{{ product_class | join( ' ' ) }}">
 
-                {% do action( 'woocommerce_before_single_product_summary' ) %}
+                    {% do action( 'woocommerce_before_single_product_summary' ) %}
 
-                <div class="summary entry-summary">
-                    {% do action( 'woocommerce_single_product_summary' ) %}
+                    <div class="summary entry-summary">
+                        {#  
+                        # Hook: woocommerce_single_product_summary.
+                        #
+                        # @hooked woocommerce_template_single_rating - 10
+                        # @hooked woocommerce_template_single_price - 10
+                        # @hooked woocommerce_template_single_add_to_cart - 30
+                        # @hooked woocommerce_template_single_sharing - 50
+                        # @hooked WC_Structured_Data::generate_product_data() - 60
+                        #}
+                        {% do action( 'woocommerce_single_product_summary' ) %}
 
-                    <div class="Section">
                         {% include 'partials/image.html.twig' with { image: post.thumbnail, classes: [ 'Product-thumbnail' ] } only %}
+
                     </div>
+
+                    {% do action( 'woocommerce_after_single_product_summary' ) %}
+
                 </div>
 
-                {% do action( 'woocommerce_after_single_product_summary' ) %}
-
             </div>
+        </div>
+    </div>
 
+    <div class="Section" data-scroll-section>
+        <div class="row" >
+            <div class="col-4 offset-2">
+                <div class="h2 margin-0">{{- post.excerpt -}}</div>
+            </div>
+            <div class="col-3{{ post.excerpt ? ' offset-1' : ' offset-6' -}}">
+                {{ post.content }}
+            </div>
         </div>
     </div>
 

@@ -1,7 +1,10 @@
 import { AbstractBlock } from 'starting-blocks';
 import { gsap } from 'gsap';
+import { TextPlugin } from 'gsap/TextPlugin';
 
 import Scroll from 'common/Scroll';
+
+gsap.registerPlugin(TextPlugin);
 
 /**
  *
@@ -22,18 +25,23 @@ export default class CoordinateBlock extends AbstractBlock {
 	initEvents() {
 		super.initEvents();
 
+		const counter = { value: 0 };
+		const timeline = gsap.timeline({ paused: true });
+
+		timeline.to(counter, {
+			value: this.number,
+			roundProps: 'value',
+			duration: 2,
+			onUpdate: () => {
+				this.rootElement.textContent = counter.value.toLocaleString('en-US', {
+					minimumFractionDigits: 2,
+				});
+			},
+		});
+
 		Scroll.on('call', value => {
 			if (this.rootElement.id === value) {
-				const counter = { value: 0 };
-
-				gsap.to(counter, {
-					value: this.number,
-					roundProps: 'value',
-					duration: 2,
-					onUpdate: () => {
-						this.rootElement.textContent = counter.value.toLocaleString();
-					},
-				});
+				timeline.restart();
 			}
 		});
 	}

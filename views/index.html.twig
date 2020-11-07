@@ -53,7 +53,7 @@
 			
 			<div class="Coordinates" data-scroll-section>
 				{% for i in 0..9 %}
-					<span id="coordinate-{{ i }}" class="page-block" data-number="{{ random( 1, 100000 ) }}" data-scroll data-scroll-call="coordinate-{{ i }}" style="top: {{ i + random( 0, 100 ) }}%; left: {{ i + random( 0, 100 ) }}%;" data-node-type="CoordinateBlock">0</span>
+					<span id="coordinate-{{ i }}" class="page-block" data-number="{{ random( 1, 100000 ) }}" data-scroll data-scroll-repeat data-scroll-call="coordinate-{{ i }}" style="top: {{ i + random( 0, 100 ) }}%; left: {{ i + random( 0, 100 ) }}%;" data-node-type="CoordinateBlock">0</span>
 				{% endfor %}
 			</div>	
 
@@ -66,13 +66,11 @@
 			{% block hero %}{% endblock %}
 
 			{% block content %}
-
 				<div class="row" data-scroll-section>
 					<div class="col-10 offset-1 col-md-8 offset-md-2">
 						<div class="Wysiwyg">{{- post.content -}}</div>
 					</div>
 				</div>
-				
 			{% endblock %}
 
 			{% include 'footer.html.twig' %}

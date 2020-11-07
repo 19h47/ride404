@@ -86,6 +86,8 @@ class WooCommerce {
 		// After shop loop item title.
 		remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 );
 		add_action( 'woocommerce_after_shop_loop_item_title', array( $this, 'template_loop_price' ), 10 );
+
+		add_action( 'rider_single_product_before_hero', array( $this, 'template_single_quick_variation_form' ), 10 );
 	}
 
 
@@ -210,6 +212,29 @@ class WooCommerce {
 	 */
 	public function before_widget_product_list() {
 		return '<ul class="Product-list-widget product_list_widget js-items">';
+	}
+
+	/**
+	 * Single quick variation form.
+	 *
+	 * @return string
+	 */
+	public function template_single_quick_variation_form() : string {
+		global $product;
+
+		$context = Timber::context();
+
+		$get_variations       = count( $product->get_children() ) <= apply_filters( 'woocommerce_ajax_variation_threshold', 30, $product );
+		$available_variations = $get_variations ? $product->get_available_variations() : false;
+
+		$variations_json            = wp_json_encode( $available_variations );
+		$context['variations_attr'] = wc_esc_json( $variations_json );
+
+		$context['product']     = $product;
+		$context['attributes']  = $product->get_variation_attributes();
+		$context['form_action'] = apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() );
+
+		return Timber::render( 'woocommerce/single-product/add-to-cart/quick-variation-form.html.twig', $context );
 	}
 }
 

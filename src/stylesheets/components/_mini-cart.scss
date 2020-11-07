@@ -44,7 +44,7 @@
 		transition: opacity 0.8s map-get($easings, ease-out-expo) 0.7s;
 
 		@include media-breakpoint-up(md) {
-			@include margin(top 8px);
+			@include margin(top 9px);
 			font-size: 12px;
 		}
 

@@ -2,6 +2,8 @@ import { AbstractBlock } from 'starting-blocks';
 import RadioGroup from '@19h47/radiogroup';
 import $ from 'jquery'; // eslint-disable-line
 
+import Scroll from 'common/Scroll';
+
 /**
  *
  * @constructor
@@ -34,6 +36,7 @@ export default class ProductVariationsBlock extends AbstractBlock {
 					[...$select.options].forEach(option => {
 						if (value === option.value) {
 							$($select).val(value).trigger('change');
+							Scroll.update();
 						}
 					});
 				});
@@ -44,7 +47,7 @@ export default class ProductVariationsBlock extends AbstractBlock {
 			this.radiogroup.radios.forEach(radio => {
 				if (radio.$input.value === value && selected) {
 					this.radiogroup.deactivateAll();
-					radio.activate();
+					radio.activate(false);
 				}
 			});
 		});
