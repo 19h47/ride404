@@ -224,15 +224,18 @@ class Theme {
 
 		$context['cart'] = WC()->cart;
 
-		$context['cart_url']  = wc_get_cart_url();
-		$context['shop_url']  = wc_get_page_permalink( 'shop' );
-		$context['terms_url'] = get_permalink( get_option( 'woocommerce_terms_page_id' ) ); 
+		$context['cart_url']     = wc_get_cart_url();
+		$context['checkout_url'] = wc_get_checkout_url();
+		$context['shop_url']     = wc_get_page_permalink( 'shop' );
+		$context['terms_url']    = get_permalink( get_option( 'woocommerce_terms_page_id' ) );
 
 		$context['is_front_page']       = is_front_page();
 		$context['is_product']          = is_product();
 		$context['is_shop']             = is_shop();
 		$context['is_front_page']       = is_front_page();
 		$context['is_product_category'] = is_product_category();
+
+		$context['is_user_logged_in'] = is_user_logged_in();
 
 		return $context;
 	}

@@ -1,0 +1,53 @@
+{# 
+ # Form checkout
+ #
+ #
+ # @package Rider404
+ # @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ #}
+{% do action( 'woocommerce_before_checkout_form', checkout ) %}
+
+{% if not checkout.is_registration_enabled() and checkout.is_registration_required() and not is_user_logged_in %}
+
+    {% filter apply_filters( 'woocommerce_checkout_must_be_logged_in_message' ) %}
+        {{- __( 'You must be logged in to checkout.', 'rider404' ) -}}
+    {% endfilter %}
+
+{% else %}
+
+    <form name="checkout" method="post" class="checkout woocommerce-checkout" action="{{ checkout_url }}" enctype="multipart/form-data">
+        {% if checkout.get_checkout_fields() %}
+
+            {% do action( 'woocommerce_checkout_before_customer_details' ) %}
+
+            <div class="row" id="customer_details">
+                <div class="col-6">
+                    {% do action( 'woocommerce_checkout_billing' ) %}
+                </div>
+
+                <div class="col-5 offset-1">
+                    {% do action( 'woocommerce_checkout_shipping' ) %}
+                </div>
+            </div>
+
+            {% do action( 'woocommerce_checkout_after_customer_details' ) %}
+
+        {% endif %}
+        
+        {% do action( 'woocommerce_checkout_before_order_review_heading' ) %}
+        
+        <h3 id="order_review_heading">{{- __( 'Your order', 'rider404' ) -}}</h3>
+        
+        {% do action( 'woocommerce_checkout_before_order_review' ) %}
+
+        <div id="order_review" class="woocommerce-checkout-review-order">
+            {% do action( 'woocommerce_checkout_order_review' ) %}
+        </div>
+
+        {% do action( 'woocommerce_checkout_after_order_review' ) %}
+
+    </form>
+
+{% endif %}
+
+{% do action( 'woocommerce_after_checkout_form', checkout ) %}
