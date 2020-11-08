@@ -53,7 +53,7 @@ class WooCommerce {
 		remove_action( 'woocommerce_single_variation', 'woocommerce_single_variation_add_to_cart_button', 20 );
 
 		add_action( 'woocommerce_single_variation', 'woocommerce_single_variation_add_to_cart_button', 10 );
-		add_action( 'woocommerce_single_variation', array( $this, 'single_variation' ), 20 );
+		add_action( 'woocommerce_single_variation', array( $this, 'template_single_variation' ), 20 );
 
 		// Before single product summary.
 		remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20 );
@@ -87,20 +87,17 @@ class WooCommerce {
 		remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 );
 		add_action( 'woocommerce_after_shop_loop_item_title', array( $this, 'template_loop_price' ), 10 );
 
-		// Single product before hero.
-		add_action( 'rider_single_product_before_hero', array( $this, 'template_single_quick_add_to_cart' ), 30 );
+		// Before single product.
+		add_action( 'woocommerce_before_single_product', array( $this, 'template_single_quick_add_to_cart' ), 30 );
 
-		add_action( 'rider404_quick_variable_add_to_cart', array( $this, 'quick_variable_add_to_cart' ), 10 );
-
-		// Single product after hero.
-		add_action( 'rider_single_product_title_hero', 'woocommerce_template_single_title', 10 );
+		// Single product hero.
+		add_action( 'rider404_single_product_hero', 'woocommerce_template_single_title', 10 );
 
 		// Single quick variation.
 		add_action( 'rider404_single_quick_variation', array( $this, 'template_single_variation' ), 10 );
 		add_action( 'rider404_single_quick_variation', 'woocommerce_single_variation_add_to_cart_button', 20 );
 
-		remove_action( 'woocommerce_single_variation', 'woocommerce_single_variation', 10 );
-		add_action( 'woocommerce_single_variation', array( $this, 'template_single_variation' ), 10 );
+		add_action( 'rider404_quick_variable_add_to_cart', array( $this, 'quick_variable_add_to_cart' ), 10 );
 	}
 
 

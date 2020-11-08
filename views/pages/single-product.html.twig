@@ -5,28 +5,32 @@
  #}
 {% extends 'index.html.twig' %}
 
-
 {% block hero %}
     {#  
-     # Hook: rider_single_product_before_hero
+     # Hook: rider404_single_product_before_hero
      #
      # @hooked Rider404\Plugins\WooCommerce\template_single_quick_add_to_cart - 10
      #}
-    {% do action( 'rider_single_product_before_hero' ) %}
+    {% do action( 'rider404_single_product_before_hero' ) %}
 
     <div class="Hero" data-scroll-section>
         <div class="row">
             <div class="col-10 offset-1">
-                {% do action( 'rider_single_product_title_hero' ) %}
+                {# 
+                 # Hook: rider404_single_product_hero
+                 # 
+                 # @hooked woocommerce_template_single_title - 10
+                 #}
+                {% do action( 'rider404_single_product_hero' ) %}
             </div>
         </div>
     </div>
 
-    {% do action( 'rider_single_product_after_hero' ) %}
+    {% do action( 'rider404_single_product_after_hero' ) %}
 {% endblock %}
 
 {% block content %}
-    
+
     {% do action( 'woocommerce_before_single_product' ) %}
 
     <div id="product-{{ post.id }}" class="{{ product_class | join( ' ' ) }}" data-scroll-section>
@@ -38,14 +42,14 @@
 
                     <div class="summary entry-summary">
                         {#  
-                        # Hook: woocommerce_single_product_summary.
-                        #
-                        # @hooked woocommerce_template_single_rating - 10
-                        # @hooked woocommerce_template_single_price - 10
-                        # @hooked woocommerce_template_single_add_to_cart - 30
-                        # @hooked woocommerce_template_single_sharing - 50
-                        # @hooked WC_Structured_Data::generate_product_data() - 60
-                        #}
+                         # Hook: woocommerce_single_product_summary.
+                         #
+                         # @hooked woocommerce_template_single_rating - 10
+                         # @hooked woocommerce_template_single_price - 10
+                         # @hooked woocommerce_template_single_add_to_cart - 30
+                         # @hooked woocommerce_template_single_sharing - 50
+                         # @hooked WC_Structured_Data::generate_product_data() - 60
+                         #}
                         {% do action( 'woocommerce_single_product_summary' ) %}
 
                         {% include 'partials/image.html.twig' with { image: post.thumbnail, classes: [ 'Product-thumbnail' ] } only %}
@@ -64,14 +68,14 @@
                     <div class="h2 margin-0">{{- post.excerpt -}}</div>
                 </div>
                 <div class="col-3{{ post.excerpt ? ' offset-1' : ' offset-6' -}}">
-                    {{ post.content }}
+                    {{- post.content -}}
                 </div>
             </div>
         </div>
 
     </div>
 
-
     {% do action( 'woocommerce_after_single_product' ) %}
-
+    
 {% endblock  %}
+

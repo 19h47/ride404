@@ -4,7 +4,7 @@
  # @package Rider404
  #}
 
-{% do action( 'woocommerce_before_quick_add_to_cart_form' ) %}
+{% do action( 'rider404_before_quick_add_to_cart_form' ) %}
 
 {% embed 'partials/bar.html.twig' %}
 	{% block content %}
@@ -17,7 +17,7 @@
 			data-product_variations="{{ variations_attr }}" 
 		>
 
-			{% do action( 'woocommerce_before_quick_variations_form' ) %}
+			{% do action( 'rider404_before_quick_variations_form' ) %}
 
 			{% if available_variations %}
 				
@@ -57,7 +57,7 @@
 				{% endfor %}
 
 				<div class="single_variation_wrap">
-					{% do action( 'woocommerce_before_single_quick_variation' ) %}
+					{% do action( 'rider404_before_single_quick_variation' ) %}
 
 					{#
 					 # Hook: rider404_single_quick_variation. 
@@ -67,7 +67,7 @@
 					 #}
 					{% do action( 'rider404_single_quick_variation' ) %}
 
-					{% do action( 'rider_after_single_quick_variation' ) %}
+					{% do action( 'rider404_after_single_quick_variation' ) %}
 
 				</div>
 
