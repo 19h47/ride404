@@ -69,12 +69,11 @@
 @import 'components/product-list-widget';
 
 @import 'components/variation-add-to-cart';
-@import 'components/variation';
+@import 'components/single-variation';
 
 @import 'components/price';
 
-@import 'components/quick-variations-form';
-@import 'components/quick-product-categories';
+@import 'components/quick-cart';
 
 @import 'components/loop-product';
 @import 'components/loop-product-title';
@@ -97,6 +96,7 @@
 @import 'components/cursor';
 @import 'components/products';
 @import 'components/coordinates';
+@import 'components/bar';
 
 // Utilities.
 @import '~@19h47/architecture/src/stylesheets/utilities/colors';

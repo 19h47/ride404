@@ -21,10 +21,10 @@
   dependencies:
     prettier "^1.x.x"
 
-"@19h47/radiogroup@^5.3.1":
-  version "5.3.1"
-  resolved "https://registry.yarnpkg.com/@19h47/radiogroup/-/radiogroup-5.3.1.tgz#6265d1d497270e93b24bba8b28676b5fc62d29c3"
-  integrity sha512-aLCzBuSsDXgaOKs2Wso5MXffoFYeQRw/JB2JjYHVP6X7/mhNVJryGWart2fauZonH7V8KOhNklx6GKf8qPW66w==
+"@19h47/radiogroup@^5.4.0":
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/@19h47/radiogroup/-/radiogroup-5.4.0.tgz#4bc4f08bc808d3df9f2a58ff44a5330abfca6d17"
+  integrity sha512-P/ZsR7pXShvdcM94RfY7iwNxbLVP0bA9dtPWSz1+0tzYLTbamqQU6FUBLR8xU/xbkLbrO8zBMTPZ2xBQzurDvg==
   dependencies:
     "@19h47/keycode" "^3.0.3"
     events "^3.2.0"

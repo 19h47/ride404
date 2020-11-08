@@ -7,9 +7,13 @@
 
 {% block content %}
 	
-	<div class="Quick-product-categories">
-		{% include 'components/product-categories.html.twig' %}
-	</div>
+	{% embed 'partials/bar.html.twig' %}
+		{% block content %}
+			<div class="Quick-product-categories">
+				{% include 'components/product-categories.html.twig' %}
+			</div>
+		{% endblock %}
+	{% endembed %}
 
 	<div class="Section" data-scroll-section>
 		<div class="row">

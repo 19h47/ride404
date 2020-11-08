@@ -5,6 +5,6 @@
  * @package Rider404
  */
 .Price {
-	@extend %font-weight-semibold, %text-align-center;
+	@extend %font-weight-semibold, %text-align-center, %white-space-nowrap;
 	@include margin(bottom 40px);
 }

@@ -1,10 +1,10 @@
 /**
- * Variation
+ * Single variation
  *
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  * @package Rider404
  */
-.Variation {
+.Single-variation {
 	$this: &;
 
 	@extend %font-weight-regular, %text-align-center;

@@ -1,19 +1,16 @@
 /**
- * Quick product categories
+ * Bar
  *
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  * @package Rider404
  */
-.Quick-product-categories {
-	$this: &;
-
+.Bar {
 	@extend .d-flex, .align-items-center;
-	@include autoAlpha(1);
-	@extend %list-style-type-none, %font-weight-regular;
 	@include padding(top 20px right 30px bottom 20px left 30px);
 
 	@include fixed(top 0 right 0 left 0);
 	@include margin(top 75px right auto left auto);
+	@extend %text-align-center;
 
 	border-radius: 35px;
 	border: 1px solid the_color(gray, very-dark-03);
@@ -22,14 +19,14 @@
 	width: min-content;
 	z-index: 20;
 
-	transition: opacity 0.8s map-get($easings, ease-out-expo),
-		visibility 0.8s map-get($easings, ease-out-expo);
+	transition: opacity 1s map-get($easings, ease-out-expo),
+		visibility 1s map-get($easings, ease-out-expo);
 
 	@at-root .is-ontop & {
 		@include autoAlpha(0);
 	}
 
 	@at-root .Menu--is-open & {
-		@extend .d-none;
+		@include autoAlpha(0);
 	}
 }

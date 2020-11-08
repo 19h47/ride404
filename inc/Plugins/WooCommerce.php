@@ -87,7 +87,20 @@ class WooCommerce {
 		remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 );
 		add_action( 'woocommerce_after_shop_loop_item_title', array( $this, 'template_loop_price' ), 10 );
 
-		add_action( 'rider_single_product_before_hero', array( $this, 'template_single_quick_variation_form' ), 10 );
+		// Single product before hero.
+		add_action( 'rider_single_product_before_hero', array( $this, 'template_single_quick_add_to_cart' ), 30 );
+
+		add_action( 'rider404_quick_variable_add_to_cart', array( $this, 'quick_variable_add_to_cart' ), 10 );
+
+		// Single product after hero.
+		add_action( 'rider_single_product_title_hero', 'woocommerce_template_single_title', 10 );
+
+		// Single quick variation.
+		add_action( 'rider404_single_quick_variation', array( $this, 'template_single_variation' ), 10 );
+		add_action( 'rider404_single_quick_variation', 'woocommerce_single_variation_add_to_cart_button', 20 );
+
+		remove_action( 'woocommerce_single_variation', 'woocommerce_single_variation', 10 );
+		add_action( 'woocommerce_single_variation', array( $this, 'template_single_variation' ), 10 );
 	}
 
 
@@ -215,26 +228,50 @@ class WooCommerce {
 	}
 
 	/**
-	 * Single quick variation form.
+	 * Single quick add to cart
+	 *
+	 * @return void
+	 */
+	public function template_single_quick_add_to_cart() : void {
+		global $product;
+
+		do_action( 'rider404_quick_' . $product->get_type() . '_add_to_cart' );
+	}
+
+	/**
+	 * Variable quick add to cart
 	 *
 	 * @return string
 	 */
-	public function template_single_quick_variation_form() : string {
+	public function quick_variable_add_to_cart() : string {
 		global $product;
 
 		$context = Timber::context();
 
-		$get_variations       = count( $product->get_children() ) <= apply_filters( 'woocommerce_ajax_variation_threshold', 30, $product );
-		$available_variations = $get_variations ? $product->get_available_variations() : false;
+		$get_variations = count( $product->get_children() ) <= apply_filters( 'woocommerce_ajax_variation_threshold', 30, $product );
 
-		$variations_json            = wp_json_encode( $available_variations );
+		$context['product'] = $product;
+
+		$context['available_variations'] = $get_variations ? $product->get_available_variations() : false;
+		$context['attributes']           = $product->get_variation_attributes();
+		$context['selected_attributes']  = $product->get_default_attributes();
+
+		$variations_json            = wp_json_encode( $context['available_variations'] );
 		$context['variations_attr'] = wc_esc_json( $variations_json );
 
-		$context['product']     = $product;
-		$context['attributes']  = $product->get_variation_attributes();
 		$context['form_action'] = apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() );
 
-		return Timber::render( 'woocommerce/single-product/add-to-cart/quick-variation-form.html.twig', $context );
+		return Timber::render( 'woocommerce/single-product/add-to-cart/quick-variable.html.twig', $context );
 	}
-}
 
+
+	/**
+	 * Template single variation
+	 *
+	 * @return string
+	 */
+	public function template_single_variation() : string {
+		return Timber::render( 'woocommerce/single-product/add-to-cart/single-variation.html.twig' );
+	}
+
+}

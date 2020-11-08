@@ -2,14 +2,16 @@
 
 ## WooCommerce
 
-### Custom functions
+### Custom hook
 
 ```
-rider404_radiogroup_variation_attribute_options
+rider_single_product_before_hero
 ```
 
-### Custom filters
+```
+rider_single_product_title_hero
+```
 
 ```
-rider404_radiogroup_variation_attribute_options_args
+rider_single_product_after_hero
 ```

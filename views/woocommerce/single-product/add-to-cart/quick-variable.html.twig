@@ -1,0 +1,85 @@
+{#  
+ # Quick variable
+ #
+ # @package Rider404
+ #}
+
+{% do action( 'woocommerce_before_quick_add_to_cart_form' ) %}
+
+{% embed 'partials/bar.html.twig' %}
+	{% block content %}
+		<form  
+			class="Bar Quick-cart variations_form" 
+			action="{{ form_action }}" 
+			method="post" 
+			enctype="multipart/form-data" 
+			data-product_id="{{ product.get_id() }}" 
+			data-product_variations="{{ variations_attr }}" 
+		>
+
+			{% do action( 'woocommerce_before_quick_variations_form' ) %}
+
+			{% if available_variations %}
+				
+				{% include 'woocommerce/single-product/price.html.twig' %}
+
+				{% for name, options in attributes %}
+					{% set terms = fn( 'wc_get_product_terms', product.get_id(), name, { 'fields': 'all' } ) %}
+
+					<div id="product-variations-{{ name | sanitize }}" class="variations page-block" data-node-type="ProductVariationsBlock">
+
+						{# @see https://github.com/woocommerce/woocommerce/blob/master/includes/wc-template-functions.php#L2988 #}
+						{{-
+							fn( 'wc_dropdown_variation_attribute_options',
+								{
+									options: options,
+									attribute: name,
+									product: product,
+									class: 'd-none',
+									show_option_none: false,
+								}
+							)
+						-}}
+						
+						<div role="radiogroup">
+							{% for term in terms %}
+								{% if term.slug in options %}
+									<div role="radio" aria-checked="false" tabindex="-1">
+										<span class="white-space-nowrap">{{- term.name -}}</span>
+										<input class="d-none" type="radio" name="attribute_{{ name | sanitize }}" value="{{ term.slug }}"{{ ( terms | length ) == 1 ? ' checked' : '' }}>
+									</div>
+								{% endif %}
+							{% endfor %}
+						</div>
+						
+					</div>
+					
+				{% endfor %}
+
+				<div class="single_variation_wrap">
+					{% do action( 'woocommerce_before_single_quick_variation' ) %}
+
+					{#
+					 # Hook: rider404_single_quick_variation. 
+					 #
+					 # @hooked Rider404\Plugins\WooCommerce::template_single_variation - 10
+					 # @hooked woocommerce_single_variation_add_to_cart_button - 20
+					 #}
+					{% do action( 'rider404_single_quick_variation' ) %}
+
+					{% do action( 'rider_after_single_quick_variation' ) %}
+
+				</div>
+
+			{% else %}
+				<p class="stock out-of-stock white-space-nowrap margin-0">
+					{% filter apply_filters( 'woocommerce_out_of_stock_message' ) %}
+						{{- __( 'This product is currently out of stock and unavailable.', 'rider404' ) -}}
+					{% endfilter %}
+				</p>
+			{% endif %}
+		</form>
+	{% endblock %}
+{% endembed %}
+
+{% do action( 'rider404_after_quick_add_to_cart_form' ) %}

@@ -5,13 +5,19 @@
  #}
 {% extends 'index.html.twig' %}
 
+
 {% block hero %}
+    {#  
+     # Hook: rider_single_product_before_hero
+     #
+     # @hooked Rider404\Plugins\WooCommerce\template_single_quick_add_to_cart - 10
+     #}
     {% do action( 'rider_single_product_before_hero' ) %}
 
     <div class="Hero" data-scroll-section>
         <div class="row">
             <div class="col-10 offset-1">
-                {{- fn( 'woocommerce_template_single_title' ) -}}
+                {% do action( 'rider_single_product_title_hero' ) %}
             </div>
         </div>
     </div>
@@ -23,11 +29,10 @@
     
     {% do action( 'woocommerce_before_single_product' ) %}
 
-    <div class="Section" data-scroll-section>
-        <div class="row">
-            <div class="col-8 offset-2">
-        
-                <div id="product-{{ post.id }}" class="{{ product_class | join( ' ' ) }}">
+    <div id="product-{{ post.id }}" class="{{ product_class | join( ' ' ) }}" data-scroll-section>
+        <div class="Section">
+            <div class="row">
+                <div class="col-8 offset-2">
 
                     {% do action( 'woocommerce_before_single_product_summary' ) %}
 
@@ -50,21 +55,22 @@
                     {% do action( 'woocommerce_after_single_product_summary' ) %}
 
                 </div>
-
             </div>
         </div>
-    </div>
-
-    <div class="Section" data-scroll-section>
-        <div class="row" >
-            <div class="col-4 offset-2">
-                <div class="h2 margin-0">{{- post.excerpt -}}</div>
-            </div>
-            <div class="col-3{{ post.excerpt ? ' offset-1' : ' offset-6' -}}">
-                {{ post.content }}
+    
+        <div class="Section">
+            <div class="row">
+                <div class="col-4 offset-2">
+                    <div class="h2 margin-0">{{- post.excerpt -}}</div>
+                </div>
+                <div class="col-3{{ post.excerpt ? ' offset-1' : ' offset-6' -}}">
+                    {{ post.content }}
+                </div>
             </div>
         </div>
+
     </div>
+
 
     {% do action( 'woocommerce_after_single_product' ) %}
 
