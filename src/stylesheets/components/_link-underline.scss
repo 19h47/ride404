@@ -33,7 +33,7 @@
 	}
 
 	& > div::after {
-		@include absolute(top 100% right 0 left 0);
+		@include absolute(right 0 bottom 0 left 0);
 		@include size(100%, 2px);
 		@extend .d-block;
 

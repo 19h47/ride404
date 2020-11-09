@@ -12,6 +12,14 @@
 		@include padding(top 100px bottom 100px);
 	}
 
+	@include media-breakpoint-up(lg) {
+		@include padding(top 120px bottom 120px);
+	}
+
+	@include media-breakpoint-up(hd) {
+		@include padding(top 200px bottom 200px);
+	}
+
 	&__button {
 		@extend .d-block;
 		@include size(7px, 84.4px);
@@ -25,7 +33,7 @@
 	}
 
 	&__title {
-		@include margin(bottom 50px);
+		@include margin(bottom 35px);
 		@extend .h2, .margin-top-0;
 
 		@include media-breakpoint-up(md) {

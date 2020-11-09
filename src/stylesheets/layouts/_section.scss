@@ -11,7 +11,11 @@
 		@include margin(top 100px bottom 100px);
 	}
 
-	@include media-breakpoint-up(hd) {
+	@include media-breakpoint-up(lg) {
 		@include margin(top 180px bottom 180px);
+	}
+
+	@include media-breakpoint-up(lg) {
+		@include margin(top 324px bottom 324px);
 	}
 }

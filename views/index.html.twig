@@ -43,7 +43,6 @@
 			</div>
 		{% endif %}
 
-
 		<div
 			id="{{ post.id ? "page-#{post.id}" : 'page' }}"
 			class="Site-content page-content position-relative"
@@ -51,9 +50,20 @@
 			data-scroll-container
 		>
 
-			<div class="Arrow d-none d-md-block is-active" data-scroll-section>
-				<div id="arrow" class="page-block" data-scroll data-scroll-repeat data-scroll-call="arrow" data-scroll-position="bottom" data-node-type="ArrowBlock" data-lottie-json="arrow"></div>
-			</div>
+			{% if is_front_page %}
+				<div class="Arrow d-none d-md-block is-active" data-scroll-section>
+					<div
+						id="arrow"
+						class="page-block"
+						data-scroll
+						data-scroll-repeat
+						data-scroll-call="arrow"
+						data-scroll-position="bottom"
+						data-node-type="ArrowBlock"
+						data-lottie-json="arrow"
+					></div>
+				</div>
+			{% endif %}
 
 			<div class="Coordinates" data-scroll-section>
 				{% for i in 0..9 %}

@@ -15,28 +15,28 @@
 		@extend %position-relative, %overflow-hidden;
 		@include padding(bottom percentage(611/416));
 
-		transition: transform 1.5s map-get($easings, ease-out-expo);
+		transition: transform 2s map-get($easings, ease-out-expo);
 
-		@include media-breakpoint-up(md) {
+		@include media-breakpoint-up(sm) {
 			@include padding(bottom percentage(600/1076));
 		}
 	}
 
 	&.is-over {
 		video {
-			transform: scale((1/0.9));
+			transform: scale((1/0.95));
 		}
 
 		canvas {
-			transform: scale((1/0.9));
+			transform: scale((1/0.95));
 		}
 
 		#{ $this }__body {
-			transform: scale(0.9);
+			transform: scale(0.95);
 		}
 
 		#{ $this }__overlay {
-			transform: scale((1/0.9));
+			transform: scale((1/0.95));
 		}
 	}
 
@@ -44,7 +44,7 @@
 		@include absolute(top 0 right 0 bottom 0 left 0);
 		@include size(100%);
 
-		transition: transform 1.5s map-get($easings, ease-out-expo);
+		transition: transform 2s map-get($easings, ease-out-expo);
 
 		object-fit: cover;
 		object-position: center;
@@ -56,7 +56,7 @@
 		@include absolute(top 0 right 0 bottom 0 left 0);
 		@include size(100%);
 
-		transition: transform 1.5s map-get($easings, ease-out-expo);
+		transition: transform 2s map-get($easings, ease-out-expo);
 		z-index: 2;
 	}
 

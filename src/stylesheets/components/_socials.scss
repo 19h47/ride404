@@ -69,7 +69,8 @@
 
 			border: 1px solid rgba(the_color(white), 0);
 			border-radius: 50%;
-			transition: border-color 0.5s map-get($easings, ease-out-expo);
+			transition: border-color 0.5s map-get($easings, ease-out-expo),
+				transform 1.5s map-get($easings, ease-out-expo);
 			content: '';
 			z-index: 2;
 		}
@@ -78,6 +79,7 @@
 		&:hover {
 			&::after {
 				border-color: rgba(the_color(white), 1);
+				transform: scale(0.9);
 			}
 		}
 

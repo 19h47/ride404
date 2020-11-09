@@ -42,6 +42,10 @@
 	&__items {
 		height: 230px;
 
+		@include media-breakpoint-up(sm) {
+			height: 435px;
+		}
+
 		@include media-breakpoint-up(md) {
 			height: 635px;
 		}
@@ -91,7 +95,7 @@
 
 		transition: transform 1.5s map-get($easings, ease-out-expo);
 
-		@include media-breakpoint-up(md) {
+		@include media-breakpoint-up(sm) {
 			@include margin(right percentage(0.75/8) left percentage(0.75/8));
 		}
 
@@ -122,8 +126,9 @@
 		@include margin(top 105px);
 
 		img {
+			@include size(auto, 100%);
+
 			max-width: 100%;
-			height: auto;
 		}
 
 		@include media-breakpoint-up(md) {

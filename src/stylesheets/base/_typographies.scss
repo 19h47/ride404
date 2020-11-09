@@ -30,6 +30,16 @@ h2,
 		font-size: 44px;
 		line-height: (52/44);
 	}
+
+	@include media-breakpoint-up(lg) {
+		font-size: 48px;
+		line-height: (52/48);
+	}
+
+	@include media-breakpoint-up(hd) {
+		font-size: 78px;
+		line-height: (92/78);
+	}
 }
 
 h3,

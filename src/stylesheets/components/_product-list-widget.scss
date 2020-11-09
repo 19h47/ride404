@@ -35,6 +35,8 @@
 		@extend .offset-sm-1;
 
 		@include media-breakpoint-up(sm) {
+			@include margin(top -35px);
+
 			width: percentage(3/12);
 		}
 

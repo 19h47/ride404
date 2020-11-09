@@ -22,7 +22,11 @@
 
 	.Video {
 		@include absolute(top 0 right 0 bottom 0 left 0);
-		@include padding(bottom 0);
+
+		&__body {
+			@include padding(bottom 0);
+			@include size(100%);
+		}
 	}
 
 	&__items {

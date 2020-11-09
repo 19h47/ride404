@@ -7,7 +7,7 @@
 .Loop-product-thumbnail {
 	@extend %overflow-hidden;
 
-	transition: transform 1.5s map-get($easings, ease-out-expo);
+	transition: transform 2s map-get($easings, ease-out-expo);
 
 	height: 420px;
 
@@ -19,7 +19,7 @@
 		@extend .d-block;
 		@include size(100%);
 
-		transition: transform 1.5s map-get($easings, ease-out-expo);
+		transition: transform 2s map-get($easings, ease-out-expo);
 
 		object-fit: cover;
 		object-position: center;

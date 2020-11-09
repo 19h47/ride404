@@ -30,7 +30,7 @@ class Widgets {
 	public function register_sidebars() {
 		$uniqid = uniqid();
 
-		$before_title  = '<div class="row"><div class="col-10 offset-1 col-sm-5 col-md-3 offset-md-6">';
+		$before_title  = '<div class="row"><div class="col-10 offset-1 col-sm-5 offset-sm-6 col-md-3">';
 		$before_title .= '<h2 class="margin-0"><div id="split-text-' . $uniqid . '" ';
 		$before_title .= 'class="Split-text page-block" data-scroll ';
 		$before_title .= 'data-scroll-call="split-text-' . $uniqid . '" data-node-type="SplitTextBlock">';
