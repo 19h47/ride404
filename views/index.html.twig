@@ -49,17 +49,31 @@
 			class="Site-content page-content position-relative"
 			data-node-type="{{ post.node_type | default( 'DefaultPage' ) }}"
 			data-scroll-container
-		>	
-			
+		>
+
+			<div class="Arrow d-none d-md-block is-active" data-scroll-section>
+				<div id="arrow" class="page-block" data-scroll data-scroll-repeat data-scroll-call="arrow" data-scroll-position="bottom" data-node-type="ArrowBlock" data-lottie-json="arrow"></div>
+			</div>
+
 			<div class="Coordinates" data-scroll-section>
 				{% for i in 0..9 %}
-					<span id="coordinate-{{ i }}" class="page-block" data-number="{{ random( 1, 100000 ) }}" data-scroll data-scroll-repeat data-scroll-call="coordinate-{{ i }}" style="top: {{ i + random( 0, 100 ) }}%; left: {{ i + random( 0, 100 ) }}%;" data-node-type="CoordinateBlock">0</span>
+					<span
+						id="coordinate-{{ i }}"
+						class="page-block"
+						data-number="{{ random( 1, 100000 ) }}"
+						data-scroll
+						data-scroll-repeat
+						data-scroll-speed="{{ random( 1, 9 ) }}"
+						data-scroll-call="coordinate-{{ i }}"
+						style="top: {{ i + random( 0, 100 ) }}%; left: {{ i + random( 0, 100 ) }}%;"
+						data-node-type="CoordinateBlock"
+					>0</span>
 				{% endfor %}
-			</div>	
+			</div>
 
 
 			{% include 'header.html.twig' %}
-		
+
 			{% include 'components/menu.html.twig' with { menu: nav_menus.main } %}
 
 
@@ -74,10 +88,10 @@
 			{% endblock %}
 
 			{% include 'footer.html.twig' %}
-		
+
 		</div>
 
-		
+
 		{% do action( 'woocommerce_after_main_content' ) %}
 
 		{{ wp_footer }}

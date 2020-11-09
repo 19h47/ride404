@@ -14,6 +14,7 @@
 	}
 
 	&__grid {
+		@extend .d-none, .d-md-block;
 		@include absolute(top 0 left 0);
 		@include margin(left percentage(1080/1440));
 	}
@@ -34,12 +35,16 @@
 	}
 
 	&__item {
-		@include size(percentage(1/4), 80px);
+		@include size(percentage(1/2), 80px);
 
 		transform: translate3d(0, 100%, 0);
 		opacity: 0;
 		transition: opacity 0.4s map-get($easings, ease-out-expo),
 			transform 1.4s map-get($easings, ease-out-expo);
+
+		@include media-breakpoint-up(sm) {
+			width: percentage(1/4);
+		}
 
 		img {
 			@include padding(top 20px right 20px bottom 20px left 20px);
@@ -64,7 +69,7 @@
 			}
 		}
 
-		@at-root #{$this}.is-inview & {
+		@at-root #{$this}__items.is-inview & {
 			transform: translate3d(0, 0, 0);
 			opacity: 1;
 		}

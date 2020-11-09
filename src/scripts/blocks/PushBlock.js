@@ -16,7 +16,7 @@ export default class PushBlock extends AbstractCarouselBlock {
 			console.debug(`%c[SB]\t\t%c✳️ PushBlock.onResize`, 'color:#749f73', 'color:debug');
 		}
 
-		if (this.carousel) {
+		if (this.carousel && mediaBreakpointUp('sm')) {
 			this.carousel.destroy();
 		}
 

@@ -31,6 +31,7 @@ const safelist = () => ({
 		/line/,
 		/Menu/,
 		/Product-list-widget/,
+		/[data-direction='up']/,
 	],
 });
 

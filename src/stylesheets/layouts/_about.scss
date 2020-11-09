@@ -6,7 +6,10 @@
  */
 .About {
 	@extend %overflow-hidden, %overflow-md-visible, %position-relative;
-	@include padding(top 200px);
+
+	@include media-breakpoint-up(md) {
+		@include padding(top 200px);
+	}
 
 	&__body {
 		@extend %position-relative;
@@ -70,6 +73,7 @@
 	&__stars {
 		@extend %list-style-type-none, %Pointer-events-none;
 		@include absolute(top 0 right 0 bottom 0 left 0);
+		@extend .d-none, .d-md-block;
 
 		z-index: 1;
 

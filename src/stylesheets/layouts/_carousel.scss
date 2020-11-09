@@ -9,7 +9,11 @@
 
 	@extend %overflow-hidden, %position-relative;
 
-	@include padding(top 117px bottom 170px);
+	@include padding(top 80px bottom 80px);
+
+	@include media-breakpoint-up(sm) {
+		@include padding(top 117px bottom 170px);
+	}
 
 	@include media-breakpoint-up(md) {
 		@include padding(top 260px bottom 260px);

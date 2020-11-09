@@ -9,7 +9,7 @@ h1,
 	@extend %font-weight-extrablack, %font-family-title;
 	@include margin(top 1em bottom 2em);
 
-	font-size: 50;
+	font-size: 50px;
 	line-height: (55/50);
 
 	@include media-breakpoint-up(md) {

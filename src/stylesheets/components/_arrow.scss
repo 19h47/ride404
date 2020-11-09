@@ -1,0 +1,23 @@
+/**
+ * Arrow
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.Arrow {
+	@extend %Pointer-events-none;
+	@include fixed(bottom 0 left 0);
+	@include margin(top auto bottom 30px left percentage(120/1440));
+	@include size(7px, 84.36px);
+	@include autoAlpha(0);
+
+	&.is-active {
+		@include autoAlpha(1);
+	}
+
+	svg {
+		// @include margin(bottom 120px);
+
+		fill: the_color(white);
+	}
+}

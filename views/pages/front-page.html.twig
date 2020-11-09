@@ -9,12 +9,19 @@
     <div class="Hero" data-scroll-section>
         <div class="row">
             <div class="col-12 col-md-10 offset-md-1">
-                <div id="rider-404" class="Rider-404 page-block" data-scroll data-scroll-call="rider-404" data-node-type="Rider404Block" data-lottie-json="rider-404" data-lottie-autoplay="false"></div>
+                <div
+					id="rider-404"
+					class="Rider-404 page-block"
+					data-scroll
+					data-scroll-call="rider-404"
+					data-node-type="Rider404Block"
+					data-lottie-json="rider-404"
+					data-lottie-autoplay="false"
+				></div>
             </div>
         </div>
         <div class="row">
             <div class="col-12 col-md-10 offset-md-1">
-                <div id="arrow" class="Hero__arrow d-none d-md-block page-block" data-scroll data-scroll-repeat data-scroll-call="arrow" data-node-type="ArrowBlock" data-lottie-json="arrow"></div>
 
                 {% include 'components/video.html.twig' with { id: 'video-hero', preview: post.meta( 'video' ).url, overlay: true } %}
 
@@ -27,7 +34,7 @@
 
     <div class="Section Push" data-scroll-section>
 
-        <div class="Push__background">
+        <div class="Push__background" data-scroll data-scroll-speed="4">
             <div class="row h-100">
                 <div class="col-8 offset-2 h-100">
                     <img src="{{ theme.link }}/{{ theme.manifest['img/png/push.png'] }}" alt="" height="1523" height="1473">
@@ -54,9 +61,9 @@
     <div class="Section About" data-scroll-section>
 
         <ul class="About__stars">
-            <li data-scroll data-scroll-speed="{{ random( 2, 4 ) }}">{% include 'svg/use.html.twig' with { icon: 'star' } only %}</li>
-            <li data-scroll data-scroll-speed="{{ random( 2, 4 ) }}">{% include 'svg/use.html.twig' with { icon: 'star' } only %}</li>
-            <li data-scroll data-scroll-speed="{{ random( 2, 4 ) }}">{% include 'svg/use.html.twig' with { icon: 'star' } only %}</li>
+            <li data-scroll data-scroll-speed="{{ random( 1, 9 ) }}">{% include 'svg/use.html.twig' with { icon: 'star' } only %}</li>
+            <li data-scroll data-scroll-speed="{{ random( 1, 9 ) }}">{% include 'svg/use.html.twig' with { icon: 'star' } only %}</li>
+            <li data-scroll data-scroll-speed="{{ random( 1, 9 ) }}">{% include 'svg/use.html.twig' with { icon: 'star' } only %}</li>
         </ul>
 
         <div class="About__body">
@@ -117,17 +124,15 @@
             </div>
 
             <div class="col-10 offset-1 col-md-6 offset-md-6">
-                <div class="Partners" data-scroll>
-                    <ul class="Partners__items">
-                        {% for partner in partners %}
-                            <li class="Partners__item" style="transition-delay: {{ loop.index * 0.1 }}s;">
-                                {{ partner.meta( 'link' ).url ? "<a href=\"#{ partner.meta( 'link' ).url }\"#{ partner.meta( 'link' ).target ? ' target="_blank" rel="noopener noreferer"' : '' }>" : '' }}
-                                    {% include 'partials/image.html.twig' with { image: partner.thumbnail } only %}
-                                {{ partner.meta( 'link' ).url ? '</a>' : '' }}
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div>
+				<ul class="Partners__items"  data-scroll>
+					{% for partner in partners %}
+						<li class="Partners__item" style="transition-delay: {{ loop.index * 0.1 }}s;">
+							{{ partner.meta( 'link' ).url ? "<a href=\"#{ partner.meta( 'link' ).url }\"#{ partner.meta( 'link' ).target ? ' target="_blank" rel="noopener noreferer"' : '' }>" : '' }}
+								{% include 'partials/image.html.twig' with { image: partner.thumbnail } only %}
+							{{ partner.meta( 'link' ).url ? '</a>' : '' }}
+						</li>
+					{% endfor %}
+				</ul>
             </div>
         </div>
     </div>

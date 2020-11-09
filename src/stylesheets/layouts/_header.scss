@@ -18,9 +18,11 @@
 	z-index: 15;
 
 	@at-root [data-direction='down'] & {
-		@include autoAlpha(0);
+		@include media-breakpoint-up(sm) {
+			@include autoAlpha(0);
 
-		transform: translateY(-100%);
+			transform: translateY(-100%);
+		}
 	}
 
 	@at-root .Menu--is-open & {

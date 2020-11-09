@@ -7,7 +7,8 @@
 .Coordinates {
 	$this: &;
 
-	@extend %Pointer-events-none;
+	@extend .d-none, .d-sm-block;
+	@extend %Pointer-events-none, %overflow-hidden;
 	@include absolute(top 0 right 0 bottom 0 left 0);
 
 	span {
