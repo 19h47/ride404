@@ -24,9 +24,9 @@
 {% endblock %}
 
 {% block content %}
-    
+
     <div class="Section Push" data-scroll-section>
-        
+
         <div class="Push__background">
             <div class="row h-100">
                 <div class="col-8 offset-2 h-100">
@@ -50,9 +50,9 @@
         </div>
 
     </div>
-    
+
     <div class="Section About" data-scroll-section>
-    
+
         <ul class="About__stars">
             <li data-scroll>{% include 'svg/use.html.twig' with { icon: 'star' } only %}</li>
             <li data-scroll>{% include 'svg/use.html.twig' with { icon: 'star' } only %}</li>
@@ -106,8 +106,9 @@
         </div>
     </div>
 
-     <div class="Section position-relative" data-scroll-section>
-        <img class="Partners__decor d-none d-md-block" src="{{ theme.link }}/{{ theme.manifest['img/svg/partners.svg'] }}" alt="" height="134" width="76">
+     <div class="Section Partners position-relative" data-scroll-section>
+	 	<img class="Partners__grid" data-scroll data-scroll-speed="2" src="{{ theme.link }}/{{ theme.manifest['img/svg/grid.svg'] }}" alt="" width="962" height="842">
+        <img class="Partners__decor d-none d-md-block" data-scroll data-scroll-speed="2" src="{{ theme.link }}/{{ theme.manifest['img/svg/partners.svg'] }}" alt="" height="134" width="76">
         <div class="row">
             <div class="col-10 offset-1 col-md-3 offset-md-6">
                 <h2>
