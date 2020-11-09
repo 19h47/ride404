@@ -54,9 +54,9 @@
     <div class="Section About" data-scroll-section>
 
         <ul class="About__stars">
-            <li data-scroll>{% include 'svg/use.html.twig' with { icon: 'star' } only %}</li>
-            <li data-scroll>{% include 'svg/use.html.twig' with { icon: 'star' } only %}</li>
-            <li data-scroll>{% include 'svg/use.html.twig' with { icon: 'star' } only %}</li>
+            <li data-scroll data-scroll-speed="{{ random( 2, 4 ) }}">{% include 'svg/use.html.twig' with { icon: 'star' } only %}</li>
+            <li data-scroll data-scroll-speed="{{ random( 2, 4 ) }}">{% include 'svg/use.html.twig' with { icon: 'star' } only %}</li>
+            <li data-scroll data-scroll-speed="{{ random( 2, 4 ) }}">{% include 'svg/use.html.twig' with { icon: 'star' } only %}</li>
         </ul>
 
         <div class="About__body">
@@ -64,7 +64,7 @@
                 <div class="col-10 offset-1 col-md-6 offset-md-3">
                     <div class="About__content">
                         {% include 'partials/split-text.html.twig' with { id: fn( 'uniqid' ), title: post.meta( 'about' ).content } %}
-                        <img src="{{ theme.link }}/{{ theme.manifest['img/svg/about.svg'] }}" width="719" height="585">
+                        <img data-scroll data-scroll-speed="2" src="{{ theme.link }}/{{ theme.manifest['img/svg/about.svg'] }}" width="719" height="585">
                     </div>
                 </div>
                 <div class="col-10 offset-1 text-align-center">
