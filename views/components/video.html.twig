@@ -1,4 +1,4 @@
-{#  
+{#
  # Video
  #
  # @package Rider404
@@ -13,7 +13,7 @@
 {% endmacro %}
 
 <div id="{{ id }}" class="Video page-block" data-node-type="VideoBlock">
-    
+
     <div class="Video__body">
         {% if overlay %}
             <div class="Video__overlay">
@@ -22,7 +22,7 @@
         {% endif %}
 
         <canvas></canvas>
-        <video autoplay loop preload="auto" muted>
+        <video playsInline autoplay loop preload="auto" muted>
             <source src="{{ preview }}" type="video/mp4">
         </video>
     </div>
