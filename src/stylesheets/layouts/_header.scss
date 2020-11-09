@@ -9,9 +9,19 @@
 
 	@include padding(top 60px bottom 60px);
 	@extend %Pointer-events-none, %position-relative;
+	@include autoAlpha(1);
 
+	transition: transform 1.5s map-get($easings, ease-out-expo),
+		opacity 1.5s map-get($easings, ease-out-expo),
+		visibility 1.5s map-get($easings, ease-out-expo);
 	color: the_color(white);
 	z-index: 15;
+
+	@at-root [data-direction='down'] & {
+		@include autoAlpha(0);
+
+		transform: translateY(-100%);
+	}
 
 	@at-root .Menu--is-open & {
 		color: the_color(black);

@@ -10,4 +10,8 @@
 	@include media-breakpoint-up(md) {
 		@include margin(top 100px bottom 100px);
 	}
+
+	@include media-breakpoint-up(hd) {
+		@include margin(top 180px bottom 180px);
+	}
 }

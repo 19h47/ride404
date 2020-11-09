@@ -14,4 +14,12 @@
 
 		fill: the_color(white);
 	}
+
+	a {
+		transition: transform 0.5s map-get($easings, ease-out-expo);
+	}
+
+	a:hover {
+		transform: rotate(45deg);
+	}
 }

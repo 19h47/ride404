@@ -32,6 +32,8 @@
 		@extend %position-relative;
 		@include size(50px);
 
+		transition: transform 0.5s map-get($easings, ease-out-expo);
+
 		@include media-breakpoint-up(md) {
 			@include size(70px);
 		}
@@ -67,7 +69,8 @@
 
 			border: 1px solid rgba(the_color(white), 0);
 			border-radius: 50%;
-			transition: border-color 0.5s map-get($easings, ease-out-expo);
+			transition: border-color 0.5s map-get($easings, ease-out-expo),
+				transform 0.5s map-get($easings, ease-out-expo);
 			content: '';
 			z-index: 2;
 		}

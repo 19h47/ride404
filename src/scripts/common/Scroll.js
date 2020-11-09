@@ -30,6 +30,10 @@ imgLoad.on('always', () => {
 	Scroll.update();
 });
 
+Scroll.on('scroll', instance => {
+	elements.html.setAttribute('data-direction', instance.direction || 'up');
+});
+
 Scroll.on('scroll', obj => {
 	if (0 >= obj.scroll.y) {
 		elements.html.classList.add('is-ontop');

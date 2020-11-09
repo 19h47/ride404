@@ -7,6 +7,10 @@
 .Video {
 	$this: &;
 
+	// &#video-hero {
+	// 	transform: scaleX((1440/1076));
+	// }
+
 	&__body {
 		@extend %position-relative, %overflow-hidden;
 		@include padding(bottom percentage(611/416));
