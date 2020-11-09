@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-3 col-md-2">
             <a id="logo" class="Site-header__smiley " href="{{ site.link }}" >
-                <div id="logo" class="page-block" data-node-type="LogoBlock" data-lottie-json="logo" data-lottie-autoplay="true"></div>
+                <div id="logo" class="page-block" data-node-type="LogoBlock" data-lottie-json="logo" data-lottie-autoplay="true" data-lottie-loop="true"></div>
             </a>
         </div>
 
@@ -27,10 +27,10 @@
                     <span>{{- product_cat_current.name -}}</span>
                 </p>
             {% elseif is_front_page %}
-                <div 
-                    class="Site-header__title Site-header__love-two-ride-four-love page-block" 
-                    id="love-two-ride-four-love" 
-                    data-node-type="LoveTwoRideFourLoveBlock" 
+                <div
+                    class="Site-header__title Site-header__love-two-ride-four-love page-block"
+                    id="love-two-ride-four-love"
+                    data-node-type="LoveTwoRideFourLoveBlock"
                     data-lottie-json="love-two-ride-four-love"
                 ></div>
             {% else %}
@@ -44,7 +44,7 @@
                 {% include 'partials/cart-contents-count.html.twig' with { count: cart.get_cart_contents_count() } only %}
                 {% include 'svg/use.html.twig' with { icon: 'cart' } only %}
             </{{ ( cart.is_empty ? 'p' : 'a' ) | raw }}>
-            
+
             <button class="Site-header__bars Bars js-menu-button" type="button">
                 {% include 'svg/use.html.twig' with { icon: 'bars' } only %}
             </button>
