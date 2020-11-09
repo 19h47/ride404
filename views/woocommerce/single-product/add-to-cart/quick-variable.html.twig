@@ -1,4 +1,4 @@
-{#  
+{#
  # Quick variable
  #
  # @package Rider404
@@ -8,19 +8,19 @@
 
 {% embed 'partials/bar.html.twig' %}
 	{% block content %}
-		<form  
-			class="Bar Quick-cart variations_form" 
-			action="{{ form_action }}" 
-			method="post" 
-			enctype="multipart/form-data" 
-			data-product_id="{{ product.get_id() }}" 
-			data-product_variations="{{ variations_attr }}" 
+		<form
+			class="Bar Quick-cart variations_form"
+			action="{{ form_action }}"
+			method="post"
+			enctype="multipart/form-data"
+			data-product_id="{{ product.get_id() }}"
+			data-product_variations="{{ variations_attr }}"
 		>
 
 			{% do action( 'rider404_before_quick_variations_form' ) %}
 
 			{% if available_variations %}
-				
+
 				{% include 'woocommerce/single-product/price.html.twig' %}
 
 				{% for name, options in attributes %}
@@ -40,7 +40,7 @@
 								}
 							)
 						-}}
-						
+
 						<div role="radiogroup">
 							{% for term in terms %}
 								{% if term.slug in options %}
@@ -51,18 +51,18 @@
 								{% endif %}
 							{% endfor %}
 						</div>
-						
+
 					</div>
-					
+
 				{% endfor %}
 
 				<div class="single_variation_wrap">
 					{% do action( 'rider404_before_single_quick_variation' ) %}
 
 					{#
-					 # Hook: rider404_single_quick_variation. 
+					 # Hook: rider404_single_quick_variation.
 					 #
-					 # @hooked Rider404\Plugins\WooCommerce::template_single_variation - 10
+					 # @hooked Rider404\Plugins\WooCommerce\TemplateFunctions::single_variation - 10
 					 # @hooked woocommerce_single_variation_add_to_cart_button - 20
 					 #}
 					{% do action( 'rider404_single_quick_variation' ) %}
@@ -78,6 +78,9 @@
 					{% endfilter %}
 				</p>
 			{% endif %}
+
+			{% do action( 'rider404_after_quick_variations_form' ) %}
+
 		</form>
 	{% endblock %}
 {% endembed %}

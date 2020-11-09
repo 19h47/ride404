@@ -11,7 +11,9 @@ namespace Rider404\Plugins;
 use Timber\{ Timber };
 
 /**
- * WordPress
+ * WooCommerce
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  */
 class WooCommerce {
 	/**
@@ -21,83 +23,9 @@ class WooCommerce {
 	 */
 	public function run() {
 		add_action( 'wp', array( $this, 'enqueue_styles' ) );
-		add_action( 'after_setup_theme', array( $this, 'hooks' ) );
 
 		add_filter( 'woocommerce_add_to_cart_fragments', array( $this, 'add_to_cart_fragments' ), 10, 1 );
 		add_filter( 'woocommerce_before_widget_product_list', array( $this, 'before_widget_product_list' ) );
-	}
-
-
-	/**
-	 * Customize WooCommerce.
-	 *
-	 * Add your hooks to customize WooCommerce here.
-	 *
-	 * Everything here is hooked to `after_setup_theme`, because child theme functionality runs
-	 * before parent theme functionality. By hooking it, we make sure it runs after all hooks in
-	 * the parent theme were registered.
-	 *
-	 * @see plugins/woocommerce/includes/wc-template-hooks.php for a list of available actions.
-	 */
-	public function hooks() : void {
-		// Before main content.
-		remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
-
-		// Single product summary.
-		remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
-		remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
-		remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
-
-		// Single variation.
-		remove_action( 'woocommerce_single_variation', 'woocommerce_single_variation', 10 );
-		remove_action( 'woocommerce_single_variation', 'woocommerce_single_variation_add_to_cart_button', 20 );
-
-		add_action( 'woocommerce_single_variation', 'woocommerce_single_variation_add_to_cart_button', 10 );
-		add_action( 'woocommerce_single_variation', array( $this, 'template_single_variation' ), 20 );
-
-		// Before single product summary.
-		remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20 );
-
-		// Shop loop item title.
-		remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
-		add_action( 'woocommerce_shop_loop_item_title', array( $this, 'template_loop_product_title' ), 10 );
-
-		// After single product summary.
-		remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
-		remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
-		remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
-
-		// Before shop loop.
-		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
-		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
-
-		// Before shop loop item.
-		remove_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open', 10 );
-		add_action( 'woocommerce_before_shop_loop_item', array( $this, 'template_loop_product_link_open' ), 10 );
-
-		// After shop loop item.
-		remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
-
-		// Before shop loop item title.
-		remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10 );
-		add_action( 'woocommerce_before_shop_loop_item_title', array( $this, 'template_loop_product_thumbnail' ), 15 );
-		add_action( 'woocommerce_before_shop_loop_item_title', array( $this, 'template_loop_featured' ), 15 );
-
-		// After shop loop item title.
-		remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 );
-		add_action( 'woocommerce_after_shop_loop_item_title', array( $this, 'template_loop_price' ), 10 );
-
-		// Before single product.
-		add_action( 'woocommerce_before_single_product', array( $this, 'template_single_quick_add_to_cart' ), 30 );
-
-		// Single product hero.
-		add_action( 'rider404_single_product_hero', 'woocommerce_template_single_title', 10 );
-
-		// Single quick variation.
-		add_action( 'rider404_single_quick_variation', array( $this, 'template_single_variation' ), 10 );
-		add_action( 'rider404_single_quick_variation', 'woocommerce_single_variation_add_to_cart_button', 20 );
-
-		add_action( 'rider404_quick_variable_add_to_cart', array( $this, 'quick_variable_add_to_cart' ), 10 );
 	}
 
 
@@ -132,90 +60,6 @@ class WooCommerce {
 	}
 
 	/**
-	 * Output placeholders for the single variation
-	 *
-	 * @return string
-	 */
-	public function single_variation() : string {
-		return Timber::render( 'partials/variation.html.twig' );
-	}
-
-
-	/**
-	 * Show the product title in the product loop.
-	 *
-	 * @return string
-	 */
-	public function template_loop_product_title() : string {
-		global $product;
-
-		return Timber::render( 'woocommerce/loop/loop-product-title.html.twig', array( 'title' => $product->get_title() ) );
-	}
-
-	/**
-	 * Insert the opening anchor tag for products in the loop.
-	 *
-	 * @return string
-	 */
-	public function template_loop_product_link_open() : string {
-		global $product;
-
-		return Timber::render( 'woocommerce/loop/loop-product-link-open.html.twig', array( 'link' => $product->get_permalink() ) );
-	}
-
-
-	/**
-	 * Get the product price for the loop.
-	 *
-	 * @return string
-	 */
-	public function template_loop_price() : string {
-		global $product;
-
-		return Timber::render(
-			'woocommerce/loop/loop-price.html.twig',
-			array(
-				'price_html' => $product->get_price_html(),
-				'product'    => $product,
-			)
-		);
-	}
-
-
-	/**
-	 * Loop product thumbnail
-	 *
-	 * @return string
-	 */
-	public function template_loop_product_thumbnail() : string {
-		global $product;
-
-		return Timber::render(
-			'woocommerce/loop/loop-product-thumbnail.html.twig',
-			array(
-				'product' => $product,
-			)
-		);
-	}
-
-
-	/**
-	 * Loop featured
-	 *
-	 * @return string
-	 */
-	public function template_loop_featured() : string {
-		global $product;
-
-		return Timber::render(
-			'woocommerce/loop/loop-featured.html.twig',
-			array(
-				'product' => $product,
-			)
-		);
-	}
-
-	/**
 	 * Before widget product list
 	 *
 	 * @return string
@@ -223,52 +67,4 @@ class WooCommerce {
 	public function before_widget_product_list() {
 		return '<ul class="Product-list-widget product_list_widget js-items">';
 	}
-
-	/**
-	 * Single quick add to cart
-	 *
-	 * @return void
-	 */
-	public function template_single_quick_add_to_cart() : void {
-		global $product;
-
-		do_action( 'rider404_quick_' . $product->get_type() . '_add_to_cart' );
-	}
-
-	/**
-	 * Variable quick add to cart
-	 *
-	 * @return string
-	 */
-	public function quick_variable_add_to_cart() : string {
-		global $product;
-
-		$context = Timber::context();
-
-		$get_variations = count( $product->get_children() ) <= apply_filters( 'woocommerce_ajax_variation_threshold', 30, $product );
-
-		$context['product'] = $product;
-
-		$context['available_variations'] = $get_variations ? $product->get_available_variations() : false;
-		$context['attributes']           = $product->get_variation_attributes();
-		$context['selected_attributes']  = $product->get_default_attributes();
-
-		$variations_json            = wp_json_encode( $context['available_variations'] );
-		$context['variations_attr'] = wc_esc_json( $variations_json );
-
-		$context['form_action'] = apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() );
-
-		return Timber::render( 'woocommerce/single-product/add-to-cart/quick-variable.html.twig', $context );
-	}
-
-
-	/**
-	 * Template single variation
-	 *
-	 * @return string
-	 */
-	public function template_single_variation() : string {
-		return Timber::render( 'woocommerce/single-product/add-to-cart/single-variation.html.twig' );
-	}
-
 }

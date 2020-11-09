@@ -31,6 +31,7 @@ class Init {
 			Setup\PostStates::class,
 			Setup\Widgets::class,
 			Plugins\WooCommerce::class,
+			Plugins\WooCommerce\TemplateHooks::class,
 			Api\Customizer\Contact::class,
 			Custom\Extras::class,
 			Custom\QueryVars::class,

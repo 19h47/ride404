@@ -6,19 +6,19 @@
 {% extends 'index.html.twig' %}
 
 {% block hero %}
-    {#  
+    {#
      # Hook: rider404_single_product_before_hero
      #
-     # @hooked Rider404\Plugins\WooCommerce\template_single_quick_add_to_cart - 10
+     # @hooked Rider404\Plugins\WooCommerce\TemplateFunctions::single_quick_add_to_cart - 10
      #}
     {% do action( 'rider404_single_product_before_hero' ) %}
 
     <div class="Hero" data-scroll-section>
         <div class="row">
             <div class="col-10 offset-1">
-                {# 
+                {#
                  # Hook: rider404_single_product_hero
-                 # 
+                 #
                  # @hooked woocommerce_template_single_title - 10
                  #}
                 {% do action( 'rider404_single_product_hero' ) %}
@@ -41,7 +41,7 @@
                     {% do action( 'woocommerce_before_single_product_summary' ) %}
 
                     <div class="summary entry-summary">
-                        {#  
+                        {#
                          # Hook: woocommerce_single_product_summary.
                          #
                          # @hooked woocommerce_template_single_rating - 10
@@ -61,7 +61,7 @@
                 </div>
             </div>
         </div>
-    
+
         <div class="Section">
             <div class="row">
                 <div class="col-4 offset-2">
@@ -76,6 +76,6 @@
     </div>
 
     {% do action( 'woocommerce_after_single_product' ) %}
-    
+
 {% endblock  %}
 
