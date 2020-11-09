@@ -25,10 +25,10 @@
 		@extend .d-block;
 		@extend %overflow-hidden;
 		@include margin(left 3px);
-		@include size(30px);
+		@include size(16px);
 
 		svg {
-			@include size(30px);
+			@include size(16px);
 			@extend .d-block;
 
 			transition: transform 0.5s map-get($easings, ease-out-expo);
