@@ -21,14 +21,14 @@
         <div class="About-page__introduction__body">
             <div class="row">
                 <div class="col-10 offset-1 col-md-8 offset-md-2">
-                    {% 
-                        include 'partials/split-text.html.twig' 
-                        with { 
-                            title: post.meta( 'introduction' ), 
-                            id: fn( 'uniqid' ), 
+                    {%
+                        include 'partials/split-text.html.twig'
+                        with {
+                            title: post.meta( 'introduction' ),
+                            id: uniqid(),
                             classes: [ 'h1', 'text-align-center', 'margin-0' ],
-                            delay: 0.5,  
-                        } 
+                            delay: 0.5,
+                        }
                     %}
                 </div>
                 <div class="col-4 offset-4">
@@ -68,7 +68,7 @@
                         {% endblock %}
                     {% endembed %}
                 </div>
-           
+
                 <div class="col-2 offset-6 d-flex align-items-end" data-scroll data-scroll-speed="1.5">
                     {% embed 'partials/image-reveal.html.twig' %}
                         {% block content %}
@@ -88,7 +88,7 @@
         <div class="row">
             <div class="col-12 col-md-10 offset-md-1">
                 {% embed 'components/video.html.twig' with { id: 'video', preview: post.meta( 'video' ).preview.url, overlay: true } %}
-                    {% block caption %} 
+                    {% block caption %}
                         <div class="Video__caption">
                             {{- __( 'All video Rider.404 Project on', 'rider404' ) }}
                             &nbsp;
@@ -101,7 +101,7 @@
                 {% endembed %}
             </div>
         </div>
-    </div> 
+    </div>
 
     <div id="faq" class="Section Faq page-block" data-node-type="FaqBlock" data-scroll-section>
         <div class="row">

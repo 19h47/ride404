@@ -5,21 +5,30 @@
  #}
 
 {% if coupons_enabled %}
-	<div id="form-coupon" class="page-block" data-node-type="FormCouponBlock">
+	<div id="checkout-coupons" class="page-block" data-node-type="CheckoutCouponsBlock">
 		<div class="woocommerce-form-coupon-toggle">
-			{{- fn( 'wc_print_notice', fn( 'apply_filters', 'woocommerce_checkout_coupon_message', __( 'Have a coupon?', 'rider404' ) ~ ' <a href="#" class="showcoupon">' ~ __( 'Click here to enter your code', 'woocommerce' ) ~ '</a>' ), 'notice' ) -}}
+			{{- function( 'wc_print_notice', function( 'apply_filters', 'woocommerce_checkout_coupon_message', __( 'Have a coupon?', 'rider404' ) | e( 'esc_html' ) ~ ' <button type="button" class="showcoupon">' ~ __( 'Click here to enter your code', 'rider404' ) | e( 'esc_html' ) ~ '</button>' ), 'notice' ) -}}
 		</div>
 
 		<form class="checkout_coupon woocommerce-form-coupon" method="post" style="display:none">
 
-			<p>{{- __( 'If you have a coupon code, please apply it below.', 'rider404' ) -}}</p>
+			<p>{{- __( 'If you have a coupon code, please apply it below.', 'rider404' ) | e( 'esc_html' ) -}}</p>
 
 			<p class="form-row form-row-first">
-				<input type="text" name="coupon_code" class="input-text" placeholder="{{- __( 'Coupon code', 'rider404' ) -}}" id="coupon_code" value="" />
+				<input
+					id="coupon_code"
+					type="text"
+					name="coupon_code"
+					class="input-text"
+					placeholder="{{- __( 'Coupon code', 'rider404' ) | e -}}"
+					value=""
+				/>
 			</p>
 
 			<p class="form-row form-row-last">
-				<button type="submit" class="button" name="apply_coupon" value="{{- __( 'Apply coupon', 'rider404' ) -}}">{{- __( 'Apply coupon', 'rider404' ) -}}</button>
+				<button type="submit" class="button" name="apply_coupon" value="{{- __( 'Apply coupon', 'rider404' ) | e -}}">
+					{{- __( 'Apply coupon', 'rider404' ) | e( 'esc_html' ) -}}
+				</button>
 			</p>
 
 			<div class="clear"></div>

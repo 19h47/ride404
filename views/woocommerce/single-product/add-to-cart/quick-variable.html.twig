@@ -24,13 +24,13 @@
 				{% include 'woocommerce/single-product/price.html.twig' %}
 
 				{% for name, options in attributes %}
-					{% set terms = fn( 'wc_get_product_terms', product.get_id(), name, { 'fields': 'all' } ) %}
+					{% set terms = function( 'wc_get_product_terms', product.get_id(), name, { 'fields': 'all' } ) %}
 
 					<div id="product-variations-{{ name | sanitize }}" class="variations page-block" data-node-type="ProductVariationsBlock">
 
 						{# @see https://github.com/woocommerce/woocommerce/blob/master/includes/wc-template-functions.php#L2988 #}
 						{{-
-							fn( 'wc_dropdown_variation_attribute_options',
+							function( 'wc_dropdown_variation_attribute_options',
 								{
 									options: options,
 									attribute: name,

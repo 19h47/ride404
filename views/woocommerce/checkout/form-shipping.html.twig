@@ -1,0 +1,57 @@
+{#
+ # Form shipping
+ #
+ # @package Rider404
+ #}
+<div id="shipping" class="woocommerce-shipping-fields page-block" data-node-type="ShippingBlock">
+	{% if cart.needs_shipping_address() %}
+
+		<h3 id="ship-to-different-address">
+			<label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
+				<input
+					id="ship-to-different-address-checkbox"
+					class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox"
+					{{ function( 'checked', 'shipping' is same as( ship_to_destination | apply_filters( 'woocommerce_ship_to_different_address_checked' ) ) ? 1 : 0, false ) }}
+					type="checkbox"
+					name="ship_to_different_address" value="1"
+				/>
+				&nbsp;<span>{{- __( 'Ship to a different address?', 'rider404' ) -}}</span>
+			</label>
+		</h3>
+
+		<div class="shipping_address">
+
+			{% do action( 'woocommerce_before_checkout_shipping_form', checkout ) %}
+
+			<div class="woocommerce-shipping-fields__field-wrapper">
+				{% for key, field in checkout.get_checkout_fields( 'shipping' ) %}
+					{{- function( 'woocommerce_form_field', key, field, checkout.get_value( key ) ) -}}
+				{% endfor %}
+			</div>
+
+			{% do action( 'woocommerce_after_checkout_shipping_form', checkout ) %}
+
+		</div>
+
+	{% endif %}
+</div>
+
+<div class="woocommerce-additional-fields">
+	{% do action( 'woocommerce_before_order_notes', checkout ) %}
+
+	{% if 'yes' is same as( enable_order_comments | apply_filters( 'woocommerce_enable_order_notes_field' ) ) %}
+
+		{% if not cart.needs_shipping() or ship_to_billing_address_only %}
+			<h3>{{- __( 'Additional information', 'rider404' ) | e( 'esc_html' ) -}}</h3>
+		{% endif %}
+
+		<div class="woocommerce-additional-fields__field-wrapper">
+			{% for key, field in checkout.get_checkout_fields( 'order' ) %}
+				{{- function( 'woocommerce_form_field', key, field, checkout.get_value( key ) ) -}}
+			{% endfor %}
+		</div>
+
+	{% endif %}
+
+	{% do action( 'woocommerce_after_order_notes', checkout ) %}
+</div>

@@ -7,20 +7,31 @@
 <div id="footer" class="Site-footer" data-scroll-section>
     <div class="row">
         <div class="col-9 offset-1 order-1">
-            {% include 'partials/split-text.html.twig' with { id: fn( 'uniqid' ), classes: [ 'Site-footer__title' ], title: 'Follow<br>Rider.404' } %}
+            {% include 'partials/split-text.html.twig' with { id: uniqid(), classes: [ 'Site-footer__title' ], title: 'Follow<br>Rider.404' } %}
 		</div>
 		<div class="col-10 offset-1 col-sm-9 d-sm-flex align-items-sm-end order-3 order-sm-2">
             {% include 'partials/socials.html.twig' %}
         </div>
         <div class="col-1 d-sm-flex align-items-sm-end justify-content-sm-end order-2 order-sm-3">
-            <a class="Site-footer__button" data-scroll-to href="top">
-                {% include 'svg/use.html.twig' with { icon: 'arrow-up' } only %}
-            </a>
+
+			<a class="Arrow Arrow--up" data-scroll-to href="top">
+				<div
+					id="arrow-up"
+					class="page-block"
+					data-scroll
+					data-scroll-repeat
+					data-scroll-call="arrow-up"
+					data-scroll-position="bottom"
+					data-node-type="ArrowBlock"
+					data-lottie-json="arrow-up"
+					data-lottie-loop="true"
+				></div>
+			</a>
         </div>
         <div class="col-10 offset-1 col-md-7 offset-md-4 order-4">
             <div class="Site-footer__copyright">
                 <p data-scroll>© 2020 RIDER.404. All rights reserved.<br class="d-md-none"> Created by <a href="https://maaad.studio/" target="_blank" rel="noopener noreferer">Maaad</a> & <a href="https://19h47.fr" target="_blank" rel="noopener noreferer">19h47</a></p>
-                <div id="globe-{{ fn( 'uniqid' ) }}" class="Globe page-block" data-node-type="LottieBlock" data-lottie-json="globe" data-lottie-loop="true" data-lottie-autoplay="true"></div>
+                <div id="globe-{{ uniqid() }}" class="Globe page-block" data-node-type="LottieBlock" data-lottie-json="globe" data-lottie-loop="true" data-lottie-autoplay="true"></div>
             </div>
         </div>
     </div>

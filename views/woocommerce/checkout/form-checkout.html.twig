@@ -1,4 +1,4 @@
-{# 
+{#
  # Form checkout
  #
  #
@@ -10,13 +10,20 @@
 {% if not checkout.is_registration_enabled() and checkout.is_registration_required() and not is_user_logged_in %}
 
     {% filter apply_filters( 'woocommerce_checkout_must_be_logged_in_message' ) %}
-        {{- __( 'You must be logged in to checkout.', 'rider404' ) -}}
+        {{- __( 'You must be logged in to checkout.', 'rider404' ) | e( 'esc_html' ) -}}
     {% endfilter %}
 
 {% else %}
 
-    <form name="checkout" method="post" class="checkout woocommerce-checkout" action="{{ checkout_url }}" enctype="multipart/form-data">
-        {% if checkout.get_checkout_fields() %}
+    <form
+		class="checkout woocommerce-checkout"
+		name="checkout"
+		method="post"
+		action="{{ checkout_url | e( 'esc_url' ) }}"
+		enctype="multipart/form-data"
+	>
+
+	    {% if checkout.get_checkout_fields() %}
 
             {% do action( 'woocommerce_checkout_before_customer_details' ) %}
 
@@ -33,11 +40,13 @@
             {% do action( 'woocommerce_checkout_after_customer_details' ) %}
 
         {% endif %}
-        
+
         {% do action( 'woocommerce_checkout_before_order_review_heading' ) %}
-        
-        <h3 id="order_review_heading">{{- __( 'Your order', 'rider404' ) -}}</h3>
-        
+
+        <h3 id="order_review_heading">
+			{{- __( 'Your order', 'rider404' ) | e( 'esc_html' ) -}}
+		</h3>
+
         {% do action( 'woocommerce_checkout_before_order_review' ) %}
 
         <div id="order_review" class="woocommerce-checkout-review-order">

@@ -114,6 +114,8 @@ class Theme {
 			);
 		}
 
+		$twig->addFunction( new TwigFunction( 'uniqid', 'uniqid' ) );
+
 		return $twig;
 	}
 

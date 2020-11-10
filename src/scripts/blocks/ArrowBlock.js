@@ -14,13 +14,14 @@ export default class ArrowBlock extends LottieBlock {
 
 		window.addEventListener(EventTypes.AFTER_SPLASHSCREEN_HIDE, () => {
 			Scroll.on('call', (value, way) => {
-				if ('arrow' === value && 'enter' === way) {
+				if (this.rootElement.id === value && 'enter' === way) {
+					console.log(this.rootElement.id);
 					this.animation.goToAndPlay(0);
-					this.rootElement.classList.add('is-active');
+					this.rootElement.parentElement.classList.add('is-active');
 				}
 
-				if ('arrow' === value && 'exit' === way) {
-					this.rootElement.classList.remove('is-active');
+				if (this.rootElement.id === value && 'exit' === way) {
+					this.rootElement.parentElement.classList.remove('is-active');
 				}
 			});
 		});

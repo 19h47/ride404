@@ -6,7 +6,7 @@
 {% extends 'index.html.twig' %}
 
 {% block content %}
-	
+
 	{% embed 'partials/bar.html.twig' %}
 		{% block content %}
 			<div class="Quick-product-categories">
@@ -33,16 +33,16 @@
 		{% do action( 'woocommerce_before_shop_loop' ) %}
 
 
-		{{- fn( 'woocommerce_product_loop_start' ) -}}
+		{{- function( 'woocommerce_product_loop_start' ) -}}
 
 		{% for product in products %}
 			{% do action( 'woocommerce_shop_loop' ) %}
 
 			{% include 'woocommerce/content-product.html.twig' %}
-			
+
 		{% endfor %}
 
-		{{- fn( 'woocommerce_product_loop_end' ) -}}
+		{{- function( 'woocommerce_product_loop_end' ) -}}
 
 		{#
 		 # Hook: woocommerce_after_shop_loop.
@@ -52,7 +52,7 @@
 		{% do action( 'woocommerce_after_shop_loop' ) %}
 	{% else %}
 
-		<div class="row">				
+		<div class="row">
 			<div class="col-10 offset-1">
 				{#
 				 # Hook: woocommerce_no_products_found.

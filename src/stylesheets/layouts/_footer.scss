@@ -20,18 +20,6 @@
 		@include padding(top 200px bottom 200px);
 	}
 
-	&__button {
-		@extend .d-block;
-		@include size(7px, 84.4px);
-		@include margin(right 25.5px);
-
-		svg {
-			@include size(100%);
-
-			fill: the_color(white);
-		}
-	}
-
 	&__title {
 		@include margin(bottom 35px);
 		@extend .h2, .margin-top-0;

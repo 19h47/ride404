@@ -3,10 +3,10 @@
  #
  # @package Rider404
  #}
-{{ fn( 'set_product_global', product ) }}
+{{ function( 'set_product_global', product ) }}
 {# {% if product and product.is_visible() %} #}
 
-    <li {{ fn( 'wc_product_class', 'Loop-product' ) }}>
+    <li {{ function( 'wc_product_class', 'Loop-product' ) }}>
 
         {#
          # Hook: woocommerce_before_shop_loop_item.

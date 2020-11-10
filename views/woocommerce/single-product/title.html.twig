@@ -4,14 +4,14 @@
  # @package Rider404
  #}
 <h1 class="text-align-center margin-0">
-    {% 
-        include 'partials/split-text.html.twig' 
-        with { 
-            title: post.meta( 'long_title' ) ? post.meta( 'long_title' ) : post.title, 
-            id: fn( 'uniqid' ), 
+    {%
+        include 'partials/split-text.html.twig'
+        with {
+            title: post.meta( 'long_title' ) ? post.meta( 'long_title' ) : post.title,
+            id: uniqid(),
             delay: 0.5,
             classes: [ 'product_title', 'entry-title' ]
-        } 
+        }
         only
     %}
 </h1>
