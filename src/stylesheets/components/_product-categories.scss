@@ -27,7 +27,7 @@
 		a {
 			@extend %margin-0, %white-space-nowrap;
 
-			transition: 0.4s color map-get($easings, ease-out-expo);
+			transition: color 0.5s map-get($easings, ease-out-expo);
 
 			&.is-active {
 				color: the_color(white);

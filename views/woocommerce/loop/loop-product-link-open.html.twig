@@ -1,7 +1,7 @@
-{# 
- # Loop product link open 
+{#
+ # Loop product link open
  #
  # @package Rider404
  # @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  #}
-<a href="{{ link }}" class="Loop-product-link woocommerce-LoopProduct-link woocommerce-loop-product__link">
+<a href="{{ link | e( 'esc_url' ) }}" class="Loop-product-link woocommerce-LoopProduct-link woocommerce-loop-product__link">

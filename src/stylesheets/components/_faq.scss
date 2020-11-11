@@ -69,7 +69,7 @@
 				@extend .d-block;
 
 				color: the_color(gray, very-dark-03);
-				transition: 0.4s color map-get($easings, ease-out-expo);
+				transition: color 0.5s map-get($easings, ease-out-expo);
 			}
 		}
 	}

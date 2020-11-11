@@ -15,7 +15,7 @@
 					type="checkbox"
 					name="ship_to_different_address" value="1"
 				/>
-				&nbsp;<span>{{- __( 'Ship to a different address?', 'rider404' ) -}}</span>
+				&nbsp;<span>{{- __( 'Ship to a different address?', 'rider404' ) | e( 'esc_html' ) -}}</span>
 			</label>
 		</h3>
 

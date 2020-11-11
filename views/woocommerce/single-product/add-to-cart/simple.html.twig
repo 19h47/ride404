@@ -1,4 +1,4 @@
-{#  
+{#
  # Simple
  #
  # @package Rider404
@@ -12,18 +12,18 @@
 
         {% do action( 'woocommerce_before_add_to_cart_form' ) %}
 
-        <form class="Simple cart" action="{{ form_action }}" method="post" enctype="multipart/form-data">
+        <form class="Simple cart" action="{{ form_action | e( 'esc_url' ) }}" method="post" enctype="multipart/form-data">
 
             {% do action( 'woocommerce_before_add_to_cart_button' ) %}
 
             {% do action( 'woocommerce_before_add_to_cart_quantity' ) %}
-            
+
             {# {{ quantity_input }} #}
-            
+
             {% do action( 'woocommerce_after_add_to_cart_quantity' ) %}
 
-            <button type="submit" name="add-to-cart" value="{{ product.get_id() }}" class="Add-to-cart single_add_to_cart_button button alt">
-                <span class="d-none">{{- product.single_add_to_cart_text() -}}</span>
+            <button type="submit" name="add-to-cart" value="{{ function( 'absint', product.get_id() ) }}" class="Add-to-cart single_add_to_cart_button button alt">
+                <span class="d-none">{{- product.single_add_to_cart_text() | e( 'esc_html' ) -}}</span>
                 {% include 'svg/use.html.twig' with { icon: 'add-to-cart', classes: [ 'Pointer-events-none' ] } only %}
                 {% include 'svg/use.html.twig' with { icon: 'add-to-cart-danger', classes: [ 'Pointer-events-none' ] } only %}
             </button>

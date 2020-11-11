@@ -9,6 +9,7 @@
 
 	font-size: 19px;
 	line-height: 1.2;
+	transition: color 0.5s map-get($easings, ease-out-expo);
 
 	@include media-breakpoint-up(md) {
 		font-size: 34.5px;
@@ -40,12 +41,15 @@
 		background-color: currentColor;
 		transform: scaleX(0);
 		transform-origin: center;
-		transition: transform 0.5s map-get($easings, ease-out-expo) 0.5s;
+		transition: transform 0.5s map-get($easings, ease-out-expo) 0.5s,
+			background-color 0.5s map-get($easings, ease-out-expo) 0.5s;
 		content: '';
 	}
 
 	&:focus,
 	&:hover {
+		color: the_color(red, bright);
+
 		& > div::after {
 			transform: scale(0);
 		}

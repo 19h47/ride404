@@ -10,10 +10,10 @@
 	{% block content %}
 		<form
 			class="Bar Quick-cart variations_form"
-			action="{{ form_action }}"
+			action="{{ form_action | e( 'esc_url' ) }}"
 			method="post"
 			enctype="multipart/form-data"
-			data-product_id="{{ product.get_id() }}"
+			data-product_id="{{ function( 'absint', product.get_id() ) }}"
 			data-product_variations="{{ variations_attr }}"
 		>
 
@@ -45,8 +45,14 @@
 							{% for term in terms %}
 								{% if term.slug in options %}
 									<div role="radio" aria-checked="false" tabindex="-1">
-										<span class="white-space-nowrap">{{- term.name -}}</span>
-										<input class="d-none" type="radio" name="attribute_{{ name | sanitize }}" value="{{ term.slug }}"{{ ( terms | length ) == 1 ? ' checked' : '' }}>
+										<span class="white-space-nowrap">{{- term.name | e( 'esc_html' ) -}}</span>
+										<input
+											class="d-none"
+											type="radio"
+											name="attribute_{{ name | sanitize | e }}"
+											value="{{ term.slug | e }}"
+											{{ ( terms | length ) == 1 ? ' checked' : '' }}
+										>
 									</div>
 								{% endif %}
 							{% endfor %}
@@ -74,7 +80,7 @@
 			{% else %}
 				<p class="stock out-of-stock white-space-nowrap margin-0">
 					{% filter apply_filters( 'woocommerce_out_of_stock_message' ) %}
-						{{- __( 'This product is currently out of stock and unavailable.', 'rider404' ) -}}
+						{{- __( 'This product is currently out of stock and unavailable.', 'rider404' ) | e( 'esc_html' ) -}}
 					{% endfilter %}
 				</p>
 			{% endif %}

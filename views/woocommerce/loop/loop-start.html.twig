@@ -1,3 +1,7 @@
 {#
+ # Loop start
+ #
+ # @package Rider404
+ # @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  #}
-<ul class="Products products columns-{{ function( 'wc_get_loop_prop', 'columns' ) }}" data-scroll-section>
+<ul class="Products products columns-{{ function( 'wc_get_loop_prop', 'columns' ) | e }}" data-scroll-section>

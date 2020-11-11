@@ -57,7 +57,7 @@
         <div class="Push__footer">
             <div class="row">
                 <div class="col-10 offset-1">
-                    <a class="Link-underline d-inline-block" href="{{ shop_url }}">
+                    <a class="Link-underline d-inline-block" href="{{ shop_url | e( 'esc_url' ) }}">
                         {% include 'partials/split-text.html.twig' with { id: uniqid(), delay: 0.1, title: __( 'All products', 'rider404' ) } %}
                     </a>
                 </div>
@@ -95,7 +95,7 @@
     </div>
 
     <div id="carousel" class="Section Carousel page-block" data-scroll-section data-node-type="CarouselBlock">
-        <img class="Carousel__background" src="{{ theme.link }}/{{ theme.manifest['img/png/carousel.png'] }}" alt="" width="1440" height="1153">
+        <img class="Carousel__background" src="{{ theme.link }}/{{ theme.manifest['img/png/carousel.png'] }}" alt="" width="1440" height="1153" data-scroll data-scroll-speed="2">
         <div class="row">
             <div class="col-10 offset-1 col-sm-8 offset-sm-2">
                 <div class="Carousel__items js-items">
@@ -108,14 +108,6 @@
                             {% endembed %}
                         </div>
                     {% endfor %}
-                </div>
-            </div>
-        </div>
-
-        <div class="Carousel__footer">
-            <div class="row h-100">
-                <div class="col-4 offset-4 col-md-2 offset-md-5 text-align-center h-100">
-                    <img src="{{ theme.link }}/{{ theme.manifest['img/svg/ews-pro-rider.svg'] }}" alt="" width="171.3" height="61">
                 </div>
             </div>
         </div>

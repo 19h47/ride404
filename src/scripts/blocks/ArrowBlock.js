@@ -15,7 +15,6 @@ export default class ArrowBlock extends LottieBlock {
 		window.addEventListener(EventTypes.AFTER_SPLASHSCREEN_HIDE, () => {
 			Scroll.on('call', (value, way) => {
 				if (this.rootElement.id === value && 'enter' === way) {
-					console.log(this.rootElement.id);
 					this.animation.goToAndPlay(0);
 					this.rootElement.parentElement.classList.add('is-active');
 				}
@@ -24,6 +23,15 @@ export default class ArrowBlock extends LottieBlock {
 					this.rootElement.parentElement.classList.remove('is-active');
 				}
 			});
+		});
+
+		this.rootElement.addEventListener('mouseenter', () => {
+			this.animation.setDirection(1);
+			this.animation.play();
+		});
+		this.rootElement.addEventListener('mouseleave', () => {
+			this.animation.setDirection(-1);
+			this.animation.play();
 		});
 	}
 }

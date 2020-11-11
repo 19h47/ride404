@@ -99,7 +99,7 @@ class TemplateFunctions {
 		global $product;
 
 		return Timber::render(
-			'woocommerce/loop/loop-price.html.twig',
+			'woocommerce/loop/price.html.twig',
 			array(
 				'price_html' => $product->get_price_html(),
 				'product'    => $product,

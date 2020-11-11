@@ -7,8 +7,12 @@
 .Section {
 	@include margin(top 80px bottom 80px);
 
-	@include media-breakpoint-up(md) {
+	@include media-breakpoint-up(sm) {
 		@include margin(top 100px bottom 100px);
+	}
+
+	@include media-breakpoint-up(md) {
+		@include margin(top 130px bottom 130px);
 	}
 
 	@include media-breakpoint-up(lg) {

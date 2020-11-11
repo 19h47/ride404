@@ -40,14 +40,21 @@
 
         <div class="col-3 offset-5 col-md-2 offset-md-3 d-flex align-items-center justify-content-end">
 
-            <{{ ( cart.is_empty ? 'p' : "a href=\"#{cart_url}\"" ) | raw }} class="Site-header__mini-cart Mini-cart js-total">
+            <{{ ( cart.is_empty ? 'div' : "a href=\"#{cart_url}\"" ) | raw }} class="Site-header__mini-cart Mini-cart js-total">
                 {% include 'partials/cart-contents-count.html.twig' with { count: cart.get_cart_contents_count() } only %}
-                {% include 'svg/use.html.twig' with { icon: 'cart' } only %}
-            </{{ ( cart.is_empty ? 'p' : 'a' ) | raw }}>
+                {# {% include 'svg/use.html.twig' with { icon: 'cart' } only %} #}
+				<div id="mini-cart" class="Mini-cart__icon page-block" data-node-type="MiniCartBlock" data-lottie-json="cart" data-lottie-autoplay="false" data-lottie-loop="false"></div>
+            </{{ ( cart.is_empty ? 'div' : 'a' ) | raw }}>
 
-            <button class="Site-header__bars Bars js-menu-button" type="button">
-                {% include 'svg/use.html.twig' with { icon: 'bars' } only %}
-            </button>
+            <button
+				id="bars"
+				class="Site-header__bars Bars page-block js-menu-button"
+				type="button"
+				data-node-type="BarsBlock"
+				data-lottie-json="menu"
+				data-lottie-autoplay="false"
+				data-lottie-loop="false"
+			></button>
 
         </div>
     </div>

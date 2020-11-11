@@ -54,8 +54,8 @@
 		div {
 			opacity: 0;
 			transform: translate3d(0, -100%, 0);
-			transition: transform 0.4s map-get($easings, ease-out-expo) 0.5s,
-				opacity 0.4s map-get($easings, ease-out-expo) 0.5s;
+			transition: transform 0.5s map-get($easings, ease-out-expo) 0.5s,
+				opacity 0.5s map-get($easings, ease-out-expo) 0.5s;
 
 			@at-root .is-loaded & {
 				opacity: 1;
@@ -115,8 +115,8 @@
 
 		opacity: 0;
 		transform: translate3d(0, -100%, 0);
-		transition: transform 0.4s map-get($easings, ease-out-expo) 0.7s,
-			opacity 0.4s map-get($easings, ease-out-expo) 0.7s;
+		transition: transform 0.5s map-get($easings, ease-out-expo) 0.7s,
+			opacity 0.5s map-get($easings, ease-out-expo) 0.7s;
 
 		@include media-breakpoint-up(md) {
 			@include margin(right percentage(100/ ((1440/12) * 2)) left 40px);

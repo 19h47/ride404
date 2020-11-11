@@ -47,8 +47,8 @@
 
 		transform: translate3d(0, 100%, 0);
 		opacity: 0;
-		transition: opacity 0.4s map-get($easings, ease-out-expo),
-			transform 1.4s map-get($easings, ease-out-expo);
+		transition: opacity 0.5s map-get($easings, ease-out-expo),
+			transform 1.5s map-get($easings, ease-out-expo);
 
 		@include media-breakpoint-up(sm) {
 			width: percentage(1/4);
@@ -61,7 +61,7 @@
 			object-fit: contain;
 			object-position: center;
 			opacity: 0.3;
-			transition: opacity 0.4s map-get($easings, ease-out-expo);
+			transition: opacity 0.5s map-get($easings, ease-out-expo);
 
 			@include media-breakpoint-up(hd) {
 				@include padding(top 25px right 25px bottom 25px left 25px);

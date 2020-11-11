@@ -7,7 +7,9 @@
 .About {
 	@extend %overflow-hidden, %overflow-md-visible, %position-relative;
 
-	@include media-breakpoint-up(md) {
+	@include padding(top 80px);
+
+	@include media-breakpoint-up(sm) {
 		@include padding(top 200px);
 	}
 
@@ -73,7 +75,7 @@
 	&__stars {
 		@extend %list-style-type-none, %Pointer-events-none;
 		@include absolute(top 0 right 0 bottom 0 left 0);
-		@extend .d-none, .d-md-block;
+		@extend .d-none, .d-sm-block;
 
 		z-index: 1;
 

@@ -82,11 +82,9 @@
 				{% endfor %}
 			</div>
 
-
 			{% include 'header.html.twig' %}
 
 			{% include 'components/menu.html.twig' with { menu: nav_menus.main } %}
-
 
 			{% block hero %}{% endblock %}
 
@@ -101,7 +99,6 @@
 			{% include 'footer.html.twig' %}
 
 		</div>
-
 
 		{% do action( 'woocommerce_after_main_content' ) %}
 

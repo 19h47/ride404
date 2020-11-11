@@ -17,8 +17,8 @@
 			@extend .d-inline-block;
 
 			transform: translate3d(0, -100%, 0);
-			transition: transform 0.4s map-get($easings, ease-out-expo) 0.5s,
-				opacity 0.4s map-get($easings, ease-out-expo) 0.5s;
+			transition: transform 0.5s map-get($easings, ease-out-expo) 0.5s,
+				opacity 0.5s map-get($easings, ease-out-expo) 0.5s;
 		}
 
 		@at-root .is-loaded & {

@@ -17,7 +17,7 @@
 		{{- function( 'wc_get_rating_html', product.get_average_rating() ) -}}
 	{% endif %}
 
-    {% include 'woocommerce/loop/loop-price.html.twig' with { product: product, price_html: product.get_price_html() } only %}
+    {% include 'woocommerce/loop/price.html.twig' with { product: product, price_html: product.get_price_html() } only %}
 
 	{% do action( 'woocommerce_widget_product_item_end', template_args ) %}
 </li>

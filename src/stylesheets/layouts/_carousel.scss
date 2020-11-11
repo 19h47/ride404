@@ -12,7 +12,7 @@
 	@include padding(top 80px bottom 80px);
 
 	@include media-breakpoint-up(sm) {
-		@include padding(top 117px bottom 170px);
+		@include padding(top 130px bottom 130px);
 	}
 
 	@include media-breakpoint-up(md) {
@@ -119,28 +119,6 @@
 			img {
 				transform: scale(((1/0.9)) + 0.1) rotate(7deg);
 			}
-		}
-	}
-
-	&__footer {
-		@include margin(top 105px);
-
-		img {
-			@include size(auto, 100%);
-
-			max-width: 100%;
-		}
-
-		@include media-breakpoint-up(md) {
-			height: 120px;
-		}
-
-		@include media-breakpoint-up(lg) {
-			height: 130px;
-		}
-
-		@include media-breakpoint-up(hd) {
-			height: 210px;
 		}
 	}
 }

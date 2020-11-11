@@ -12,6 +12,10 @@
 		@include autoAlpha(1);
 	}
 
+	& > div {
+		@include size(100%);
+	}
+
 	svg {
 		@extend .d-block;
 		@include size(100%);
@@ -24,7 +28,12 @@
 		@include fixed(bottom 0 left 0);
 		@include margin(top auto bottom 30px left percentage(120/1440));
 	}
-	@at-root #{ & }#{ &--up } {
-		@include margin(right 25.5px);
+	@at-root #{ & }#{ & }--up {
+		@extend .d-block;
+		@include margin(right 25.5px bottom 35px);
+
+		@include media-breakpoint-up(sm) {
+			@include margin(bottom 0);
+		}
 	}
 }

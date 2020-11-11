@@ -13,7 +13,7 @@
 		@include size(100%);
 		@extend .d-block;
 
-		transition: 0.4s fill map-get($easings, ease-out-expo);
+		transition: fill 0.5s map-get($easings, ease-out-expo);
 		fill: the_color(white);
 	}
 

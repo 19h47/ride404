@@ -20,10 +20,19 @@
 		@include size(100%);
 
 		min-width: 20px;
-		fill: currentColor;
+
+		path {
+			fill: currentColor;
+		}
 
 		@include media-breakpoint-up(md) {
 			min-width: 30px;
+		}
+
+		@at-root .Menu--is-open & {
+			path {
+				fill: the_color(black) !important; // Lottie
+			}
 		}
 	}
 }

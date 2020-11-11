@@ -10,10 +10,10 @@
 
 <form
 	class="variations_form Cart"
-	action="{{ form_action }}"
+	action="{{ form_action | e( 'esc_url' ) }}"
 	method="post"
 	enctype="multipart/form-data"
-	data-product_id="{{ product.get_id() }}"
+	data-product_id="{{ function( 'absint', product.get_id() ) }}"
 	data-product_variations="{{ variations_attr }}"
 >
 
@@ -24,7 +24,11 @@
 		{% for name, options in attributes %}
 			{% set terms = function( 'wc_get_product_terms', product.get_id(), name, { 'fields': 'all' } ) %}
 
-			<div id="product-variations-{{ name | sanitize }}" class="Product-variations variations page-block" data-node-type="ProductVariationsBlock">
+			<div
+				id="product-variations-{{ name | sanitize }}"
+				class="Product-variations variations page-block"
+				data-node-type="ProductVariationsBlock"
+			>
 
 				{# @see https://github.com/woocommerce/woocommerce/blob/master/includes/wc-template-functions.php#L2988 #}
 				{{-
@@ -47,8 +51,8 @@
 							<input
 								class="d-none"
 								type="radio"
-								name="attribute_{{ name | sanitize }}"
-								value="{{ term.slug }}"
+								name="attribute_{{ name | sanitize | e }}"
+								value="{{ term.slug | e }}"
 								{{ ( terms | length ) == 1 ? ' checked' : '' }}
 							>
 						</div>
