@@ -42,4 +42,14 @@ Scroll.on('scroll', obj => {
 	}
 });
 
+document.addEventListener('Navigation.open', () => {
+	elements.body.classList.add('Navigation--is-open');
+	Scroll.stop();
+});
+
+document.addEventListener('Navigation.close', () => {
+	elements.body.classList.remove('Navigation--is-open');
+	Scroll.start();
+});
+
 export default Scroll;

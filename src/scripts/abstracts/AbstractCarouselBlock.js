@@ -2,6 +2,7 @@ import { AbstractBlock } from 'starting-blocks';
 import Flickity from 'flickity';
 
 import Scroll from 'common/Scroll';
+import debug from 'utils/debug';
 
 /**
  *
@@ -28,13 +29,8 @@ export default class AbstractCarouselBlock extends AbstractBlock {
 			arrowShape: '',
 			on: {
 				ready() {
-					if (1 === window.startingBlocksDebugLevel) {
-						console.debug(
-							`%c[SB]\t\t%c✳️ Flickity.on.ready`,
-							'color:#749f73',
-							'color:debug',
-						);
-					}
+					debug('\t\t%c✳️ Flickity.on.ready');
+
 					Scroll.update();
 				},
 			},

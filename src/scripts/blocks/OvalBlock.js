@@ -5,9 +5,9 @@ import AbstractLottieBlock from 'abstracts/AbstractLottieBlock';
  *
  * @constructor
  */
-export default class BarsBlock extends AbstractLottieBlock {
+export default class OvalBlock extends AbstractLottieBlock {
 	constructor(container) {
-		super(container, 'BarsBlock');
+		super(container, 'OvalBlock');
 
 		this.activate = this.activate.bind(this);
 		this.deactivate = this.deactivate.bind(this);
@@ -17,8 +17,8 @@ export default class BarsBlock extends AbstractLottieBlock {
 		super.initEvents();
 
 		this.rootElement.addEventListener('mouseenter', this.activate);
-		this.rootElement.addEventListener('mouseleave', this.deactivate);
 		this.rootElement.addEventListener('focus', this.activate);
+		this.rootElement.addEventListener('mouseleave', this.deactivate);
 		this.rootElement.addEventListener('blur', this.deactivate);
 	}
 

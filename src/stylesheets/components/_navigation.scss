@@ -1,10 +1,10 @@
 /**
- * Menu
+ * Navigation
  *
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  * @package Rider404
  */
-.Menu {
+.Navigation {
 	$this: &;
 
 	@include fixed(top 0 right 0 bottom 0 left 0);
@@ -16,7 +16,7 @@
 	background-color: the_color(white);
 	color: the_color(black);
 
-	@at-root .Menu--is-open & {
+	@at-root .Navigation--is-open & {
 		@include autoAlpha(1);
 	}
 
@@ -60,23 +60,12 @@
 			svg {
 				@include absolute(top 50% left 50%);
 				@include size(342px, 171px);
-				@include autoAlpha(0);
 
-				transform: translate3d(-50%, -50%, 0);
-				fill: the_color(red, bright);
-
-				transition: opacity 0.5s map-get($easings, ease-out-expo),
-					visibility 0.5s map-get($easings, ease-out-expo);
+				transform: translate3d(-50%, -50%, 0) !important;
 			}
 
 			&.is-active::after {
 				@extend .d-block;
-			}
-			&:focus,
-			&:hover {
-				svg {
-					@include autoAlpha(1);
-				}
 			}
 		}
 	}

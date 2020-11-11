@@ -5,34 +5,29 @@
  * @package Rider404
  */
 .Bars {
-	@include size(20px);
+	@include size(32px);
 	@extend %margin-bottom-0;
 
-	min-width: 20px;
+	min-width: 32px;
 
 	@include media-breakpoint-up(md) {
-		@include size(30px);
+		@include size(42px);
 
-		min-width: 30px;
+		min-width: 42px;
 	}
 
 	svg {
 		@include size(100%);
 
-		min-width: 20px;
+		min-width: 32px;
 
 		path {
-			fill: currentColor;
+			stroke: currentColor;
+			transition: stroke 0.5s map-get($easings, ease-out-expo) 1s;
 		}
 
 		@include media-breakpoint-up(md) {
-			min-width: 30px;
-		}
-
-		@at-root .Menu--is-open & {
-			path {
-				fill: the_color(black) !important; // Lottie
-			}
+			min-width: 42px;
 		}
 	}
 }

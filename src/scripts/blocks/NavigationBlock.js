@@ -1,20 +1,20 @@
 import { AbstractBlock } from 'starting-blocks';
-import Scroll from 'common/Scroll';
-import { elements } from 'scripts/config';
-
 import { gsap } from 'gsap';
+
+import { elements } from 'scripts/config';
+import debug from 'utils/debug';
 
 /**
  *
  * @constructor
  * @param {object} container
  */
-export default class MenuBlock extends AbstractBlock {
+export default class NavigationBlock extends AbstractBlock {
 	constructor(container) {
-		super(container, 'MenuBlock');
+		super(container, 'NavigationBlock');
 
 		// this.items = [...this.rootElement.querySelectorAll('.js-item')];
-		this.isOpen = elements.body.classList.contains('Menu--is-open');
+		this.isOpen = elements.body.classList.contains('Navigation--is-open');
 
 		this.timeline = gsap.timeline({
 			paused: true,
@@ -44,10 +44,10 @@ export default class MenuBlock extends AbstractBlock {
 	}
 
 	/**
-	 * Menu.initEvents
+	 * Navigation.initEvents
 	 */
 	initEvents() {
-		// console.info('Menu.setupEvents');
+		// console.info('Navigation.setupEvents');
 
 		// On click
 		[...this.buttons].forEach(button => {
@@ -63,10 +63,10 @@ export default class MenuBlock extends AbstractBlock {
 	}
 
 	/**
-	 * Menu.toggle
+	 * Navigation.toggle
 	 */
 	toggle() {
-		// console.info('Menu.toggle');
+		// console.info('Navigation.toggle');
 		if (this.isOpen) {
 			return this.close();
 		}
@@ -75,41 +75,37 @@ export default class MenuBlock extends AbstractBlock {
 	}
 
 	/**
-	 * Menu.open
+	 * Navigation.open
 	 */
 	open() {
-		// console.info('Menu.open');
+		debug(' 🚩 Dispatched NavigationBlock.open');
 		if (this.isOpen) {
 			return false;
 		}
 
 		this.isOpen = true;
 
-		elements.body.classList.add('Menu--is-open');
-
 		// this.timeline.play();
 
-		Scroll.stop();
+		document.dispatchEvent(new Event('Navigation.open'));
 
 		return true;
 	}
 
 	/**
-	 * Menu.close
+	 * NavigationBlock.close
 	 */
 	close() {
-		// console.info('Menu.close');
+		debug(' 🚩 Dispatched NavigationBlock.close');
 		if (!this.isOpen) {
 			return false;
 		}
 
 		this.isOpen = false;
 
-		elements.body.classList.remove('Menu--is-open');
-
 		// this.timeline.reverse();
 
-		Scroll.start();
+		document.dispatchEvent(new Event('Navigation.close'));
 
 		return true;
 	}

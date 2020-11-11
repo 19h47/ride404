@@ -2,6 +2,7 @@ import { gsap } from 'gsap';
 
 import AbstractCarouselBlock from 'abstracts/AbstractCarouselBlock';
 import mediaBreakpointUp from 'utils/mediaBreakpointUp';
+import debug from 'utils/debug';
 
 /**
  *
@@ -27,9 +28,7 @@ export default class CarouselBlock extends AbstractCarouselBlock {
 	onResize() {
 		this.options.initialIndex = 1;
 
-		if (1 === window.startingBlocksDebugLevel) {
-			console.debug(`%c[SB]\t\t%c✳️ CarouselBlock.onResize`, 'color:#749f73', 'color:debug');
-		}
+		debug('\t\t%c✳️ CarouselBlock.onResize');
 
 		if (mediaBreakpointUp('sm')) {
 			this.options.prevNextButtons = true;

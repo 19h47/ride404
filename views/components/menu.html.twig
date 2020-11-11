@@ -1,17 +1,31 @@
 {#
- # Menu
+ # Navigation
  #
  # @package Error404
  #}
-<div id="menu" class="Menu page-block{{ classes is defined ? ' ' ~ classes | join(' ') }}" data-node-type="MenuBlock" data-scroll data-scroll-sticky data-scroll-target="#primary">
+<div
+	id="navigation"
+	class="Navigation page-block{{ classes is defined ? ' ' ~ classes | join(' ') }}"
+	data-node-type="NavigationBlock"
+	data-scroll
+	data-scroll-sticky
+	data-scroll-target="#primary"
+>
 	<div class="row h-100 d-flex align-items-center">
 		<div class="col-6 offset-3">
-			<ul class="Menu__items" itemscope itemtype="http://schema.org/SiteNavigationElement">
+			<ul class="Navigation__items" itemscope itemtype="http://schema.org/SiteNavigationElement">
 				{% for item in menu.get_items() %}
-					<li class="Menu__item js-item">
+					<li class="Navigation__item js-item">
 
-						<a href="{{ item.url }}" {{ item.is_external() or item.is_target_blank() ? 'target="_blank"' }} itemprop="url" class="Menu__link{{ item.current ? ' is-active' }}">
-							{% include 'svg/use.html.twig' with { icon: 'oval-large' } only %}
+						<a
+							id="oval-{{ item.id }}"
+							class="Navigation__link page-block{{ item.current ? ' is-active' }}"
+							href="{{ item.url }}"
+							itemprop="url"
+							data-node-type="OvalBlock"
+							data-lottie-json="oval"
+							{{ item.is_external() or item.is_target_blank() ? 'target="_blank"' }}
+						>
 							{{- item.title -}}
 						</a>
 					</li>
@@ -20,14 +34,16 @@
 		</div>
 	</div>
 
-	<footer class="Menu__footer">
+	<footer class="Navigation__footer">
 		<div class="row">
 			<div class="col-10 offset-1 col-md-2 offset-md-5">
-				<a href="{{ terms_url }}">{{- __( 'Terms & legal', 'rider404' ) -}}</a>
+				<a href="{{ terms_url | e( 'esc_url' ) }}">{{- __( 'Terms & legal', 'rider404' ) -}}</a>
 			</div>
 		</div>
 	</footer>
 
 	{% include 'components/video.html.twig' with { id: 'video-menu', preview: Image( nav_menus.main.meta('video') ).src } %}
-		
+
+	{# <div id="menu-background" class="Navigation__background js-background page-block" data-node-type="MenuBackgroundBlock"></div> #}
+
 </div>

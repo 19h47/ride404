@@ -1,5 +1,6 @@
 import AbstractCarouselBlock from 'abstracts/AbstractCarouselBlock';
 import mediaBreakpointUp from 'utils/mediaBreakpointUp';
+import debug from 'utils/debug';
 
 /**
  *
@@ -12,9 +13,7 @@ export default class PushBlock extends AbstractCarouselBlock {
 	}
 
 	onResize() {
-		if (1 === window.startingBlocksDebugLevel) {
-			console.debug(`%c[SB]\t\t%c✳️ PushBlock.onResize`, 'color:#749f73', 'color:debug');
-		}
+		debug('\t\t%c✳️ PushBlock.onResize');
 
 		if (this.carousel && mediaBreakpointUp('sm')) {
 			this.carousel.destroy();
