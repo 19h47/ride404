@@ -22,6 +22,11 @@ export default class AbstractLottieBlock extends AbstractBlock {
 			autoplay: JSON.parse(this.rootElement.getAttribute('data-lottie-autoplay')) || false,
 			name: `${this.rootElement.getAttribute('id')}_animation`,
 			container: this.rootElement,
+			rendererSettings: {
+				preserveAspectRatio:
+					this.rootElement.getAttribute('data-lottie-preserveaspectratio') ||
+					'xMinYMin slice',
+			},
 		};
 
 		this.json = import(`@/json/${this.rootElement.getAttribute('data-lottie-json')}.json`);

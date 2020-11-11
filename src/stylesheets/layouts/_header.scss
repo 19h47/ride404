@@ -66,7 +66,11 @@
 				@include size(100%);
 
 				min-width: 50px;
-				fill: currentColor;
+
+				path {
+					fill: currentColor !important;
+					transition: fill 0.5s map-get($easings, ease-out-expo) !important;
+				}
 
 				@include media-breakpoint-up(md) {
 					min-width: 70px;

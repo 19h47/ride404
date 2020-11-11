@@ -12,7 +12,7 @@
     </div>
 {% endmacro %}
 
-<div id="{{ id }}" class="Video page-block" data-node-type="VideoBlock">
+<div id="{{ id }}" class="Video page-block{{ classes ? ' ' ~ classes | join( ' ' ) }}" data-node-type="VideoBlock">
 
     <div class="Video__body">
         {% if overlay %}

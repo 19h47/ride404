@@ -34,7 +34,7 @@
 		</div>
 	</div>
 
-	<footer class="Navigation__footer">
+	<footer class="Navigation__footer js-footer">
 		<div class="row">
 			<div class="col-10 offset-1 col-md-2 offset-md-5">
 				<a href="{{ terms_url | e( 'esc_url' ) }}">{{- __( 'Terms & legal', 'rider404' ) -}}</a>
@@ -42,8 +42,16 @@
 		</div>
 	</footer>
 
-	{% include 'components/video.html.twig' with { id: 'video-menu', preview: Image( nav_menus.main.meta('video') ).src } %}
+	{% include 'components/video.html.twig' with { id: 'video-menu', classes: [ 'js-video' ], preview: Image( nav_menus.main.meta('video') ).src } %}
 
-	{# <div id="menu-background" class="Navigation__background js-background page-block" data-node-type="MenuBackgroundBlock"></div> #}
+	<div
+		id="menu"
+		class="Navigation__background js-background page-block"
+		data-node-type="MenuBlock"
+		data-lottie-json="menu"
+		data-lottie-autoplay="false"
+		data-lottie-loop="false"
+		data-lottie-preserveaspectratio="xMaxYMax slice"
+	></div>
 
 </div>

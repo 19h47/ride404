@@ -29,8 +29,8 @@
 			min-width: 32px;
 
 			path {
-				stroke: currentColor;
-				transition: stroke 0.5s map-get($easings, ease-out-expo) 1s;
+				stroke: currentColor !important;
+				transition: stroke 0.5s map-get($easings, ease-out-expo) !important;
 			}
 
 			@include media-breakpoint-up(md) {

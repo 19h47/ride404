@@ -8,20 +8,18 @@
 	$this: &;
 
 	@include fixed(top 0 right 0 bottom 0 left 0);
-	@include autoAlpha(0);
 	@include size(100%, 100vh);
 	@include padding(bottom env(safe-area-inset-bottom));
+	@extend %Pointer-events-none;
 
 	z-index: 10;
-	background-color: the_color(white);
 	color: the_color(black);
-
-	@at-root .Navigation--is-open & {
-		@include autoAlpha(1);
-	}
 
 	.Video {
 		@include absolute(top 0 right 0 bottom 0 left 0);
+		@include autoAlpha(0);
+
+		z-index: 2;
 
 		&__body {
 			@include padding(bottom 0);
@@ -31,12 +29,14 @@
 
 	&__items {
 		@extend %list-style-type-none, %position-relative;
+		@extend %Pointer-events-auto;
 
 		z-index: 3;
 	}
 
 	&__item {
 		@extend %text-align-center;
+		@include autoAlpha(0);
 
 		a {
 			@extend %font-family-title, %margin-0, %position-relative;
@@ -74,6 +74,8 @@
 		@include absolute(right 0 bottom 0 left 0);
 		@include margin(bottom 80px);
 		@extend %text-align-center, %text-decoration-underline;
+		@include autoAlpha(0);
+		@extend %Pointer-events-auto;
 
 		color: the_color(gray, very-dark-02);
 		z-index: 3;
@@ -85,5 +87,11 @@
 			font-size: 18px;
 			line-height: 28px;
 		}
+	}
+
+	&__background {
+		@include absolute(top 0 right 0 bottom 0 left 0);
+
+		z-index: 1;
 	}
 }
