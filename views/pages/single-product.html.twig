@@ -34,13 +34,13 @@
     {% do action( 'woocommerce_before_single_product' ) %}
 
     <div id="product-{{ post.id }}" class="{{ product_class | join( ' ' ) }}" data-scroll-section>
-        <div class="Section">
-            <div class="row">
-                <div class="col-8 offset-2">
+		{% do action( 'woocommerce_before_single_product_summary' ) %}
 
-                    {% do action( 'woocommerce_before_single_product_summary' ) %}
+		<div class="summary entry-summary">
+			<div class="Section">
+				<div class="row">
+					<div class="col-8 offset-2">
 
-                    <div class="summary entry-summary">
                         {#
                          # Hook: woocommerce_single_product_summary.
                          #
@@ -52,15 +52,23 @@
                          #}
                         {% do action( 'woocommerce_single_product_summary' ) %}
 
-                        {% include 'partials/image.html.twig' with { image: post.thumbnail, classes: [ 'Product-thumbnail' ] } only %}
-
                     </div>
-
-                    {% do action( 'woocommerce_after_single_product_summary' ) %}
 
                 </div>
             </div>
+
+			<div class="Section">
+				<div class="row">
+                	<div class="col-8 offset-2">
+						{{ dump( post.is_featured() ) }}
+						{% include 'partials/featured.html.twig' with { product: post } only %}
+						{% include 'partials/image.html.twig' with { image: post.thumbnail, classes: [ 'Product-thumbnail' ] } only %}
+					</div>
+				</div>
+			</div>
         </div>
+
+		{% do action( 'woocommerce_after_single_product_summary' ) %}
 
         <div class="Section">
             <div class="row">

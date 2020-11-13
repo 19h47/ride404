@@ -83,7 +83,7 @@
 			</div>
 
 			{% include 'header.html.twig' %}
-
+			{% include 'components/modal.html.twig' with { control: 'video-hero', video: post.meta( 'video' ).youtube } %}
 			{% include 'components/navigation.html.twig' with { menu: nav_menus.main } %}
 
 			{% block hero %}{% endblock %}

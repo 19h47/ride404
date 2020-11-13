@@ -76,9 +76,9 @@
 @import 'components/loop-product-title';
 @import 'components/loop-price';
 @import 'components/loop-product-link';
-@import 'components/loop-featured';
 @import 'components/loop-product-thumbnail';
 
+@import 'components/featured';
 @import 'components/partners';
 @import 'components/faq';
 @import 'components/video';
@@ -94,6 +94,7 @@
 @import 'components/products';
 @import 'components/coordinates';
 @import 'components/bar';
+@import 'components/modal';
 
 // Utilities.
 @import '~@19h47/architecture/src/stylesheets/utilities/colors';

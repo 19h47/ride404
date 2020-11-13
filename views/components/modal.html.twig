@@ -1,0 +1,34 @@
+{#
+ # Modal
+ #
+ #
+ #}
+{% if video %}
+	<div
+		id="modal-{{ control }}"
+		class="Modal page-block"
+		data-video-id="{{ video }}"
+		data-video-control="{{ control }}"
+		data-node-type="ModalBlock"
+		data-scroll
+		data-scroll-sticky
+		data-scroll-target="#primary"
+	>
+		<header class="Modal__header">
+			<div class="row h-100">
+				<div class="col-1 offset-11 h-100 d-flex">
+					<button class="Modal__button js-button" type="button">
+						{% include 'svg/use.html.twig' with { icon: 'time', classes: [ 'Pointer-events-none' ] } %}
+					</button>
+				</div>
+			</div>
+		</header>
+		<div class="row h-100">
+			<div class="col-10 offset-1 h-100">
+				<div class="Modal__body">
+					<div class="js-player"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endif %}

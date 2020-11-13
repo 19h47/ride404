@@ -22,7 +22,7 @@
         </div>
         <div class="row">
             <div class="col-12 col-sm-10 offset-sm-1">
-                {% include 'components/video.html.twig' with { id: 'video-hero', preview: post.meta( 'video' ).url, overlay: true } %}
+                {% include 'components/video.html.twig' with { id: 'video-hero', preview: post.meta( 'video' ).thumbnail.url, overlay: true } %}
             </div>
         </div>
     </div>

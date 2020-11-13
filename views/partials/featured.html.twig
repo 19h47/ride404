@@ -1,5 +1,5 @@
-{# 
- # Loop featured
+{#
+ # Featured
  #
  # @param object $product Product object.
  #
@@ -7,7 +7,7 @@
  # @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  #}
 {% if product.is_featured() %}
-    <div id="featured-{{ product.get_id() }}" class="Loop-featured page-block" data-node-type="FeaturedBlock" data-scroll data-scroll-call="featured-{{ product.get_id() }}">
+    <div id="featured-{{ product.get_id() }}" class="Featured page-block" data-node-type="FeaturedBlock" data-scroll data-scroll-call="featured-{{ product.get_id() }}">
         {% include 'svg/use.html.twig' with { icon: 'new' } only %}
     </div>
 {% endif %}

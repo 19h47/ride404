@@ -1,6 +1,7 @@
 import { AbstractBlock } from 'starting-blocks';
 import $ from 'jquery';
 
+import { elements } from 'scripts/config';
 import Scroll from 'common/Scroll';
 
 /**
@@ -25,6 +26,9 @@ export default class CheckoutCouponsBlock extends AbstractBlock {
 		super.initEvents();
 
 		this.rootElement.addEventListener('click', this.handleClick, false);
+
+		$(elements.body).on('applied_coupon', e => console.log(e));
+		$(elements.body).on('removed_coupon', e => console.log(e));
 	}
 
 	handleClick({ target }) {

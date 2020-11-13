@@ -1,10 +1,10 @@
 /**
- * Loop featured
+ * Featured
  *
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  * @package Rider404
  */
-.Loop-featured {
+.Featured {
 	@include absolute(top 0 right 0);
 	@include margin(top 20px right -20px);
 	@include size(136px);

@@ -60,6 +60,7 @@ export default class NavigationBlock extends AbstractBlock {
 	 */
 	initEvents() {
 		// console.info('Navigation.setupEvents');
+		super.initEvents();
 
 		// On click
 		[...this.buttons].forEach(button => {

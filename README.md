@@ -26,7 +26,7 @@ rider404_single_quick_variation
 rider404_after_single_quick_variation
 ```
 
-## Color Reference
+## 🎨 Color Reference
 
 | Color             | Hex                                                                 |
 | ----------------- | ------------------------------------------------------------------- |

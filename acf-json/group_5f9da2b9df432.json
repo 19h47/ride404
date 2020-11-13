@@ -3,10 +3,10 @@
     "title": "Options",
     "fields": [
         {
-            "key": "field_5f9f2530c4354",
-            "label": "Vidéo",
+            "key": "field_5faeb96af7f80",
+            "label": "Video",
             "name": "video",
-            "type": "file",
+            "type": "group",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -15,11 +15,47 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array",
-            "library": "all",
-            "min_size": "",
-            "max_size": "",
-            "mime_types": ""
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5f9f2530c4354",
+                    "label": "Thumbnail",
+                    "name": "thumbnail",
+                    "type": "file",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_size": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_5faeba0df7f81",
+                    "label": "YouTube ID",
+                    "name": "youtube",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
         },
         {
             "key": "field_5f9f2130a6ddd",
@@ -136,5 +172,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "Options de la Front page",
-    "modified": 1604581229
+    "modified": 1605286459
 }

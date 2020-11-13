@@ -36,5 +36,14 @@ export default class VideoBlock extends AbstractBlock {
 				this.rootElement.classList.add('is-over');
 			}
 		});
+
+		this.rootElement.addEventListener('click', ({ target }) => {
+			if ('BUTTON' === target.nodeName) {
+				const event = new CustomEvent('Video.open', { detail: { id: this.id } });
+				return document.dispatchEvent(event);
+			}
+
+			return true;
+		});
 	}
 }

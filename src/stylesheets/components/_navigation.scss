@@ -15,6 +15,10 @@
 	z-index: 10;
 	color: the_color(black);
 
+	@at-root .Navigation--is-open & {
+		@extend %Pointer-events-auto;
+	}
+
 	.Video {
 		@include absolute(top 0 right 0 bottom 0 left 0);
 		@include autoAlpha(0);
@@ -29,7 +33,6 @@
 
 	&__items {
 		@extend %list-style-type-none, %position-relative;
-		@extend %Pointer-events-auto;
 
 		z-index: 3;
 	}
@@ -75,7 +78,6 @@
 		@include margin(bottom 80px);
 		@extend %text-align-center, %text-decoration-underline;
 		@include autoAlpha(0);
-		@extend %Pointer-events-auto;
 
 		color: the_color(gray, very-dark-02);
 		z-index: 3;
