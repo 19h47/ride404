@@ -18,8 +18,8 @@
 		{% do action( 'woocommerce_checkout_terms_and_conditions' ) %}
 
 		{% if function( 'wc_terms_and_conditions_checkbox_enabled' ) %}
-			<p class="form-row validate-required">
-				<label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
+			<p class="Form-row form-row validate-required">
+				{# <label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
 					<input
 						id="terms"
 						type="checkbox"
@@ -36,9 +36,40 @@
 					<span class="woocommerce-terms-and-conditions-checkbox-text">
 						{{- function( 'wc_terms_and_conditions_checkbox_text' ) }}
 					</span>&nbsp;<span class="required">*</span>
-				</label>
+				</label> #}
+
+				<div
+					id="checkbox-terms-and-conditions"
+					class="Checkbox page-block woocommerce-form__label woocommerce-form__label-for-checkbox checkbox{{ request.post.terms | apply_filters( 'woocommerce_terms_is_checked_default' ) ? ' is-selected' : '' }}"
+					role="checkbox"
+					aria-checked="{{ request.post.terms | apply_filters( 'woocommerce_terms_is_checked_default' ) ? 'true' : 'false' }}"
+					data-node-type="CheckboxBlock"
+					tabindex="0"
+				>
+					<button type="button" tabindex="-1"></button>
+					<span class="woocommerce-terms-and-conditions-checkbox-text">
+						{{- function( 'wc_terms_and_conditions_checkbox_text' ) -}}
+					</span>&nbsp;<span class="required">*</span>
+					<div style="display: none;">
+						<input
+							class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox"
+							id="terms"
+							name="terms"
+							type="checkbox"
+							{{
+								function(
+									'checked',
+									request.post.terms | apply_filters( 'woocommerce_terms_is_checked_default' )
+								)
+							}}
+						/>
+					</div>
+				</div>
+
 				<input type="hidden" name="terms-field" value="1" />
 			</p>
+
+
 		{% endif %}
 	</div>
 

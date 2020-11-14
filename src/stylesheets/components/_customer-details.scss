@@ -1,0 +1,18 @@
+/**
+ * Customer details
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider.404
+ */
+.Customer-details {
+	@extend .d-flex;
+
+	&__left {
+		width: percentage(5/10);
+	}
+	&__right {
+		@include margin(left percentage(1/10));
+
+		width: percentage(4/10);
+	}
+}

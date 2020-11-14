@@ -1,0 +1,26 @@
+/**
+ * Success
+ *
+ * @package Rider404
+ */
+.Success {
+	@extend .d-flex;
+	@include padding(top 16px right 20px bottom 16px left 20px);
+
+	background-color: the_color(green, lime);
+	border: none;
+	color: the_color(white);
+
+	svg {
+		@include size(28px);
+		@include margin(right 20px);
+
+		min-width: 28px;
+
+		fill: the_color(white);
+	}
+
+	&::before {
+		content: none;
+	}
+}

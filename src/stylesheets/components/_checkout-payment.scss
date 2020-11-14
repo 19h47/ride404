@@ -1,0 +1,15 @@
+/**
+ * Checkout payment
+ *
+ * @package Rider404
+ */
+.Checkout-payment {
+	background: transparent !important; // WooCommerce
+	border-radius: 0 !important; // WooCommerce
+	border: none !important; // WooCommerce
+
+	&__methods {
+		padding: 70px 0 !important; // WooCommerce
+		border-bottom-color: the_color(gray, very-dark-03) !important;
+	}
+}

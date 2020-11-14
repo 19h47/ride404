@@ -159,4 +159,63 @@ class TemplateFunctions {
 
 		return Timber::render( 'woocommerce/single-product/add-to-cart/quick-variable.html.twig', $context );
 	}
+
+
+	/**
+	 * Checkout privacy policy text
+	 *
+	 * @access static
+	 * @return string
+	 */
+	public static function checkout_privacy_policy_text() : string {
+		return Timber::render( 'partials/privacy-policy-text.html.twig' );
+	}
+
+
+	/**
+	 * Form fields args
+	 *
+	 * @param array  $args Arguments.
+	 * @param string $key key.
+	 * @param string $value (default: null).
+	 *
+	 * @access static
+	 * @return array $args
+	 */
+	public static function form_field_args( array $args, string $key, $value ) : array {
+		switch ( $args['type'] ) {
+			case 'textarea':
+				$args['input_class'][] = 'Textarea';
+				break;
+			case 'text':
+			case 'password':
+			case 'datetime':
+			case 'datetime-local':
+			case 'date':
+			case 'month':
+			case 'time':
+			case 'week':
+			case 'number':
+			case 'email':
+			case 'url':
+			case 'tel':
+				$args['input_class'][] = 'Input';
+				break;
+		}
+
+		$args['class'][] = 'Form-row';
+
+		return $args;
+	}
+
+
+	/**
+	 * Show notice if cart is empty.
+	 *
+	 * @return string
+	 * @access static
+	 */
+	public static function empty_cart_message() : string {
+		return Timber::render( 'partials/empty-cart-message.html.twig' );
+	}
 }

@@ -1,0 +1,26 @@
+/**
+ * Error
+ *
+ * @package Rider404
+ */
+.Error {
+	@extend .d-flex, .flex-column;
+	@include padding(top 16px right 20px bottom 16px left 20px);
+
+	background-color: the_color(red, bright);
+	border: none;
+	color: the_color(white);
+
+	svg {
+		@include size(28px);
+		@include margin(right 20px);
+
+		min-width: 28px;
+
+		fill: the_color(white);
+	}
+
+	&::before {
+		content: none;
+	}
+}

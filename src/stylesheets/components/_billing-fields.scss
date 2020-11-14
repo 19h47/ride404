@@ -1,0 +1,20 @@
+/**
+ * Billing fields
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.Billing-fields {
+	&__title {
+		@extend .h2;
+	}
+
+	&__wrapper {
+		& > *:first-child {
+			@extend %margin-top-0;
+		}
+		& > *:last-child {
+			@extend %margin-bottom-0;
+		}
+	}
+}

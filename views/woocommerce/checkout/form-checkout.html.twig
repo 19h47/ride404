@@ -27,12 +27,12 @@
 
             {% do action( 'woocommerce_checkout_before_customer_details' ) %}
 
-            <div class="row" id="customer_details">
-                <div class="col-6">
+            <div class="Customer-details" id="customer_details">
+                <div class="Customer-details__left">
                     {% do action( 'woocommerce_checkout_billing' ) %}
                 </div>
 
-                <div class="col-5 offset-1">
+                <div class="Customer-details__right">
                     {% do action( 'woocommerce_checkout_shipping' ) %}
                 </div>
             </div>
@@ -43,13 +43,13 @@
 
         {% do action( 'woocommerce_checkout_before_order_review_heading' ) %}
 
-        <h3 id="order_review_heading">
-			{{- __( 'Your order', 'rider404' ) | e( 'esc_html' ) -}}
-		</h3>
 
         {% do action( 'woocommerce_checkout_before_order_review' ) %}
 
-        <div id="order_review" class="woocommerce-checkout-review-order">
+        <div id="order_review" class="Checkout-review-order woocommerce-checkout-review-order">
+			<h3 class="Checkout-review-order__title" id="order_review_heading">
+				{{- __( 'Your order', 'rider404' ) | e( 'esc_html' ) -}}
+			</h3>
             {% do action( 'woocommerce_checkout_order_review' ) %}
         </div>
 

@@ -1,0 +1,42 @@
+/**
+ * Checkout coupon
+ *
+ * @package Rider404
+ */
+.Checkout-coupon {
+	&__form {
+		margin: 0 !important; // WooCommerce
+		padding: 0 !important; // WooCommerce
+		border: none !important; // WooCommerce
+
+		& > div {
+			padding: 60px 0 !important; // WooCommerce
+		}
+
+		button {
+			@include margin(top 8px left 30px);
+			@extend %text-transform-uppercase, %font-family-title, %margin-left-auto;
+
+			font-weight: 900 !important; // WooCommerce
+			text-decoration: underline !important; // WooCommerce
+			font-size: 16px !important; // WooCommerce
+			line-height: (28/16) !important; // WooCommerce
+			background-color: transparent !important; // WooCommerce
+			color: the_color(white) !important; // WooCommerce
+
+			border-radius: 0 !important; // WooCommerce
+			padding: 0 !important; // WooCommerce
+		}
+
+		p {
+			@extend %margin-bottom-0;
+			@include margin(right auto);
+
+			color: the_color(gray, very-dark-02);
+		}
+
+		input {
+			@include margin(right 30px left 30px);
+		}
+	}
+}

@@ -31,6 +31,7 @@
 @import 'abstracts/functions';
 
 @import '~@19h47/architecture/src/stylesheets/abstracts/placeholders';
+@import 'vendors/select2';
 
 // Base stuff
 @import 'base/base';
@@ -73,11 +74,34 @@
 @import 'components/quick-cart';
 @import 'components/arrow';
 
+@import 'components/checkbox';
+@import 'components/input';
+@import 'components/textarea';
+
+@import 'components/form-row';
+@import 'components/billing-fields';
+@import 'components/payment-method';
+
+@import 'components/shipping-fields';
+@import 'components/shipping-methods';
+
 @import 'components/loop-product';
 @import 'components/loop-product-title';
 @import 'components/loop-price';
 @import 'components/loop-product-link';
 @import 'components/loop-product-thumbnail';
+
+@import 'components/checkout-payment';
+@import 'components/checkout-coupon';
+@import 'components/checkout-review-order';
+
+@import 'components/customer-details';
+
+@import 'components/notice';
+@import 'components/info';
+@import 'components/error';
+@import 'components/success';
+@import 'components/privacy-policy-text';
 
 @import 'components/featured';
 @import 'components/partners';

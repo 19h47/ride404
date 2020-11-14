@@ -1,0 +1,29 @@
+{#
+ # Payment method
+ #
+ # @package Rider404
+ #}
+<li class="Payment-method wc_payment_method payment_method_{{ gateway.id | e }}">
+	<input
+		id="payment_method_{{ gateway.id | e }}"
+		type="radio"
+		class="input-radio"
+		name="payment_method"
+		value="{{ gateway.id | e }}"
+		{{ function( 'checked', gateway.chosen, true ) }}
+		data-order_button_text="{{ gateway.order_button_text | e }}" />
+
+	<label for="payment_method_{{ gateway.id | e }}">
+		{{- gateway.get_title() -}}
+		{{- gateway.get_icon() -}}
+	</label>
+
+	{% if gateway.has_fields() or gateway.get_description() %}
+		<div
+			class="Payment-method__box payment_box payment_method_{{ gateway.id | e }}"
+			{{ gateway.chosen ? '' : ' style="display:none;"' }}
+		>
+			{{- gateway.payment_fields() -}}
+		</div>
+	{% endif %}
+</li>

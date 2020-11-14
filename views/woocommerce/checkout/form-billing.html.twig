@@ -1,0 +1,68 @@
+{#
+ # Form billing
+ #
+ # @package Rider404
+ #}
+
+<div class="Billing-fields woocommerce-billing-fields">
+	{% if ship_to_billing_address_only and cart.needs_shipping() %}
+
+		<h3 class="Billing-fields__title">
+			{{- __( 'Billing &amp; Shipping', 'rider404' ) | e( 'esc_html' ) -}}
+		</h3>
+
+	{% else %}
+
+		<h3 class="Billing-fields__title">
+			{{- __( 'Billing details', 'rider404' ) | e( 'esc_html' ) -}}
+		</h3>
+
+	{% endif %}
+
+	{% do action( 'woocommerce_before_checkout_billing_form', checkout ) %}
+
+	<div class="Billing-fields__wrapper woocommerce-billing-fields__field-wrapper">
+		{% for key, field in checkout.get_checkout_fields( 'billing' ) %}
+			{{- function( 'woocommerce_form_field', key, field, checkout.get_value( key ) ) -}}
+		{% endfor %}
+	</div>
+
+	{% do action( 'woocommerce_after_checkout_billing_form', checkout ) %}
+</div>
+
+{% if not is_user_logged_in and checkout.is_registration_enabled() %}
+	<div class="Account-fields woocommerce-account-fields">
+		{% if not checkout.is_registration_required() %}
+
+			<p class="form-row form-row-wide create-account">
+				<label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
+					<input
+						class="Input woocommerce-form__input woocommerce-form__input-checkbox input-checkbox"
+						id="createaccount"
+						{{ fn( 'checked', true is same as( checkout.get_value( 'createaccount' ) ) or true is same as( false | apply_filters( 'woocommerce_create_account_default_checked' ) ), true ) }}
+						type="checkbox"
+						name="createaccount"
+						value="1"
+					/>
+					<span>{{- __( 'Create an account?', 'rider404' ) | e( 'esc_html' ) -}}</span>
+				</label>
+			</p>
+
+		{% endif %}
+
+		{% do action( 'woocommerce_before_checkout_registration_form', checkout ) %}
+
+		{% if checkout.get_checkout_fields( 'account' ) %}
+
+			<div class="create-account">
+				{% for key, field in checkout.get_checkout_fields( 'account' ) %}
+					{{- function( 'woocommerce_form_field', key, field, checkout.get_value( key ) ) -}}
+				{% endfor %}
+				<div class="clear"></div>
+			</div>
+
+		{% endif %}
+
+		{% do action( 'woocommerce_after_checkout_registration_form', checkout ) %}
+	</div>
+{% endif %}

@@ -1,0 +1,15 @@
+/**
+ * Shipping fields
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.Shipping-fields {
+	&__title {
+		@extend .h2;
+
+		.Checkbox {
+			line-height: (44/52);
+		}
+	}
+}

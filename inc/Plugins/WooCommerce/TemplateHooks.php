@@ -9,6 +9,7 @@
 namespace Rider404\Plugins\WooCommerce;
 
 use Timber\{ Timber };
+use DOMDocument;
 
 /**
  * Template hooks
@@ -35,11 +36,34 @@ class TemplateHooks {
 
 
 	/**
+	 * PayPal icon
+	 *
+	 * @return string
+	 */
+	public function paypal_icon( string $icon, string $id ) : string {
+		if ( 'paypal' !== $id ) {
+			return $icon;
+		}
+
+		$dom = new DOMDocument();
+		$dom->loadHTML( $icon );
+
+		foreach ( $dom->getElementsByTagName( 'img' ) as $img ) {
+			$img->setAttribute( 'src', trailingslashit( get_template_directory_uri() ) . get_theme_manifest()['img/svg/paypal.svg'] );
+		}
+
+		return $dom->saveHTML();
+	}
+
+
+	/**
 	 * Add action
 	 *
 	 * @return void
 	 */
 	public function add_action() : void {
+		add_filter( 'woocommerce_gateway_icon', array( $this, 'paypal_icon' ), 10, 2 );
+
 		// Single variation.
 		add_action( 'woocommerce_single_variation', 'woocommerce_single_variation_add_to_cart_button', 10 );
 		add_action( 'woocommerce_single_variation', array( 'Rider404\Plugins\WooCommerce\TemplateFunctions', 'variation' ), 20 );
@@ -69,6 +93,12 @@ class TemplateHooks {
 
 		// Quick variable add to cart.
 		add_action( 'rider404_quick_variable_add_to_cart', array( 'Rider404\Plugins\WooCommerce\TemplateFunctions', 'quick_variable_add_to_cart' ), 10 );
+
+		add_action( 'woocommerce_checkout_terms_and_conditions', array( 'Rider404\Plugins\WooCommerce\TemplateFunctions', 'checkout_privacy_policy_text' ), 20 );
+
+		add_filter( 'woocommerce_form_field_args', array( 'Rider404\Plugins\WooCommerce\TemplateFunctions', 'form_field_args' ), 10, 3 );
+
+		add_action( 'woocommerce_cart_is_empty', array( 'Rider404\Plugins\WooCommerce\TemplateFunctions', 'empty_cart_message' ), 10 );
 	}
 
 
@@ -116,5 +146,11 @@ class TemplateHooks {
 
 		// After shop loop item title.
 		remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 );
+
+		// Checkout terms and conditions.
+		remove_action( 'woocommerce_checkout_terms_and_conditions', 'wc_checkout_privacy_policy_text', 20 );
+
+		// Cart is empty.
+		remove_action( 'woocommerce_cart_is_empty', 'wc_empty_cart_message', 10 );
 	}
 }

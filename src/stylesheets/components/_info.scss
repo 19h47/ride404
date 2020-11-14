@@ -1,0 +1,38 @@
+/**
+ * Info
+ *
+ * @package Rider404
+ */
+.Info {
+	@extend .d-flex;
+	@include padding(top 16px right 20px bottom 16px left 20px);
+	@include margin(bottom 20px);
+
+	background-color: the_color(gray, very-dark-02);
+	border: none;
+	color: the_color(white);
+
+	svg {
+		@include size(28px);
+		@include margin(right 20px);
+
+		min-width: 28px;
+
+		fill: the_color(white);
+	}
+
+	&::before {
+		content: none;
+	}
+
+	button {
+		@include margin(top 8px);
+		@extend %text-decoration-underline,
+			%text-transform-uppercase,
+			%font-family-title,
+			%font-weight-heavy,
+			%margin-left-auto;
+
+		font-size: 16px;
+	}
+}

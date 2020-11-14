@@ -1,0 +1,31 @@
+/**
+ * Payment method
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.Payment-method {
+	margin-top: 40px !important; // WooCommerce
+	margin-bottom: 40px !important; // WooCommerce
+
+	&:first-child {
+		@include margin(top 0);
+	}
+
+	&:last-child {
+		@include margin(bottom 0);
+	}
+
+	&__box {
+		background-color: the_color(gray, very-dark-03) !important; // WooCommerce
+		font-size: 14px !important; // WooCommerce
+		line-height: (28/14) !important; //WooCommerce
+		color: the_color(white) !important; //WooCommerce
+		padding: 15px 20px !important; // WooCommerce
+		margin-bottom: 0 !important; // WooCommerce
+
+		&::before {
+			border-bottom-color: the_color(gray, very-dark-03) !important; // WooCommerce
+		}
+	}
+}

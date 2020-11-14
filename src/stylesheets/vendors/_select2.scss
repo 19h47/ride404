@@ -1,0 +1,50 @@
+/**
+ * Select2
+ *
+ *
+ *
+ */
+.select2 {
+	&.select2-container--default {
+	}
+
+	&.select2-container--focus {
+		outline: none;
+	}
+
+	&.select2-container--open {
+	}
+
+	.select2-selection {
+		@include padding(top 10px right 15px bottom 10px left 15px);
+
+		background-color: transparent;
+		border-radius: 0;
+		border: 1px solid the_color(gray, very-dark-03);
+		color: the_color(gray, very-dark-03);
+		height: auto;
+
+		transition: border-color 0.5s map-get($easings, ease-out-expo);
+
+		&:focus {
+			outline: none;
+			border-color: the_color(white);
+		}
+
+		&[aria-expanded='true'] {
+			border-color: the_color(white);
+		}
+
+		&__rendered {
+			color: the_color(white) !important; // Select2
+		}
+	}
+
+	.select2-selection__rendered {
+		@include padding(right 0 left 0);
+	}
+
+	.select2-results__option {
+		color: the_color(gray, very-dark-01);
+	}
+}

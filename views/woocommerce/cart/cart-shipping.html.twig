@@ -1,0 +1,79 @@
+{#
+ # Shipping Methods
+ #
+ # @package Rider404
+ #}
+<tr class="woocommerce-shipping-totals shipping">
+	<th>{{- package_name | e( 'wp_kses_post' ) -}}</th>
+
+	<td class="text-align-right" data-title="{{ package_name | e }}">
+		{% if available_methods is not empty %}
+			<ul id="shipping_method" class="Shipping-methods woocommerce-shipping-methods">
+				{% for method in available_methods %}
+					<li class="margin-0">
+						{% if 1 < function( 'count', available_methods ) %}
+							{% apply format( index, method.id | sanitize, method.id, function( 'checked', method.id, chosen_method, false ) ) %}
+								<input type="radio" name="shipping_method[%1$d]" data-index="%1$d" id="shipping_method_%1$d_%2$s" value="%3$s" class="shipping_method" %4$s />
+							{% endapply %}
+						{% else %}
+							{% apply format( index, method.id | sanitize, method.id ) %}
+								<input type="hidden" name="shipping_method[%1$d]" data-index="%1$d" id="shipping_method_%1$d_%2$s" value="%3$s" class="shipping_method" />
+							{% endapply %}
+						{% endif %}
+
+						{% apply format( index, method.id | sanitize, function( 'wc_cart_totals_shipping_method_label', method ) ) %}
+							<label for="shipping_method_%1$s_%2$s">%3$s</label>
+						{% endapply %}
+
+						{# Hook: woocommerce_after_shipping_rate. #}
+						{% do action( 'woocommerce_after_shipping_rate', method, index ) %}
+
+					</li>
+				{% endfor %}
+			</ul>
+
+			{% if is_cart %}
+				<p class="woocommerce-shipping-destination">
+					{%- if formatted_destination -%}
+						{# Translators: $s shipping destination. #}
+						{{- __( 'Shipping to %s.', 'rider404' ) | format( "&nbsp;<strong>#{ formatted_destination }</strong>" ) | e( 'esc_html' ) -}}
+						{% set calculator_text = __( 'Change address', 'rider404' ) %}
+					{%- else -%}
+						{% filter apply_filters( 'woocommerce_shipping_estimate_html' ) %}
+							{{- __( 'Shipping options will be updated during checkout.', 'rider404' ) | e( 'wp_kses_post' ) -}}
+						{% endfilter %}
+					{%- endif -%}
+				</p>
+			{% endif %}
+
+		{% elseif not has_calculated_shipping or not formatted_destination %}
+			{% if is_cart and 'no' is same as( enable_shipping_calc ) %}
+				{% filter apply_filters( 'woocommerce_shipping_not_enabled_on_cart_html' ) %}
+					<p>{{- __( 'Shipping costs are calculated during checkout.', 'rider404' ) | e( 'wp_kses_post' ) -}}</p>
+				{% endfilter %}
+			{% else %}
+				{% filter apply_filters( 'woocommerce_shipping_may_be_available_html' ) %}
+					<p>{{- __( 'Enter your address to view shipping options.', 'rider404' ) | e( 'wp_kses_post' ) -}}</p>
+				{% endfilter %}
+			{% endif %}
+		{% elseif not is_cart %}
+			{% filter apply_filters( 'woocommerce_no_shipping_available_html' ) %}
+				<p>{{- __( 'There are no shipping options available. Please ensure that your address has been entered correctly, or contact us if you need any help.', 'rider404' ) | e( 'wp_kses_post' ) -}}</p>
+			{% endfilter %}
+		{% else %}
+			{% filter apply_filters( 'woocommerce_cart_no_shipping_available_html' ) %}
+				{# Translators: $s shipping destination. #}
+				<p>{{- __( 'No shipping options were found for %s.', 'rider404' ) | format( "&nbsp;<strong>#{ formatted_destination }</strong>" ) | e( 'wp_kses_post' ) -}}</p>
+			{% endfilter %}
+			{% set calculator_text = __( 'Enter a different address', 'rider404' ) | e( 'wp_kses_post' ) %}
+		{% endif %}
+
+		{% if show_package_details %}
+			<p class="woocommerce-shipping-contents"><small>{{- package_details | e( 'esc_html' ) -}}</small></p>
+		{% endif %}
+
+		{% if show_shipping_calculator %}
+			{{- function( 'woocommerce_shipping_calculator', calculator_text ) -}}
+		{% endif %}
+	</td>
+</tr>

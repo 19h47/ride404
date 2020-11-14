@@ -19,6 +19,7 @@
 	"homepage": "https://github.com/19h47/rider404/blob/master/README.md",
 	"dependencies": {
 		"@19h47/architecture": "19h47/architecture",
+		"@19h47/checkbox": "^4.1.0",
 		"@19h47/radiogroup": "^5.4.0",
 		"bootstrap": "^4.5.3",
 		"flickity": "^2.2.1",

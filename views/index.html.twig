@@ -26,7 +26,7 @@
 
 	</head>
 
-	<body class="{{ body_class }}{{ post.body_classes ? ( ' ' ~ post.body_classes | join( ' ' ) ) }}">
+	<body class="{{ body_class }}{{ post.body_classes ? ( ' ' ~ post.body_classes | join( ' ' ) ) }}" data-scroll-smooth="{{ scroll_smooth and scroll_smooth == 'false' ? 'false' : 'true' }}">
 		<div id="svg-sprite" class="d-none">{% include 'icons.svg' %}</div>
 
 		{% do action( 'woocommerce_before_main_content' ) %}

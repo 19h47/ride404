@@ -1,0 +1,109 @@
+{#
+ # Review order
+ #
+ # @package Rider404
+ #}
+ <table class="Checkout-review-order__table shop_table woocommerce-checkout-review-order-table">
+
+	<thead>
+		<tr>
+			<th class="product-name">
+				{{- __( 'Product', 'rider404' ) | e( 'esc_html' ) -}}
+			</th>
+			<th class="product-total">
+				{{- __( 'Subtotal', 'rider404' ) | e( 'esc_html' ) -}}
+			</th>
+		</tr>
+	</thead>
+
+	<tbody>
+
+		{% do action( 'woocommerce_review_order_before_cart_contents' ) %}
+
+		{% for key, item in cart.get_cart() %}
+			{% set _product = item.data | apply_filters( 'woocommerce_cart_item_product', item, key ) %}
+
+			{% if _product and _product.exists() and item['quantity'] > 0 and true | apply_filters( 'woocommerce_checkout_cart_item_visible', item, key ) %}
+
+				<tr class="{{- 'cart_item' | apply_filters( 'woocommerce_cart_item_class', item, key ) | e -}}">
+					<td class="product-name">
+						{% filter apply_filters( 'woocommerce_cart_item_name', item, key ) %}
+							{{- _product.get_name() }}&nbsp;
+						{% endfilter %}
+
+						{% filter apply_filters( 'woocommerce_checkout_cart_item_quantity', tag, item, key ) %}
+							<strong class="product-quantity">{{- '&times;&nbsp;%s' | format( item.quantity ) -}}</strong>
+						{% endfilter %}
+
+						{{- function( 'wc_get_formatted_cart_item_data', item ) -}}
+					</td>
+					<td class="product-total">
+						{% filter apply_filters( 'woocommerce_cart_item_subtotal', item, key ) %}
+							{{- cart.get_product_subtotal( _product, item.quantity ) -}}
+						{% endfilter %}
+					</td>
+				</tr>
+			{% endif %}
+		{% endfor %}
+
+		{% do action( 'woocommerce_review_order_after_cart_contents' ) %}
+
+	</tbody>
+	<tfoot>
+
+		<tr class="cart-subtotal">
+			<th>{{- __( 'Subtotal', 'woocommerce' ) | e( 'esc_html' ) -}}</th>
+			<td class="text-align-right">{{- function( 'wc_cart_totals_subtotal_html' ) -}}</td>
+		</tr>
+
+		{% for code, coupon in cart.get_coupons() %}
+			<tr class="cart-discount coupon-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
+				<th>{{- function( 'wc_cart_totals_coupon_label', coupon ) -}}</th>
+				<td>{{- function( 'wc_cart_totals_coupon_html', coupon ) -}}</td>
+			</tr>
+		{% endfor %}
+
+		{% if cart.needs_shipping() and cart.show_shipping() %}
+
+			{% do action( 'woocommerce_review_order_before_shipping' ) %}
+
+			{{ function( 'wc_cart_totals_shipping_html' ) }}
+
+			{% do action( 'woocommerce_review_order_after_shipping' ) %}
+
+		{% endif %}
+
+		{% for fee in cart.get_fees() %}
+			<tr class="fee">
+				<th>{{- fee.name | e( 'esc_html' ) -}}</th>
+				<td>{{- function( 'wc_cart_totals_fee_html', fee ) -}}</td>
+			</tr>
+		{% endfor %}
+
+		{% if function( 'wc_tax_enabled' ) and not cart.display_prices_including_tax() %}
+			{% if 'itemized' == function( 'get_option', 'woocommerce_tax_total_display' ) %}
+				{% for code, tax in cart.get_tax_totals() %}
+					<tr class="tax-rate tax-rate-{{ code | e | sanitize }}">
+						<th>{{- tax.label | e( 'esc_html' ) -}}</th>
+						<td>{{- tax.formatted_amount | e( 'wp_kses_post' ) -}}</td>
+					</tr>
+				{% endfor %}
+			{% else %}
+				<tr class="tax-total">
+					<th>{{- countries.tax_or_vat() | e( 'esc_html' ) -}}</th>
+					<td>{{- function( 'wc_cart_totals_taxes_total_html' ) -}}</td>
+				</tr>
+			{% endif %}
+		{% endif %}
+
+		{% do action( 'woocommerce_review_order_before_order_total' ) %}
+
+		<tr class="order-total">
+			<th>{{- __( 'total', 'rider404' ) | e( 'esc_html' ) -}}</th>
+			<td class="text-align-right">{{- function( 'wc_cart_totals_order_total_html' ) -}}</td>
+		</tr>
+
+		{% do action( 'woocommerce_review_order_after_order_total' ) %}
+
+	</tfoot>
+</table>

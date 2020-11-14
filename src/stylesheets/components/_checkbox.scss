@@ -1,0 +1,55 @@
+/**
+ * Checkbox
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.Checkbox {
+	$this: &;
+
+	@extend .d-flex;
+
+	&:focus {
+		outline: none;
+	}
+
+	button {
+		@extend %position-relative;
+		@include size(30px);
+		@include margin(right 30px);
+
+		min-width: 30px;
+
+		border: 3px solid the_color(gray, very-dark-02);
+		transition: border-color 0.5s map-get($easings, ease-out-expo);
+
+		&::after {
+			@include absolute(top 0 right 0 bottom 0 left 0);
+			@include margin(top auto right auto left auto bottom auto);
+			@include size(14px);
+			@extend .d-block;
+
+			content: '';
+
+			transform: scale(0);
+			transition: transform 0.5s map-get($easings, ease-out-expo);
+			background-color: the_color(white);
+		}
+	}
+
+	&.is-selected {
+		button {
+			border-color: the_color(white);
+
+			&::after {
+				transform: scale(1);
+			}
+		}
+	}
+
+	&.is-focus {
+		button {
+			border-color: the_color(white);
+		}
+	}
+}

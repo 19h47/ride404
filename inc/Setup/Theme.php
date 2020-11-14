@@ -225,6 +225,9 @@ class Theme {
 		$context['is_shop']             = is_shop();
 		$context['is_front_page']       = is_front_page();
 		$context['is_product_category'] = is_product_category();
+		$content['is_cart']             = is_cart();
+		$context['is_checkout']         = is_checkout();
+		$context['is_ajax']             = is_ajax();
 
 		$context['is_user_logged_in'] = is_user_logged_in();
 

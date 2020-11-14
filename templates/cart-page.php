@@ -12,6 +12,8 @@ $context = Timber::context();
 
 $context['post'] = new Post();
 
+$context['scroll_smooth'] = 'false';
+
 $templates = array( 'pages/cart-page.html.twig' );
 
 Timber::render( $templates, $context );

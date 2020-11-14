@@ -21,6 +21,9 @@ $color-variations: (
 		very-dark-02: #646464,
 		very-dark-03: #323232,
 	),
+	green: (
+		lime: #0fcf84,
+	),
 	red: (
 		pure: #ff0000,
 		bright: #fd3e2d,
@@ -83,6 +86,7 @@ $font: (
 			bold: 700,
 			extrabold: 800,
 			extrablack: 900,
+			heavy: 900,
 		),
 	/**
 	 * Font styles

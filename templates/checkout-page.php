@@ -12,6 +12,8 @@ $context = Timber::context();
 
 $context['post'] = new Post();
 
+$context['scroll_smooth'] = 'false';
+
 $templates = array( 'pages/checkout-page.html.twig' );
 
 Timber::render( $templates, $context );

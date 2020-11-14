@@ -1,0 +1,13 @@
+{#
+ # Notices
+ #
+ # @package Rider404
+ #}
+{% if notices %}
+	{% for notice in notices %}
+		<div class="Info woocommerce-info"{{ function( 'wc_get_notice_data_attr', notice ) }}>
+			{% include 'svg/use.html.twig' with { icon: 'face-with-mouth' } only %}
+			{{- function( 'wc_kses_notice', notice.notice ) -}}
+		</div>
+	{% endfor %}
+{% endif %}

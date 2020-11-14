@@ -1,0 +1,12 @@
+/**
+ * Notice
+ *
+ * @package Rider404
+ */
+.Notice {
+	font-weight: 300 !important; // WooCommerce
+	line-height: (28/18) !important; // WooCommerce
+
+	@at-root #{ & }#{ & }--info {
+	}
+}

@@ -1,0 +1,53 @@
+/**
+ * Checkout review order
+ *
+ * @package Rider404
+ */
+.Checkout-review-order {
+	@include padding(top 70px /* bottom 70px */);
+	@include margin(top 70px /* bottom 70px */);
+
+	border-top: 1px solid the_color(gray, very-dark-03);
+
+	&__title {
+		@extend .h2;
+		@extend %margin-top-0;
+	}
+
+	&__table {
+		@include padding(bottom 70px);
+
+		border: none !important; // WooCommerce
+		border-bottom: 1px solid the_color(gray, very-dark-03) !important;
+		border-radius: 0 !important; // WooCommerce
+		margin: 0 !important; // WooCommerce
+
+		.product-total {
+			@extend %text-align-right;
+		}
+
+		.amount {
+			@extend %text-align-right;
+
+			font-weight: 300 !important; // WooCommerce
+		}
+
+		td,
+		th,
+		tfoot th {
+			border-top: none !important; // WooCommerce
+			padding: 15px 0 !important; // WooCommerce
+			line-height: (28/18) !important;
+		}
+
+		th {
+			font-weight: 300 !important; // WooCommerce
+			color: the_color(gray, very-dark-02);
+		}
+
+		.order-total th {
+			font-weight: 600 !important; // WooCommerce
+			color: the_color(white);
+		}
+	}
+}

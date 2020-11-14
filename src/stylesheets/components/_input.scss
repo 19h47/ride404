@@ -1,0 +1,26 @@
+/**
+ * Input
+ *
+ * @package Rider404
+ */
+.Input {
+	@include reset-placeholder(the_color(gray, very-dark-03));
+	@include padding(top 10px right 15px bottom 10px left 15px);
+
+	border: 1px solid the_color(gray, very-dark-03);
+	color: the_color(white);
+
+	transition: border-color 0.5s map-get($easings, ease-out-expo);
+
+	&[type='text'] {
+	}
+
+	&:focus {
+		border-color: the_color(white);
+		outline: none;
+	}
+
+	@at-root .woocommerce-validated & {
+		border-color: the_color(green, lime) !important; // WooCommerce
+	}
+}

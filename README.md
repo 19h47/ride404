@@ -36,3 +36,4 @@ rider404_after_single_quick_variation
 | gray very dark 02 | ![#646464](https://via.placeholder.com/10/646464?text=+) `#646464`  |
 | gray very dark 03 | ![#323232](https://via.placeholder.com/10/323232?text=+) `#323232`  |
 | red bright        | ![#fd3e2d](https://via.placeholder.com/10/fd3e2d?text=+) `#fd3e2d`  |
+| green lime        | ![#0FCF84](https://via.placeholder.com/10/0FCF84?text=+) `#0FCF84`  |

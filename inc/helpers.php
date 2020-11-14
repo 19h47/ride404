@@ -112,7 +112,7 @@ function get_theme_text_domain() : string {
  *
  * @param mixed $post Post.
  * @see https://timber.github.io/docs/guides/woocommerce/#tease-product
- * 
+ *
  * @return void
  */
 function set_product_global( $post ) {
