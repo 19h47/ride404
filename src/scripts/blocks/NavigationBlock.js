@@ -40,7 +40,7 @@ export default class NavigationBlock extends AbstractBlock {
 			{ autoAlpha: 1 },
 		);
 		this.timeline.fromTo(
-			this.items,
+			this.items.map(item => item.children),
 			{ autoAlpha: 0, y: 100, duration: 0.01 },
 			{ autoAlpha: 1, y: 0, stagger: 0.05 },
 			'-=0.5',

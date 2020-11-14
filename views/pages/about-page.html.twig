@@ -8,13 +8,6 @@
 {% block hero %}{% endblock %}
 
 {% block content %}
-    {# <div class="Section">
-        <div class="row">
-            <div class="col-10 offset-1">
-                {{ post.content }}
-            </div>
-        </div>
-    </div>  #}
 
     <div class="Section About-page__introduction margin-top-0" data-scroll-section>
 
@@ -32,7 +25,9 @@
                     %}
                 </div>
                 <div class="col-4 offset-4">
-                    <p class="h2 text-align-center">{{ __( "That's it the leitmotiv of the Rider.404", 'rider404'  ) }}</p>
+                    <p class="h2 text-align-center">
+						{{- __( "That's it the leitmotiv of the Rider.404", 'rider404'  ) -}}
+					</p>
                 </div>
             </div>
         </div>
@@ -58,6 +53,18 @@
         </div>
     </div>
 
+	<div class="About-map" data-scroll-section>
+		<div class="line-1"></div>
+		<div class="row">
+			<div class="col-6">
+				<div id="about-map" class="page-block" data-node-type="AboutMapBlock" data-lottie-json="about-map"></div>
+			</div>
+			<div class="col-4 offset-1">
+				Born from a “system error”, Rider.404 exists thanks to the immense solidarity from the passionate mountain biking community. People who support the Rider.404 give him the opportunity to continue to ride for the passion.
+			</div>
+		</div>
+	</div>
+
     <div id="smiley-404" class="Smiley-404 Section page-block" data-scroll-section data-node-type="Smiley404Block" style="transform-style: preserve-3d;">
         <div class="Smiley-404__images">
             <div class="row h-100">
@@ -80,23 +87,33 @@
         </div>
         <canvas id="smiley-404-canvas"  height="900"></canvas>
         <div class="Smiley-404__background">
-            <img data-scroll data-scroll-direction="horizontal" data-scroll-target="#smiley-404" data-scroll-speed="9" src="{{ theme.link }}/{{ theme.manifest['img/svg/rider-404.svg'] }}" width="3204.3" height="410.6">
+            <img
+				data-scroll
+				data-scroll-direction="horizontal"
+				data-scroll-target="#smiley-404"
+				data-scroll-speed="9"
+				src="{{ theme.link }}/{{ theme.manifest['img/svg/rider-404.svg'] }}"
+				width="3204.3"
+				height="410.6"
+			>
         </div>
     </div>
 
     <div data-scroll-section>
         <div class="row">
             <div class="col-12 col-md-10 offset-md-1">
-                {% embed 'components/video.html.twig' with { id: 'video', preview: post.meta( 'video' ).preview.url, overlay: true } %}
+                {% embed 'components/video.html.twig' with { id: 'video-about', video: post.meta( 'video' ).thumbnail.url, overlay: true } %}
                     {% block caption %}
-                        <div class="Video__caption">
-                            {{- __( 'All video Rider.404 Project on', 'rider404' ) }}
-                            &nbsp;
-                            <a href="{{ socials.youtube.url }}">
-                                {% include 'svg/use.html.twig' with { icon: 'youtube' } only %}
-                                &nbsp;&nbsp;<span>YouTube</span>
-                            </a>
-                        </div>
+						{% if socials.youtube.url %}
+							<div class="Video__caption">
+								{{- __( 'All video Rider.404 Project on', 'rider404' ) }}
+								&nbsp;
+								<a href="{{ socials.youtube.url }}">
+									{% include 'svg/use.html.twig' with { icon: 'youtube' } only %}
+									&nbsp;&nbsp;<span>YouTube</span>
+								</a>
+							</div>
+						{% endif %}
                     {% endblock %}
                 {% endembed %}
             </div>
@@ -139,5 +156,7 @@
             {% endfor %}
         </ul>
     </div>
+
+	{% include 'components/modal.html.twig' with { control: 'video-about', video: post.meta( 'video' ).youtube } %}
 
 {% endblock  %}

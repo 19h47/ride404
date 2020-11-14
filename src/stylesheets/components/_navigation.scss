@@ -38,37 +38,24 @@
 	}
 
 	&__item {
-		@extend %text-align-center;
-		@include autoAlpha(0);
+		@extend %text-align-center, %overflow-hidden;
+		// @include autoAlpha(0);
 
 		a {
 			@extend %font-family-title, %margin-0, %position-relative;
 			@extend .h1, .d-inline-block;
 
 			line-height: (140/110);
-
-			&::after {
-				@include absolute(bottom 0 right 0 left 0);
-				@include size(100%, 2px);
-				@extend .d-none;
-
-				background-color: currentColor;
-				content: '';
-
-				@include media-breakpoint-up(md) {
-					@include margin(bottom 30px);
-				}
-			}
+			transition: color 0.5s map-get($easings, ease-out-expo);
 
 			svg {
-				@include absolute(top 50% left 50%);
+				@include absolute(top 0 right 0 bottom 0 left 0);
 				@include size(342px, 171px);
-
-				transform: translate3d(-50%, -50%, 0) !important;
 			}
 
-			&.is-active::after {
-				@extend .d-block;
+			&:focus,
+			&:hover {
+				color: the_color(red, bright);
 			}
 		}
 	}

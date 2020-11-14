@@ -22,7 +22,7 @@
         </div>
         <div class="row">
             <div class="col-12 col-sm-10 offset-sm-1">
-                {% include 'components/video.html.twig' with { id: 'video-hero', preview: post.meta( 'video' ).thumbnail.url, overlay: true } %}
+                {% include 'components/video.html.twig' with { id: 'video-hero', video: post.meta( 'video' ).thumbnail.url, overlay: true } %}
             </div>
         </div>
     </div>
@@ -40,6 +40,7 @@
 			data-scroll-speed="2"
 			data-node-type="StarCircleBlock"
 			data-lottie-json="star-circle"
+			data-lottie-loop="true"
 		></div>
 
         <div class="Push__background" data-scroll data-scroll-speed="4">
@@ -136,5 +137,7 @@
             </div>
         </div>
     </div>
+
+	{% include 'components/modal.html.twig' with { control: 'video-hero', video: post.meta( 'video' ).youtube } %}
 
 {% endblock  %}

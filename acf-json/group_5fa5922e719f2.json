@@ -19,8 +19,8 @@
             "sub_fields": [
                 {
                     "key": "field_5fa592d0041a2",
-                    "label": "Preview",
-                    "name": "preview",
+                    "label": "Thumbnail",
+                    "name": "thumbnail",
                     "type": "file",
                     "instructions": "",
                     "required": 0,
@@ -35,6 +35,25 @@
                     "min_size": "",
                     "max_size": "",
                     "mime_types": ""
+                },
+                {
+                    "key": "field_5faeeb9414f3a",
+                    "label": "YouTube ID",
+                    "name": "youtube",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 }
             ]
         }
@@ -56,5 +75,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "Options du template About",
-    "modified": 1604686755
+    "modified": 1605299140
 }

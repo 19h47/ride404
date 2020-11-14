@@ -3,21 +3,22 @@
  #
  # @package Rider404
  #}
+{% if video %}
+	<div id="{{ id }}" class="Video page-block{{ classes ? ' ' ~ classes | join( ' ' ) }}" data-node-type="VideoBlock">
 
-<div id="{{ id }}" class="Video page-block{{ classes ? ' ' ~ classes | join( ' ' ) }}" data-node-type="VideoBlock">
+		<div class="Video__body">
+			{% if overlay %}
+				<div class="Video__overlay">
+					{% include 'components/button-play.html.twig' %}
+				</div>
+			{% endif %}
 
-    <div class="Video__body">
-        {% if overlay %}
-            <div class="Video__overlay">
-                {% include 'components/button-play.html.twig' %}
-            </div>
-        {% endif %}
+			<canvas></canvas>
+			<video playsInline autoplay loop preload="auto" muted>
+				<source src="{{ video }}" type="video/mp4">
+			</video>
+		</div>
 
-        <canvas></canvas>
-        <video playsInline autoplay loop preload="auto" muted>
-            <source src="{{ preview }}" type="video/mp4">
-        </video>
-    </div>
-
-    {% block caption %}{% endblock %}
-</div>
+		{% block caption %}{% endblock %}
+	</div>
+{% endif %}

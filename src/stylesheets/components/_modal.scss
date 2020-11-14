@@ -32,6 +32,13 @@
 			@include size(100%);
 
 			fill: the_color(white);
+			transition: transform 0.5s map-get($easings, ease-out-expo);
+		}
+
+		&:hover {
+			svg {
+				transform: rotate(90deg);
+			}
 		}
 	}
 

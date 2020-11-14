@@ -1,0 +1,15 @@
+/**
+ * About map
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider.404
+ */
+.About-map {
+	color: the_color(white);
+
+	svg {
+		path {
+			fill: currentColor !important;
+		}
+	}
+}

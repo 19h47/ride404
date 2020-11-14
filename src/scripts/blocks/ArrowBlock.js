@@ -1,6 +1,6 @@
 import { EventTypes } from 'starting-blocks';
 
-import LottieBlock from 'blocks/LottieBlock';
+import AbstractLottieBlock from 'abstracts/AbstractLottieBlock';
 import Scroll from 'common/Scroll';
 
 /**
@@ -8,7 +8,13 @@ import Scroll from 'common/Scroll';
  * @constructor
  * @param {object} container
  */
-export default class ArrowBlock extends LottieBlock {
+export default class ArrowBlock extends AbstractLottieBlock {
+	init() {
+		super.init();
+
+		this.direction = JSON.parse(this.rootElement.getAttribute('data-lottie-loop')) ? 1 : -1;
+	}
+
 	initEvents() {
 		super.initEvents();
 
@@ -26,11 +32,13 @@ export default class ArrowBlock extends LottieBlock {
 		});
 
 		this.rootElement.addEventListener('mouseenter', () => {
-			this.animation.setDirection(1);
+			this.direction = 1 === this.direction ? -1 : 1;
+			this.animation.setDirection(this.direction);
 			this.animation.play();
 		});
 		this.rootElement.addEventListener('mouseleave', () => {
-			this.animation.setDirection(-1);
+			this.direction = 1 === this.direction ? -1 : 1;
+			this.animation.setDirection(this.direction);
 			this.animation.play();
 		});
 	}

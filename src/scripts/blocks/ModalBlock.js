@@ -40,8 +40,6 @@ export default class ModalBlock extends AbstractBlock {
 	initEvents() {
 		super.initEvents();
 
-		console.log('yo');
-
 		window.onYouTubeIframeAPIReady = () => {
 			this.player = new YT.Player(this.rootElement.querySelector('.js-player'), {
 				height: '360',

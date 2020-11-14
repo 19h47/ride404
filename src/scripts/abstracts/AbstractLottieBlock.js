@@ -34,6 +34,7 @@ export default class AbstractLottieBlock extends AbstractBlock {
 		this.json.then(animationData => {
 			this.params.animationData = animationData;
 			this.animation = lottie.loadAnimation(this.params);
+			this.duration = this.animation.getDuration();
 		});
 	}
 }

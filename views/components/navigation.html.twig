@@ -24,6 +24,8 @@
 							itemprop="url"
 							data-node-type="OvalBlock"
 							data-lottie-json="oval"
+							data-lottie-preserveaspectratio="none"
+							data-lottie-active="{{ item.current ? 'true' : 'false' }}"
 							{{ item.is_external() or item.is_target_blank() ? 'target="_blank"' }}
 						>
 							{{- item.title -}}
@@ -42,7 +44,7 @@
 		</div>
 	</footer>
 
-	{% include 'components/video.html.twig' with { id: 'video-menu', classes: [ 'js-video' ], preview: Image( nav_menus.main.meta('video') ).src } %}
+	{% include 'components/video.html.twig' with { id: 'video-menu', classes: [ 'js-video' ], video: Image( nav_menus.main.meta('video') ).src } %}
 
 	<div
 		id="menu"
