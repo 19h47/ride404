@@ -36,33 +36,13 @@ class TemplateHooks {
 
 
 	/**
-	 * PayPal icon
-	 *
-	 * @return string
-	 */
-	public function paypal_icon( string $icon, string $id ) : string {
-		if ( 'paypal' !== $id ) {
-			return $icon;
-		}
-
-		$dom = new DOMDocument();
-		$dom->loadHTML( $icon );
-
-		foreach ( $dom->getElementsByTagName( 'img' ) as $img ) {
-			$img->setAttribute( 'src', trailingslashit( get_template_directory_uri() ) . get_theme_manifest()['img/svg/paypal.svg'] );
-		}
-
-		return $dom->saveHTML();
-	}
-
-
-	/**
 	 * Add action
 	 *
 	 * @return void
 	 */
 	public function add_action() : void {
 		add_filter( 'woocommerce_gateway_icon', array( $this, 'paypal_icon' ), 10, 2 );
+		add_filter( 'woocommerce_gateway_icon', array( $this, 'stripe_icon' ), 10, 2 );
 
 		// Single variation.
 		add_action( 'woocommerce_single_variation', 'woocommerce_single_variation_add_to_cart_button', 10 );
@@ -152,5 +132,40 @@ class TemplateHooks {
 
 		// Cart is empty.
 		remove_action( 'woocommerce_cart_is_empty', 'wc_empty_cart_message', 10 );
+	}
+
+
+	/**
+	 * PayPal icon
+	 *
+	 * @return string
+	 */
+	public function paypal_icon( string $icon, string $id ) : string {
+		if ( 'paypal' !== $id ) {
+			return $icon;
+		}
+
+		$dom = new DOMDocument();
+		$dom->loadHTML( $icon );
+
+		foreach ( $dom->getElementsByTagName( 'img' ) as $img ) {
+			$img->setAttribute( 'src', trailingslashit( get_template_directory_uri() ) . get_theme_manifest()['img/svg/paypal.svg'] );
+		}
+
+		return $dom->saveHTML();
+	}
+
+
+	/**
+	 * Stripe icon
+	 */
+	public function stripe_icon( string $icon, string $id ) : string {
+		if ( 'stripe' !== $id ) {
+			return $icon;
+		}
+
+		$icon = '<img alt="Stripe" src="' . trailingslashit( get_template_directory_uri() ) . get_theme_manifest()['img/svg/stripe.svg'] . '" />' . $icon;
+
+		return $icon;
 	}
 }

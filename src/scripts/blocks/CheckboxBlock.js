@@ -26,8 +26,6 @@ export default class CheckboxBlock extends AbstractBlock {
 
 		this.checkbox = new Checkbox(this.rootElement);
 		this.checkbox.init();
-
-		console.log(this);
 	}
 
 	initEvents() {

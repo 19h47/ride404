@@ -8,6 +8,7 @@
 {% endif %}
 
 <div id="payment" class="Checkout-payment woocommerce-checkout-payment">
+
 	{% if cart.needs_payment() %}
 		<ul class="Checkout-payment__methods wc_payment_methods payment_methods methods">
 			{% if available_gateways is not empty %}
@@ -21,14 +22,15 @@
 						{% if customer.get_billing_country() %}
 							{{- __( 'Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements.', 'rider404' ) | e( 'esc_html' ) -}}
 						{% else %}
-								{{- __( 'Please fill in your details above to see available payment methods.', 'rider404' ) | e( 'esc_html' ) -}}
+							{{- __( 'Please fill in your details above to see available payment methods.', 'rider404' ) | e( 'esc_html' ) -}}
 						{% endif %}
 					{% endfilter %}
 				</li>
 			{% endif %}
 		</ul>
 	{% endif %}
-	<div class="form-row place-order">
+
+	<div class="Form-row Place-order form-row place-order">
 		<noscript>
 			{# translators: $1 and $2 opening and closing emphasis tags respectively #}
 			{{- function( 'printf', __( 'Since your browser does not support JavaScript, or it is disabled, please ensure you click the %1$sUpdate Totals%2$s button before placing your order. You may be charged more than the amount stated above if you fail to do so.', 'rider404' ), '<em>', '</em>' ) -}}
@@ -52,6 +54,8 @@
 
 		{{- nonce_field -}}
 	</div>
+
+
 </div>
 
 {% if not is_ajax %}

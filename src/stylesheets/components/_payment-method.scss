@@ -28,4 +28,18 @@
 			border-bottom-color: the_color(gray, very-dark-03) !important; // WooCommerce
 		}
 	}
+
+	label {
+		@extend .d-flex, .align-items-center;
+
+		img {
+			@extend .d-block;
+
+			margin-right: 5px !important; // WooCommerce
+			margin-left: 5px !important; // WooCommerce
+
+			max-height: 45px;
+			width: auto;
+		}
+	}
 }

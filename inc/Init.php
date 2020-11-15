@@ -32,6 +32,7 @@ class Init {
 			Setup\Widgets::class,
 			Plugins\WooCommerce::class,
 			Plugins\WooCommerce\TemplateHooks::class,
+			Plugins\WooCommerceGatewayStripe::class,
 			Api\Customizer\Contact::class,
 			Custom\Extras::class,
 			Custom\QueryVars::class,
