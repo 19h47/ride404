@@ -10,10 +10,6 @@ import debug from 'utils/debug';
  * @param {object} container
  */
 export default class AbstractCarouselBlock extends AbstractBlock {
-	constructor(container) {
-		super(container, 'AbstractCarouselBlock');
-	}
-
 	init() {
 		super.init();
 

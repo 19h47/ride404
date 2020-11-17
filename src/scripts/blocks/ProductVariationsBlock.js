@@ -10,12 +10,6 @@ import Scroll from 'common/Scroll';
  * @param {object} container
  */
 export default class ProductVariationsBlock extends AbstractBlock {
-	constructor(container) {
-		// console.info('ProductVariationsBlock.constructor');
-
-		super(container, 'ProductVariationsBlock');
-	}
-
 	init() {
 		super.init();
 

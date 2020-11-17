@@ -8,10 +8,6 @@ import debug from 'utils/debug';
  * @param {object} container
  */
 export default class PushBlock extends AbstractCarouselBlock {
-	constructor(container) {
-		super(container, 'PushBlock');
-	}
-
 	onResize() {
 		debug('\t\t%c✳️ PushBlock.onResize');
 

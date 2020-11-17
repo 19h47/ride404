@@ -8,10 +8,6 @@ import Scroll from 'common/Scroll';
  * @param {object} container
  */
 export default class ShippingBlock extends AbstractBlock {
-	constructor(container) {
-		super(container, 'ShippingBlock');
-	}
-
 	initEvents() {
 		super.initEvents();
 

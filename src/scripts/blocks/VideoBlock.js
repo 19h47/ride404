@@ -7,10 +7,6 @@ import Grain from 'common/Grain';
  * @param {object} container
  */
 export default class VideoBlock extends AbstractBlock {
-	constructor(container) {
-		super(container, 'VideoBlock');
-	}
-
 	init() {
 		super.init();
 		this.$canvas = this.rootElement.querySelector('canvas');

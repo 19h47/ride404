@@ -12,12 +12,6 @@ gsap.registerPlugin(SplitText);
  * @param {object} container
  */
 export default class SplitTextBlock extends AbstractBlock {
-	constructor(container) {
-		// console.info('SplitTextBlock.constructor');
-
-		super(container, 'SplitTextBlock');
-	}
-
 	init() {
 		super.init();
 

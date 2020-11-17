@@ -11,10 +11,6 @@ import debug from 'utils/debug';
  * @param {object} container
  */
 export default class CheckboxBlock extends AbstractBlock {
-	constructor(container) {
-		super(container, 'CheckboxBlock');
-	}
-
 	init() {
 		super.init();
 

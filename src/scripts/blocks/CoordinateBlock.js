@@ -12,10 +12,6 @@ gsap.registerPlugin(TextPlugin);
  * @param {object} container
  */
 export default class CoordinateBlock extends AbstractBlock {
-	constructor(container) {
-		super(container, 'CoordinateBlock');
-	}
-
 	init() {
 		super.init();
 
