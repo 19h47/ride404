@@ -23,12 +23,6 @@ const patchFinishedLoading = () => {
  * @param {object} container
  */
 export default class Smiley404Block extends AbstractBlock {
-	constructor(container) {
-		// console.info('Smiley404Block.constructor');
-
-		super(container, 'Smiley404Block');
-	}
-
 	init() {
 		super.init();
 

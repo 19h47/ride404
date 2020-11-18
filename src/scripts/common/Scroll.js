@@ -12,7 +12,7 @@ debug('⬆️ Scroll is on top');
 
 const Scroll = new LocomotiveScroll({
 	el,
-	smooth: JSON.parse(elements.body.getAttribute('data-scroll-smooth')),
+	smooth: JSON.parse(elements.body.getAttribute('data-scroll-smooth')) || true,
 	getDirection: true,
 });
 const imgLoad = imagesLoaded(el);
@@ -43,6 +43,14 @@ document.addEventListener('Navigation.open', () => {
 
 document.addEventListener('Navigation.close', () => {
 	elements.body.classList.remove('Navigation--is-open');
+	Scroll.start();
+});
+
+document.addEventListener('Modal.open', () => {
+	Scroll.stop();
+});
+
+document.addEventListener('Modal.close', () => {
 	Scroll.start();
 });
 

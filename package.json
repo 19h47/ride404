@@ -25,7 +25,7 @@
 		"flickity": "^2.2.1",
 		"gsap": "^3.5.1",
 		"imagesloaded": "^4.1.4",
-		"locomotive-scroll": "^3.6.1",
+		"locomotive-scroll": "^4.0.3",
 		"lottie-web": "^5.7.4",
 		"ress": "^3.0.0",
 		"starting-blocks": "^5.0.7"
