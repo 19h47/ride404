@@ -30,7 +30,6 @@ class Theme {
 		add_filter( 'timber/twig', array( $this, 'add_to_twig' ) );
 		add_filter( 'timber/context', array( $this, 'add_socials_to_context' ) );
 		add_filter( 'timber/context', array( $this, 'add_to_theme' ) );
-		add_filter( 'timber/context', array( $this, 'add_menus_to_context' ) );
 		add_filter( 'timber/context', array( $this, 'add_to_context' ) );
 	}
 
@@ -175,24 +174,6 @@ class Theme {
 				$context['shares'][ $social['slug'] ] = $social;
 			}
 			$context['socials'][ $social['slug'] ] = $social;
-		}
-
-		return $context;
-	}
-
-
-	/**
-	 * Add menus to context
-	 *
-	 * @param array $context Timber context.
-	 * @return array
-	 * @since  1.0.0
-	 */
-	public function add_menus_to_context( array $context ) : array {
-		$menus = get_registered_nav_menus();
-
-		foreach ( $menus as $menu => $value ) {
-			$context['nav_menus'][ $menu ] = new Menu( $menu );
 		}
 
 		return $context;
