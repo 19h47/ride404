@@ -117,7 +117,7 @@ class Contact {
 				'settings'    => 'tiktok',
 			)
 		);
-		
+
 		// Strava.
 		$wp_customize->add_setting(
 			'strava',

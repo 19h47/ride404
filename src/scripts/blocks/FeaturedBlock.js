@@ -13,7 +13,7 @@ export default class FeaturedBlock extends AbstractBlock {
 		super.initEvents();
 
 		Scroll.on('scroll', ({ scroll: { y }, limit }) => {
-			gsap.to(this.rootElement, { duration: 0.1, rotate: (y * 360) / limit });
+			gsap.to(this.rootElement, { duration: 0.1, rotate: (y * 360) / limit.y });
 		});
 	}
 }
