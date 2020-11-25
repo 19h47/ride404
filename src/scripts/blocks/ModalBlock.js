@@ -52,6 +52,7 @@ export default class ModalBlock extends AbstractBlock {
 			if (target.matches('.js-button')) {
 				this.rootElement.classList.remove('is-active');
 				this.player.stopVideo();
+				document.dispatchEvent(new Event('Modal.close'));
 			}
 		});
 
@@ -59,6 +60,7 @@ export default class ModalBlock extends AbstractBlock {
 			if (this.control === detail.id) {
 				this.rootElement.classList.add('is-active');
 				this.player.playVideo();
+				document.dispatchEvent(new Event('Modal.open'));
 			}
 		});
 	}

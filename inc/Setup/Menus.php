@@ -7,6 +7,8 @@
 
 namespace Rider404\Setup;
 
+use Timber\{ Menu };
+
 /**
  * Menus
  */
@@ -20,7 +22,6 @@ class Menus {
 	public function run() : void {
 		add_action( 'after_setup_theme', array( $this, 'register_menus' ) );
 		add_filter( 'timber/context', array( $this, 'add_menus_to_context' ) );
-
 	}
 
 	/**
