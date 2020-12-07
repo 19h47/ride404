@@ -7,7 +7,7 @@
 const webpack = require('webpack');
 
 // Plugins
-const ManifestPlugin = require('webpack-manifest-plugin');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const CopyPlugin = require('copy-webpack-plugin');
@@ -18,12 +18,13 @@ const resolve = require('./webpack.utils');
 dotenv.config({ path: resolve('.env') });
 
 // Manifest plugin
-const manifestPlugin = new ManifestPlugin({
+const webpackManifestPlugin = new WebpackManifestPlugin({
 	publicPath: 'dist/',
 });
 
 module.exports = {
 	output: {
+		path: resolve('/dist'),
 		publicPath: process.env.PUBLIC_PATH,
 	},
 	devServer: {
@@ -189,7 +190,7 @@ module.exports = {
 		],
 	},
 	plugins: [
-		manifestPlugin,
+		webpackManifestPlugin,
 		new SpriteLoaderPlugin({ plainSprite: true }),
 		new WebpackNotifierPlugin({
 			title: 'Webpack',
