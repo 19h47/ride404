@@ -41,7 +41,7 @@
 		@extend %text-align-center, %overflow-hidden;
 		// @include autoAlpha(0);
 
-		a {
+		#{ $this }__link {
 			@extend %font-family-title, %margin-0, %position-relative;
 			@extend .h1, .d-inline-block;
 
@@ -54,7 +54,8 @@
 			}
 
 			&:focus,
-			&:hover {
+			&:hover,
+			&.is-active {
 				color: the_color(red, bright);
 			}
 		}

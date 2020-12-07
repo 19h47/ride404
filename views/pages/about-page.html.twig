@@ -24,11 +24,15 @@
                         }
                     %}
                 </div>
-                <div class="col-4 offset-4">
-                    <p class="h2 text-align-center">
-						{{- __( "That's it the leitmotiv of the Rider.404", 'rider404'  ) -}}
-					</p>
-                </div>
+
+				{% if post.meta( 'catchphrase' ) %}
+					<div class="col-4 offset-4">
+						<p class="h2 text-align-center">
+							{{- post.meta( 'catchphrase' ) -}}
+						</p>
+					</div>
+				{% endif %}
+
             </div>
         </div>
 

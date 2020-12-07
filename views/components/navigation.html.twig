@@ -14,19 +14,18 @@
 				{% for item in menu.get_items() %}
 					<li class="Navigation__item js-item">
 
-						<a
+						<{{ item.current ? 'div' : "a href=\"#{ item.url }\"" }}
 							id="oval-{{ item.id }}"
-							class="Navigation__link page-block{{ item.current ? ' is-active' }}"
-							href="{{ item.url }}"
+							class="Navigation__link{{ item.current ? ' is-active' : ' page-block' }}"
 							itemprop="url"
-							data-node-type="OvalBlock"
-							data-lottie-json="oval"
-							data-lottie-preserveaspectratio="none"
-							data-lottie-active="{{ item.current ? 'true' : 'false' }}"
+							{{ item.current ? '' : 'data-node-type="OvalBlock"' }}
+							{{ item.current ? '' : 'data-lottie-json="oval"' }}
+							{{ item.current ? '' : 'data-lottie-preserveaspectratio="none"' }}
+							{{ item.current ? '' : 'data-lottie-active="false"' }}
 							{{ item.is_external() or item.is_target_blank() ? 'target="_blank"' }}
 						>
 							{{- item.title -}}
-						</a>
+						</{{ item.current ? 'div' : 'a' }}>
 					</li>
 				{% endfor %}
 			</ul>
