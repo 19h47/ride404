@@ -1,0 +1,11 @@
+/**
+ * About video
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+.About-video {
+	@extend %position-relative;
+
+	z-index: 2;
+}

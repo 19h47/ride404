@@ -7,10 +7,25 @@
 .Faq {
 	$this: &;
 
-	&__questions {
-		@extend %list-style-type-none, %font-weight-light;
+	@include margin(top 0);
 
-		@include padding(top 180px);
+	&__grid {
+		@extend .d-none, .d-md-block;
+		@include absolute(top 0 right 0);
+		@include margin(top percentage(-200/1440));
+
+		z-index: 1;
+	}
+
+	&__questions {
+		@extend %list-style-type-none, %font-weight-light, %position-relative, %margin-0;
+		@include padding(top 120px);
+
+		z-index: 2;
+
+		@include media-breakpoint-up(sm) {
+			@include padding(top 180px);
+		}
 
 		@include media-breakpoint-up(md) {
 			@include padding(top 240px);
@@ -27,9 +42,6 @@
 		@include media-breakpoint-up(hd) {
 			@include padding(top 423px);
 		}
-
-		font-size: 44px;
-		line-height: (52/44);
 
 		&__item {
 			@include margin(left percentage(0.5/4));
@@ -62,6 +74,10 @@
 					content: '';
 					background-color: the_color(white);
 				}
+			}
+
+			&::before {
+				transition: background-color 0.5s map-get($easings, ease-out-expo);
 			}
 
 			a {

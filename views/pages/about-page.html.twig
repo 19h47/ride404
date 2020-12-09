@@ -26,7 +26,7 @@
                 </div>
 
 				{% if post.meta( 'catchphrase' ) %}
-					<div class="col-4 offset-4">
+					<div class="col-10 offset-1 col-md-4 offset-md-4">
 						<p class="h2 text-align-center">
 							{{- post.meta( 'catchphrase' ) -}}
 						</p>
@@ -58,14 +58,23 @@
     </div>
 
 	<div class="About-map" data-scroll-section>
-		<div class="line-1"></div>
+		<img class="About-map__grid" data-scroll data-scroll-speed="2" src="{{ theme.link }}/{{ theme.manifest['img/svg/grid.svg'] }}" alt="" width="962" height="842">
 		<div class="row">
-			<div class="col-6">
-				<div id="about-map" class="page-block" data-scroll  data-scroll-id="about-map" data-node-type="AboutMapBlock" data-lottie-json="about-map"></div>
+			<div class="col-12">
+				<h2 class="About-map__title">{{- site.title -}}</h2>
 			</div>
-			<div class="col-4 offset-1">
-				Born from a “system error”, Rider.404 exists thanks to the immense solidarity from the passionate mountain biking community. People who support the Rider.404 give him the opportunity to continue to ride for the passion.
+		</div>
+		<div class="row align-items-md-center">
+			<div class="col-6 d-none d-md-block">
+				<div id="about-map" class="About-map__canvas page-block" data-scroll  data-scroll-id="about-map" data-node-type="AboutMapBlock" data-lottie-json="about-map"></div>
 			</div>
+			{% if post.meta( 'map' ).content %}
+				<div class="col-10 col-md-4 offset-1">
+					<p class="h2 text-align-center">
+						{{- post.meta( 'map' ).content -}}
+					</p>
+				</div>
+			{% endif %}
 		</div>
 	</div>
 
@@ -103,7 +112,7 @@
         </div>
     </div>
 
-    <div data-scroll-section>
+    <div class="About-video" data-scroll-section>
         <div class="row">
             <div class="col-12 col-md-10 offset-md-1">
                 {% embed 'components/video.html.twig' with { id: 'video-about', video: post.meta( 'video' ).thumbnail.url, overlay: true } %}
@@ -125,9 +134,10 @@
     </div>
 
     <div id="faq" class="Section Faq page-block" data-node-type="FaqBlock" data-scroll-section>
+		<img class="Faq__grid d-none d-md-block" data-scroll data-scroll-speed="2" src="{{ theme.link }}/{{ theme.manifest['img/svg/grid.svg'] }}" alt="" width="962" height="842">
         <div class="row">
-            <div class="col-4 offset-1">
-                <ul class="Faq__questions" data-scroll data-scroll-sticky data-scroll-target="#faq">
+            <div class="col-4 offset-1 d-none d-md-block">
+                <ul class="Faq__questions h2" data-scroll data-scroll-sticky data-scroll-target="#faq">
                     {% for item in post.meta( 'faq' ) %}
                         <li class="Faq__questions__item{{ loop.first ? ' is-active' : '' }}">
                             <a class="js-answer" href="#{{ item.question | sanitize }}" data-scroll-to>
@@ -137,10 +147,11 @@
                     {% endfor %}
                 </ul>
             </div>
-             <div class="col-4 offset-1">
+             <div class="col-10 col-md-4 offset-1">
                 <ul class="Faq__answers">
                     {% for item in post.meta( 'faq' ) %}
                         <li id="{{ item.question | sanitize }}" class="Faq__answers__item" data-scroll-repeat data-scroll data-scroll-call="answer">
+							<p class="h2 margin-top-0 d-md-none">{{- item.question -}}</p>
                             {{- item.answer -}}
                         </li>
                     {% endfor %}

@@ -5,7 +5,7 @@
  * @package Rider.404
  */
 .Tags {
-	@extend %position-relative;
+	@extend %position-relative, %overflow-hidden;
 
 	height: 900px;
 

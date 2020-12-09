@@ -68,6 +68,42 @@
             "mime_types": ""
         },
         {
+            "key": "field_5fd0b1437b610",
+            "label": "Map",
+            "name": "map",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5fd0b1517b611",
+                    "label": "Contenu",
+                    "name": "content",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": 4,
+                    "new_lines": "br"
+                }
+            ]
+        },
+        {
             "key": "field_5f9f01db1b793",
             "label": "FAQ",
             "name": "faq",
@@ -199,5 +235,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "Options du template About",
-    "modified": 1607378269
+    "modified": 1607512429
 }

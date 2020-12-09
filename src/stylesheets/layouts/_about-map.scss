@@ -2,8 +2,26 @@
  * About map
  *
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
- * @package Rider.404
+ * @package Rider404
  */
 .About-map {
+	@extend %position-relative;
+
 	color: the_color(white);
+
+	&__title {
+		@extend .h1;
+		@extend %text-align-center;
+		@include margin(top 0 bottom 30px);
+	}
+
+	&__canvas {
+		transform: translate3d(percentage(-1/5), 0, 0);
+	}
+
+	&__grid {
+		@extend .d-none, .d-md-block;
+		@include absolute(top 0 left 0);
+		@include margin(left percentage(-35/1440));
+	}
 }
