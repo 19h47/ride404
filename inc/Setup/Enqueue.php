@@ -23,6 +23,7 @@ class Enqueue {
 	public function run() : void {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_style' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		add_filter( 'style_loader_tag', array( $this, 'style_loader_tag' ), 10, 4 );
 	}
 
 	/**
@@ -104,6 +105,8 @@ class Enqueue {
 	 * @since  1.0.0
 	 */
 	public function enqueue_style() : void {
+		wp_dequeue_style( 'wc-block-style' );
+		wp_dequeue_style( 'wp-block-library' );
 
 		// Add custom fonts, used in the main stylesheet.
 		$webfonts = array();
@@ -121,5 +124,24 @@ class Enqueue {
 		);
 
 		wp_enqueue_style( get_theme_text_domain() . '-main' );
+	}
+
+
+	/**
+	 * Style Loader Tag
+	 *
+	 * @param string $html The link tag for the enqueued style.
+	 * @param string $handle The style's registered handle.
+	 * @param string $href The stylesheet's source URL.
+	 * @param string $media The stylesheet's media attribute.
+	 *
+	 * @return string
+	 */
+	public function style_loader_tag( string $html, string $handle, string $href, string $media ) : string {
+		if ( 'rider404-main' === $handle ) {
+			$html = str_replace( '/>', ' onload="this.media=\'all\'; this.onload=null; this.isLoaded=true" />', $html );
+		}
+
+		return $html;
 	}
 }

@@ -1,9 +1,13 @@
 {#
  # Button play
  #
- # @package Error404
+ # @package Rider404
  #}
-<button class="Button-play" type="button">
+<button
+	class="Button-play"
+	type="button"
+	{{ attributes ? attributes | map( ( value, key ) => "#{key}=\"#{value}\"" ) | join( ' ' )  | raw }}
+>
     <span class="Pointer-events-none">
         {%- include 'svg/use.html.twig' with { icon: 'play' } only -%}
         {%- include 'svg/use.html.twig' with { icon: 'play' } only -%}

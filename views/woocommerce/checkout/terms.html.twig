@@ -40,10 +40,10 @@
 
 				<div
 					id="checkbox-terms-and-conditions"
-					class="Checkbox page-block woocommerce-form__label woocommerce-form__label-for-checkbox checkbox{{ request.post.terms | apply_filters( 'woocommerce_terms_is_checked_default' ) ? ' is-selected' : '' }}"
+					class="Checkbox woocommerce-form__label woocommerce-form__label-for-checkbox checkbox{{ request.post.terms | apply_filters( 'woocommerce_terms_is_checked_default' ) ? ' is-selected' : '' }}"
 					role="checkbox"
 					aria-checked="{{ request.post.terms | apply_filters( 'woocommerce_terms_is_checked_default' ) ? 'true' : 'false' }}"
-					data-node-type="CheckboxBlock"
+					data-module-checkbox
 					tabindex="0"
 				>
 					<button type="button" tabindex="-1"></button>

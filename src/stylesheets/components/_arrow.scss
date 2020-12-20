@@ -8,6 +8,9 @@
 	@include size(7px, 84.36px);
 	@include autoAlpha(0);
 
+	transition: opacity 0.5s map-get($easings, ease-out-expo),
+		visibility 0.5s map-get($easings, ease-out-expo);
+
 	&.is-active {
 		@include autoAlpha(1);
 	}

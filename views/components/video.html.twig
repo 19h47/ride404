@@ -4,16 +4,17 @@
  # @package Rider404
  #}
 {% if video %}
-	<div id="{{ id }}" class="Video page-block{{ classes ? ' ' ~ classes | join( ' ' ) }}" data-node-type="VideoBlock">
+	<div id="{{ id }}" class="Video{{ classes ? ' ' ~ classes | join( ' ' ) }}" data-module-video>
 
 		<div class="Video__body">
 			{% if overlay %}
 				<div class="Video__overlay">
-					{% include 'components/button-play.html.twig' %}
+					{% include 'components/button-play.html.twig' with { attributes: { 'data-video': 'button' } } %}
 				</div>
 			{% endif %}
 
-			<canvas></canvas>
+			<canvas data-video="canvas"></canvas>
+
 			<video playsInline autoplay loop preload="auto" muted>
 				<source src="{{ video }}" type="video/mp4">
 			</video>

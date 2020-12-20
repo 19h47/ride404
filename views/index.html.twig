@@ -18,91 +18,87 @@
 		<meta charset="{{ site.charset }}">
 		<link rel="profile" href="http://gmpg.org/xfn/11">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		{{ wp_head }}
 
-		{# {% include 'components/gtag.html.twig' with { id: 'UA-153672608-1' } %} #}
-
 	</head>
 
-	<body class="{{ body_class }}{{ post.body_classes ? ( ' ' ~ post.body_classes | join( ' ' ) ) }}" data-scroll-smooth="{{ scroll_smooth and scroll_smooth == 'false' ? 'false' : 'true' }}">
+	<body class="{{ body_class }}{{ post.body_classes ? ( ' ' ~ post.body_classes | join( ' ' ) ) }}">
+
 		<div id="svg-sprite" class="d-none">{% include 'icons.svg' %}</div>
 
-		{% do action( 'woocommerce_before_main_content' ) %}
+		<div data-module-scroll="main" data-scroll-smooth="{{ scroll_smooth and scroll_smooth == 'false' ? 'false' : 'true' }}">
+			{% do action( 'woocommerce_before_main_content' ) %}
 
-		<div id="splashscreen" class="Splash-screen">
-			<div></div>
-			<div></div>
-		</div>
-
-		{% if is_front_page %}
-			<div class="Cursor js-cursor">
-				{% include 'svg/use.html.twig' with { icon: 'chevron-right' } only %}
-				{% include 'svg/use.html.twig' with { icon: 'chevron-left' } only %}
+			<div id="splashscreen" class="Splash-screen">
+				<div></div>
+				<div></div>
 			</div>
-		{% endif %}
-
-		<div
-			id="{{ post.id ? "page-#{post.id}" : 'page' }}"
-			class="Site-content page-content position-relative"
-			data-node-type="{{ post.node_type | default( 'DefaultPage' ) }}"
-			data-scroll-container
-		>
 
 			{% if is_front_page %}
-				<div class="Arrow Arrow--down d-none d-md-block" data-scroll-section>
-					<div
-						id="arrow-down"
-						class="page-block"
-						data-scroll
-						data-scroll-repeat
-						data-scroll-call="arrow-down"
-						data-scroll-position="bottom"
-						data-node-type="ArrowBlock"
-						data-lottie-json="arrow-down"
-						data-lottie-loop="true"
-					></div>
+				<div class="Cursor js-cursor">
+					{% include 'svg/use.html.twig' with { icon: 'chevron-right' } only %}
+					{% include 'svg/use.html.twig' with { icon: 'chevron-left' } only %}
 				</div>
 			{% endif %}
 
-			<div class="Coordinates" data-scroll-section>
-				{% for i in 0..9 %}
-					<span
-						id="coordinate-{{ i }}"
-						class="page-block"
-						data-number="{{ random( 1, 100000 ) }}"
-						data-scroll
-						data-scroll-repeat
-						data-scroll-speed="{{ random( 1, 9 ) }}"
-						data-scroll-call="coordinate-{{ i }}"
-						style="top: {{ i + random( 0, 100 ) }}%; left: {{ i + random( 0, 100 ) }}%;"
-						data-node-type="CoordinateBlock"
-					>0</span>
-				{% endfor %}
+			<div
+				id="{{ post.id ? "page-#{post.id}" : 'page' }}"
+				class="Site-content position-relative"
+			>
+
+				{% if is_front_page %}
+					<div class="Arrow Arrow--down d-none d-md-block" data-scroll-section>
+						<div
+							id="arrow-down"
+							data-scroll
+							data-scroll-repeat
+							data-scroll-call="arrow-down"
+							data-scroll-position="bottom"
+							data-module-arrow
+							data-lottie-json="arrow-down"
+							data-lottie-loop="true"
+						></div>
+					</div>
+				{% endif %}
+
+				<div class="Coordinates" data-scroll-section>
+					{% for i in 0..9 %}
+						<span
+							id="coordinate-{{ i }}"
+							data-number="{{ random( 1, 100000 ) }}"
+							data-scroll
+							data-scroll-repeat
+							data-scroll-speed="{{ random( 1, 9 ) }}"
+							data-scroll-call="coordinate-{{ i }}"
+							style="top: {{ i + random( 0, 100 ) }}%; left: {{ i + random( 0, 100 ) }}%;"
+							data-module-coordinate
+						>0</span>
+					{% endfor %}
+				</div>
+
+				{% include 'header.html.twig' %}
+
+				{% include 'components/navigation.html.twig' with { menu: nav_menus.main } %}
+
+
+				{% block hero %}{% endblock %}
+
+				{% block content %}
+					<div class="row" data-scroll-section>
+						<div class="col-10 offset-1 col-md-8 offset-md-2">
+							<div class="Wysiwyg">{{- post.content -}}</div>
+						</div>
+					</div>
+				{% endblock %}
+
+				{% include 'footer.html.twig' %}
+
 			</div>
 
-			{% include 'header.html.twig' %}
-
-
-			{% include 'components/navigation.html.twig' with { menu: nav_menus.main } %}
-
-
-			{% block hero %}{% endblock %}
-
-			{% block content %}
-				<div class="row" data-scroll-section>
-					<div class="col-10 offset-1 col-md-8 offset-md-2">
-						<div class="Wysiwyg">{{- post.content -}}</div>
-					</div>
-				</div>
-			{% endblock %}
-
-			{% include 'footer.html.twig' %}
-
+			{% do action( 'woocommerce_after_main_content' ) %}
 		</div>
-
-		{% do action( 'woocommerce_after_main_content' ) %}
 
 		{{ wp_footer }}
 

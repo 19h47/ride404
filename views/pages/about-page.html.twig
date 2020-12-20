@@ -66,7 +66,7 @@
 		</div>
 		<div class="row align-items-md-center">
 			<div class="col-6 d-none d-md-block">
-				<div id="about-map" class="About-map__canvas page-block" data-scroll  data-scroll-id="about-map" data-node-type="AboutMapBlock" data-lottie-json="about-map"></div>
+				<div id="about-map" class="About-map__canvas" data-scroll  data-scroll-id="about-map" data-module-about-map data-lottie-json="about-map"></div>
 			</div>
 			{% if post.meta( 'map' ).content %}
 				<div class="col-10 col-md-4 offset-1">
@@ -78,7 +78,7 @@
 		</div>
 	</div>
 
-    <div id="smiley-404" class="Smiley-404 Section page-block" data-scroll-section data-node-type="Smiley404Block" style="transform-style: preserve-3d;">
+    <div id="smiley-404" class="Smiley-404 Section" data-scroll-section data-module-smiley404 style="transform-style: preserve-3d;">
         <div class="Smiley-404__images">
             <div class="row h-100">
                 <div class="col-3 offset-2 d-flex align-items-start" data-scroll data-scroll-speed="1.5">
@@ -98,7 +98,7 @@
                 </div>
             </div>
         </div>
-        <canvas id="smiley-404-canvas"  height="900"></canvas>
+        <canvas id="smiley-404-canvas" height="900" data-smiley404="canvas"></canvas>
         <div class="Smiley-404__background">
             <img
 				data-scroll
@@ -133,7 +133,7 @@
         </div>
     </div>
 
-    <div id="faq" class="Section Faq page-block" data-node-type="FaqBlock" data-scroll-section>
+    <div id="faq" class="Section Faq" data-module-faq data-scroll-section>
 		<img class="Faq__grid d-none d-md-block" data-scroll data-scroll-speed="2" src="{{ theme.link }}/{{ theme.manifest['img/svg/grid.svg'] }}" alt="" width="962" height="842">
         <div class="row">
             <div class="col-4 offset-1 d-none d-md-block">

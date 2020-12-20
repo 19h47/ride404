@@ -11,10 +11,10 @@
             <div class="col-12 col-md-10 offset-md-1">
                 <div
 					id="rider-404"
-					class="Rider-404 page-block"
+					class="Rider-404"
 					data-scroll
 					data-scroll-call="rider-404"
-					data-node-type="Rider404Block"
+					data-module-rider-404
 					data-lottie-json="rider-404"
 					data-lottie-autoplay="false"
 				></div>
@@ -34,11 +34,11 @@
 
 		<div
 			id="star-circle"
-			class="Push__star-circle page-block"
+			class="Push__star-circle"
 			data-scroll
 			data-scroll-call="star-circle"
 			data-scroll-speed="2"
-			data-node-type="StarCircleBlock"
+			data-module-star-circle
 			data-lottie-json="star-circle"
 			data-lottie-loop="true"
 		></div>
@@ -51,7 +51,7 @@
             </div>
         </div>
 
-        <div id="push" class="Push__body page-block" data-node-type="PushBlock">
+        <div id="push" class="Push__body" data-module-push>
             {{ sidebar }}
         </div>
 
@@ -95,7 +95,7 @@
         </div>
     </div>
 
-    <div id="carousel" class="Section Carousel page-block" data-scroll-section data-node-type="CarouselBlock">
+    <div id="carousel" class="Section Carousel" data-scroll-section data-module-carousel>
         <img class="Carousel__background" src="{{ theme.link }}/{{ theme.manifest['img/png/carousel.png'] }}" alt="" width="1440" height="1153" data-scroll data-scroll-speed="2">
         <div class="row">
             <div class="col-10 offset-1 col-sm-8 offset-sm-2">

@@ -1,16 +1,16 @@
-{#  
+{#
  # Split text
  #
  # @param string $delay Delay in seconds.
  #
  # @package Rider404
  #}
-<div 
-    id="split-text-{{ id }}" 
-    class="Split-text page-block{{ classes ? ' ' ~ classes | join( ' ' ) }}" 
-    data-scroll 
+<div
+    id="split-text-{{ id }}"
+    class="Split-text{{ classes ? ' ' ~ classes | join( ' ' ) }}"
+    data-scroll
     data-scroll-call="split-text-{{ id }}"
-    data-node-type="SplitTextBlock"
+    data-module-split-text
     data-delay="{{ delay | default( '0' )}}"
 >
     {{- title -}}

@@ -4,7 +4,7 @@
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  */
 .Smiley-404 {
-	@extend %position-relative, %overflow-hidden;
+	@extend %position-relative, %overflow-hidden, %overflow-md-visible;
 
 	background-color: the_color(gray, very-dark-02);
 

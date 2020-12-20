@@ -5,8 +5,8 @@
  #}
 <div
 	id="navigation"
-	class="Navigation page-block{{ classes is defined ? ' ' ~ classes | join(' ') }}"
-	data-node-type="NavigationBlock"
+	class="Navigation{{ classes is defined ? ' ' ~ classes | join(' ') }}"
+	data-module-navigation
 >
 	<div class="row h-100 d-flex align-items-center">
 		<div class="col-6 offset-3">
@@ -16,9 +16,9 @@
 
 						<{{ item.current ? 'div' : "a href=\"#{ item.url }\"" }}
 							id="oval-{{ item.id }}"
-							class="Navigation__link{{ item.current ? ' is-active' : ' page-block' }}"
+							class="Navigation__link{{ item.current ? ' is-active' : '' }}"
 							itemprop="url"
-							{{ item.current ? '' : 'data-node-type="OvalBlock"' }}
+							{{ item.current ? '' : 'data-module-oval' }}
 							{{ item.current ? '' : 'data-lottie-json="oval"' }}
 							{{ item.current ? '' : 'data-lottie-preserveaspectratio="none"' }}
 							{{ item.current ? '' : 'data-lottie-active="false"' }}
@@ -44,8 +44,8 @@
 
 	<div
 		id="menu"
-		class="Navigation__background js-background page-block"
-		data-node-type="MenuBlock"
+		class="Navigation__background js-background"
+		data-module-menu
 		data-lottie-json="menu"
 		data-lottie-autoplay="false"
 		data-lottie-loop="false"

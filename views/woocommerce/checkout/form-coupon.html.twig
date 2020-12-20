@@ -5,7 +5,7 @@
  #}
 
 {% if coupons_enabled %}
-	<div id="checkout-coupons" class="Checkout-coupon page-block" data-node-type="CheckoutCouponsBlock">
+	<div id="checkout-coupons" class="Checkout-coupon" data-module-checkout-coupons>
 		<div class="woocommerce-form-coupon-toggle">
 			{{- function( 'wc_print_notice', function( 'apply_filters', 'woocommerce_checkout_coupon_message', __( 'Have a coupon?', 'rider404' ) | e( 'esc_html' ) ~ '&nbsp;<button type="button" class="showcoupon">' ~ __( 'Click here to enter your code', 'rider404' ) | e( 'esc_html' ) ~ '</button>' ), 'notice' ) -}}
 		</div>

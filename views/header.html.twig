@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-3 col-md-2">
             <a id="logo" class="Site-header__smiley " href="{{ site.link }}" >
-                <div id="logo" class="page-block" data-node-type="LogoBlock" data-lottie-json="logo" data-lottie-autoplay="true" data-lottie-loop="true"></div>
+                <div id="logo" data-module-logo data-logo="button" data-lottie-json="logo" data-lottie-autoplay="true" data-lottie-loop="true"></div>
             </a>
         </div>
 
@@ -28,10 +28,13 @@
                 </p>
             {% elseif is_front_page %}
                 <div
-                    class="Site-header__title Site-header__love-two-ride-four-love page-block"
+                    class="Site-header__title Site-header__love-two-ride-four-love"
                     id="love-two-ride-four-love"
-                    data-node-type="LoveTwoRideFourLoveBlock"
+                    data-module-love-two-ride-four-love
                     data-lottie-json="love-two-ride-four-love"
+					data-lottie-autoplay="false"
+					data-lottie-delay="1200"
+
                 ></div>
             {% else %}
                 <p class="Site-header__title Page__title"><span>{{- post.title -}}</span></p>
@@ -43,14 +46,15 @@
             <{{ ( cart.is_empty ? 'div' : "a href=\"#{cart_url}\"" ) | raw }} class="Site-header__mini-cart Mini-cart js-total">
                 {% include 'partials/cart-contents-count.html.twig' with { count: cart.get_cart_contents_count() } only %}
                 {# {% include 'svg/use.html.twig' with { icon: 'cart' } only %} #}
-				<div id="mini-cart" class="Mini-cart__icon page-block" data-node-type="MiniCartBlock" data-lottie-json="cart" data-lottie-autoplay="false" data-lottie-loop="false"></div>
+				<div id="mini-cart" class="Mini-cart__icon" data-module-mini-cart data-mini-cart="button" data-lottie-json="cart" data-lottie-autoplay="false" data-lottie-loop="false"></div>
             </{{ ( cart.is_empty ? 'div' : 'a' ) | raw }}>
 
             <button
 				id="bars"
-				class="Site-header__bars Bars page-block js-menu-button"
+				class="Site-header__bars Bars js-menu-button"
 				type="button"
-				data-node-type="BarsBlock"
+				data-module-bars
+				data-bars="button"
 				data-lottie-json="bars"
 				data-lottie-autoplay="false"
 				data-lottie-loop="false"

@@ -26,8 +26,8 @@
 
 			<div
 				id="product-variations-{{ name | sanitize }}"
-				class="Product-variations variations page-block"
-				data-node-type="ProductVariationsBlock"
+				class="Product-variations variations"
+				data-module-product-variations
 			>
 
 				{# @see https://github.com/woocommerce/woocommerce/blob/master/includes/wc-template-functions.php#L2988 #}
@@ -43,7 +43,7 @@
 					)
 				-}}
 
-				<div role="radiogroup">
+				<div role="radiogroup" data-product-variations="radiogroup">
 					{% for term in terms %}
 						<div class="Product-variations__item" role="radio" aria-checked="false" tabindex="-1">
 							<span>{{- term.name | e( 'esc_html' ) -}}</span>

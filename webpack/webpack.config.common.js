@@ -51,7 +51,7 @@ module.exports = {
 			factories: resolve('src/scripts/factories'),
 			services: resolve('src/scripts/services'),
 			utils: resolve('src/scripts/utils'),
-			blocks: resolve('src/scripts/blocks'),
+			modules: resolve('src/scripts/modules'),
 			polyfills: resolve('src/scripts/polyfills'),
 			vendors: resolve('src/scripts/vendors'),
 			videos: resolve('src/videos'),

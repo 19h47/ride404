@@ -3,23 +3,24 @@
  #
  # @package Rider404
  #}
-<div id="shipping" class="Shipping-fields woocommerce-shipping-fields page-block" data-node-type="ShippingBlock">
+<div id="shipping" class="Shipping-fields woocommerce-shipping-fields" data-module-shipping>
 	{% if cart.needs_shipping_address() %}
 
 		<h3 class="Shipping-fields__title" id="ship-to-different-address">
 
 			<div
 				id="checkbox-ship-to-different-address"
-				class="Checkbox page-block{{ 'shipping' is same as( ship_to_destination | apply_filters( 'woocommerce_ship_to_different_address_checked' ) ) ? ' is-selected' : '' }}"
+				class="Checkbox{{ 'shipping' is same as( ship_to_destination | apply_filters( 'woocommerce_ship_to_different_address_checked' ) ) ? ' is-selected' : '' }}"
 				role="checkbox"
 				aria-checked="{{ 'shipping' is same as( ship_to_destination | apply_filters( 'woocommerce_ship_to_different_address_checked' ) ) ? 'true' : 'false' }}"
-				data-node-type="CheckboxBlock"
+				data-module-checkbox
 				tabindex="0"
 			>
 				<button type="button" tabindex="-1"></button>
 				{{- __( 'Ship to a different address?', 'rider404' ) | e( 'esc_html' ) -}}
 				<div style="display: none;">
 					<input
+						data-checkbox="input"
 						id="ship-to-different-address-checkbox"
 						name="ship_to_different_address"
 						value="1"

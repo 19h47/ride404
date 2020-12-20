@@ -26,7 +26,7 @@
 				{% for name, options in attributes %}
 					{% set terms = function( 'wc_get_product_terms', product.get_id(), name, { 'fields': 'all' } ) %}
 
-					<div id="product-variations-{{ name | sanitize }}" class="variations page-block" data-node-type="ProductVariationsBlock">
+					<div id="product-variations-{{ name | sanitize }}" class="variations" data-module-product-variations>
 
 						{# @see https://github.com/woocommerce/woocommerce/blob/master/includes/wc-template-functions.php#L2988 #}
 						{{-
@@ -41,7 +41,7 @@
 							)
 						-}}
 
-						<div role="radiogroup">
+						<div role="radiogroup" data-product-variations="radiogroup">
 							{% for term in terms %}
 								{% if term.slug in options %}
 									<div role="radio" aria-checked="false" tabindex="-1">
