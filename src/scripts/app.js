@@ -1,5 +1,5 @@
 import modular from 'modujs';
-import { listen } from 'quicklink';
+// import { listen } from 'quicklink';
 import { gsap } from 'gsap';
 
 import Guid from 'common/Guid';
@@ -24,7 +24,7 @@ const splashscreen = new Splashscreen();
 splashscreen.init();
 
 const init = async () => {
-	listen();
+	// listen();
 
 	app.init(app);
 	await splashscreen.play();

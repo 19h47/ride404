@@ -16,10 +16,14 @@
 	}
 
 	a {
-		transition: transform 0.5s map-get($easings, ease-out-expo);
+		svg {
+			transition: transform 0.5s map-get($easings, ease-out-expo);
+		}
 	}
 
 	a:hover {
-		transform: rotate(90deg);
+		svg {
+			transform: rotate(90deg);
+		}
 	}
 }

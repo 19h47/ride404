@@ -7,19 +7,15 @@
  * It is used to display a page when nothing more specific matches a query.
  * E.g., it puts together the home page when no home.php file exists.
  *
- * @package Rider404
- * @author  Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
- * @link https://codex.wordpress.org/Template_Hierarchy
- * @since 0.0.0
- * @version 0.0.0
+ * @package WordPress
+ * @subpackage Rider404
  */
 
-use Timber\{ Timber, Post };
+use Timber\{ Timber };
 
 $context = Timber::context();
 
-$context['post']      = new Post();
-$context['namespace'] = 'page';
+$context['post'] = Timber::get_post();
 
 $templates = array( 'index.html.twig' );
 

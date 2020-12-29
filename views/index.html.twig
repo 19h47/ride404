@@ -3,7 +3,8 @@
  #
  # @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  # @file views/index.html.twig
- # @package Rider404
+ # @package WordPress
+ # @subpackage Rider404
  #}
 
 <!DOCTYPE html>
@@ -20,7 +21,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		{{ wp_head }}
+		{{ function( 'wp_head' ) }}
 
 	</head>
 
@@ -100,7 +101,7 @@
 			{% do action( 'woocommerce_after_main_content' ) %}
 		</div>
 
-		{{ wp_footer }}
+		{{ function( 'wp_footer' ) }}
 
 	</body>
 </html>

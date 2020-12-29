@@ -2,13 +2,13 @@
 /**
  * Single Product title
  *
- * @package Rider404
+ * @package WordPress
+ * @subpackage Rider404
  */
 
-use Timber\{ Timber, Post };
+use Timber\{ Timber };
 
-$context = Timber::context();
-
-$context['post'] = new Post();
+$context         = array();
+$context['post'] = Timber::get_post();
 
 Timber::render( 'woocommerce/single-product/title.html.twig', $context );

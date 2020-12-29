@@ -2,7 +2,8 @@
 /**
  * Product Loop End
  *
- * @package Rider404
+ * @package WordPress
+ * @subpackage Rider404
  */
 
 Timber::render( 'woocommerce/loop/loop-end.html.twig' );

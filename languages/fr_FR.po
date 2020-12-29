@@ -1,23 +1,23 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Rider.404\n"
-"POT-Creation-Date: 2020-10-28 17:20+0100\n"
-"PO-Revision-Date: 2020-10-28 17:20+0100\n"
+"POT-Creation-Date: 2020-12-21 09:17+0100\n"
+"PO-Revision-Date: 2020-12-28 10:42+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 2.4.2\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: style.css\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
-"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
@@ -49,44 +49,474 @@ msgid "Instagram URL"
 msgstr "URL du compte Instagram"
 
 #: inc/Api/Customizer/Contact.php:95
-msgid "LinkedIn"
-msgstr "LinkedIn"
+msgid "YouTube"
+msgstr ""
 
 #: inc/Api/Customizer/Contact.php:96
-msgid "LinkedIn URL"
-msgstr "URL du compte LinkedIn"
+msgid "YouTube URL"
+msgstr ""
 
 #: inc/Api/Customizer/Contact.php:114
+msgid "TikTok"
+msgstr ""
+
+#: inc/Api/Customizer/Contact.php:115
+msgid "TikTok URL"
+msgstr ""
+
+#: inc/Api/Customizer/Contact.php:133
+msgid "Strava"
+msgstr ""
+
+#: inc/Api/Customizer/Contact.php:134
+msgid "Strava URL"
+msgstr "URL du compte Strava"
+
+#: inc/Api/Customizer/Contact.php:152
 msgid "Phone number"
 msgstr "Numéro de téléphone"
 
-#: inc/Api/Customizer/Contact.php:132
+#: inc/Api/Customizer/Contact.php:170
 msgid "Public email address"
 msgstr "Adresse email publique"
 
-#: inc/Api/Customizer/Contact.php:150
+#: inc/Api/Customizer/Contact.php:188
 msgid "Address"
 msgstr "Adresse"
 
-#: inc/Api/Customizer/Contact.php:169
+#: inc/Api/Customizer/Contact.php:207
 msgid "Business hours"
 msgstr "Horaires d’ouverture"
 
-#: inc/Setup/Menus.php:33
+#: inc/Core/Partner.php:106
+msgid "Thumbnail"
+msgstr ""
+
+#. translators: Publish box date format, see https://secure.php.net/date
+#: inc/Core/Partner.php:160
+msgid "M j, Y @ H:i"
+msgstr ""
+
+#: inc/Core/Partner.php:165 inc/Core/Partner.php:243
+msgid "View Partner"
+msgstr ""
+
+#: inc/Core/Partner.php:171 inc/Core/Partner.php:177
+msgid "Preview Partner"
+msgstr ""
+
+#: inc/Core/Partner.php:182 inc/Core/Partner.php:185 inc/Core/Partner.php:263
+msgid "Partner updated."
+msgstr ""
+
+#: inc/Core/Partner.php:183
+msgid "Custom field updated."
+msgstr ""
+
+#: inc/Core/Partner.php:184
+msgid "Custom field deleted."
+msgstr ""
+
+#. translators: %s: date and time of the revision
+#: inc/Core/Partner.php:187
+#, php-format
+msgid "Partner restored to revision from %s."
+msgstr ""
+
+#: inc/Core/Partner.php:188 inc/Core/Partner.php:259
+msgid "Partner published."
+msgstr ""
+
+#: inc/Core/Partner.php:189
+msgid "Partner saved."
+msgstr ""
+
+#: inc/Core/Partner.php:190
+msgid "Partner submitted."
+msgstr ""
+
+#: inc/Core/Partner.php:191
+#, php-format
+msgid "Partner scheduled for: %s."
+msgstr ""
+
+#: inc/Core/Partner.php:192
+msgid "Partner draft updated."
+msgstr ""
+
+#. translators: %s: Number of partners.
+#: inc/Core/Partner.php:212
+#, php-format
+msgid "%s partner updated."
+msgid_plural "%s partners updated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/Core/Partner.php:213
+msgid "1 partner not updated, somebody is editing it."
+msgstr ""
+
+#. translators: %s: Number of partners.
+#: inc/Core/Partner.php:215
+#, php-format
+msgid "%s partner not updated, somebody is editing it."
+msgid_plural "%s partners not updated, somebody is editing them."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: Number of partners.
+#: inc/Core/Partner.php:217
+#, php-format
+msgid "%s partner permanently deleted."
+msgid_plural "%s partner permanently deleted."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: Number of partners.
+#: inc/Core/Partner.php:219
+#, php-format
+msgid "%s partner moved to the Trash."
+msgid_plural "%s partner moved to the Trash."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: Number of partners.
+#: inc/Core/Partner.php:221
+#, php-format
+msgid "%s partner restored from the Trash."
+msgid_plural "%s partner restored from the Trash."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/Core/Partner.php:236
+msgctxt "partner type generale name"
+msgid "Partners"
+msgstr ""
+
+#: inc/Core/Partner.php:237
+msgctxt "partner type singular name"
+msgid "Partner"
+msgstr ""
+
+#: inc/Core/Partner.php:238
+msgctxt "partner type"
+msgid "Add New"
+msgstr ""
+
+#: inc/Core/Partner.php:239
+msgid "Add New Partner"
+msgstr ""
+
+#: inc/Core/Partner.php:240
+msgid "Edit Partner"
+msgstr ""
+
+#: inc/Core/Partner.php:241
+msgid "New Partner"
+msgstr ""
+
+#: inc/Core/Partner.php:242
+msgid "View Partners"
+msgstr ""
+
+#: inc/Core/Partner.php:244
+msgid "Search Partners"
+msgstr ""
+
+#: inc/Core/Partner.php:245
+msgid "No Partners found."
+msgstr ""
+
+#: inc/Core/Partner.php:246
+msgid "No Partners found in Trash."
+msgstr ""
+
+#: inc/Core/Partner.php:247
+msgid "Parent Partner:"
+msgstr ""
+
+#: inc/Core/Partner.php:248
+msgid "All Partners"
+msgstr ""
+
+#: inc/Core/Partner.php:249
+msgid "Partner Archives"
+msgstr ""
+
+#: inc/Core/Partner.php:250
+msgid "Partner Attributes"
+msgstr ""
+
+#: inc/Core/Partner.php:251
+msgid "Insert into partner"
+msgstr ""
+
+#: inc/Core/Partner.php:252
+msgid "Uploaded to this partner"
+msgstr ""
+
+#: inc/Core/Partner.php:253
+msgctxt "partner"
+msgid "Featured Image"
+msgstr ""
+
+#: inc/Core/Partner.php:254
+msgctxt "partner"
+msgid "Set featured image"
+msgstr ""
+
+#: inc/Core/Partner.php:255
+msgctxt "partner"
+msgid "Remove featured image"
+msgstr ""
+
+#: inc/Core/Partner.php:256
+msgctxt "partner"
+msgid "Use as featured image"
+msgstr ""
+
+#: inc/Core/Partner.php:257
+msgid "Partners list navigation"
+msgstr ""
+
+#: inc/Core/Partner.php:258
+msgid "Partners list"
+msgstr ""
+
+#: inc/Core/Partner.php:260
+msgid "Partner published privately."
+msgstr ""
+
+#: inc/Core/Partner.php:261
+msgid "Partner reverted to draft."
+msgstr ""
+
+#: inc/Core/Partner.php:262
+msgid "Partner scheduled."
+msgstr ""
+
+#: inc/Core/Partner.php:267
+msgid "Partner"
+msgstr ""
+
+#: inc/Core/Partner.php:268
+msgid "Partner Description"
+msgstr ""
+
+#: inc/Setup/Menus.php:35
 msgid "Main"
 msgstr "Menu principal"
 
-#: inc/Setup/Theme.php:167
-msgid "Share on Twitter"
-msgstr "Partager sur Twitter"
-
-#: inc/Setup/Theme.php:174
+#: inc/Setup/Theme.php:146
 msgid "Share on Facebook"
 msgstr "Partager sur Facebook"
 
-#: inc/Setup/Theme.php:191
-msgid "Share on LinkedIn"
-msgstr "Partager sur LinkedIn"
+#: inc/Setup/Widgets.php:40
+msgid "Front Page Sidebar"
+msgstr ""
+
+#: views/components/navigation.html.twig:38
+msgid "Terms & legal"
+msgstr ""
+
+#: views/components/product-categories.html.twig:9
+msgid "All"
+msgstr ""
+
+#: views/header.html.twig:19
+msgid "Back to shop"
+msgstr ""
+
+#: views/header.html.twig:23
+msgid "Shop"
+msgstr ""
+
+#: views/pages/about-page.html.twig:122
+msgid "All video Rider.404 Project on"
+msgstr ""
+
+#: views/pages/front-page.html.twig:62
+msgid "All products"
+msgstr ""
+
+#: views/pages/front-page.html.twig:91
+msgid "About"
+msgstr ""
+
+#: views/pages/front-page.html.twig:123
+msgid ""
+"Partners &\n"
+"Collaboraters"
+msgstr ""
+
+#: views/partials/empty-cart-message.html.twig:8
+msgid "Your cart is currently empty."
+msgstr ""
+
+#. $s shipping destination.
+#: views/woocommerce/cart/cart-shipping.html.twig:39
+#, php-format
+msgid "Shipping to %s."
+msgstr ""
+
+#: views/woocommerce/cart/cart-shipping.html.twig:40
+msgid "Change address"
+msgstr ""
+
+#: views/woocommerce/cart/cart-shipping.html.twig:43
+msgid "Shipping options will be updated during checkout."
+msgstr ""
+
+#: views/woocommerce/cart/cart-shipping.html.twig:52
+msgid "Shipping costs are calculated during checkout."
+msgstr ""
+
+#: views/woocommerce/cart/cart-shipping.html.twig:56
+msgid "Enter your address to view shipping options."
+msgstr ""
+
+#: views/woocommerce/cart/cart-shipping.html.twig:61
+msgid ""
+"There are no shipping options available. Please ensure that your address has "
+"been entered correctly, or contact us if you need any help."
+msgstr ""
+
+#. $s shipping destination.
+#: views/woocommerce/cart/cart-shipping.html.twig:66
+#, php-format
+msgid "No shipping options were found for %s."
+msgstr ""
+
+#: views/woocommerce/cart/cart-shipping.html.twig:68
+msgid "Enter a different address"
+msgstr ""
+
+#: views/woocommerce/cart/shipping-calculator.html.twig:10
+msgid "Calculate shipping"
+msgstr ""
+
+#: views/woocommerce/cart/shipping-calculator.html.twig:17
+msgid "Select a country / region&hellip;"
+msgstr ""
+
+#: views/woocommerce/cart/shipping-calculator.html.twig:34
+#: views/woocommerce/cart/shipping-calculator.html.twig:37
+#: views/woocommerce/cart/shipping-calculator.html.twig:46
+msgid "State / County"
+msgstr ""
+
+#: views/woocommerce/cart/shipping-calculator.html.twig:38
+msgid "Select an option&hellip;"
+msgstr ""
+
+#: views/woocommerce/cart/shipping-calculator.html.twig:53
+msgid "City"
+msgstr ""
+
+#: views/woocommerce/cart/shipping-calculator.html.twig:59
+msgid "Postcode / ZIP"
+msgstr ""
+
+#: views/woocommerce/cart/shipping-calculator.html.twig:65
+msgid "Update"
+msgstr ""
+
+#: views/woocommerce/checkout/form-billing.html.twig:11
+msgid "Billing &amp; Shipping"
+msgstr ""
+
+#: views/woocommerce/checkout/form-billing.html.twig:17
+msgid "Billing details"
+msgstr ""
+
+#: views/woocommerce/checkout/form-billing.html.twig:47
+msgid "Create an account?"
+msgstr ""
+
+#: views/woocommerce/checkout/form-checkout.html.twig:13
+msgid "You must be logged in to checkout."
+msgstr ""
+
+#: views/woocommerce/checkout/form-checkout.html.twig:51
+msgid "Your order"
+msgstr ""
+
+#: views/woocommerce/checkout/form-coupon.html.twig:10
+msgid "Have a coupon?"
+msgstr ""
+
+#: views/woocommerce/checkout/form-coupon.html.twig:10
+msgid "Click here to enter your code"
+msgstr ""
+
+#: views/woocommerce/checkout/form-coupon.html.twig:15
+msgid "If you have a coupon code, please apply it below."
+msgstr ""
+
+#: views/woocommerce/checkout/form-coupon.html.twig:23
+msgid "Coupon code"
+msgstr ""
+
+#: views/woocommerce/checkout/form-coupon.html.twig:27
+#: views/woocommerce/checkout/form-coupon.html.twig:28
+msgid "Apply coupon"
+msgstr ""
+
+#: views/woocommerce/checkout/form-shipping.html.twig:20
+msgid "Ship to a different address?"
+msgstr ""
+
+#: views/woocommerce/checkout/form-shipping.html.twig:58
+msgid "Additional information"
+msgstr ""
+
+#: views/woocommerce/checkout/payment.html.twig:23
+msgid ""
+"Sorry, it seems that there are no available payment methods for your state. "
+"Please contact us if you require assistance or wish to make alternate "
+"arrangements."
+msgstr ""
+
+#: views/woocommerce/checkout/payment.html.twig:25
+msgid "Please fill in your details above to see available payment methods."
+msgstr ""
+
+#. $1 and $2 opening and closing emphasis tags respectively
+#: views/woocommerce/checkout/payment.html.twig:36
+#, php-format
+msgid ""
+"Since your browser does not support JavaScript, or it is disabled, please "
+"ensure you click the %1$sUpdate Totals%2$s button before placing your order. "
+"You may be charged more than the amount stated above if you fail to do so."
+msgstr ""
+
+#: views/woocommerce/checkout/payment.html.twig:38
+#: views/woocommerce/checkout/payment.html.twig:39
+msgid "Update totals"
+msgstr ""
+
+#: views/woocommerce/checkout/review-order.html.twig:11
+msgid "Product"
+msgstr ""
+
+#: views/woocommerce/checkout/review-order.html.twig:14
+#: views/woocommerce/checkout/review-order.html.twig:55
+msgid "Subtotal"
+msgstr ""
+
+#: views/woocommerce/checkout/review-order.html.twig:102
+msgid "total"
+msgstr ""
+
+#: views/woocommerce/single-product/add-to-cart/quick-variable.html.twig:83
+#: views/woocommerce/single-product/add-to-cart/variable.html.twig:89
+msgid "This product is currently out of stock and unavailable."
+msgstr ""
+
+#: views/woocommerce/single-product/add-to-cart/variation.html.twig:14
+msgid ""
+"Sorry, this product is unavailable. Please choose a different combination."
+msgstr ""
 
 #. Theme Name of the plugin/theme
 msgid "Rider.404"
@@ -107,6 +537,18 @@ msgstr "19h47"
 #. Author URI of the plugin/theme
 msgid "https://www.19h47.fr/"
 msgstr "https://www.19h47.fr/"
+
+#~ msgid "LinkedIn"
+#~ msgstr "LinkedIn"
+
+#~ msgid "LinkedIn URL"
+#~ msgstr "URL du compte LinkedIn"
+
+#~ msgid "Share on Twitter"
+#~ msgstr "Partager sur Twitter"
+
+#~ msgid "Share on LinkedIn"
+#~ msgstr "Partager sur LinkedIn"
 
 #~ msgid "Pages"
 #~ msgstr "Pages"

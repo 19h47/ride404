@@ -2,7 +2,8 @@
 /**
  * Simple product add to cart
  *
- * @package Rider404/Templates
+ * @package WordPress
+ * @subpackage Rider404
  */
 
 global $product;
@@ -11,7 +12,7 @@ use TImber\{ Timber };
 
 $context = Timber::context();
 
-$context['form_action']    = apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() );
+$context['form_action'] = apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() );
 
 $context['product'] = $product;
 

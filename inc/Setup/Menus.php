@@ -7,7 +7,7 @@
 
 namespace Rider404\Setup;
 
-use Timber\{ Menu };
+use Timber\{ Timber };
 
 /**
  * Menus
@@ -49,7 +49,7 @@ class Menus {
 		$menus = get_registered_nav_menus();
 
 		foreach ( $menus as $menu => $value ) {
-			$context['nav_menus'][ $menu ] = new Menu( $menu );
+			$context['nav_menus'][ $menu ] = Timber::get_menu( $menu );
 		}
 
 		return $context;

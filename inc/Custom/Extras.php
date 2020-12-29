@@ -2,15 +2,21 @@
 /**
  * Extras
  *
- * @package Rider404
+ * @link https://rider404.com/
+ * @since 0.0.0
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package WordPress
+ * @subpackage Rider404/Custom
  */
 
 namespace Rider404\Custom;
 
 /**
- * Extras.
+ * Extras
  */
 class Extras {
+
 	/**
 	 * Run default hooks and actions for WordPress
 	 *

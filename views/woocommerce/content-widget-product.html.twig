@@ -1,7 +1,8 @@
 {#
  # Content widget product
  #
- # @package Rider404
+ # @package WordPress
+ # @subpackage Rider404
  #}
 <li {{ function( 'wc_product_class', 'Loop-product js-item' ) }}>
 	{% do action( 'woocommerce_widget_product_item_start', template_args ) %}
@@ -9,7 +10,7 @@
     {% include 'partials/featured.html.twig' with { product: product } only %}
 
 	{% include 'woocommerce/loop/loop-product-link-open.html.twig' with { link: product.get_permalink() } only %}
-		{% include 'woocommerce/loop/loop-product-thumbnail.html.twig' with { product: product} only %}
+		{% include 'woocommerce/loop/loop-product-thumbnail.html.twig' with { product: product } only %}
         {% include 'woocommerce/loop/loop-product-title.html.twig' with { title: product.get_name() } only %}
 	</a>
 

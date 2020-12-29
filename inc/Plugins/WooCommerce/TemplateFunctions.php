@@ -2,8 +2,12 @@
 /**
  * Template functions
  *
- * @package Rider404
- * @subpackage Rider404/Plugins/WooCommerce/TemplateFunctions
+ * @link https://rider404.com/
+ * @since 0.0.0
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package WordPress
+ * @subpackage Rider404/Plugins/WooCommerce
  */
 
 namespace Rider404\Plugins\WooCommerce;
@@ -21,7 +25,7 @@ class TemplateFunctions {
 	 * @access static
 	 * @return string
 	 */
-	public static function variation() : string {
+	public static function variation() {
 		return Timber::render( 'partials/variation.html.twig' );
 	}
 
@@ -32,7 +36,7 @@ class TemplateFunctions {
 	 * @access static
 	 * @return string
 	 */
-	public static function loop_product_link_open() : string {
+	public static function loop_product_link_open() {
 		global $product;
 
 		return Timber::render( 'woocommerce/loop/loop-product-link-open.html.twig', array( 'link' => $product->get_permalink() ) );
@@ -46,7 +50,7 @@ class TemplateFunctions {
 	 * @access static
 	 * @return string
 	 */
-	public static function loop_product_thumbnail() : string {
+	public static function loop_product_thumbnail() {
 		global $product;
 
 		return Timber::render(
@@ -64,7 +68,7 @@ class TemplateFunctions {
 	 * @access static
 	 * @return string
 	 */
-	public static function loop_featured() : string {
+	public static function loop_featured() {
 		global $product;
 
 		return Timber::render(
@@ -82,7 +86,7 @@ class TemplateFunctions {
 	 * @access static
 	 * @return string
 	 */
-	public static function loop_product_title() : string {
+	public static function loop_product_title() {
 		global $product;
 
 		return Timber::render( 'woocommerce/loop/loop-product-title.html.twig', array( 'title' => $product->get_title() ) );
@@ -95,7 +99,7 @@ class TemplateFunctions {
 	 * @access static
 	 * @return string
 	 */
-	public static function loop_price() : string {
+	public static function loop_price() {
 		global $product;
 
 		return Timber::render(
@@ -128,7 +132,7 @@ class TemplateFunctions {
 	 * @access static
 	 * @return string
 	 */
-	public static function single_variation() : string {
+	public static function single_variation() {
 		return Timber::render( 'woocommerce/single-product/add-to-cart/single-variation.html.twig' );
 	}
 
@@ -139,7 +143,7 @@ class TemplateFunctions {
 	 * @access static
 	 * @return string
 	 */
-	public static function quick_variable_add_to_cart() : string {
+	public static function quick_variable_add_to_cart() {
 		global $product;
 
 		$context = Timber::context();
@@ -167,7 +171,7 @@ class TemplateFunctions {
 	 * @access static
 	 * @return string
 	 */
-	public static function checkout_privacy_policy_text() : string {
+	public static function checkout_privacy_policy_text() {
 		return Timber::render( 'partials/privacy-policy-text.html.twig' );
 	}
 
@@ -215,7 +219,7 @@ class TemplateFunctions {
 	 * @return string
 	 * @access static
 	 */
-	public static function empty_cart_message() : string {
+	public static function empty_cart_message() {
 		return Timber::render( 'partials/empty-cart-message.html.twig' );
 	}
 }

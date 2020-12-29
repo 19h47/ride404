@@ -2,8 +2,11 @@
 /**
  * The template for displaying product widget entries.
  *
- * @package Rider404
+ * @package WordPress
+ * @subpackage Rider404
  */
+
+use Timber\{ Timber };
 
 global $product;
 
@@ -11,7 +14,7 @@ if ( ! is_a( $product, 'WC_Product' ) ) {
 	return;
 }
 
-$context = Timber::context();
+$context = array();
 
 $context['product']       = $product;
 $context['template_args'] = $args;

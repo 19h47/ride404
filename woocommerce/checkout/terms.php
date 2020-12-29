@@ -2,12 +2,13 @@
 /**
  * Checkout terms and conditions area.
  *
- * @package Rider404
+ * @package WordPress
+ * @subpackage Rider404
  */
 
 use Timber\{ Timber, Helper };
 
-$context = Timber::get_context();
+$context = array();
 
 $context['wc_terms_and_conditions_checkbox_enabled'] = wc_terms_and_conditions_checkbox_enabled();
 

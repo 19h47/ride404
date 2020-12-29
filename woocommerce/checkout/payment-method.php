@@ -2,13 +2,13 @@
 /**
  * Output a single payment method
  *
- * @package Rider404
+ * @package WordPress
+ * @subpackage Rider404
  */
 
 use Timber\{ Timber };
 
-$context = Timber::context();
-
+$context            = array();
 $context['gateway'] = $gateway;
 
 Timber::render( 'woocommerce/checkout/payment-method.html.twig', $context );

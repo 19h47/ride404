@@ -2,7 +2,8 @@
 /**
  * Archive: product
  *
- * @package Rider404
+ * @package WordPress
+ * @subpackage Rider404
  */
 
 use Timber\{ Timber };

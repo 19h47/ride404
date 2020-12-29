@@ -2,13 +2,13 @@
 /**
  * Checkout billing information form
  *
- * @package Rider404
- * @global WC_Checkout $checkout
+ * @package WordPress
+ * @subpackage Rider404
  */
 
 use Timber\{ Timber };
 
-$context = Timber::context();
+$context = array();
 
 $context['checkout'] = $checkout;
 $context['cart']     = WC()->cart;

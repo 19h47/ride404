@@ -4,7 +4,8 @@
  *
  * @param object $checkout Checkout.
  *
- * @package Rider404
+ * @package WordPress
+ * @subpackage Rider404
  */
 
 use Timber\{ Timber };

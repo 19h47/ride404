@@ -2,8 +2,12 @@
 /**
  * ACF
  *
- * @package Rider404
- * @subpackage Rider404/Plugins/ACF
+ * @link https://rider404.com/
+ * @since 0.0.0
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package WordPress
+ * @subpackage Rider404/Plugins
  */
 
 namespace Rider404\Plugins;
@@ -11,9 +15,10 @@ namespace Rider404\Plugins;
 use WP_Post;
 
 /**
- * WordPress
+ * ACF
  */
 class ACF {
+
 	/**
 	 * Runs initialization tasks.
 	 *

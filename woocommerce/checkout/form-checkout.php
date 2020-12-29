@@ -2,13 +2,13 @@
 /**
  * Form checkout
  *
- * @package Rider404
+ * @package WordPress
+ * @subpackage Rider404
  */
 
 use Timber\{ Timber };
 
-$context = Timber::context();
-
+$context             = array();
 $context['checkout'] = (object) $checkout;
 
 Timber::render( 'woocommerce/checkout/form-checkout.html.twig', $context );

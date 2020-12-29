@@ -2,16 +2,17 @@
 /**
  * Single: product
  *
- * @package Rider404
+ * @package WordPress
+ * @subpackage Rider404
  */
 
 global $product;
 
-use Timber\{ Timber, Post };
+use Timber\{ Timber };
 
 $context = Timber::context();
 
-$context['post'] = new Post();
+$context['post'] = Timber::get_post();
 
 $context['product_class'] = wc_get_product_class( '', $product );
 

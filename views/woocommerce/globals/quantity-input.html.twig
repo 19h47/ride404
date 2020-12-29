@@ -1,0 +1,44 @@
+{#
+ # Quantity Input
+ #
+ # @package WordPress
+ # @subpackage Rider404
+ #}
+{% if max_value and min_value is same as(max_value) %}
+	?>
+	<div class="quantity hidden">
+		<input
+			type="hidden"
+			id="{{ input_id | e }}"
+			class="qty"
+			name="{{ input_name  | e }}"
+			value="{{ min_value | e }}"
+		/>
+	</div>
+	<?php
+{% else %}
+	<div class="quantity">
+		{% do action( 'woocommerce_before_quantity_input_field' ) %}
+
+		<label class="screen-reader-text" for="{{ input_id | e }}">
+			{{- label | e -}}
+		</label>
+
+		<input
+			type="number"
+			id="{{ input_id | e }}"
+			class="{{ classes | join( ' ' ) | e }}"
+			step="{{ step | e }}"
+			min="{{ min_value | e }}"
+			max="{{ 0 < max_value ? max_value : '' | e }}"
+			name="{{ input_name  | e }}"
+			value="{{ input_value | e }}"
+			title="{{ _x( 'Qty', 'Product quantity input tooltip', 'rider404' ) | e }}"
+			size="4"
+			placeholder="{{ placeholder | e }}"
+			inputmode="{{ inputmode | e }}"
+		/>
+
+		{% do action( 'woocommerce_after_quantity_input_field' ) %}
+	</div>
+{% endif %}

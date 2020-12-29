@@ -2,7 +2,8 @@
 /**
  * Product Loop Start
  *
- * @package Rider404
+ * @package WordPress
+ * @subpackage Rider404
  */
 
 Timber::render( 'woocommerce/loop/loop-start.html.twig' );

@@ -1,8 +1,12 @@
 <?php // phpcs:ignore
 /**
- * Class Transients
+ * Transients
  *
- * @package Rider404
+ * @link https://rider404.com/
+ * @since 0.0.0
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package WordPress
  * @subpackage Rider404/Core
  */
 
@@ -11,7 +15,7 @@ namespace Rider404\Core;
 use Timber\{ Timber };
 
 /**
- * Transients class
+ * Transients
  */
 class Transients {
 
@@ -95,7 +99,7 @@ class Transients {
 
 	/**
 	 * Product cats
-	 * 
+	 *
 	 * @see https://developer.wordpress.org/reference/functions/get_terms/
 	 * @return array $product_cats
 	 */

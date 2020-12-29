@@ -9,8 +9,7 @@ use Timber\{ Timber };
 
 global $product;
 
-$context = Timber::get_context();
-
+$context            = array();
 $context['product'] = $product;
 
 Timber::render( 'woocommerce/single-product/price.html.twig', $context );

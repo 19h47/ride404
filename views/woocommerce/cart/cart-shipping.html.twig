@@ -39,32 +39,32 @@
 						{{- __( 'Shipping to %s.', 'rider404' ) | format( "&nbsp;<strong>#{ formatted_destination }</strong>" ) | e( 'esc_html' ) -}}
 						{% set calculator_text = __( 'Change address', 'rider404' ) %}
 					{%- else -%}
-						{% filter apply_filters( 'woocommerce_shipping_estimate_html' ) %}
+						{% apply apply_filters( 'woocommerce_shipping_estimate_html' ) %}
 							{{- __( 'Shipping options will be updated during checkout.', 'rider404' ) | e( 'wp_kses_post' ) -}}
-						{% endfilter %}
+						{% endapply %}
 					{%- endif -%}
 				</p>
 			{% endif %}
 
 		{% elseif not has_calculated_shipping or not formatted_destination %}
 			{% if is_cart and 'no' is same as( enable_shipping_calc ) %}
-				{% filter apply_filters( 'woocommerce_shipping_not_enabled_on_cart_html' ) %}
+				{% apply apply_filters( 'woocommerce_shipping_not_enabled_on_cart_html' ) %}
 					<p>{{- __( 'Shipping costs are calculated during checkout.', 'rider404' ) | e( 'wp_kses_post' ) -}}</p>
-				{% endfilter %}
+				{% endapply %}
 			{% else %}
-				{% filter apply_filters( 'woocommerce_shipping_may_be_available_html' ) %}
+				{% apply apply_filters( 'woocommerce_shipping_may_be_available_html' ) %}
 					<p>{{- __( 'Enter your address to view shipping options.', 'rider404' ) | e( 'wp_kses_post' ) -}}</p>
-				{% endfilter %}
+				{% endapply %}
 			{% endif %}
 		{% elseif not is_cart %}
-			{% filter apply_filters( 'woocommerce_no_shipping_available_html' ) %}
+			{% apply apply_filters( 'woocommerce_no_shipping_available_html' ) %}
 				<p>{{- __( 'There are no shipping options available. Please ensure that your address has been entered correctly, or contact us if you need any help.', 'rider404' ) | e( 'wp_kses_post' ) -}}</p>
-			{% endfilter %}
+			{% endapply %}
 		{% else %}
-			{% filter apply_filters( 'woocommerce_cart_no_shipping_available_html' ) %}
+			{% apply apply_filters( 'woocommerce_cart_no_shipping_available_html' ) %}
 				{# Translators: $s shipping destination. #}
 				<p>{{- __( 'No shipping options were found for %s.', 'rider404' ) | format( "&nbsp;<strong>#{ formatted_destination }</strong>" ) | e( 'wp_kses_post' ) -}}</p>
-			{% endfilter %}
+			{% endapply %}
 			{% set calculator_text = __( 'Enter a different address', 'rider404' ) | e( 'wp_kses_post' ) %}
 		{% endif %}
 

@@ -10,7 +10,7 @@ global $product;
 
 use TImber\{ Timber };
 
-$context = Timber::get_context();
+$context = array();
 
 $context['quantity_input'] = woocommerce_quantity_input(
     array(
@@ -19,7 +19,7 @@ $context['quantity_input'] = woocommerce_quantity_input(
 		'input_value' => isset( $_POST['quantity'] ) ? wc_stock_amount( wp_unslash( $_POST['quantity'] ) ) : $product->get_min_purchase_quantity(),
 	),
 	$product,
-	false, 
+	false,
 );
 
 $context['product'] = $product;

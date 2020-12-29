@@ -6,11 +6,11 @@
  * @author  Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  */
 
-use Timber\{ Timber, Post };
+use Timber\{ Timber };
 
 $context = Timber::context();
 
-$context['post'] = new Post();
+$context['post'] = Timber::get_post();
 
 $templates = array( 'pages/about-page.html.twig' );
 

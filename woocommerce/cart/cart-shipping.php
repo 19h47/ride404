@@ -13,12 +13,13 @@
  * @param string $formatted_destination
  * @param boolean $has_calculated_shipping
  *
- * @package Rider404
+ * @package WordPress
+ * @subpackage Rider404
  */
 
 use Timber\{ Timber };
 
-$context = Timber::get_context();
+$context = array();
 
 $context['package_name']             = $package_name;
 $context['available_methods']        = $available_methods;

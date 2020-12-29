@@ -1,0 +1,98 @@
+{#
+ # Form Pay
+ #
+ # @package WordPress
+ # @subpackage Rider404
+ #}
+
+<form id="order_review" method="post">
+
+	<table class="shop_table">
+
+		{# <thead>
+			<tr>
+				<th class="product-name">{{- __( 'Product', 'rider404' ) | e( 'esc_html' ) }}></th>
+				<th class="product-quantity">{{- __( 'Qty', 'rider404' ) | e( 'esc_html' ) }}></th>
+				<th class="product-total">{{- __( 'Totals', 'rider404' ) | e( 'esc_html' ) }}></th>
+			</tr>
+		</thead> #}
+
+		<tbody>
+			{% if order.get_items() | length > 0 %}
+				{% foreach item_id, item as order.get_items() %}
+					{% if true | apply_filters( 'woocommerce_order_item_visible', item ) %}
+						<tr class="{{ 'order_item' | apply_filters( 'woocommerce_order_item_class', item, order ) | e }}">
+							<td class="product-name">
+								{% filter apply_filters( 'woocommerce_order_item_name', item, false ) %}
+									{{ item.get_name() | e( 'esc_html' ) }}
+								{% endfilter %}
+
+								{% do action( 'woocommerce_order_item_meta_start', item_id, item, order, false ) %}
+
+								{{ function( 'wc_display_item_meta', item ) }}
+
+								{% do action( 'woocommerce_order_item_meta_end', item_id, item, order, false ) %}
+							</td>
+							<td class="product-quantity">
+								{% filter apply_filters( 'woocommerce_order_item_quantity_html' ) %}
+									<strong class="product-quantity">
+										{{ function( 'sprintf', '&times;&nbsp;%s', item.get_quantity() | e( 'esc_html' ) ) }}
+									</strong>
+								{% endfilter %}
+							</td>
+							<td class="product-subtotal">
+								{{- order.get_formatted_line_subtotal( item ) -}}
+							</td>
+						</tr>
+					{% endif %}
+				{% endforeach %}
+			{% endif %}
+		</tbody>
+		<tfoot>
+			{% if order.get_order_item_totals() %}
+				{% foreach total in order.get_order_item_totals() %}
+					<tr>
+						<th scope="row" colspan="2">{{- total.label -}}</th>
+						<td class="product-total">{{- total.value -}}</td>
+					</tr>
+				{% endforeach %}
+			{% endif %}
+		</tfoot>
+	</table>
+
+	<div id="payment">
+		{% if order.needs_payment() %}
+			<ul class="wc_payment_methods payment_methods methods">
+				{% if available_gateways is not empty %}
+					{% foreach gateway as available_gateways %}
+						{{ function( 'wc_get_template', 'checkout/payment-method.php', { gateway: gateway } ) }}
+					{% endforeach %}
+				{% else %}
+					<li class="woocommerce-notice woocommerce-notice--info woocommerce-info">
+						{% filter apply_filters( 'woocommerce_no_available_payment_methods_message' ) %}
+							{{- __( 'Sorry, it seems that there are no available payment methods for your location. Please contact us if you require assistance or wish to make alternate arrangements.', 'rider404' ) | e( 'esc_html' ) -}}
+						{% endfilter %}
+					</li>
+				{% endif %}
+				?>
+			</ul>
+		{% endif %}
+		<div class="form-row">
+			<input type="hidden" name="woocommerce_pay" value="1" />
+
+			{{ function( 'wc_get_template', 'checkout/terms.php' ) }}
+
+			{% do action( 'woocommerce_pay_order_before_submit' ) %}
+
+			{% filter apply_filters( 'woocommerce_pay_order_button_html' ) %}
+				<button type="submit" class="button alt" id="place_order" value="{{ order_button_text | e }}" data-value="{{ order_button_text | e }}">
+					{{ order_button_text | e( 'esc_html' ) }}
+				</button>
+			{% endfilter %}
+
+			{% do action( 'woocommerce_pay_order_after_submit' ) %}
+
+			{{ nonce_field_pay }}
+		</div>
+	</div>
+</form>

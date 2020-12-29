@@ -1,0 +1,21 @@
+/**
+ * Remove
+ *
+ */
+.Remove,
+.remove {
+	@include size(30px!important);
+	@extend .d-flex, .align-items-center, .justify-content-center;
+
+	color: transparent !important;
+
+	&:hover {
+		background-color: transparent !important;
+	}
+
+	svg {
+		@include size(14px);
+
+		fill: the_color(white);
+	}
+}

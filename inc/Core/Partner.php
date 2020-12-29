@@ -1,11 +1,15 @@
 <?php // phpcs:ignore
 /**
- * Class Partner
+ * Partner
  *
- * PHP version 7.4.2
+ * PHP version 7.4.1
  *
- * @author  Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
- * @package Rider404
+ * @link https://rider404.com/
+ * @since 0.0.0
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package WordPress
+ * @subpackage Rider404/Core
  */
 
 namespace Rider404\Core;
@@ -280,8 +284,6 @@ class Partner {
 			'exclude_from_search' => true,
 			'publicly_queryable'  => true,
 			'show_in_rest'        => true,
-			'show_in_rest'        => true,
-			'show_in_graphql'     => true,
 		);
 		register_post_type( 'partner', $args );
 	}
