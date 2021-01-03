@@ -34,7 +34,10 @@
 	<div class="Form-row Place-order form-row place-order">
 		<noscript>
 			{# translators: $1 and $2 opening and closing emphasis tags respectively #}
-			{{- function( 'printf', __( 'Since your browser does not support JavaScript, or it is disabled, please ensure you click the %1$sUpdate Totals%2$s button before placing your order. You may be charged more than the amount stated above if you fail to do so.', 'rider404' ), '<em>', '</em>' ) -}}
+			{% apply format( '<em>', '</em>' ) %}
+				{{- __( 'Since your browser does not support JavaScript, or it is disabled, please ensure you click the %1$sUpdate Totals%2$s button before placing your order. You may be charged more than the amount stated above if you fail to do so.', 'rider404' ) -}}
+			{% endapply %}
+
 			<br/>
 			<button type="submit" class="Button button alt" name="woocommerce_checkout_update_totals" value="{{ __( 'Update totals', 'rider404' ) | e }}">
 				{{- __( 'Update totals', 'rider404' ) | e( 'esc_html' ) -}}

@@ -1,6 +1,6 @@
 <?php
 /**
- * Single Product title
+ * Title
  *
  * @package WordPress
  * @subpackage Rider404
@@ -8,7 +8,9 @@
 
 use Timber\{ Timber };
 
-$context         = array();
-$context['post'] = Timber::get_post();
+$filename = 'woocommerce/single-product/title.html.twig';
 
-Timber::render( 'woocommerce/single-product/title.html.twig', $context );
+$data         = array();
+$data['post'] = Timber::get_post();
+
+Timber::render( $filename, $data );

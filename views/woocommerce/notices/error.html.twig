@@ -9,7 +9,7 @@
 	<ul class="Error woocommerce-error" role="alert">
 		{% for notice in notices %}
 			<li{{ function( 'wc_get_notice_data_attr', notice ) }}>
- 				{% include 'svg/use.html.twig' with { icon: 'face-without-mouth' } only %}
+ 				{{ include( 'svg/use.html.twig', { icon: 'face-without-mouth' }, with_context = false ) }}
 
 				{{- function( 'wc_kses_notice', notice.notice ) -}}
 			</li>

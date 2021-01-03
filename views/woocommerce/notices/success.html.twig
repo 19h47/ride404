@@ -9,7 +9,7 @@
 
 	{% for notice in notices %}
 		<div class="Success woocommerce-message"{{ function( 'wc_get_notice_data_attr', notice ) }}>
-			{% include 'svg/use.html.twig' with { icon: 'face-without-mouth' } only %}
+			{{ include( 'svg/use.html.twig', { icon: 'face-without-mouth' }, with_context = false ) }}
 
 			{{- function( 'wc_kses_notice', notice.notice ) -}}
 		</div>

@@ -1,9 +1,9 @@
 <?php // phpcs:ignore
 /**
- * Template hooks
+ * WooCommerce Template Hooks
  *
- * @package Rider404
- * @subpackage Rider404/Plugins/WooCommerce/TemplateHooks
+ * @package WordPress
+ * @subpackage Rider404/Plugins/WooCommerce
  */
 
 namespace Rider404\Plugins\WooCommerce;

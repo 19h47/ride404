@@ -1,15 +1,23 @@
 <?php
 /**
- * Price
+ * Single Product Price
  *
- * @package Rider404
+ * @see https://docs.woocommerce.com/document/template-structure/
+ * @package WordPress
+ * @subpackage Rider404
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 use Timber\{ Timber };
 
 global $product;
 
-$context            = array();
-$context['product'] = $product;
+$filename = 'woocommerce/single-product/price.html.twig';
 
-Timber::render( 'woocommerce/single-product/price.html.twig', $context );
+$data            = array();
+$data['product'] = $product;
+
+Timber::render( 'woocommerce/single-product/price.html.twig', $data );

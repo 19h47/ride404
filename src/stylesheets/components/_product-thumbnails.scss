@@ -1,0 +1,16 @@
+/**
+ * Product Thumbnails
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package WordPress
+ * @subpackage Rider404
+ */
+.Product-thumbnails {
+	div[class^='col-']:nth-child(3n + 2) {
+		@include margin(top -100px);
+	}
+
+	div[class^='col-']:nth-child(3n + 3) {
+		@include margin(top 206px);
+	}
+}

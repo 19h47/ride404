@@ -91,7 +91,7 @@
 
 						<td class="product-quantity" data-title="{{ __( 'Quantity', 'woocommerce' ) | e }}">
 						{% if _product.is_sold_individually() %}
-							{% set product_quantity = function( 'sprintf', '1 <input type="hidden" name="cart[%s][qty]" value="1" />', cart_item_key ) %}
+							{% set product_quantity = '1 <input type="hidden" name="cart[%s][qty]" value="1" />' | format( cart_item_key ) %}
 						{% else %}
 							{% set product_quantity = function(
 								'woocommerce_quantity_input',

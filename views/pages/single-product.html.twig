@@ -1,7 +1,8 @@
 {#
- # Single: product
+ # Single: Product
  #
- # @package Driver404
+ # @package WordPress
+ # @subpackage Rider404
  #}
 {% extends 'index.html.twig' %}
 
@@ -34,6 +35,7 @@
     {% do action( 'woocommerce_before_single_product' ) %}
 
     <div id="product-{{ post.id }}" class="{{ product_class | join( ' ' ) }}" data-scroll-section>
+
 		{% do action( 'woocommerce_before_single_product_summary' ) %}
 
 		<div class="summary entry-summary">
@@ -60,12 +62,12 @@
 			<div class="Section">
 				<div class="row">
                 	<div class="col-8 offset-2">
-						{{ dump( post.is_featured() ) }}
-						{% include 'partials/featured.html.twig' with { product: post } only %}
-						{% include 'partials/image.html.twig' with { image: post.thumbnail, classes: [ 'Product-thumbnail' ] } only %}
+						{{- include( 'partials/featured.html.twig', { product: post }, with_context = false ) -}}
+						{{- include( 'partials/image.html.twig', { image: post.thumbnail, classes: [ 'Product-thumbnail' ] }, with_context = false ) -}}
 					</div>
 				</div>
 			</div>
+
         </div>
 
 		{% do action( 'woocommerce_after_single_product_summary' ) %}
@@ -73,13 +75,19 @@
         <div class="Section">
             <div class="row">
                 <div class="col-4 offset-2">
-                    <div class="h2 margin-0">{{- post.excerpt -}}</div>
+                    <div class="h2 margin-0">
+						{{- post.excerpt -}}
+					</div>
                 </div>
                 <div class="col-3{{ post.excerpt ? ' offset-1' : ' offset-6' -}}">
-                    {{- post.content -}}
+					<div class="Wysiwyg">
+                    	{{- post.content -}}
+					</div>
                 </div>
             </div>
         </div>
+
+		{% do action( 'woocommerce_product_thumbnails' ) %}
 
     </div>
 
