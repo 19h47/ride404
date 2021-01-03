@@ -2,7 +2,8 @@
 /**
  * Template Name: Checkout page
  *
- * @package Rider404
+ * @package WordPress
+ * @subpackage Rider404
  * @author  Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  */
 

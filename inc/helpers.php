@@ -118,6 +118,7 @@ function get_theme_text_domain() : string {
 function set_product_global( $post ) {
 	global $product;
 
+
 	if ( is_woocommerce() ) {
 		$product = wc_get_product( $post->ID );
 	}

@@ -1,9 +1,12 @@
 {#
  # Empty cart message
  #
- # @package Rider404
+ # @package WordPress
+ # @subpackage Rider404
  #}
 <p class="Info cart-empty woocommerce-info">
-	{% include 'svg/use.html.twig' with { icon: 'face-with-mouth' } only %}
-	{{- __( 'Your cart is currently empty.', 'rider404' ) | apply_filters( 'wc_empty_cart_message',  ) | e( 'wp_kses_post' )  -}}
+	{{- include( 'svg/use.html.twig', { icon: 'face-with-mouth' }, with_context = false ) -}}
+	{% apply apply_filters( 'wc_empty_cart_message' ) | e( 'wp_kses_post' ) %}
+		{{- __( 'Your cart is currently empty.', 'rider404' )  -}}
+	{% endapply %}
 </p>

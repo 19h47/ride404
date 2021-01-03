@@ -11,14 +11,14 @@
 
 		{% if 'simple' == product.get_type() %}
 			<a href="{{ site.link }}?add-to-cart={{ product.get_id() }}&quantity=1">
-				{{ include( 'svg/use.html.twig' ), { icon: 'plus' }, with_context = false ) }}
+				{{ include( 'svg/use.html.twig', { icon: 'plus' }, with_context = false ) }}
 			</a>
 		{% endif %}
 
 
 		{% if 'variable' == product.get_type() %}
 			<a href="{{ site.link }}?add-to-cart={{ product.get_available_variations()[0]['variation_id'] }}&quantity=1">
-				{{ include( 'svg/use.html.twig' ), { icon: 'plus' }, with_context = false ) }}
+				{{ include( 'svg/use.html.twig', { icon: 'plus' }, with_context = false ) }}
 			</a>
 		{% endif %}
 	</div>

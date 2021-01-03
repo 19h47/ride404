@@ -1,7 +1,11 @@
 {#
  # Modal
  #
+ # @param string control
+ # @param string video
  #
+ # @package WordPress
+ # @subpackage Rider404
  #}
 {% if video %}
 	<div
@@ -15,7 +19,7 @@
 			<div class="row h-100">
 				<div class="col-1 offset-11 h-100 d-flex">
 					<button class="Modal__button" type="button" data-modal="button">
-						{% include 'svg/use.html.twig' with { icon: 'times', classes: [ 'Pointer-events-none' ] } %}
+						{{ include( 'svg/use.html.twig', { icon: 'times', classes: [ 'Pointer-events-none' ] }, with_context = false ) }}
 					</button>
 				</div>
 			</div>

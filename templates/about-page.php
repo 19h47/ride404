@@ -1,17 +1,17 @@
 <?php
 /**
- * Template Name: About page
+ * Template Name: About Page
  *
- * @package Rider404
+ * @package WordPress
+ * @subpackage Rider404
  * @author  Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  */
 
 use Timber\{ Timber };
 
-$context = Timber::context();
+$filenames = array( 'pages/about-page.html.twig' );
 
-$context['post'] = Timber::get_post();
+$data         = Timber::context();
+$data['post'] = Timber::get_post();
 
-$templates = array( 'pages/about-page.html.twig' );
-
-Timber::render( $templates, $context );
+Timber::render( $filenames, $data );

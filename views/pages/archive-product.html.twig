@@ -10,7 +10,7 @@
 	{% embed 'partials/bar.html.twig' %}
 		{% block content %}
 			<div class="Quick-product-categories">
-				{% include 'components/product-categories.html.twig' %}
+				{{ include( 'components/product-categories.html.twig' ) }}
 			</div>
 		{% endblock %}
 	{% endembed %}
@@ -18,7 +18,7 @@
 	<div class="Section" data-scroll-section>
 		<div class="row">
 			<div class="col-10 offset-1">
-				{% include 'components/product-categories.html.twig' %}
+				{{ include( 'components/product-categories.html.twig' ) }}
 			</div>
 		</div>
 	</div>
@@ -38,7 +38,7 @@
 		{% for product in products %}
 			{% do action( 'woocommerce_shop_loop' ) %}
 
-			{% include 'woocommerce/content-product.html.twig' %}
+			{{ include( 'woocommerce/content-product.html.twig', { product: product } ) }}
 
 		{% endfor %}
 
@@ -52,14 +52,16 @@
 		{% do action( 'woocommerce_after_shop_loop' ) %}
 	{% else %}
 
-		<div class="row">
-			<div class="col-10 offset-1">
-				{#
-				 # Hook: woocommerce_no_products_found.
-				 #
-				 # @hooked wc_no_products_found - 10
-				 #}
-				{% do action( 'woocommerce_no_products_found' ) %}
+		<div class="Section" data-scroll-section>
+			<div class="row">
+				<div class="col-10 offset-1">
+					{#
+					# Hook: woocommerce_no_products_found.
+					#
+					# @hooked wc_no_products_found - 10
+					#}
+					{% do action( 'woocommerce_no_products_found' ) %}
+				</div>
 			</div>
 		</div>
 	{% endif %}

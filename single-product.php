@@ -1,22 +1,17 @@
 <?php
 /**
- * Single: product
+ * Single: Product
  *
  * @package WordPress
  * @subpackage Rider404
  */
 
-global $product;
-
 use Timber\{ Timber };
 
-$context = Timber::context();
+$filename = 'pages/single-product.html.twig';
 
-$context['post'] = Timber::get_post();
+$data                  = Timber::context();
+$data['post']          = Timber::get_post();
+$data['product_class'] = wc_get_product_class( '', $product );
 
-$context['product_class'] = wc_get_product_class( '', $product );
-
-// Restore the context and loop back to the main query loop 🤔.
-wp_reset_postdata();
-
-Timber::render( 'pages/single-product.html.twig', $context );
+Timber::render( $filename, $data );

@@ -1,7 +1,10 @@
 {#
  # Video
  #
- # @package Rider404
+ # @param string video
+ #
+ # @package WordPress
+ # @subpackage Rider404
  #}
 {% if video %}
 	<div id="{{ id }}" class="Video{{ classes ? ' ' ~ classes | join( ' ' ) }}" data-module-video>
@@ -9,7 +12,12 @@
 		<div class="Video__body">
 			{% if overlay %}
 				<div class="Video__overlay">
-					{% include 'components/button-play.html.twig' with { attributes: { 'data-video': 'button' } } %}
+					{{
+						include(
+							'components/button-play.html.twig',
+							{ attributes: { 'data-video': 'button' } }
+						)
+					}}
 				</div>
 			{% endif %}
 

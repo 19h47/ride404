@@ -1,7 +1,8 @@
 {#
  # Page: front
  #
- # @package Driver404
+ # @package WordPress
+ # @subpackage Rider404
  #}
 {% extends 'index.html.twig' %}
 
@@ -22,7 +23,7 @@
         </div>
         <div class="row">
             <div class="col-12 col-sm-10 offset-sm-1">
-                {% include 'components/video.html.twig' with { id: 'video-hero', video: post.meta( 'video' ).thumbnail.url, overlay: true } %}
+                {{ include( 'components/video.html.twig', { id: 'video-hero', video: post.meta( 'video' ).thumbnail.url, overlay: true } ) }}
             </div>
         </div>
     </div>
@@ -59,7 +60,7 @@
             <div class="row">
                 <div class="col-10 offset-1">
                     <a class="Link-underline d-inline-block" href="{{ shop_url | e( 'esc_url' ) }}">
-                        {% include 'partials/split-text.html.twig' with { id: uniqid(), delay: 0.1, title: __( 'All products', 'rider404' ) } %}
+                        {{ include( 'partials/split-text.html.twig', { id: uniqid(), delay: 0.1, title: __( 'All products', 'rider404' ) } ) }}
                     </a>
                 </div>
             </div>
@@ -70,25 +71,25 @@
     <div class="Section About" data-scroll-section>
 
         <ul class="About__stars">
-            <li data-scroll data-scroll-speed="{{ random( 1, 9 ) }}">{% include 'svg/use.html.twig' with { icon: 'star' } only %}</li>
-            <li data-scroll data-scroll-speed="{{ random( 1, 9 ) }}">{% include 'svg/use.html.twig' with { icon: 'star' } only %}</li>
-            <li data-scroll data-scroll-speed="{{ random( 1, 9 ) }}">{% include 'svg/use.html.twig' with { icon: 'star' } only %}</li>
+            <li data-scroll data-scroll-speed="{{ random( 1, 9 ) }}">{{ include( 'svg/use.html.twig', { icon: 'star' }, with_context = false ) }}</li>
+            <li data-scroll data-scroll-speed="{{ random( 1, 9 ) }}">{{ include( 'svg/use.html.twig', { icon: 'star' }, with_context = false ) }}</li>
+            <li data-scroll data-scroll-speed="{{ random( 1, 9 ) }}">{{ include( 'svg/use.html.twig', { icon: 'star' }, with_context = false ) }}</li>
         </ul>
 
         <div class="About__body">
             <div class="row">
                 <div class="col-10 offset-1 col-md-6 offset-md-3">
                     <div class="About__content">
-                        {% include 'partials/split-text.html.twig' with { id: uniqid(), title: post.meta( 'about' ).content } %}
+                        {{ include( 'partials/split-text.html.twig', { id: uniqid(), title: post.meta( 'about' ).content } ) }}
                         <img data-scroll data-scroll-speed="2" src="{{ theme.link }}/{{ theme.manifest['img/svg/about.svg'] }}" width="719" height="585">
                     </div>
                 </div>
                 <div class="col-10 offset-1 text-align-center">
                     <h2 class="About__title">
-                        {%- include 'partials/split-text.html.twig' with { id: uniqid(), title: post.meta( 'about' ).title } -%}
+                        {{ include( 'partials/split-text.html.twig', { id: uniqid(), title: post.meta( 'about' ).title } ) }}
                     </h2>
                     <a class="Link-underline d-inline-block" href="{{ post.meta( 'about' ).link.url }}">
-                        {% include 'partials/split-text.html.twig' with { id: uniqid(), delay: 0.1, title: post.meta( 'about' ).link.title | default( __( 'About', 'rider404' ) ) } %}
+                        {{ include( 'partials/split-text.html.twig', { id: uniqid(), delay: 0.1, title: post.meta( 'about' ).link.title | default( __( 'About', 'rider404' ) ) } ) }}
                     </a>
                 </div>
             </div>
@@ -104,7 +105,7 @@
                         <div class="Carousel__item js-item">
                             {% embed "partials/image-reveal.html.twig" %}
                                 {% block content %}
-                                    {% include 'partials/image.html.twig' with { image: image, size: 'medium', loading: 'eager' } only %}
+                                    {{ include( 'partials/image.html.twig', { image: image, size: 'medium', loading: 'eager' }, with_context = false ) }}
                                 {% endblock %}
                             {% endembed %}
                         </div>
@@ -120,7 +121,7 @@
         <div class="row">
             <div class="col-10 offset-1 col-md-3 offset-md-6">
                 <h2>
-                    {% include 'partials/split-text.html.twig' with { title: __( 'Partners &\nCollaboraters', 'rider404' ) | nl2br, id: uniqid() } %}
+                    {{ include( 'partials/split-text.html.twig', { title: __( 'Partners &\nCollaboraters', 'rider404' ) | nl2br, id: uniqid() } ) }}
                 </h2>
             </div>
 
@@ -129,7 +130,7 @@
 					{% for partner in partners %}
 						<li class="Partners__item" style="transition-delay: {{ loop.index * 0.1 }}s;">
 							{{ partner.meta( 'link' ).url ? "<a href=\"#{ partner.meta( 'link' ).url }\"#{ partner.meta( 'link' ).target ? ' target="_blank" rel="noopener noreferer"' : '' }>" : '' }}
-								{% include 'partials/image.html.twig' with { image: partner.thumbnail } only %}
+								{{ include( 'partials/image.html.twig', { image: partner.thumbnail }, with_context = false ) }}
 							{{ partner.meta( 'link' ).url ? '</a>' : '' }}
 						</li>
 					{% endfor %}
@@ -138,6 +139,6 @@
         </div>
     </div>
 
-	{% include 'components/modal.html.twig' with { control: 'video-hero', video: post.meta( 'video' ).youtube } %}
+	{{ include( 'components/modal.html.twig', { control: 'video-hero', video: post.meta( 'video' ).youtube } ) }}
 
 {% endblock  %}

@@ -1,18 +1,19 @@
 {#
- # Content product
+ # The template for displaying product content within loops
  #
  # @package WordPress
  # @subpackage Rider404
  #}
 {{ function( 'set_product_global', product ) }}
+
 {# {% if product and product.is_visible() %} #}
 
-    <li {{ function( 'wc_product_class', 'Loop-product' ) }}>
+    <li {{ function( 'wc_product_class', 'Loop-product', product ) }}>
 
         {#
          # Hook: woocommerce_before_shop_loop_item.
          #
-         # @hooked Rider404\Plugins\WooCommerce::template_loop_product_link_open - 10
+         # @hooked Rider404\Plugins\WooCommerce::template_loop_product_link_start - 10
          #}
         {% do action( 'woocommerce_before_shop_loop_item' ) %}
 
@@ -21,7 +22,7 @@
          #
          # @hooked woocommerce_show_product_loop_sale_flash - 10
          # @hooked Rider404\Plugins\WooCommerce::template_loop_product_thumbnail - 10
-         # @hooked Rider404\Plugins\WooCommerce::template_loop_featured - 15
+         # @hooked Rider404\Plugins\WooCommerce\TemplateFunctions::featured - 15
          #}
         {% do action( 'woocommerce_before_shop_loop_item_title' ) %}
 

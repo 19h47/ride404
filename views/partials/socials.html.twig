@@ -1,7 +1,8 @@
 {#
- #Socials
+ # Socials
  #
- # @package GroobeBoxKaraoke
+ # @package WordPress
+ # @subpackage Rider404
  #}
 
 {% if socials is iterable %}
@@ -9,15 +10,15 @@
 		{% for social in socials %}
 			{% if social.url %}
 				<li class="Socials__item">
-					<a 
-						class="Socials__link" 
-						href="{{ social.url }}" 
-						target="_blank" 
-						title="{{ social.title }}" 
-						aria-label="{{ social.title }}" 
+					<a
+						class="Socials__link"
+						href="{{ social.url }}"
+						target="_blank"
+						title="{{ social.title }}"
+						aria-label="{{ social.title }}"
 						rel="noopener noreferrer"
 					>
-						{% include 'svg/use.html.twig' with { icon: social.slug, attributes: { style: "transition-delay: #{ loop.index * 0.1 + 0.3 }s;" } } only %}
+						{{ include( 'svg/use.html.twig', { icon: social.slug, attributes: { style: "transition-delay: #{ loop.index * 0.1 + 0.3 }s;" } }, with_context = false ) }}
 						<span style="transition-delay: {{ loop.index * 0.1 + 0.3 }}s;"></span>
 					</a>
 				</li>

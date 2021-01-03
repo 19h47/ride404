@@ -49,11 +49,14 @@ class TemplateHooks {
 		add_action( 'woocommerce_single_variation', array( 'Rider404\Plugins\WooCommerce\TemplateFunctions', 'variation' ), 20 );
 
 		// Before shop loop item.
-		add_action( 'woocommerce_before_shop_loop_item', array( 'Rider404\Plugins\WooCommerce\TemplateFunctions', 'loop_product_link_open' ), 10 );
+		add_action( 'woocommerce_before_shop_loop_item', array( 'Rider404\Plugins\WooCommerce\TemplateFunctions', 'loop_product_link_start' ), 10 );
 
 		// Before shop loop item title.
 		add_action( 'woocommerce_before_shop_loop_item_title', array( 'Rider404\Plugins\WooCommerce\TemplateFunctions', 'loop_product_thumbnail' ), 15 );
-		add_action( 'woocommerce_before_shop_loop_item_title', array( 'Rider404\Plugins\WooCommerce\TemplateFunctions', 'loop_featured' ), 15 );
+		add_action( 'woocommerce_before_shop_loop_item_title', array( 'Rider404\Plugins\WooCommerce\TemplateFunctions', 'featured' ), 15 );
+
+		//
+		add_action( 'woocommerce_single_product_image', array( 'Rider404\Plugins\WooCommerce\TemplateFunctions', 'featured' ), 15 );
 
 		// Shop loop item title.
 		add_action( 'woocommerce_shop_loop_item_title', array( 'Rider404\Plugins\WooCommerce\TemplateFunctions', 'loop_product_title' ), 10 );

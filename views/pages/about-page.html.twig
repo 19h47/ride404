@@ -1,7 +1,8 @@
 {#
  # About page
  #
- # @package Rider404
+ # @package WordPress
+ # @subpackage Rider404
  #}
 {% extends 'index.html.twig' %}
 
@@ -14,15 +15,17 @@
         <div class="About-page__introduction__body">
             <div class="row">
                 <div class="col-10 offset-1 col-md-8 offset-md-2">
-                    {%
-                        include 'partials/split-text.html.twig'
-                        with {
-                            title: post.meta( 'introduction' ),
-                            id: uniqid(),
-                            classes: [ 'h1', 'text-align-center', 'margin-0' ],
-                            delay: 0.5,
-                        }
-                    %}
+                    {{
+                        include(
+							'partials/split-text.html.twig',
+							{
+								title: post.meta( 'introduction' ),
+								id: uniqid(),
+								classes: [ 'h1', 'text-align-center', 'margin-0' ],
+								delay: 0.5,
+							}
+						)
+					}}
                 </div>
 
 				{% if post.meta( 'catchphrase' ) %}
@@ -42,14 +45,14 @@
                 <div class="col-6 d-flex align-items-start" data-scroll data-scroll-speed="1.5">
                     {% embed 'partials/image-reveal.html.twig' with { attributes: { style: 'transition-delay: 1.5s;' } } %}
                         {% block content %}
-                            {% include 'partials/image.html.twig' with { image: post.meta( 'images' )[0] } only %}
+                            {{ include( 'partials/image.html.twig', { image: post.meta( 'images' )[0] }, with_context = false ) }}
                         {% endblock %}
                     {% endembed %}
                 </div>
                 <div class="col-3 offset-8 d-flex align-items-end" data-scroll data-scroll-speed="1.5">
                      {% embed 'partials/image-reveal.html.twig' %}
                         {% block content %}
-                            {% include 'partials/image.html.twig' with { image: post.meta( 'images' )[1] } only %}
+                            {{ include( 'partials/image.html.twig', { image: post.meta( 'images' )[1] }, with_context = false ) }}
                         {% endblock %}
                     {% endembed %}
                 </div>
@@ -84,7 +87,7 @@
                 <div class="col-3 offset-2 d-flex align-items-start" data-scroll data-scroll-speed="1.5">
                     {% embed 'partials/image-reveal.html.twig' %}
                         {% block content %}
-                            {% include 'partials/image.html.twig' with { image: post.meta( 'images' )[2] } only %}
+                            {{ include( 'partials/image.html.twig', { image: post.meta( 'images' )[2] }, with_context = false ) }}
                         {% endblock %}
                     {% endembed %}
                 </div>
@@ -92,7 +95,7 @@
                 <div class="col-2 offset-6 d-flex align-items-end" data-scroll data-scroll-speed="1.5">
                     {% embed 'partials/image-reveal.html.twig' %}
                         {% block content %}
-                            {% include 'partials/image.html.twig' with { image: post.meta( 'images' )[3] } only %}
+                            {{ include( 'partials/image.html.twig', { image: post.meta( 'images' )[3] }, with_context = false ) }}
                         {% endblock %}
                     {% endembed %}
                 </div>
@@ -123,7 +126,7 @@
 								&nbsp;
 								<a href="{{ socials.youtube.url }}">
 									{% include 'svg/use.html.twig' with { icon: 'youtube' } only %}
-									&nbsp;&nbsp;<span>YouTube</span>
+									&nbsp;&nbsp;<span>{{- __( 'YouTube', 'rider404' ) -}}</span>
 								</a>
 							</div>
 						{% endif %}
@@ -172,6 +175,6 @@
         </ul>
     </div>
 
-	{% include 'components/modal.html.twig' with { control: 'video-about', video: post.meta( 'video' ).youtube } %}
+	{{ include( 'components/modal.html.twig', { control: 'video-about', video: post.meta( 'video' ).youtube } ) }}
 
 {% endblock  %}

@@ -1,7 +1,8 @@
 {#
  # Navigation
  #
- # @package Error404
+ # @package WordPress
+ # @subpackage Rider404
  #}
 <div
 	id="navigation"
@@ -35,12 +36,19 @@
 	<footer class="Navigation__footer js-footer">
 		<div class="row">
 			<div class="col-10 offset-1 col-md-2 offset-md-5">
-				<a href="{{ terms_url | e( 'esc_url' ) }}">{{- __( 'Terms & legal', 'rider404' ) -}}</a>
+				<a href="{{ terms_url | e( 'esc_url' ) }}">
+					{{- __( 'Terms & legal', 'rider404' ) -}}
+				</a>
 			</div>
 		</div>
 	</footer>
 
-	{% include 'components/video.html.twig' with { id: 'video-menu', classes: [ 'js-video' ], video: Image( nav_menus.main.meta('video') ).src } %}
+	{{
+		include(
+			'components/video.html.twig',
+			{ id: 'video-menu', classes: [ 'js-video' ], video: Image( nav_menus.main.meta('video') ).src }
+		)
+	}}
 
 	<div
 		id="menu"

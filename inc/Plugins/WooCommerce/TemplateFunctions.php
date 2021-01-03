@@ -36,10 +36,10 @@ class TemplateFunctions {
 	 * @access static
 	 * @return string
 	 */
-	public static function loop_product_link_open() {
+	public static function loop_product_link_start() {
 		global $product;
 
-		return Timber::render( 'woocommerce/loop/loop-product-link-open.html.twig', array( 'link' => $product->get_permalink() ) );
+		return Timber::render( 'woocommerce/loop/loop-product-link-start.html.twig', array( 'link' => $product->get_permalink() ) );
 	}
 
 
@@ -63,16 +63,16 @@ class TemplateFunctions {
 
 
 	/**
-	 * Loop featured
+	 * Featured
 	 *
 	 * @access static
 	 * @return string
 	 */
-	public static function loop_featured() {
+	public static function featured() {
 		global $product;
 
 		return Timber::render(
-			'woocommerce/loop/loop-featured.html.twig',
+			'partials/featured.html.twig',
 			array(
 				'product' => $product,
 			)

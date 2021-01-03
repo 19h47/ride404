@@ -7,18 +7,22 @@
  # @param array attributes
  # @param string size Optional. The requested image size. This can be a size that was in WordPress. Example: medium or large. Default full.
  #
- # @package Rider404
+ # @package WordPress
+ # @subpackage Rider404
  #}
 {% if image %}
+
+	{% set image = get_image( image ) %}
+
 	<img
 		class="{{ classes ? classes | join( ' ' ) }}"
 		loading="{{ loading | default( 'lazy' ) }}"
-		src="{{ Image( image ).src( size | default( 'full' ) ) }}"
-		alt="{{ Image( image ).alt }}"
-		width="{{ Image( image ).width }}"
-		height="{{ Image( image ).height }}"
-		srcset="{{ Image( image ).srcset }}"
-		sizes="{{ Image( image ).img_sizes }}"
+		src="{{ image.src( size | default( 'full' ) ) }}"
+		alt="{{ image.alt }}"
+		width="{{ image.width }}"
+		height="{{ image.height }}"
+		srcset="{{ image.srcset }}"
+		sizes="{{ image.img_sizes }}"
 		{{ attributes ? attributes | map( ( value, key ) => "#{key}=\"#{value}\"" ) | join( ' ' )  | raw }}
 	>
 {% endif %}

@@ -9,7 +9,7 @@
 {% embed 'partials/image-reveal.html.twig' %}
     {% block content %}
         <div class="Loop-product-thumbnail">
-            {{ product.get_image( 'woocommerce_single' ) }}
+            {{- product.get_image( 'woocommerce_single' ) -}}
         </div>
     {% endblock %}
 {% endembed %}

@@ -1,7 +1,8 @@
 {#
  # Button play
  #
- # @package Rider404
+ # @package WordPress
+ # @subpackage Rider404
  #}
 <button
 	class="Button-play"
@@ -9,7 +10,7 @@
 	{{ attributes ? attributes | map( ( value, key ) => "#{key}=\"#{value}\"" ) | join( ' ' )  | raw }}
 >
     <span class="Pointer-events-none">
-        {%- include 'svg/use.html.twig' with { icon: 'play' } only -%}
-        {%- include 'svg/use.html.twig' with { icon: 'play' } only -%}
+        {{- include( 'svg/use.html.twig', { icon: 'play' }, with_context = false ) -}}
+        {{- include( 'svg/use.html.twig', { icon: 'play' }, with_context = false ) -}}
     </span>
 </button>

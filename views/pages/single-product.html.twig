@@ -62,7 +62,13 @@
 			<div class="Section">
 				<div class="row">
                 	<div class="col-8 offset-2">
-						{{- include( 'partials/featured.html.twig', { product: post }, with_context = false ) -}}
+						{#
+						 # Hook: woocommerce_single_product_image.
+						 #
+						 # @hooked Rider404\Plugins\WooCommerce\TemplateFunctions::featured - 15
+						 #}
+						{% do action( 'woocommerce_single_product_image' ) %}
+						{# {{- include( 'partials/featured.html.twig', { product: post }, with_context = false ) -}} #}
 						{{- include( 'partials/image.html.twig', { image: post.thumbnail, classes: [ 'Product-thumbnail' ] }, with_context = false ) -}}
 					</div>
 				</div>
