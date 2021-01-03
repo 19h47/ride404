@@ -8,8 +8,7 @@
 
 	{% do action( 'woocommerce_widget_product_item_start', template_args ) %}
 
-    {# {% include 'partials/featured.html.twig' with { product: product } only %} #}
-
+    {{- include( 'partials/featured.html.twig', { product: product }, with_context = false ) -}}
 	{{- include( 'woocommerce/loop/loop-product-link-start.html.twig', { link: product.get_permalink() }, with_context = false ) -}}
 
 	{% include 'woocommerce/loop/loop-product-thumbnail.html.twig' with { product: product } only %}
