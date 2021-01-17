@@ -10,15 +10,24 @@
  * @subpackage Rider404
  */
 
-use Timber\{ Timber };
-use Rider404\Core\{ Transients };
+use Timber\{ Timber, Helper };
 
-$context = Timber::context();
+$filename = 'pages/front-page.html.twig';
 
-$context['post']     = Timber::get_post();
-$context['partners'] = Transients::partners();
-$context['sidebar']  = Timber::get_widgets( 'front-page-sidebar' );
+$data             = Timber::context();
+$data['post']     = Timber::get_post();
+$data['partners'] = Helper::transient(
+	'rider404_partners',
+	function() {
+		return Timber::get_posts(
+			array(
+				'post_type'      => 'partner',
+				'posts_per_page' => -1,
+				'no_found_rows'  => true,
+			)
+		);
+	}
+);
+$data['sidebar']  = Timber::get_widgets( 'front-page-sidebar' );
 
-$templates = array( 'pages/front-page.html.twig' );
-
-Timber::render( $templates, $context );
+Timber::render( $filename, $data );

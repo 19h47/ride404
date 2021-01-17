@@ -4,15 +4,16 @@
  *
  * @package WordPress
  * @subpackage Rider404
+ * @version 3.6.0
  */
 
 use Timber\{ Timber };
 
-$context = array();
+$filename = 'woocommerce/checkout/form-billing.html.twig';
 
-$context['checkout'] = $checkout;
-$context['cart']     = WC()->cart;
+$data                                 = array();
+$data['checkout']                     = $checkout;
+$data['cart']                         = WC()->cart;
+$data['ship_to_billing_address_only'] = (bool) wc_ship_to_billing_address_only();
 
-$context['ship_to_billing_address_only'] = (bool) wc_ship_to_billing_address_only();
-
-Timber::render( 'woocommerce/checkout/form-billing.html.twig', $context );
+Timber::render( $filename, $data );

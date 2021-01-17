@@ -2,7 +2,7 @@
 /**
  * Template Name: Cart page
  *
- * @package Rider404
+ * @package WordPress
  * @author  Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  */
 

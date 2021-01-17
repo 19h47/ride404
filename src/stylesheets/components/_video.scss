@@ -1,7 +1,8 @@
 /**
  * Video
-
- * @package Rider404
+ *
+ * @package WordPress
+ * @subpackage Rider404
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  */
 .Video {
@@ -15,6 +16,10 @@
 
 		@include media-breakpoint-up(sm) {
 			@include padding(bottom percentage(600/1076));
+		}
+
+		&.is-fixed {
+			@include fixed(top 0 right 0 bottom 0 left 0);
 		}
 	}
 

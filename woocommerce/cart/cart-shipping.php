@@ -15,24 +15,24 @@
  *
  * @package WordPress
  * @subpackage Rider404
+ * @version 3.6.0
  */
 
 use Timber\{ Timber };
 
-$context = array();
+$filename = 'woocommerce/cart/cart-shipping.html.twig';
 
-$context['package_name']             = $package_name;
-$context['available_methods']        = $available_methods;
-$context['index']                    = $index;
-$context['chosen_method']            = $chosen_method;
-$context['formatted_destination']    = isset( $formatted_destination ) ? $formatted_destination : WC()->countries->get_formatted_address( $package['destination'], ', ' );
-$context['has_calculated_shipping']  = ! empty( $has_calculated_shipping );
-$context['show_package_details']     = $show_package_details;
-$context['package_details']          = $package_details;
-$context['show_shipping_calculator'] = ! empty( $show_shipping_calculator );
+$data                             = array();
+$data['package_name']             = $package_name;
+$data['available_methods']        = $available_methods;
+$data['index']                    = $index;
+$data['chosen_method']            = $chosen_method;
+$data['formatted_destination']    = isset( $formatted_destination ) ? $formatted_destination : WC()->countries->get_formatted_address( $package['destination'], ', ' );
+$data['has_calculated_shipping']  = ! empty( $has_calculated_shipping );
+$data['show_package_details']     = $show_package_details;
+$data['package_details']          = $package_details;
+$data['show_shipping_calculator'] = ! empty( $show_shipping_calculator );
+$data['calculator_text']          = '';
+$data['enable_shipping_calc']     = get_option( 'woocommerce_enable_shipping_calc' );
 
-$context['calculator_text']      = '';
-$context['enable_shipping_calc'] = get_option( 'woocommerce_enable_shipping_calc' );
-
-
-Timber::render( 'woocommerce/cart/cart-shipping.html.twig', $context );
+Timber::render( $filename, $data );

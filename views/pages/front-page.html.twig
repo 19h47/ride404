@@ -7,8 +7,8 @@
 {% extends 'index.html.twig' %}
 
 {% block hero %}
-    <div class="Hero" data-scroll-section>
-        <div class="row">
+    <div class="Hero">
+        <div class="row position-relative" data-scroll-section style="z-index: 2;">
             <div class="col-12 col-md-10 offset-md-1">
                 <div
 					id="rider-404"
@@ -21,11 +21,15 @@
 				></div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 col-sm-10 offset-sm-1">
-                {{ include( 'components/video.html.twig', { id: 'video-hero', video: post.meta( 'video' ).thumbnail.url, overlay: true } ) }}
-            </div>
-        </div>
+
+		{% if post.meta( 'video' ).thumbnail.url %}
+			<div class="row position-relative" style="z-index: 1;">
+				<div class="col-12 col-sm-10 offset-sm-1">
+					{{- include( 'components/video.html.twig', { id: 'video-hero', animated: true, video: post.meta( 'video' ).thumbnail.url, overlay: true } ) -}}
+				</div>
+			</div>
+		{% endif %}
+
     </div>
 {% endblock %}
 
@@ -60,7 +64,7 @@
             <div class="row">
                 <div class="col-10 offset-1">
                     <a class="Link-underline d-inline-block" href="{{ shop_url | e( 'esc_url' ) }}">
-                        {{ include( 'partials/split-text.html.twig', { id: uniqid(), delay: 0.1, title: __( 'All products', 'rider404' ) } ) }}
+                        {{- include( 'partials/split-text.html.twig', { id: uniqid(), delay: 0.1, title: __( 'All products', 'rider404' ) } ) -}}
                     </a>
                 </div>
             </div>
@@ -80,16 +84,16 @@
             <div class="row">
                 <div class="col-10 offset-1 col-md-6 offset-md-3">
                     <div class="About__content">
-                        {{ include( 'partials/split-text.html.twig', { id: uniqid(), title: post.meta( 'about' ).content } ) }}
+                        {{- include( 'partials/split-text.html.twig', { id: uniqid(), title: post.meta( 'about' ).content } ) -}}
                         <img data-scroll data-scroll-speed="2" src="{{ theme.link }}/{{ theme.manifest['img/svg/about.svg'] }}" width="719" height="585">
                     </div>
                 </div>
                 <div class="col-10 offset-1 text-align-center">
                     <h2 class="About__title">
-                        {{ include( 'partials/split-text.html.twig', { id: uniqid(), title: post.meta( 'about' ).title } ) }}
+                        {{- include( 'partials/split-text.html.twig', { id: uniqid(), title: post.meta( 'about' ).title } ) -}}
                     </h2>
                     <a class="Link-underline d-inline-block" href="{{ post.meta( 'about' ).link.url }}">
-                        {{ include( 'partials/split-text.html.twig', { id: uniqid(), delay: 0.1, title: post.meta( 'about' ).link.title | default( __( 'About', 'rider404' ) ) } ) }}
+                        {{- include( 'partials/split-text.html.twig', { id: uniqid(), delay: 0.1, title: post.meta( 'about' ).link.title | default( __( 'About', 'rider404' ) ) } ) -}}
                     </a>
                 </div>
             </div>
@@ -105,7 +109,7 @@
                         <div class="Carousel__item js-item">
                             {% embed "partials/image-reveal.html.twig" %}
                                 {% block content %}
-                                    {{ include( 'partials/image.html.twig', { image: image, size: 'medium', loading: 'eager' }, with_context = false ) }}
+                                    {{- include( 'partials/image.html.twig', { image: image, size: 'medium', loading: 'eager' }, with_context = false ) -}}
                                 {% endblock %}
                             {% endembed %}
                         </div>
@@ -121,7 +125,7 @@
         <div class="row">
             <div class="col-10 offset-1 col-md-3 offset-md-6">
                 <h2>
-                    {{ include( 'partials/split-text.html.twig', { title: __( 'Partners &\nCollaboraters', 'rider404' ) | nl2br, id: uniqid() } ) }}
+                    {{- include( 'partials/split-text.html.twig', { title: __( 'Partners &\nCollaboraters', 'rider404' ) | nl2br, id: uniqid() } ) -}}
                 </h2>
             </div>
 

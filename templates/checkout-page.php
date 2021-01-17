@@ -9,12 +9,10 @@
 
 use Timber\{ Timber };
 
-$context = Timber::context();
+$filename = 'pages/checkout-page.html.twig';
 
-$context['post'] = Timber::get_post();
+$data                  = Timber::context();
+$data['post']          = Timber::get_post();
+$data['scroll_smooth'] = 'false';
 
-$context['scroll_smooth'] = 'false';
-
-$templates = array( 'pages/checkout-page.html.twig' );
-
-Timber::render( $templates, $context );
+Timber::render( $filename, $data );
