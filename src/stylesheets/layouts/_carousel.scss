@@ -109,8 +109,10 @@
 
 			object-fit: cover;
 			object-position: center;
+			filter: grayscale(100%);
 
-			transition: transform 1.5s map-get($easings, ease-out-expo);
+			transition: filter 1s map-get($easings, ease-out-expo),
+				transform 1.5s map-get($easings, ease-out-expo);
 		}
 
 		@at-root #{ $this }__items .is-pointer-down & {
@@ -118,6 +120,7 @@
 
 			img {
 				transform: scale(((1/0.9)) + 0.1) rotate(7deg);
+				filter: grayscale(0);
 			}
 		}
 	}

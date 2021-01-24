@@ -11,17 +11,17 @@
         <div class="row">
             <div class="col-10 offset-1">
 				<h1 class="text-align-center margin-0">
-					{{
+					{{-
 						include(
 							'partials/split-text.html.twig',
 							{
 								title: post.title,
 								id: uniqid(),
 								delay: 0.5,
-							}
+							},
 							with_context = false
 						)
-					}}
+					-}}
 				</h1>
 			</div>
 		</div>

@@ -7,7 +7,7 @@
 {% if notices %}
 	{% for notice in notices %}
 		<div class="Info woocommerce-info"{{ function( 'wc_get_notice_data_attr', notice ) }}>
-			{{ include( 'svg/use.html.twig' ), { icon: 'face-with-mouth' }, with_context = false ) %}
+			{{- include( 'svg/use.html.twig', { icon: 'face-with-mouth' }, with_context = false ) -}}
 			{{- function( 'wc_kses_notice', notice.notice ) -}}
 		</div>
 	{% endfor %}
