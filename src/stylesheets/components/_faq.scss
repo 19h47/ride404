@@ -70,6 +70,7 @@
 				&::before {
 					@include absolute(top 0 bottom 0 left 0);
 					@include size(1px, 100%);
+					@include margin(left -1px);
 
 					content: '';
 					background-color: the_color(white);
@@ -86,6 +87,10 @@
 
 				color: the_color(gray, very-dark-03);
 				transition: color 0.5s map-get($easings, ease-out-expo);
+
+				@include media-breakpoint-up(lg) {
+					@include padding(top 30px bottom 30px);
+				}
 			}
 		}
 	}

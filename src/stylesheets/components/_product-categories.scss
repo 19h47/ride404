@@ -26,9 +26,11 @@
 	}
 
 	&__item {
-		@include margin(right 25px left 25px);
+		@include margin(right 20px left 20px);
 
 		@include media-breakpoint-up(md) {
+			@include margin(right 25px left 25px);
+
 			&:first-child {
 				@include margin(left 0);
 			}

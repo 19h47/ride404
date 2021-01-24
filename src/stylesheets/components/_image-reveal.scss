@@ -9,6 +9,12 @@
 
 	@extend %overflow-hidden;
 
+	height: 100%;
+
+	@include media-breakpoint-up(md) {
+		height: auto;
+	}
+
 	&__content {
 		@include size(100%);
 

@@ -60,27 +60,6 @@
         </div>
     </div>
 
-	<div class="About-map" data-scroll-section>
-		<img class="About-map__grid" data-scroll data-scroll-speed="2" src="{{ theme.link }}/{{ theme.manifest['img/svg/grid.svg'] }}" alt="" width="962" height="842">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="About-map__title">{{- site.title -}}</h2>
-			</div>
-		</div>
-		<div class="row align-items-md-center">
-			<div class="col-6 d-none d-md-block">
-				<div id="about-map" class="About-map__canvas" data-scroll  data-scroll-id="about-map" data-module-about-map data-lottie-json="about-map"></div>
-			</div>
-			{% if post.meta( 'map' ).content %}
-				<div class="col-10 col-md-4 offset-1">
-					<p class="h2 text-align-center">
-						{{- post.meta( 'map' ).content -}}
-					</p>
-				</div>
-			{% endif %}
-		</div>
-	</div>
-
     <div id="smiley-404" class="Smiley-404 Section" data-scroll-section data-module-smiley404 style="transform-style: preserve-3d;">
         <div class="Smiley-404__images">
             <div class="row h-100">
@@ -114,6 +93,27 @@
 			>
         </div>
     </div>
+
+	<div class="About-map" data-scroll-section>
+		<img class="About-map__grid" data-scroll data-scroll-speed="2" src="{{ theme.link }}/{{ theme.manifest['img/svg/grid.svg'] }}" alt="" width="962" height="842">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="About-map__title">{{- site.title -}}</h2>
+			</div>
+		</div>
+		<div class="row align-items-md-center">
+			<div class="col-6 d-none d-md-block">
+				<div id="about-map" class="About-map__canvas" data-scroll  data-scroll-id="about-map" data-module-about-map data-lottie-json="about-map"></div>
+			</div>
+			{% if post.meta( 'map' ).content %}
+				<div class="col-10 offset-1 col-md-4 offset-md-0">
+					<p class="h2 text-align-center">
+						{{- post.meta( 'map' ).content -}}
+					</p>
+				</div>
+			{% endif %}
+		</div>
+	</div>
 
     <div class="About-video" data-scroll-section>
         <div class="row">
