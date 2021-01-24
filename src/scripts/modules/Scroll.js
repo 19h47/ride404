@@ -9,9 +9,10 @@ class Scroll extends module {
 	init() {
 		const imgLoad = imagesLoaded(this.el);
 
+
 		this.scroll = new LocomotiveScroll({
 			el: this.el,
-			smooth: JSON.parse(this.el.getAttribute('data-scroll-smooth')) || true,
+			smooth: JSON.parse(this.el.getAttribute('data-scroll-smooth')),
 			getDirection: true,
 		});
 

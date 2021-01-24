@@ -9,12 +9,12 @@
 
 use Timber\{ Timber };
 
-$context = array();
+$filename = 'woocommerce/cart/cart.html.twig';
 
-$context['cart'] = WC()->cart;
+$data                    = array();
+$data['cart']            = WC()->cart;
+$data['nonce_field']     = wp_nonce_field( 'woocommerce-cart', 'woocommerce-cart-nonce', true, false );
+$data['coupons_enabled'] = wc_coupons_enabled();
+$data['cart_url']        = wc_get_cart_url();
 
-$context['nonce_field']     = wp_nonce_field( 'woocommerce-cart', 'woocommerce-cart-nonce', true, false );
-$context['coupons_enabled'] = wc_coupons_enabled();
-$context['cart_url']        = wc_get_cart_url();
-
-Timber::render( 'woocommerce/cart/cart.html.twig', $context );
+Timber::render( $filename, $data );

@@ -2,11 +2,18 @@
  * Payment method
  *
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
- * @package Rider404
+ * @package WordPress
+ * @subpackage Rider404
  */
 .Payment-method {
+	$this: &;
+
 	margin-top: 40px !important; // WooCommerce
 	margin-bottom: 40px !important; // WooCommerce
+
+	&:focus {
+		outline: none;
+	}
 
 	&:first-child {
 		@include margin(top 0);
@@ -16,7 +23,42 @@
 		@include margin(bottom 0);
 	}
 
+	&__input {
+		@extend %position-relative;
+		@include margin(right 30px);
+		@include size(30px);
+		@extend .d-block;
+
+		border: 3px solid the_color(gray, very-dark-02);
+		border-radius: 15px;
+		min-width: 30px;
+
+		transition: border-color 0.5s map-get($easings, ease-out-expo);
+
+		&::after {
+			@include absolute(top 0 right 0 bottom 0 left 0);
+			@include size(14px);
+			@include margin(top auto right auto bottom auto left auto);
+			@extend .d-block;
+
+			background-color: rgba(the_color(white), 0);
+			border-radius: 7px;
+			content: '';
+
+			transition: background-color 0.5s map-get($easings, ease-out-expo);
+		}
+
+		@at-root #{ $this }.is-selected & {
+			border: 3px solid the_color(white);
+
+			&::after {
+				background-color: rgba(the_color(white), 1);
+			}
+		}
+	}
+
 	&__box {
+		display: none;
 		background-color: the_color(gray, very-dark-03) !important; // WooCommerce
 		font-size: 14px !important; // WooCommerce
 		line-height: (28/14) !important; //WooCommerce
@@ -27,10 +69,22 @@
 		&::before {
 			border-bottom-color: the_color(gray, very-dark-03) !important; // WooCommerce
 		}
+
+		@at-root #{ $this }.is-selected & {
+			display: block;
+		}
 	}
 
-	label {
+	&__label {
 		@extend .d-flex, .align-items-center;
+
+		width: percentage(180/1200);
+	}
+
+	&__icon {
+		@extend .d-flex, .flex-row;
+
+		width: 100%;
 
 		img {
 			@extend .d-block;
@@ -40,6 +94,18 @@
 
 			max-height: 45px;
 			width: auto;
+
+			&:first-child {
+				@include margin(left 0px);
+			}
+
+			&:last-child {
+				@include margin(right 0px);
+			}
+		}
+
+		a {
+			@include margin(left auto);
 		}
 	}
 }

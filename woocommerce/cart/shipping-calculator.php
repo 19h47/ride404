@@ -9,13 +9,12 @@
 
 use Timber\{ Timber };
 
-$context = array();
+$filename = 'woocommerce/cart/shipping-calculator.html.twig';
 
-$context['countries'] = WC()->countries;
-$context['customer']  = WC()->customer;
+$data                = array();
+$data['countries']   = WC()->countries;
+$data['customer']    = WC()->customer;
+$data['button_text'] = $button_text;
+$data['nonce_field'] = wp_nonce_field( 'woocommerce-shipping-calculator', 'woocommerce-shipping-calculator-nonce', true, false );
 
-$context['button_text'] = $button_text;
-
-$context['nonce_field'] = wp_nonce_field( 'woocommerce-shipping-calculator', 'woocommerce-shipping-calculator-nonce', true, false );
-
-Timber::render( 'woocommerce/cart/shipping-calculator.html.twig', $context );
+Timber::render( $filename, $data );

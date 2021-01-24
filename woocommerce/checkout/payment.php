@@ -1,23 +1,22 @@
 <?php
 /**
- * Checkout Payment Section
+ * Checkout payment section
  *
- * @package Rider404
+ * @package WordPress
+ * @subpackage Rider404
  * @version 3.5.3
  */
 
 use Timber\{ Timber };
 
-$context = array();
+$data = Timber::context();
 
-$context['cart']     = WC()->cart;
-$context['customer'] = WC()->customer;
+$data['cart']     = WC()->cart;
+$data['customer'] = WC()->customer;
 
 // @see https://github.com/woocommerce/woocommerce/blob/master/includes/wc-template-functions.php#L2240
-$context['checkout']           = (object) $checkout;
-$context['available_gateways'] = (array) $available_gateways;
-$context['order_button_text']  = (string) $order_button_text;
+$data['checkout']           = (object) $checkout;
+$data['available_gateways'] = (array) $available_gateways;
+$data['order_button_text']  = (string) $order_button_text;
 
-$context['nonce_field'] = wp_nonce_field( 'woocommerce-process_checkout', 'woocommerce-process-checkout-nonce' );
-
-Timber::render( 'woocommerce/checkout/payment.html.twig', $context );
+Timber::render( 'woocommerce/checkout/payment.html.twig', $data );

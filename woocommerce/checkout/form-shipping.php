@@ -2,8 +2,10 @@
 /**
  * Form shipping
  *
- * @package Rider404
+ * @package WordPress
+ * @subpackage Rider404
  * @global WC_Checkout $checkout
+ * @version 3.6.0
  */
 
 use Timber\{ Timber };

@@ -4,7 +4,12 @@
  # @package WordPress
  # @subpackage Rider404
  #}
-<li class="Payment-method wc_payment_method payment_method_{{ gateway.id | e }}">
+<div
+	class="Payment-method wc_payment_method payment_method_{{ gateway.id | e }}{{ gateway.chosen ? ' is-selected' : '' }}"
+	aria-checked="{{ gateway.chosen ? 'true' : 'false' }}"
+	tabindex="{{ gateway.chosen ? '0' : '-1' }}"
+	role="radio"
+>
 	<input
 		id="payment_method_{{ gateway.id | e }}"
 		type="radio"
@@ -12,19 +17,21 @@
 		name="payment_method"
 		value="{{ gateway.id | e }}"
 		{{ function( 'checked', gateway.chosen, true ) }}
-		data-order_button_text="{{ gateway.order_button_text | e }}" />
+		data-order_button_text="{{ gateway.order_button_text | e }}"
+		style="display: none;"
+	/>
 
-	<label for="payment_method_{{ gateway.id | e }}">
-		{{- gateway.get_title() -}}
-		{{- gateway.get_icon() -}}
-	</label>
+	<div class="d-flex flex-row align-items-center">
+		<span class="Payment-method__input"></span>
+		<div class="Payment-method__label">
+			{{- gateway.get_title() -}}
+		</div>
+		<div class="Payment-method__icon">{{- gateway.get_icon() -}}</div>
+	</div>
 
 	{% if gateway.has_fields() or gateway.get_description() %}
-		<div
-			class="Payment-method__box payment_box payment_method_{{ gateway.id | e }}"
-			{{ gateway.chosen ? '' : ' style="display:none;"' }}
-		>
+		<div class="Payment-method__box payment_box payment_method_{{ gateway.id | e }}">
 			{{- gateway.payment_fields() -}}
 		</div>
 	{% endif %}
-</li>
+</div>

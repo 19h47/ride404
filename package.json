@@ -20,7 +20,7 @@
 	"dependencies": {
 		"@19h47/architecture": "19h47/architecture",
 		"@19h47/checkbox": "^4.1.0",
-		"@19h47/radiogroup": "^5.4.0",
+		"@19h47/radiogroup": "^5.4.1",
 		"bootstrap": "^4.6.0",
 		"flickity": "^2.2.2",
 		"gsap": "^3.6.0",

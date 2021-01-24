@@ -199,7 +199,8 @@ class Theme {
 		$context['cart_url']     = wc_get_cart_url();
 		$context['checkout_url'] = wc_get_checkout_url();
 		$context['shop_url']     = wc_get_page_permalink( 'shop' );
-		$context['terms_url']    = get_permalink( get_option( 'woocommerce_terms_page_id' ) );
+		$context['terms_url']    = get_permalink( wc_terms_and_conditions_page_id() );
+		$context['privacy_url']  = get_permalink( wc_privacy_policy_page_id() );
 
 		$context['is_front_page']       = is_front_page();
 		$context['is_product']          = is_product();

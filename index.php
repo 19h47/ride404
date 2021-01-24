@@ -13,10 +13,9 @@
 
 use Timber\{ Timber };
 
-$context = Timber::context();
+$filenames = array( 'index.html.twig' );
 
-$context['post'] = Timber::get_post();
+$data         = Timber::context();
+$data['post'] = Timber::get_post();
 
-$templates = array( 'index.html.twig' );
-
-Timber::render( $templates, $context );
+Timber::render( $filenames, $data );

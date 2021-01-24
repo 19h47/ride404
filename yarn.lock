@@ -30,10 +30,10 @@
   dependencies:
     prettier "^1.x.x"
 
-"@19h47/radiogroup@^5.4.0":
-  version "5.4.0"
-  resolved "https://registry.yarnpkg.com/@19h47/radiogroup/-/radiogroup-5.4.0.tgz#4bc4f08bc808d3df9f2a58ff44a5330abfca6d17"
-  integrity sha512-P/ZsR7pXShvdcM94RfY7iwNxbLVP0bA9dtPWSz1+0tzYLTbamqQU6FUBLR8xU/xbkLbrO8zBMTPZ2xBQzurDvg==
+"@19h47/radiogroup@^5.4.1":
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/@19h47/radiogroup/-/radiogroup-5.4.1.tgz#a2c9fab2f9408282461cabcd9bf7b1f82e9e1a34"
+  integrity sha512-qosYX20FqHRHhYNspX2tRowERB1y+YBwgbT1CwYHCiFm8hVNqs+x81g7UsQ8eCh9lwWFkpJGwQowEehNVl9//A==
   dependencies:
     "@19h47/keycode" "^3.0.3"
     events "^3.2.0"
@@ -1879,12 +1879,7 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
-bootstrap@^4.5.3:
-  version "4.5.3"
-  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.5.3.tgz#c6a72b355aaf323920be800246a6e4ef30997fe6"
-  integrity sha512-o9ppKQioXGqhw8Z7mah6KdTYpNQY//tipnkxppWhPbiSWdD+1raYsnhwEZjkTHYbGee4cVQ0Rx65EhOY/HNLcQ==
-
-bootstrap@^4.6.0:
+bootstrap@^4.5.3, bootstrap@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.6.0.tgz#97b9f29ac98f98dfa43bf7468262d84392552fd7"
   integrity sha512-Io55IuQY3kydzHtbGvQya3H+KorS/M9rSNyfCGCg9WZ4pyT/lCxIlpJgG1GXW/PswzC84Tr2fBYi+7+jFVQQBw==

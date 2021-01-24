@@ -11,13 +11,13 @@
 <div id="payment" class="Checkout-payment woocommerce-checkout-payment">
 
 	{% if cart.needs_payment() %}
-		<ul class="Checkout-payment__methods wc_payment_methods payment_methods methods">
+		<div class="Checkout-payment__methods wc_payment_methods payment_methods methods" data-module-radiogroup role="radiogroup">
 			{% if available_gateways is not empty %}
 				{% for gateway in available_gateways %}
 					{{- function( 'wc_get_template', 'checkout/payment-method.php',  { 'gateway': gateway } ) -}}
 				{% endfor %}
 			{% else %}
-				<li class="Notice Info Notice--info woocommerce-notice woocommerce-notice--info woocommerce-info">
+				<div class="Notice Info Notice--info woocommerce-notice woocommerce-notice--info woocommerce-info">
 					{% include 'svg/use.html.twig' with { icon: 'face-with-mouth' } only %}
 					{% filter apply_filters( 'woocommerce_no_available_payment_methods_message' ) %}
 						{% if customer.get_billing_country() %}
@@ -26,9 +26,9 @@
 							{{- __( 'Please fill in your details above to see available payment methods.', 'rider404' ) | e( 'esc_html' ) -}}
 						{% endif %}
 					{% endfilter %}
-				</li>
+				</div>
 			{% endif %}
-		</ul>
+		</div>
 	{% endif %}
 
 	<div class="Form-row Place-order form-row place-order">
@@ -44,7 +44,14 @@
 			</button>
 		</noscript>
 
-		{{- function( 'wc_get_template', 'checkout/terms.php' ) -}}
+		{{-
+			include(
+				'woocommerce/checkout/terms.html.twig',
+				{
+					terms_and_conditions_checkbox_enabled: function( 'wc_terms_and_conditions_checkbox_enabled' ),
+				}
+			)
+		-}}
 
 		{% do action( 'woocommerce_review_order_before_submit' ) %}
 
@@ -56,7 +63,7 @@
 
 		{% do action( 'woocommerce_review_order_after_submit' ) %}
 
-		{{- nonce_field -}}
+		{{- function( 'wp_nonce_field', 'woocommerce-process_checkout', 'woocommerce-process-checkout-nonce', true, false ) -}}
 	</div>
 
 

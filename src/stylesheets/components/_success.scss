@@ -4,7 +4,7 @@
  * @package Rider404
  */
 .Success {
-	@extend .d-flex;
+	@extend .d-flex, .align-items-center;
 	@include padding(top 16px right 20px bottom 16px left 20px);
 	@include margin(bottom 20px);
 
