@@ -2,10 +2,11 @@
  * Bar
  *
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
- * @package Rider404
+ * @package WordPress
+ * @subpackage Rider404
  */
 .Bar {
-	@extend .d-flex, .align-items-center;
+	@extend .d-none, .d-md-flex, .align-items-md-center;
 	@include padding(top 20px right 30px bottom 20px left 30px);
 
 	@include fixed(top 0 right 0 left 0);

@@ -4,19 +4,21 @@
  # @package WordPress
  # @subpackage Rider404
  #}
-<ul class="Product-categories">
-    <li class="Product-categories__item">
-        <{{ product_cat_current ? 'a' : 'p' }} class="{{ product_cat_current ? '' : 'is-active' }}"{{ product_cat_current ? " href=\"#{ shop_url }\"" : '' }}>
-            <span>{{- __( 'All', 'rider404' ) -}}</span>
-            <sup>{{- count_products -}}</sup>
-        </{{ product_cat_current ? 'a' : 'p' }}>
-    </li>
-    {% for product_cat in product_cats %}
-        <li class="Product-categories__item">
-            <{{ product_cat_current and product_cat_current.id == product_cat.id ? 'p' : 'a' }} class="{{ product_cat_current and product_cat_current.id == product_cat.id ? 'is-active' : '' }}"{{ product_cat_current and product_cat_current.id == product_cat.id ? '' : " href=\"#{ product_cat.link }\"" }}">
-                <span>{{- product_cat.name -}}</span>
-                <sup>{{- product_cat.count -}}</sup>
-            </{{ product_cat_current and product_cat_current.id == product_cat.id ? 'p' : 'a' }}>
-        </li>
-    {% endfor %}
-</ul>
+<div class="Product-categories">
+	<ul class="Product-categories__items">
+		<li class="Product-categories__item">
+			<{{ product_cat_current ? 'a' : 'p' }} class="{{ product_cat_current ? '' : 'is-active' }}"{{ product_cat_current ? " href=\"#{ shop_url }\"" : '' }}>
+				<span>{{- __( 'All', 'rider404' ) -}}</span>
+				<sup>{{- count_products -}}</sup>
+			</{{ product_cat_current ? 'a' : 'p' }}>
+		</li>
+		{% for product_cat in product_cats %}
+			<li class="Product-categories__item">
+				<{{ product_cat_current and product_cat_current.id == product_cat.id ? 'p' : 'a' }} class="{{ product_cat_current and product_cat_current.id == product_cat.id ? 'is-active' : '' }}"{{ product_cat_current and product_cat_current.id == product_cat.id ? '' : " href=\"#{ product_cat.link }\"" }}">
+					<span>{{- product_cat.name -}}</span>
+					<sup>{{- product_cat.count -}}</sup>
+				</{{ product_cat_current and product_cat_current.id == product_cat.id ? 'p' : 'a' }}>
+			</li>
+		{% endfor %}
+	</ul>
+</div>

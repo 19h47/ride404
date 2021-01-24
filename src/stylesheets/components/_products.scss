@@ -2,7 +2,8 @@
  * Products
  *
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
- * @package Rider404
+ * @package WordPress
+ * @subpackage Rider404
  */
 .Products {
 	@extend .row;
@@ -14,11 +15,11 @@
 	}
 
 	li:nth-child(8n + 1) {
-		@extend .col-4, .offset-1;
+		@extend .col-10, .offset-1, .col-md-4, .offset-md-1;
 	}
 
 	li:nth-child(8n + 2) {
-		@extend .col-3, .offset-1;
+		@extend .col-10, .offset-1, .col-md-3, .offset-md-1;
 	}
 
 	li:nth-child(8n + 3) {
@@ -26,22 +27,22 @@
 	}
 
 	li:nth-child(8n + 4) {
-		@extend .col-3, .offset-1;
+		@extend .col-10, .offset-1, .col-md-3, .offset-md-1;
 	}
 
 	li:nth-child(8n + 5) {
-		@extend .col-6, .offset-1;
+		@extend .col-10, .offset-1, .col-md-6, .offset-md-1;
 	}
 
 	li:nth-child(8n + 6) {
-		@extend .col-3, .offset-1;
+		@extend .col-10, .offset-1, .col-md-3, .offset-md-1;
 	}
 
 	li:nth-child(8n + 7) {
-		@extend .col-4, .offset-1;
+		@extend .col-10, .offset-1, .col-md-4, .offset-md-1;
 	}
 
 	li:nth-child(8n + 8) {
-		@extend .col-6, .offset-1;
+		@extend .col-10, .offset-1, .col-md-6, .offset-md-1;
 	}
 }

@@ -2,25 +2,40 @@
  * Product categories
  *
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
- * @package Rider404
+ * @package WordPress
+ * @subpackage Rider404
  */
 .Product-categories {
-	@extend %list-style-type-none, %font-weight-regular;
-	@extend .d-flex;
+	@extend %font-weight-regular, %overflow-x-auto;
 
 	color: the_color(gray, very-dark-02);
 	font-size: 14px;
 	line-height: (28/14);
 
+	-ms-overflow-style: none;
+	-webkit-overflow-scrolling: touch;
+	scrollbar-width: none;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+
+	&__items {
+		@extend .d-inline-flex;
+		@extend %list-style-type-none;
+	}
+
 	&__item {
 		@include margin(right 25px left 25px);
 
-		&:first-child {
-			@include margin(left 0);
-		}
+		@include media-breakpoint-up(md) {
+			&:first-child {
+				@include margin(left 0);
+			}
 
-		&:last-child {
-			@include margin(right 0);
+			&:last-child {
+				@include margin(right 0);
+			}
 		}
 
 		p,
