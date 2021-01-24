@@ -80,7 +80,11 @@ class TemplateHooks {
 
 		add_filter( 'woocommerce_form_field_args', array( 'Rider404\Plugins\WooCommerce\TemplateFunctions', 'form_field_args' ), 10, 3 );
 
+		// Cart is empty.
 		add_action( 'woocommerce_cart_is_empty', array( 'Rider404\Plugins\WooCommerce\TemplateFunctions', 'empty_cart_message' ), 10 );
+		add_action( 'woocommerce_cart_is_empty', array( 'Rider404\Plugins\WooCommerce\TemplateFunctions', 'output_all_notices' ), 5 );
+
+		add_action( 'woocommerce_shortcode_before_product_cat_loop', array( 'Rider404\Plugins\WooCommerce\TemplateFunctions', 'output_all_notices' ), 10 );
 	}
 
 
@@ -134,6 +138,9 @@ class TemplateHooks {
 
 		// Cart is empty.
 		remove_action( 'woocommerce_cart_is_empty', 'wc_empty_cart_message', 10 );
+		remove_action( 'woocommerce_cart_is_empty', 'woocommerce_output_all_notices', 5 );
+
+		remove_action( 'woocommerce_shortcode_before_product_cat_loop', 'woocommerce_output_all_notices', 10 );
 	}
 
 

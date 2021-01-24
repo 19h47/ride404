@@ -1,7 +1,8 @@
 {#
  # Archive product
  #
- #
+ # @package WordPress
+ # @subpackage Rider404
  #}
 {% extends 'index.html.twig' %}
 
@@ -10,18 +11,10 @@
 	{% embed 'partials/bar.html.twig' %}
 		{% block content %}
 			<div class="Quick-product-categories">
-				{{ include( 'components/product-categories.html.twig' ) }}
+				{{- include( 'components/product-categories.html.twig' ) -}}
 			</div>
 		{% endblock %}
 	{% endembed %}
-
-	<div class="Section" data-scroll-section>
-		<div class="row">
-			<div class="col-10 offset-1">
-				{{ include( 'components/product-categories.html.twig' ) }}
-			</div>
-		</div>
-	</div>
 
 	{% if product_loop %}
 
@@ -31,6 +24,14 @@
 		 # @hooked woocommerce_output_all_notices - 10
 		 #}
 		{% do action( 'woocommerce_before_shop_loop' ) %}
+
+		<div class="Site-container" data-scroll-section>
+			<div class="row">
+				<div class="col-10 offset-1">
+					{{ include( 'components/product-categories.html.twig' ) }}
+				</div>
+			</div>
+		</div>
 
 
 		{{- function( 'woocommerce_product_loop_start' ) -}}

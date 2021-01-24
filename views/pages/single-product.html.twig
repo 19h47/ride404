@@ -82,12 +82,12 @@
             <div class="row">
                 <div class="col-4 offset-2">
                     <div class="h2 margin-0">
-						{{- post.excerpt -}}
+						{{- post.post_excerpt -}}
 					</div>
                 </div>
-                <div class="col-3{{ post.excerpt ? ' offset-1' : ' offset-6' -}}">
+                <div class="col-3{{ post.post_excerpt ? ' offset-1' : ' offset-6' -}}">
 					<div class="Wysiwyg">
-                    	{{- post.content -}}
+                    	{{- post.post_content -}}
 					</div>
                 </div>
             </div>

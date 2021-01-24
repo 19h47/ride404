@@ -20,6 +20,7 @@ use Timber\{ Timber };
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  */
 class WooCommerce {
+
 	/**
 	 * Runs initialization tasks.
 	 *

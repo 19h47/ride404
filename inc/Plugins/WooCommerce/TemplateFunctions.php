@@ -222,4 +222,16 @@ class TemplateFunctions {
 	public static function empty_cart_message() {
 		return Timber::render( 'partials/empty-cart-message.html.twig' );
 	}
+
+
+	/**
+	 * Outputs all queued notices on WC pages.
+	 *
+	 * @access static
+	 */
+	public static function output_all_notices() {
+		echo '<div class="woocommerce-notices-wrapper" data-scroll-section>';
+			wc_print_notices();
+		echo '</div>';
+	}
 }

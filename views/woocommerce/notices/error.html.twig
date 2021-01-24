@@ -6,13 +6,18 @@
  #}
 
 {% if notices %}
-	<ul class="Error woocommerce-error" role="alert">
-		{% for notice in notices %}
-			<li{{ function( 'wc_get_notice_data_attr', notice ) }}>
- 				{{ include( 'svg/use.html.twig', { icon: 'face-without-mouth' }, with_context = false ) }}
-
-				{{- function( 'wc_kses_notice', notice.notice ) -}}
-			</li>
-		{% endfor %}
-	</ul>
+	<div class="Site-container">
+		<div class="row">
+			<div class="col-10 offset-1">
+				<ul class="Error woocommerce-error" role="alert">
+					{% for notice in notices %}
+						<li{{ function( 'wc_get_notice_data_attr', notice ) }}>
+							{{- include( 'svg/use.html.twig', { icon: 'face-without-mouth' }, with_context = false ) -}}
+							<span>{{- function( 'wc_kses_notice', notice.notice ) -}}</span>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
 {% endif %}

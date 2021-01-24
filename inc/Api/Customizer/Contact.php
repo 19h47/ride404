@@ -18,6 +18,7 @@ use WP_Customize_Manager;
 class Contact {
 
 
+
 	/**
 	 * Runs initialization tasks.
 	 *

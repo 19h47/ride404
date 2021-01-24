@@ -1,0 +1,33 @@
+{#
+ # Cart empty
+ #
+ # @package WordPress
+ # @subpackage Rider404
+ #}
+
+{#
+ # Hook: woocommerce_cart_is_empty
+ #
+ # @hooked wc_empty_cart_message - 10
+ #}
+{% do action( 'woocommerce_cart_is_empty' ) %}
+
+{% if 0 < function( 'wc_get_page_id', 'shop' ) %}
+	<div class="Site-container" data-scroll-section>
+		<div class="row">
+			<div class="col-10 offset-1">
+				<p class="return-to-shop">
+					<a class="Button button wc-backward" href="{{ function( 'wc_get_page_permalink', 'shop' ) | apply_filters( 'woocommerce_return_to_shop_redirect' ) | e( 'esc_url' ) }}">
+						{#
+						 # Filter "Return To Shop" text.
+						 #
+						 # @since 4.6.0
+						 # @param string $default_text Default text.
+						 #}
+						{{- __( 'Return to shop', 'rider404' ) | apply_filters( 'woocommerce_return_to_shop_text' ) | e( 'esc_html' ) -}}
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+{% endif %}

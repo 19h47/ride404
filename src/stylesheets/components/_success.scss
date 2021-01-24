@@ -6,10 +6,15 @@
 .Success {
 	@extend .d-flex;
 	@include padding(top 16px right 20px bottom 16px left 20px);
+	@include margin(bottom 20px);
 
 	background-color: the_color(green, lime);
 	border: none;
 	color: the_color(white);
+
+	& > *:first-child {
+		@extend %margin-left-0;
+	}
 
 	svg {
 		@include size(28px);
@@ -22,5 +27,17 @@
 
 	&::before {
 		content: none;
+	}
+
+	a,
+	button {
+		@include margin(top 4px right 8px left auto);
+		@extend %text-decoration-underline,
+			%text-transform-uppercase,
+			%font-family-title,
+			%font-weight-heavy;
+
+		font-size: 16px;
+		line-height: (28/16);
 	}
 }

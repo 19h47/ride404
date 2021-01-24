@@ -1,3 +1,14 @@
 {
-	"editor.formatOnSave": true
+	"phpcbf.enable": true,
+	"phpcbf.executablePath": "/Users/19h47/.composer/vendor/bin/phpcbf",
+	"phpcbf.documentFormattingProvider": true,
+	"phpcbf.onsave": true,
+	"phpcbf.debug": true,
+	"phpcbf.standard": "WordPress",
+
+	"prettier.packageManager": "yarn",
+	"prettier.quoteProps": "preserve",
+	"prettier.requireConfig": true,
+	"prettier.trailingComma": "all",
+	"editor.formatOnSave": true,
 }

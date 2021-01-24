@@ -12,6 +12,10 @@
 	border: none;
 	color: the_color(white);
 
+	& > *:first-child {
+		@extend %margin-left-0;
+	}
+
 	svg {
 		@include size(28px);
 		@include margin(right 20px);
@@ -25,8 +29,9 @@
 		content: none;
 	}
 
+	a,
 	button {
-		@include margin(top 8px);
+		@include margin(top 4px right 8px left auto);
 		@extend %text-decoration-underline,
 			%text-transform-uppercase,
 			%font-family-title,
@@ -34,5 +39,6 @@
 			%margin-left-auto;
 
 		font-size: 16px;
+		line-height: (28/16);
 	}
 }

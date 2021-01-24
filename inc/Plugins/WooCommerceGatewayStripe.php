@@ -18,6 +18,7 @@ namespace Rider404\Plugins;
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  */
 class WooCommerceGatewayStripe {
+
 	/**
 	 * Runs initialization tasks.
 	 *
