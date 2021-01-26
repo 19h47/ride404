@@ -46,7 +46,7 @@
 	{{
 		include(
 			'components/video.html.twig',
-			{ id: 'video-menu', classes: [ 'js-video' ], video: get_image( nav_menus.main.meta('video') ).src }
+			{ id: 'video-menu', classes: [ 'js-video' ], video: nav_menus.main.meta('video').url }
 		)
 	}}
 
