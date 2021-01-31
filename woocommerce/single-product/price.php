@@ -1,10 +1,13 @@
 <?php
 /**
- * Single Product Price
+ * Single product price
  *
  * @see https://docs.woocommerce.com/document/template-structure/
+ *
  * @package WordPress
  * @subpackage Rider404
+ *
+ * @version 3.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

@@ -4,25 +4,26 @@
  *
  * @package WordPress
  * @subpackage Rider404
+ *
+ * @version 4.0.0
  */
 
 use Timber\{ Timber };
 
-$context = Timber::context();
-
-$context['max_value'] = $max_value;
-$context['min_value'] = $min_value;
+$filename = 'woocommerce/globals/quantity-input.html.twig';
 
 /* translators: %s: Quantity. */
-$context['label'] = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 'woocommerce' ), wp_strip_all_tags( $args['product_name'] ) ) : esc_html__( 'Quantity', 'woocommerce' );
+$data['label']       = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 'rider404' ), wp_strip_all_tags( $args['product_name'] ) ) : esc_html__( 'Quantity', 'rider404' );
+$data                = Timber::context();
+$data['max_value']   = $max_value;
+$data['min_value']   = $min_value;
+$data['input_id']    = $input_id;
+$data['input_name']  = $input_name;
+$data['input_value'] = $input_value;
+$data['classes']     = (array) $classes;
+$data['step']        = $step;
+$data['placeholder'] = $placeholder;
+$data['inputmode']   = $inputmode;
 
-$context['input_id']    = $input_id;
-$context['input_name']  = $input_name;
-$context['input_value'] = $input_value;
-$context['classes']     = (array) $classes;
-$context['step']        = $step;
-$context['placeholder'] = $placeholder;
-$context['inputmode']   = $inputmode;
 
-
-Timber::render( 'woocommerce/globals/quantity-input.html.twig', $context );
+Timber::render( $filename, $data );

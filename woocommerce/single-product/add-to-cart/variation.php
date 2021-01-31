@@ -2,8 +2,10 @@
 /**
  * Single variation display
  *
+ * @package WordPress
+ * @subpackage Rider404
  *
- * @package Rider404/Templates
+ * @version 2.5.0
  */
 
 use Timber\{ Timber };

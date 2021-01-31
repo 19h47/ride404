@@ -8,21 +8,25 @@
  *
  * @see https://github.com/woocommerce/woocommerce/blob/master/includes/wc-template-functions.php#L1655
  * @see https://github.com/woocommerce/woocommerce/blob/master/templates/single-product/add-to-cart/variable.php
- * @package Rider404/Templates
+ *
+ * @package WordPress
+ * @subpackage Rider404
+ *
+ * @version 3.5.5
  */
 
 global $product;
 
 use TImber\{ Timber };
 
-$context = Timber::context();
+$filename        = 'woocommerce/single-product/add-to-cart/variable.html.twig';
+$variations_json = wp_json_encode( $available_variations );
 
-$variations_json            = wp_json_encode( $available_variations );
-$context['variations_attr'] = wc_esc_json( $variations_json );
+$data                         = Timber::context();
+$data['variations_attr']      = wc_esc_json( $variations_json );
+$data['product']              = $product;
+$data['attributes']           = $attributes;
+$data['available_variations'] = $available_variations;
+$data['form_action']          = apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() );
 
-$context['product']              = $product;
-$context['attributes']           = $attributes;
-$context['available_variations'] = $available_variations;
-$context['form_action']          = apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() );
-
-Timber::render( 'woocommerce/single-product/add-to-cart/variable.html.twig', $context );
+Timber::render( $filename, $data );

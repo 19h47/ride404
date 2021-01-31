@@ -19,7 +19,7 @@
 
 		<tbody>
 			{% if order.get_items() | length > 0 %}
-				{% foreach item_id, item as order.get_items() %}
+				{% for item_id, item in order.get_items() %}
 					{% if true | apply_filters( 'woocommerce_order_item_visible', item ) %}
 						<tr class="{{ 'order_item' | apply_filters( 'woocommerce_order_item_class', item, order ) | e }}">
 							<td class="product-name">
@@ -36,7 +36,7 @@
 							<td class="product-quantity">
 								{% filter apply_filters( 'woocommerce_order_item_quantity_html' ) %}
 									<strong class="product-quantity">
-										{{ '&times;&nbsp;%s' | format( item.get_quantity() ) | e( 'esc_html' ) ) }}
+										{{ '&times;&nbsp;%s' | format( item.get_quantity() ) | e( 'esc_html' ) }}
 									</strong>
 								{% endfilter %}
 							</td>
@@ -45,17 +45,17 @@
 							</td>
 						</tr>
 					{% endif %}
-				{% endforeach %}
+				{% endfor %}
 			{% endif %}
 		</tbody>
 		<tfoot>
 			{% if order.get_order_item_totals() %}
-				{% foreach total in order.get_order_item_totals() %}
+				{% for total in order.get_order_item_totals() %}
 					<tr>
 						<th scope="row" colspan="2">{{- total.label -}}</th>
 						<td class="product-total">{{- total.value -}}</td>
 					</tr>
-				{% endforeach %}
+				{% endfor %}
 			{% endif %}
 		</tfoot>
 	</table>
@@ -64,9 +64,9 @@
 		{% if order.needs_payment() %}
 			<ul class="wc_payment_methods payment_methods methods">
 				{% if available_gateways is not empty %}
-					{% foreach gateway as available_gateways %}
-						{{ function( 'wc_get_template', 'checkout/payment-method.php', { gateway: gateway } ) }}
-					{% endforeach %}
+					{% for gateway in available_gateways %}
+						{{ include( 'woocommerce/checkout/payment-method.html.twig', { gateway: gateway } ) }}
+					{% endfor %}
 				{% else %}
 					<li class="woocommerce-notice woocommerce-notice--info woocommerce-info">
 						{% filter apply_filters( 'woocommerce_no_available_payment_methods_message' ) %}
@@ -92,7 +92,7 @@
 
 			{% do action( 'woocommerce_pay_order_after_submit' ) %}
 
-			{{ nonce_field_pay }}
+			{{ function( 'wp_nonce_field', 'woocommerce-pay', 'woocommerce-pay-nonce', true, false ) }}
 		</div>
 	</div>
 </form>

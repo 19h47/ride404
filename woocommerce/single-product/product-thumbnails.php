@@ -2,9 +2,12 @@
 /**
  * Single Product Thumbnails
  *
- * @see         https://docs.woocommerce.com/document/template-structure/
+ * @see https://docs.woocommerce.com/document/template-structure/
+ *
  * @package WordPress
  * @subpackage Rider404
+ *
+ * @version 3.5.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

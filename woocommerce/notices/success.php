@@ -4,11 +4,15 @@
  *
  * @package WordPress
  * @subpackage Rider404
+ *
+ * @version 3.9.0
  */
 
 use Timber\{ Timber };
 
-$contect            = array();
-$context['notices'] = $notices;
+$filename = 'woocommerce/notices/success.html.twig';
 
-Timber::render( 'woocommerce/notices/success.html.twig', $context );
+$data            = array();
+$data['notices'] = $notices;
+
+Timber::render( $filename, $data );

@@ -1,0 +1,36 @@
+{#
+ # Order details customer
+ #
+ # @package WordPress
+ # @subpackage Rider404
+ #}
+<section class="woocommerce-customer-details">
+
+	<section class="woocommerce-columns woocommerce-columns--2 woocommerce-columns--addresses col2-set addresses">
+
+		<h2 class="woocommerce-column__title">{{- __( 'Billing address', 'woocommerce' ) | e( 'esc_html' ) }}</h2>
+
+		<address>
+			{{ function( 'wp_kses_post', order.get_formatted_billing_address( __( 'N/A', 'woocommerce' ) | e( 'esc_html' ) ) ) }}
+
+			{% if ( order.get_billing_phone() ) %}
+				<p class="woocommerce-customer-details--phone">{{ order.get_billing_phone() | e( 'esc_html' ) }}</p>
+			{% endif %}
+
+			{% if ( order.get_billing_email() ) %}
+				<p class="woocommerce-customer-details--email">{{- order.get_billing_email() | e( 'esc_html' ) -}}</p>
+			{% endif %}
+		</address>
+
+		{% if ( show_shipping ) %}
+			<h2 class="woocommerce-column__title">{{ __( 'Shipping address', 'woocommerce' ) | e( 'esc_html' ) }}</h2>
+			<address>
+				{{ function( 'wp_kses_post', order.get_formatted_shipping_address( __( 'N/A', 'woocommerce' ) | e( 'esc_html' ) ) ) }}
+			</address>
+		{% endif %}
+
+	</section>
+
+	{% do action( 'woocommerce_order_details_after_customer_details', order ) %}
+
+</section>

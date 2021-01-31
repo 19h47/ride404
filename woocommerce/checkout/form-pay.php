@@ -13,7 +13,6 @@ $filename = 'woocommerce/checkout/form-pay.html.twig';
 
 $data                       = array();
 $data['order']              = $order;
-$data['nonce_field_pay']    = wp_nonce_field( 'woocommerce-pay', 'woocommerce-pay-nonce', true, false );
 $data['available_gateways'] = $available_gateways;
 $data['order_button_text']  = $order_button_text;
 

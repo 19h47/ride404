@@ -38,13 +38,13 @@
 						<ul class="woocommerce-order-overview woocommerce-thankyou-order-details order_details">
 
 							<li class="woocommerce-order-overview__order order">
-								{{ __( 'Order number:', 'woocommerce' ) | e( 'esc_html' ) }}
-								<strong>{{ order.get_order_number() }}</strong>
+								{{- __( 'Order number:', 'woocommerce' ) | e( 'esc_html' ) -}}
+								<strong>{{- order.get_order_number() -}}</strong>
 							</li>
 
 							<li class="woocommerce-order-overview__date date">
-								{{ __( 'Date:', 'woocommerce' ) | e( 'esc_html' ) }}
-								<strong>{{ function( 'wc_format_datetime', order.get_date_created() ) }}</strong>
+								{{- __( 'Date:', 'woocommerce' ) | e( 'esc_html' ) -}}
+								<strong>{{- function( 'wc_format_datetime', order.get_date_created() ) -}}</strong>
 							</li>
 
 							{% if is_user_logged_in and order.get_user_id() == function( 'get_current_user_id' ) and order.get_billing_email() %}
