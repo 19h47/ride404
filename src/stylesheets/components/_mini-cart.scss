@@ -2,11 +2,13 @@
  * Mini cart
  *
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
- * @package Rider404
+ * @package WordPress
+ * @subpackage Rider404
  */
 .Mini-cart {
 	@include size(32px);
-	@extend %margin-0, %position-relative;
+	@extend %position-relative;
+	@include margin(top 0 right 0 bottom 0 left 0);
 
 	@include media-breakpoint-up(md) {
 		@include size(42px);

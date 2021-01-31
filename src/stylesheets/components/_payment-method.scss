@@ -82,7 +82,7 @@
 	}
 
 	&__icon {
-		@extend .d-flex, .flex-row;
+		@extend .d-none, .d-md-flex, .flex-row;
 
 		width: 100%;
 

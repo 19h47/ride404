@@ -1,7 +1,9 @@
 /**
  * Info
  *
- * @package Rider404
+ * @package WordPress
+ * @subpackage Rider404
+ * @since 1.0.0
  */
 .Info {
 	@extend .d-flex;
@@ -13,7 +15,7 @@
 	color: the_color(white);
 
 	& > *:first-child {
-		@extend %margin-left-0;
+		@include margin(left auto);
 	}
 
 	svg {
@@ -35,8 +37,7 @@
 		@extend %text-decoration-underline,
 			%text-transform-uppercase,
 			%font-family-title,
-			%font-weight-heavy,
-			%margin-left-auto;
+			%font-weight-heavy;
 
 		font-size: 16px;
 		line-height: (28/16);

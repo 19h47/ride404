@@ -16,6 +16,7 @@
 	}
 
 	.select2-selection {
+		@extend .d-flex;
 		@include padding(top 10px right 15px bottom 10px left 15px);
 
 		background-color: transparent;
@@ -36,15 +37,19 @@
 		}
 
 		&__rendered {
+			@include padding(right 0 left 0);
 			color: the_color(white) !important; // Select2
+		}
+
+		&__arrow {
+			@include margin(top auto right 15px bottom auto);
+
+			top: 0;
+			bottom: 0;
 		}
 	}
 
-	.select2-selection__rendered {
-		@include padding(right 0 left 0);
-	}
-
-	.select2-results__option {
+	&-results__option {
 		color: the_color(gray, very-dark-01);
 	}
 }

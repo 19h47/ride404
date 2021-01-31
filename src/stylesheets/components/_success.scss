@@ -1,7 +1,9 @@
 /**
  * Success
  *
- * @package Rider404
+ * @package WordPress
+ * @subpackage Rider404
+ * @since 1.0.0
  */
 .Success {
 	@extend .d-flex, .align-items-center;
@@ -13,7 +15,7 @@
 	color: the_color(white);
 
 	& > *:first-child {
-		@extend %margin-left-0;
+		@include margin(left auto);
 	}
 
 	svg {

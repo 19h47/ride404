@@ -2,7 +2,9 @@
  * FAQ
  *
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
- * @package Rider404
+ * @package WordPress
+ * @subpackage Rider404
+ * @since 1.0.0
  */
 .Faq {
 	$this: &;
@@ -18,8 +20,9 @@
 	}
 
 	&__questions {
-		@extend %list-style-type-none, %font-weight-light, %position-relative, %margin-0;
+		@extend %list-style-type-none, %font-weight-light, %position-relative;
 		@include padding(top 130px);
+		@include margin(top 0 right 0 bottom 0 left 0);
 
 		z-index: 2;
 

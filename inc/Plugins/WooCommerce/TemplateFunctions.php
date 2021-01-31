@@ -24,6 +24,8 @@ class TemplateFunctions {
 	 * @see https://github.com/woocommerce/woocommerce/blob/master/includes/wc-template-functions.php#L2963
 	 * @access static
 	 * @return string
+	 *
+	 * @since 1.0.0
 	 */
 	public static function variation() {
 		return Timber::render( 'partials/variation.html.twig' );
@@ -35,6 +37,8 @@ class TemplateFunctions {
 	 *
 	 * @access static
 	 * @return string
+	 *
+	 * @since 1.0.0
 	 */
 	public static function loop_product_link_start() {
 		global $product;
@@ -43,12 +47,13 @@ class TemplateFunctions {
 	}
 
 
-
 	/**
 	 * Loop product thumbnail
 	 *
 	 * @access static
 	 * @return string
+	 *
+	 * @since 1.0.0
 	 */
 	public static function loop_product_thumbnail() {
 		global $product;
@@ -67,6 +72,8 @@ class TemplateFunctions {
 	 *
 	 * @access static
 	 * @return string
+	 *
+	 * @since 1.0.0
 	 */
 	public static function featured() {
 		global $product;
@@ -85,6 +92,8 @@ class TemplateFunctions {
 	 *
 	 * @access static
 	 * @return string
+	 *
+	 * @since 1.0.0
 	 */
 	public static function loop_product_title() {
 		global $product;
@@ -98,6 +107,8 @@ class TemplateFunctions {
 	 *
 	 * @access static
 	 * @return string
+	 *
+	 * @since 1.0.0
 	 */
 	public static function loop_price() {
 		global $product;
@@ -117,6 +128,8 @@ class TemplateFunctions {
 	 *
 	 * @access static
 	 * @return void
+	 *
+	 * @since 1.0.0
 	 */
 	public static function single_quick_add_to_cart() : void {
 		global $product;
@@ -131,6 +144,8 @@ class TemplateFunctions {
 	 *
 	 * @access static
 	 * @return string
+	 *
+	 * @since 1.0.0
 	 */
 	public static function single_variation() {
 		return Timber::render( 'woocommerce/single-product/add-to-cart/single-variation.html.twig' );
@@ -138,10 +153,12 @@ class TemplateFunctions {
 
 
 	/**
-	 * Variable quick add to cart
+	 * Quick variable add to cart
 	 *
 	 * @access static
 	 * @return string
+	 *
+	 * @since 1.0.0
 	 */
 	public static function quick_variable_add_to_cart() {
 		global $product;
@@ -170,6 +187,8 @@ class TemplateFunctions {
 	 *
 	 * @access static
 	 * @return string
+	 *
+	 * @since 1.0.0
 	 */
 	public static function checkout_privacy_policy_text() {
 		return Timber::render( 'partials/privacy-policy-text.html.twig' );
@@ -185,6 +204,8 @@ class TemplateFunctions {
 	 *
 	 * @access static
 	 * @return array $args
+	 *
+	 * @since 1.0.0
 	 */
 	public static function form_field_args( array $args, string $key, $value ) : array {
 		switch ( $args['type'] ) {
@@ -218,6 +239,8 @@ class TemplateFunctions {
 	 *
 	 * @return string
 	 * @access static
+	 *
+	 * @since 1.0.0
 	 */
 	public static function empty_cart_message() {
 		return Timber::render( 'partials/empty-cart-message.html.twig' );
@@ -228,8 +251,11 @@ class TemplateFunctions {
 	 * Outputs all queued notices on WC pages.
 	 *
 	 * @access static
+	 * @return void
+	 *
+	 * @since 1.0.0
 	 */
-	public static function output_all_notices() {
+	public static function output_all_notices() : void {
 		echo '<div class="woocommerce-notices-wrapper" data-scroll-section>';
 			wc_print_notices();
 		echo '</div>';

@@ -39,12 +39,61 @@
 	}
 }
 
-.woocommerce-cart .wc-proceed-to-checkout a.checkout-button {
+.woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
+.woocommerce #payment #place_order,
+.woocommerce-page #payment #place_order {
 	@extend %font-family-title;
 
 	background-color: the_color(white);
 	color: the_color(gray, very-dark-01);
 	font-size: 38px;
-	line-height: (38/23);
+	// line-height: (38/23);
 	border-radius: 0;
+
+	transition: color 0.5s map-get($easings, ease-out-expo),
+		background-color 0.5s map-get($easings, ease-out-expo);
+
+	&:hover {
+		color: the_color(white);
+		background-color: the_color(red, bright);
+	}
+}
+
+.woocommerce table.shop_table {
+	thead {
+		@extend .d-none;
+	}
+
+	td {
+		@include padding(top 24px bottom 24px);
+
+		border-top: 1px solid the_color(gray, very-dark-03);
+	}
+
+	.product-subtotal {
+		@extend %text-align-right;
+	}
+}
+
+.woocommerce-cart table.cart td.actions .coupon .input-text {
+	@extend .Input;
+
+	margin-right: 30px !important;
+	margin-bottom: 0 !important;
+}
+
+.woocommerce-cart .cart-collaterals .cart_totals table {
+	th {
+		@extend %vertical-align-middle;
+	}
+
+	.cart-subtotal td,
+	.order-total td {
+		@extend %text-align-right;
+	}
+}
+
+.woocommerce-cart table.cart img,
+.woocommerce-checkout table.cart img {
+	@include size(120px);
 }

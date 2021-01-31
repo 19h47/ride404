@@ -28,7 +28,7 @@ class Init {
 			Setup\Menus::class,
 			Setup\Supports::class,
 			Setup\Textdomain::class,
-			Setup\PostStates::class,
+			Setup\Template::class,
 			Setup\Widgets::class,
 			Plugins\WooCommerce::class,
 			Plugins\WooCommerce\TemplateHooks::class,

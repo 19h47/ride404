@@ -42,7 +42,8 @@
 
 		p,
 		a {
-			@extend %margin-0, %white-space-nowrap;
+			@extend %white-space-nowrap;
+			@include margin(top 0 right 0 bottom 0 left 0);
 
 			transition: color 0.5s map-get($easings, ease-out-expo);
 

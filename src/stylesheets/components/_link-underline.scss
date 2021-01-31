@@ -21,6 +21,16 @@
 		// line-height: (23/38);
 	}
 
+	&:disabled {
+		@extend %Pointer-events-none;
+
+		color: the_color(gray, very-dark-03);
+	}
+
+	&--small {
+		font-size: 16px;
+	}
+
 	& > div {
 		@extend %position-relative;
 

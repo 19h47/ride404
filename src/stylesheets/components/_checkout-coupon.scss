@@ -1,7 +1,8 @@
 /**
  * Checkout coupon
  *
- * @package Rider404
+ * @package WordPress
+ * @subpackage Rider404
  */
 .Checkout-coupon {
 	&__form {
@@ -15,7 +16,8 @@
 
 		button {
 			@include margin(top 8px left 30px);
-			@extend %text-transform-uppercase, %font-family-title, %margin-left-auto;
+			@extend %text-transform-uppercase, %font-family-title;
+			@include margin(left auto);
 
 			font-weight: 900 !important; // WooCommerce
 			text-decoration: underline !important; // WooCommerce
@@ -29,8 +31,7 @@
 		}
 
 		p {
-			@extend %margin-bottom-0;
-			@include margin(right auto);
+			@include margin(right auto bottom 0);
 
 			color: the_color(gray, very-dark-02);
 		}

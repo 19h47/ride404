@@ -2,7 +2,8 @@
  * Navigation
  *
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
- * @package Rider404
+ * @package WordPress
+ * @subpackage Rider404
  */
 .Navigation {
 	$this: &;
@@ -42,8 +43,9 @@
 		// @include autoAlpha(0);
 
 		#{ $this }__link {
-			@extend %font-family-title, %margin-0, %position-relative;
+			@extend %font-family-title, %position-relative;
 			@extend .h1, .d-inline-block;
+			@include margin(top 0 right 0 bottom 0 left 0);
 
 			line-height: (140/110);
 			transition: color 0.5s map-get($easings, ease-out-expo);

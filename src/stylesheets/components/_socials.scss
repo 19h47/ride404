@@ -8,10 +8,14 @@
 .Socials {
 	$this: &;
 
-	@extend %list-style-type-none, %margin-md-0;
+	@extend %list-style-type-none;
 	@extend .d-flex, .flex-wrap, .flex-md-nowrap;
 
 	@include margin(top -8px right -8px bottom -8px left -8px);
+
+	@include media-breakpoint-up(md) {
+		@include margin(top 0 right 0 bottom 0 left 0);
+	}
 
 	&__item {
 		@include margin(top 8px right 8px bottom 8px left 8px);

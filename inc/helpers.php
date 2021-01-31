@@ -1,6 +1,6 @@
 <?php // phpcs:ignore
 /**
- * Groove Box Karaoke helpers function
+ * Rider404 helpers function
  *
  * @package Rider404
  */
@@ -75,10 +75,10 @@ function get_webfonts() : array {
 
 
 /**
- * Retrieve the version number of the theme.
+ * Retrieve the current theme version.
  *
  * @since  1.0.0
- * @return string The version number of the theme.
+ * @return string The current theme version.
  */
 function get_theme_version() : string {
 	return wp_get_theme()->Version;
@@ -86,10 +86,10 @@ function get_theme_version() : string {
 
 
 /**
- * Retrieve the name of the theme.
+ * Retrieve the current theme name.
  *
  * @since  1.0.0
- * @return string The name of the theme.
+ * @return string The current theme name.
  */
 function get_theme_name() : string {
 	return wp_get_theme()->Name;
@@ -97,10 +97,10 @@ function get_theme_name() : string {
 
 
 /**
- * Retrieve the text domain.
+ * Retrieve the current theme text domain.
  *
  * @since  1.0.0
- * @return string The text domain.
+ * @return string The current text domain.
  */
 function get_theme_text_domain() : string {
 	return wp_get_theme()->get( 'TextDomain' );

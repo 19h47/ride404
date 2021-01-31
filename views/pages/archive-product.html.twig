@@ -18,17 +18,17 @@
 
 	{% if product_loop %}
 
-		{#
-		 # Hook: woocommerce_before_shop_loop.
-		 #
-		 # @hooked woocommerce_output_all_notices - 10
-		 #}
-		{% do action( 'woocommerce_before_shop_loop' ) %}
 
 		<div class="Site-container" data-scroll-section>
 			<div class="row">
 				<div class="col-12 col-md-10 offset-md-1">
-					{{ include( 'components/product-categories.html.twig' ) }}
+					{#
+					 # Hook: woocommerce_before_shop_loop.
+					 #
+					 # @hooked woocommerce_output_all_notices - 10
+					 #}
+					{% do action( 'woocommerce_before_shop_loop' ) %}
+					{{- include( 'components/product-categories.html.twig' ) -}}
 				</div>
 			</div>
 		</div>

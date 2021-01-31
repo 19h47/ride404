@@ -57,13 +57,13 @@
 
 		{% if true | apply_filters( 'woocommerce_shipping_calculator_enable_city', true ) %}
 			<p class="form-row form-row-wide" id="calc_shipping_city_field">
-				<input type="text" class="input-text" value="{{ customer.get_shipping_city() | e }}" placeholder="{{ __( 'City', 'rider404' ) | e }}" name="calc_shipping_city" id="calc_shipping_city" />
+				<input type="text" class="input-text color-white" value="{{ customer.get_shipping_city() | e }}" placeholder="{{ __( 'City', 'rider404' ) | e }}" name="calc_shipping_city" id="calc_shipping_city" />
 			</p>
 		{% endif %}
 
 		{% if true | apply_filters( 'woocommerce_shipping_calculator_enable_postcode' ) %}
 			<p class="form-row form-row-wide" id="calc_shipping_postcode_field">
-				<input type="text" class="input-text" value="{{ customer.get_shipping_postcode() | e }}" placeholder="{{ __( 'Postcode / ZIP', 'rider404' ) | e }}" name="calc_shipping_postcode" id="calc_shipping_postcode" />
+				<input type="text" class="input-text color-white" value="{{ customer.get_shipping_postcode() | e }}" placeholder="{{ __( 'Postcode / ZIP', 'rider404' ) | e }}" name="calc_shipping_postcode" id="calc_shipping_postcode" />
 			</p>
 		{% endif %}
 

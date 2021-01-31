@@ -2,7 +2,8 @@
  * Footer
  *
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
- * @package Rider404
+ * @package WordPress
+ * @subpackage Rider404
  */
 .Site-footer {
 	@extend %position-relative;
@@ -21,8 +22,8 @@
 	}
 
 	&__title {
-		@include margin(bottom 35px);
-		@extend .h2, .margin-top-0;
+		@include margin(top 0 bottom 35px);
+		@extend .h2;
 
 		@include media-breakpoint-up(md) {
 			@include margin(bottom 65px);
@@ -42,7 +43,7 @@
 		}
 
 		p {
-			@extend %margin-0;
+			@include margin(top 0);
 
 			transform: translate3d(0, 100%, 0);
 			opacity: 0;
