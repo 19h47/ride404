@@ -56,7 +56,11 @@
 			background-color: the_color(white);
 
 			img {
-				@include size(auto, 100px);
+				@include size(auto, 60px);
+
+				@include media-breakpoint-up(md) {
+					@include size(auto, 100px);
+				}
 			}
 		}
 	}

@@ -6,7 +6,7 @@
  # @package Rider404
  # @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  #}
-<div class="Image-reveal" data-scroll>
+<div class="Image-reveal{{ classes ? ' ' ~ classes | join( ' ' ) : '' }}" data-scroll>
     <div class="Image-reveal__content" {{ attributes ? attributes | map( ( value, key ) => "#{key}=\"#{value}\"" ) | join( ' ' )  | raw }}>
        {% block content %}{% endblock %}
     </div>

@@ -63,16 +63,16 @@
     <div id="smiley-404" class="Smiley-404 Section" data-scroll-section data-module-smiley404 style="transform-style: preserve-3d;">
         <div class="Smiley-404__images">
             <div class="row h-100">
-                <div class="col-3 offset-2 d-flex align-items-start" data-scroll data-scroll-speed="1.5">
-                    {% embed 'partials/image-reveal.html.twig' %}
+                <div class="col-10 offset-1 col-md-3 offset-md-2 d-flex align-items-start" data-scroll data-scroll-speed="1.5">
+                    {% embed 'partials/image-reveal.html.twig' with { classes: [ 'top' ] } %}
                         {% block content %}
                             {{ include( 'partials/image.html.twig', { image: post.meta( 'images' )[2] }, with_context = false ) }}
                         {% endblock %}
                     {% endembed %}
                 </div>
 
-                <div class="col-2 offset-6 d-flex align-items-end" data-scroll data-scroll-speed="1.5">
-                    {% embed 'partials/image-reveal.html.twig' %}
+                <div class="col-10 offset-1 col-md-2 offset-md-6 d-flex align-items-end" data-scroll data-scroll-speed="1.5">
+                    {% embed 'partials/image-reveal.html.twig' with { classes: [ 'bottom' ] } %}
                         {% block content %}
                             {{ include( 'partials/image.html.twig', { image: post.meta( 'images' )[3] }, with_context = false ) }}
                         {% endblock %}

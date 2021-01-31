@@ -19,29 +19,29 @@
 
 	&__questions {
 		@extend %list-style-type-none, %font-weight-light, %position-relative, %margin-0;
-		@include padding(top 120px);
+		@include padding(top 130px);
 
 		z-index: 2;
 
-		@include media-breakpoint-up(sm) {
-			@include padding(top 180px);
-		}
+		// @include media-breakpoint-up(sm) {
+		// 	@include padding(top 180px);
+		// }
 
-		@include media-breakpoint-up(md) {
-			@include padding(top 240px);
-		}
+		// @include media-breakpoint-up(md) {
+		// 	@include padding(top 240px);
+		// }
 
-		@include media-breakpoint-up(lg) {
-			@include padding(top 266px);
-		}
+		// @include media-breakpoint-up(lg) {
+		// 	@include padding(top 266px);
+		// }
 
-		@include media-breakpoint-up(lg) {
-			@include padding(top 266px);
-		}
+		// @include media-breakpoint-up(lg) {
+		// 	@include padding(top 266px);
+		// }
 
-		@include media-breakpoint-up(hd) {
-			@include padding(top 423px);
-		}
+		// @include media-breakpoint-up(hd) {
+		// 	@include padding(top 423px);
+		// }
 
 		&__item {
 			@include margin(left percentage(0.5/4));
@@ -99,23 +99,23 @@
 		@extend %list-style-type-none, %font-weight-light;
 
 		&__item {
-			@include padding(top 180px);
+			@include padding(top 130px);
 
-			@include media-breakpoint-up(md) {
-				@include padding(top 240px);
-			}
+			// @include media-breakpoint-up(md) {
+			// 	@include padding(top 240px);
+			// }
 
-			@include media-breakpoint-up(lg) {
-				@include padding(top 266px);
-			}
+			// @include media-breakpoint-up(lg) {
+			// 	@include padding(top 266px);
+			// }
 
-			@include media-breakpoint-up(lg) {
-				@include padding(top 266px);
-			}
+			// @include media-breakpoint-up(lg) {
+			// 	@include padding(top 266px);
+			// }
 
-			@include media-breakpoint-up(hd) {
-				@include padding(top 423px);
-			}
+			// @include media-breakpoint-up(hd) {
+			// 	@include padding(top 423px);
+			// }
 		}
 	}
 }

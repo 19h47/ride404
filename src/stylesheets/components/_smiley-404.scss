@@ -2,6 +2,8 @@
  * Smiley 404
  *
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package WordPress
+ * @subpackage Rider404
  */
 .Smiley-404 {
 	@extend %position-relative, %overflow-hidden, %overflow-md-visible;
@@ -23,22 +25,24 @@
 
 		z-index: 2;
 
+		@include media-breakpoint-up(md) {
+			.Image-reveal.top {
+				transform: translate3d(0, -50%, 0);
+			}
+
+			.Image-reveal.bottom {
+				@include margin(top auto);
+
+				transform: translate3d(0, 50%, 0);
+			}
+		}
+
 		img {
 			@include size(100%, auto);
 			@extend .d-block;
 
 			object-fit: contain;
 			object-position: center;
-
-			&.top {
-				transform: translate3d(0, -50%, 0);
-			}
-
-			&.bottom {
-				@include margin(top auto);
-
-				transform: translate3d(0, 50%, 0);
-			}
 		}
 	}
 
