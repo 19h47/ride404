@@ -5,7 +5,7 @@
  * @package Rider.404
  */
 .Tags {
-	@extend %position-relative, %overflow-y-hidden, %overflow-md-visible;
+	@extend %position-relative, %overflow-hidden, %overflow-md-visible;
 
 	height: 900px;
 
@@ -51,15 +51,23 @@
 
 		span {
 			@extend .d-inline-block;
-			@include padding(top 30px right 30px bottom 30px left 30px);
+			@include padding(top 20px right 20px bottom 20px left 20px);
 
 			background-color: the_color(white);
+
+			@include media-breakpoint-up(md) {
+				@include padding(top 30px right 30px bottom 30px left 30px);
+			}
 
 			img {
 				@include size(auto, 60px);
 
 				@include media-breakpoint-up(md) {
 					@include size(auto, 100px);
+				}
+
+				@include media-breakpoint-up(hd) {
+					@include size(auto, 150px);
 				}
 			}
 		}

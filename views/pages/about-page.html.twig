@@ -10,18 +10,18 @@
 
 {% block content %}
 
-    <div class="Section About-page__introduction margin-top-0" data-scroll-section>
+    <div class="Section About-page__introduction mt-0" data-scroll-section>
 
         <div class="About-page__introduction__body">
             <div class="row">
-                <div class="col-10 offset-1 col-md-8 offset-md-2">
+                <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
                     {{
                         include(
 							'partials/split-text.html.twig',
 							{
 								title: post.meta( 'introduction' ),
 								id: uniqid(),
-								classes: [ 'h1', 'text-align-center', 'margin-0' ],
+								classes: [ 'h1', 'text-align-center', 'm-0' ],
 								delay: 0.5,
 							}
 						)
@@ -30,7 +30,7 @@
 
 				{% if post.meta( 'catchphrase' ) %}
 					<div class="col-10 offset-1 col-md-4 offset-md-4">
-						<p class="h2 text-align-center">
+						<p class="h2 text-align-center mt-5 mb-0 my-md-4">
 							{{- post.meta( 'catchphrase' ) -}}
 						</p>
 					</div>
@@ -94,7 +94,7 @@
         </div>
     </div>
 
-	<div class="About-map" data-scroll-section>
+	<div class="About-map Section" data-scroll-section>
 		<img class="About-map__grid" data-scroll data-scroll-speed="2" src="{{ theme.link }}/{{ theme.manifest['img/svg/grid.svg'] }}" alt="" width="962" height="842">
 		<div class="row">
 			<div class="col-12">
@@ -107,7 +107,7 @@
 			</div>
 			{% if post.meta( 'map' ).content %}
 				<div class="col-10 offset-1 col-md-4 offset-md-0">
-					<p class="h2 text-align-center">
+					<p class="h2 text-align-center mb-0 m-y-4">
 						{{- post.meta( 'map' ).content -}}
 					</p>
 				</div>
@@ -154,7 +154,7 @@
                 <ul class="Faq__answers">
                     {% for item in post.meta( 'faq' ) %}
                         <li id="{{ item.question | sanitize }}" class="Faq__answers__item" data-scroll-repeat data-scroll data-scroll-call="answer">
-							<p class="h2 margin-top-0 d-md-none">{{- item.question -}}</p>
+							<p class="h2 mt-0 d-md-none">{{- item.question -}}</p>
                             {{- item.answer -}}
                         </li>
                     {% endfor %}

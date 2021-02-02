@@ -12,7 +12,7 @@
 		{% if available_methods is not empty %}
 			<ul id="shipping_method" class="Shipping-methods woocommerce-shipping-methods">
 				{% for method in available_methods %}
-					<li class="margin-0">
+					<li class="m-0">
 						{% if 1 < function( 'count', available_methods ) %}
 							{% apply format( index, method.id | sanitize, method.id, function( 'checked', method.id, chosen_method, false ) ) %}
 								<input type="radio" name="shipping_method[%1$d]" data-index="%1$d" id="shipping_method_%1$d_%2$s" value="%3$s" class="shipping_method" %4$s />

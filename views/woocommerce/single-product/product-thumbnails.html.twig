@@ -12,7 +12,7 @@
 
 			{% for gallery_image_id in gallery_image_ids %}
 				<div class="col-10 offset-1 {{ cycle( classes, loop.index0 ) }}">
-					{% embed 'partials/image-reveal.html.twig' %}
+					{% embed 'partials/image-reveal.html.twig' with { classes: [] } %}
 						{% block content %}
 							{{-
 								include(

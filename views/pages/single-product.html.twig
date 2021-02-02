@@ -59,7 +59,7 @@
                 </div>
             </div>
 
-			<div class="Section">
+			<div class="Section overflow-hidden">
 				<div class="row">
                 	<div class="col-12 col-md-8 offset-md-2">
 						{#
@@ -73,25 +73,26 @@
 					</div>
 				</div>
 			</div>
-
         </div>
 
 		{% do action( 'woocommerce_after_single_product_summary' ) %}
 
-        <div class="Section">
-            <div class="row">
-                <div class="col-4 offset-2">
-                    <div class="h2 margin-0">
-						{{- post.post_excerpt -}}
+		{% if post.post_excerpt or post.post_content %}
+			<div class="Section">
+				<div class="row">
+					<div class="col-4 offset-2">
+						<div class="h2 m-0">
+							{{- post.post_excerpt -}}
+						</div>
 					</div>
-                </div>
-                <div class="col-3{{ post.post_excerpt ? ' offset-1' : ' offset-6' -}}">
-					<div class="Wysiwyg">
-                    	{{- post.post_content -}}
+					<div class="col-3{{ post.post_excerpt ? ' offset-1' : ' offset-6' -}}">
+						<div class="Wysiwyg">
+							{{- post.post_content -}}
+						</div>
 					</div>
-                </div>
-            </div>
-        </div>
+				</div>
+			</div>
+		{% endif %}
 
 		{% do action( 'woocommerce_product_thumbnails' ) %}
 

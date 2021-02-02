@@ -10,6 +10,10 @@
 
 	color: the_color(white);
 
+	@include media-breakpoint-up(md) {
+		@include margin(top 410px);
+	}
+
 	&__title {
 		@extend .h1;
 		@extend %text-align-center;

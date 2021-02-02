@@ -28,6 +28,9 @@
 					 # @hooked woocommerce_output_all_notices - 10
 					 #}
 					{% do action( 'woocommerce_before_shop_loop' ) %}
+				</div>
+
+				<div class="col-10 offset-1">
 					{{- include( 'components/product-categories.html.twig' ) -}}
 				</div>
 			</div>

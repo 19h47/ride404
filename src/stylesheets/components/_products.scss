@@ -7,7 +7,7 @@
  */
 .Products {
 	@extend .row;
-	@extend %list-style-type-none;
+	@extend %list-style-type-none, %overflow-hidden, %overflow-md-hidden;
 	// @include margin(top -60px bottom -60px);
 
 	li {
