@@ -82,7 +82,7 @@
 
         <div class="About__body">
             <div class="row">
-                <div class="col-10 offset-1 col-md-6 offset-md-3">
+                <div class="col-10 offset-1 col-sm-6 offset-sm-3">
                     <div class="About__content">
                         {{- include( 'partials/split-text.html.twig', { id: uniqid(), title: post.meta( 'about' ).content } ) -}}
                         <img data-scroll data-scroll-speed="2" src="{{ theme.link }}/{{ theme.manifest['img/svg/about.svg'] }}" width="719" height="585">
@@ -103,7 +103,7 @@
     <div id="carousel" class="Section Carousel" data-scroll-section data-module-carousel>
         <img class="Carousel__background" src="{{ theme.link }}/{{ theme.manifest['img/png/carousel.png'] }}" alt="" width="1440" height="1153" data-scroll data-scroll-speed="2">
         <div class="row">
-            <div class="col-10 offset-1 col-sm-8 offset-sm-2">
+            <div class="col-10 offset-1 col-sm-6 offset-sm-3 col-md-8 offset-md-2">
                 <div class="Carousel__items js-items">
                     {% for image in post.meta( 'carousel' ) %}
                         <div class="Carousel__item js-item">
@@ -121,15 +121,15 @@
 
      <div class="Section Partners position-relative" data-scroll-section>
 	 	<img class="Partners__grid" data-scroll data-scroll-speed="2" src="{{ theme.link }}/{{ theme.manifest['img/svg/grid.svg'] }}" alt="" width="962" height="842">
-        <img class="Partners__decor d-none d-md-block" data-scroll data-scroll-speed="2" src="{{ theme.link }}/{{ theme.manifest['img/svg/partners.svg'] }}" alt="" height="134" width="76">
+        <img class="Partners__decor d-none d-sm-block" data-scroll data-scroll-speed="2" src="{{ theme.link }}/{{ theme.manifest['img/svg/partners.svg'] }}" alt="" height="134" width="76">
         <div class="row">
-            <div class="col-10 offset-1 col-md-3 offset-md-6">
+            <div class="col-10 offset-1 col-sm-3 offset-sm-5 offset-md-6">
                 <h2>
                     {{- include( 'partials/split-text.html.twig', { title: __( 'Partners &\nCollaboraters', 'rider404' ) | nl2br, id: uniqid() } ) -}}
                 </h2>
             </div>
 
-            <div class="col-10 offset-1 col-md-6 offset-md-6 col-lg-5 col-hd-3">
+            <div class="col-10 offset-1 col-sm-6 offset-sm-5 offset-md-6 col-lg-5 col-hd-3">
 				<ul class="Partners__items"  data-scroll>
 					{% for partner in partners %}
 						<li class="Partners__item" style="transition-delay: {{ loop.index * 0.1 }}s;">
@@ -143,6 +143,6 @@
         </div>
     </div>
 
-	{{ include( 'components/modal.html.twig', { control: 'video-hero', video: post.meta( 'video' ).youtube } ) }}
+	{{- include( 'components/modal.html.twig', { control: 'video-hero', video: post.meta( 'video' ).youtube } ) -}}
 
 {% endblock  %}

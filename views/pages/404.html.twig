@@ -1,0 +1,17 @@
+{#
+ # Page: 404
+ #
+ # @package WordPress
+ # @subpackage Rider404
+ #}
+{% extends 'index.html.twig' %}
+
+{% block hero %}
+    <div class="Error404__page">
+		{{- include( 'components/video.html.twig', { id: 'video-error404', animated: false, video: error_404_video_url, overlay: false } ) -}}
+    </div>
+{% endblock %}
+
+{% block content %}{% endblock %}
+
+{% block footer %}{% endblock %}

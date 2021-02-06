@@ -1,0 +1,34 @@
+
+# BEGIN WordPress
+# The directives (lines) between "BEGIN WordPress" and "END WordPress" are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress
+# BEGIN WP HTPASSWD
+# Les directives (lignes) entre « BEGIN WP HTPASSWD » et « END WP HTPASSWD » sont générées
+# dynamiquement, et doivent être modifiées uniquement via les filtres WordPress.
+# Toute modification des directives situées entre ces marqueurs sera surchargée.
+
+# END WP HTPASSWD
+
+<Files admin-ajax.php>
+Order allow,deny
+Allow from all
+Satisfy any 
+</Files>
+
+AuthName "Password Protected Area"
+AuthType Basic
+AuthUserFile "/srv/data/web/vhosts/rider404.com/htdocs/.htpasswd"
+
+Require valid-user

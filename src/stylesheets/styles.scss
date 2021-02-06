@@ -51,11 +51,13 @@
 @import 'layouts/push';
 @import 'layouts/carousel';
 @import 'layouts/tags';
+@import 'layouts/site';
 
 // Pages
 @import 'pages/page';
 @import 'pages/front-page';
 @import 'pages/about-page';
+@import 'pages/error404';
 
 // Components
 @import 'components/guid';

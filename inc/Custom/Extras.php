@@ -49,6 +49,10 @@ class Extras {
 			$classes[] = 'Single-product';
 		}
 
+		if ( is_404() ) {
+			$classes[] = 'Error404';
+		}
+
 		return $classes;
 	}
 

@@ -213,6 +213,8 @@ class Theme {
 
 		$context['is_user_logged_in'] = is_user_logged_in();
 
+		$context['error_404_video_url'] = get_option( 'error_404_video_url' );
+
 		return $context;
 	}
 }

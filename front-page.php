@@ -19,13 +19,15 @@ $data['post']     = Timber::get_post();
 $data['partners'] = Helper::transient(
 	'rider404_partners',
 	function() {
-		return Timber::get_posts(
+		$query = Timber::get_posts(
 			array(
 				'post_type'      => 'partner',
 				'posts_per_page' => -1,
 				'no_found_rows'  => true,
 			)
 		);
+
+		return $query->realize();
 	}
 );
 $data['sidebar']  = Timber::get_widgets( 'front-page-sidebar' );

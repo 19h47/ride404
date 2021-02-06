@@ -7,7 +7,7 @@
  */
 .Products {
 	@extend .row;
-	@extend %list-style-type-none, %overflow-hidden, %overflow-md-hidden;
+	@extend %list-style-type-none, %overflow-hidden, %overflow-sm-hidden;
 	// @include margin(top -60px bottom -60px);
 
 	li {
@@ -15,11 +15,11 @@
 	}
 
 	li:nth-child(8n + 1) {
-		@extend .col-10, .offset-1, .col-md-4, .offset-md-1;
+		@extend .col-10, .offset-1, .col-sm-4, .offset-sm-1;
 	}
 
 	li:nth-child(8n + 2) {
-		@extend .col-10, .offset-1, .col-md-3, .offset-md-1;
+		@extend .col-10, .offset-1, .col-sm-3, .offset-sm-1;
 	}
 
 	li:nth-child(8n + 3) {
@@ -27,22 +27,22 @@
 	}
 
 	li:nth-child(8n + 4) {
-		@extend .col-10, .offset-1, .col-md-3, .offset-md-1;
+		@extend .col-10, .offset-1, .col-sm-3, .offset-sm-1;
 	}
 
 	li:nth-child(8n + 5) {
-		@extend .col-10, .offset-1, .col-md-6, .offset-md-1;
+		@extend .col-10, .offset-1, .col-sm-6, .offset-sm-1;
 	}
 
 	li:nth-child(8n + 6) {
-		@extend .col-10, .offset-1, .col-md-3, .offset-md-1;
+		@extend .col-10, .offset-1, .col-sm-3, .offset-sm-1;
 	}
 
 	li:nth-child(8n + 7) {
-		@extend .col-10, .offset-1, .col-md-4, .offset-md-1;
+		@extend .col-10, .offset-1, .col-sm-4, .offset-sm-1;
 	}
 
 	li:nth-child(8n + 8) {
-		@extend .col-10, .offset-1, .col-md-6, .offset-md-1;
+		@extend .col-10, .offset-1, .col-sm-6, .offset-sm-1;
 	}
 }

@@ -29,6 +29,7 @@ class Init {
 			Setup\Supports::class,
 			Setup\Textdomain::class,
 			Setup\Template::class,
+			Setup\Settings::class,
 			Setup\Widgets::class,
 			Plugins\WooCommerce::class,
 			Plugins\WooCommerce\TemplateHooks::class,

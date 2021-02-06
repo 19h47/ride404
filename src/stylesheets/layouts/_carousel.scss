@@ -35,7 +35,7 @@
 		object-fit: cover;
 		object-position: center;
 
-		@include media-breakpoint-up(md) {
+		@include media-breakpoint-up(sm) {
 			object-fit: contain;
 		}
 	}

@@ -1,0 +1,22 @@
+/**
+ * Error404
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package WordPress
+ * @subpackage Rider404
+ */
+.Error404 {
+	.Site-content {
+		@include fixed(top 0 right 0 bottom 0 left 0);
+	}
+
+	&__page {
+		.Video {
+			@include absolute(top 0 right 0 bottom 0 left 0);
+			@include size(100%);
+
+			object-fit: cover;
+			object-position: center;
+		}
+	}
+}
