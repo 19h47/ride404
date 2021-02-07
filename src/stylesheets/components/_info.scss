@@ -14,9 +14,9 @@
 	border: none;
 	color: the_color(white);
 
-	& > *:first-child {
-		@include margin(left auto);
-	}
+	// & > *:first-child {
+	// 	@include margin(left auto);
+	// }
 
 	svg {
 		@include size(28px);

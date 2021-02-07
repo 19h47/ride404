@@ -8,7 +8,7 @@
 .Hero {
 	@at-root .Single-product & {
 		@include media-breakpoint-up(md) {
-			@include margin(top 100px bottom 30px);
+			@include margin( bottom 30px);
 		}
 	}
 

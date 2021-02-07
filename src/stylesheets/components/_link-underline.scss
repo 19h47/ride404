@@ -61,7 +61,7 @@
 		color: the_color(red, bright);
 
 		& > div::after {
-			transform: scale(0);
+			transform: scaleX(0);
 		}
 	}
 }

@@ -15,9 +15,10 @@
         </div>
 
         <div class="d-none d-md-flex col-2 offset-3 align-items-center justify-content-center">
+
             {% if is_product or is_cart or is_checkout %}
-                <a class="Site-header__title Page__title font-family-title font-weight-extrablack text-transform-uppercase Pointer-events-auto" href="{{ shop_url }}">
-                    <span>{{- __( 'Back to shop', 'rider404' ) -}}</span>
+                <a class="Site-header__title Page__title Link-underline Link-underline--small Pointer-events-auto" href="{{ shop_url }}">
+                    <div class="is-inview is-active">{{- __( 'Back to shop', 'rider404' ) -}}</div>
                 </a>
             {% elseif is_shop %}
                 <p class="Site-header__title Page__title font-family-title font-weight-extrablack text-transform-uppercase m-0">

@@ -6,58 +6,59 @@
  #}
 {% extends 'index.html.twig' %}
 
-{% block hero %}
-    {#
-     # Hook: rider404_single_product_before_hero
-     #
-     # @hooked Rider404\Plugins\WooCommerce\TemplateFunctions::single_quick_add_to_cart - 10
-     #}
-    {% do action( 'rider404_single_product_before_hero' ) %}
-
-    <div class="Hero" data-scroll-section>
-        <div class="row">
-            <div class="col-10 offset-1">
-                {#
-                 # Hook: rider404_single_product_hero
-                 #
-                 # @hooked woocommerce_template_single_title - 10
-                 #}
-                {% do action( 'rider404_single_product_hero' ) %}
-            </div>
-        </div>
-    </div>
-
-    {% do action( 'rider404_single_product_after_hero' ) %}
-{% endblock %}
+{% block hero %}{% endblock %}
 
 {% block content %}
 
-    {% do action( 'woocommerce_before_single_product' ) %}
+	{% do action( 'woocommerce_before_single_product' ) %}
 
-    <div id="product-{{ post.id }}" class="{{ product_class | join( ' ' ) }}" data-scroll-section>
+    <div id="product-{{ post.id }}" class="Product{{ product_class ? ' ' ~ product_class | join( ' ' ) }}" data-scroll-section>
+
+		{#
+		 # Hook: rider404_single_product_before_hero
+		 #
+		 # @hooked Rider404\Plugins\WooCommerce\TemplateFunctions::single_quick_add_to_cart - 10
+		 #}
+		{% do action( 'rider404_single_product_before_hero' ) %}
+
+		<div class="Hero" data-scroll>
+			<div class="row">
+				<div class="col-10 offset-1">
+					{#
+					 # Hook: rider404_single_product_hero
+					 #
+					 # @hooked woocommerce_template_single_title - 10
+					 #}
+					{% do action( 'rider404_single_product_hero' ) %}
+				</div>
+			</div>
+		</div>
+
+		{% do action( 'rider404_single_product_after_hero' ) %}
 
 		{% do action( 'woocommerce_before_single_product_summary' ) %}
 
-		<div class="summary entry-summary">
+		<div class="Sections">
+
 			<div class="Section">
 				<div class="row">
 					<div class="col-8 offset-2">
 
-                        {#
-                         # Hook: woocommerce_single_product_summary.
-                         #
-                         # @hooked woocommerce_template_single_rating - 10
-                         # @hooked woocommerce_template_single_price - 10
-                         # @hooked woocommerce_template_single_add_to_cart - 30
-                         # @hooked woocommerce_template_single_sharing - 50
-                         # @hooked WC_Structured_Data::generate_product_data() - 60
-                         #}
-                        {% do action( 'woocommerce_single_product_summary' ) %}
+						{#
+						# Hook: woocommerce_single_product_summary.
+						#
+						# @hooked woocommerce_template_single_rating - 10
+						# @hooked woocommerce_template_single_price - 10
+						# @hooked woocommerce_template_single_add_to_cart - 30
+						# @hooked woocommerce_template_single_sharing - 50
+						# @hooked WC_Structured_Data::generate_product_data() - 60
+						#}
+						{% do action( 'woocommerce_single_product_summary' ) %}
 
-                    </div>
+					</div>
 
-                </div>
-            </div>
+				</div>
+			</div>
 
 			<div class="Section overflow-hidden">
 				<div class="row">
@@ -69,32 +70,43 @@
 						 #}
 						{% do action( 'woocommerce_single_product_image' ) %}
 						{# {{- include( 'partials/featured.html.twig', { product: post }, with_context = false ) -}} #}
-						{{- include( 'partials/image.html.twig', { image: post.thumbnail, classes: [ 'Product-thumbnail' ] }, with_context = false ) -}}
+						{{-
+							include(
+								'partials/image.html.twig',
+								{
+									image: post.thumbnail,
+									classes: [ 'Product-thumbnail' ]
+								},
+								with_context = false
+							)
+						-}}
 					</div>
 				</div>
 			</div>
-        </div>
 
-		{% do action( 'woocommerce_after_single_product_summary' ) %}
+			{% do action( 'woocommerce_after_single_product_summary' ) %}
 
-		{% if post.post_excerpt or post.post_content %}
-			<div class="Section">
-				<div class="row">
-					<div class="col-4 offset-2">
-						<div class="h2 m-0">
-							{{- post.post_excerpt -}}
+			{% if post.post_excerpt or post.post_content %}
+				<div class="Section">
+					<div class="row">
+						<div class="col-4 offset-2">
+							<div class="h2 m-0">
+								{{- post.post_excerpt -}}
+							</div>
 						</div>
-					</div>
-					<div class="col-3{{ post.post_excerpt ? ' offset-1' : ' offset-6' -}}">
-						<div class="Wysiwyg">
-							{{- post.post_content -}}
+						<div class="col-3{{ post.post_excerpt ? ' offset-1' : ' offset-6' -}}">
+							<div class="Wysiwyg">
+								{{- post.post_content -}}
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		{% endif %}
+			{% endif %}
 
-		{% do action( 'woocommerce_product_thumbnails' ) %}
+			{% do action( 'woocommerce_product_thumbnails' ) %}
+
+		</div>
+
 
     </div>
 

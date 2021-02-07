@@ -17,6 +17,7 @@
 
 	@include media-breakpoint-up(md) {
 		@include size(auto);
+		@include margin(right auto left auto);
 
 		max-width: 100%;
 		object-fit: contain;

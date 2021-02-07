@@ -17,6 +17,7 @@
 <div class="Site-container" data-scroll-section>
 	<div class="row">
 		<div class="col-10 offset-1">
+
 			{% if not checkout.is_registration_enabled() and checkout.is_registration_required() and not is_user_logged_in %}
 
 				{% filter apply_filters( 'woocommerce_checkout_must_be_logged_in_message' ) %}

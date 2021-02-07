@@ -95,7 +95,7 @@ class Theme {
 			$twig->addFunction(
 				new TwigFunction(
 					'get_extended',
-					function( $content ) {
+					function( $x ) {
 						return get_extended( $content );
 					}
 				)
@@ -207,7 +207,7 @@ class Theme {
 		$context['is_shop']             = is_shop();
 		$context['is_front_page']       = is_front_page();
 		$context['is_product_category'] = is_product_category();
-		$content['is_cart']             = is_cart();
+		$context['is_cart']             = is_cart();
 		$context['is_checkout']         = is_checkout();
 		$context['is_ajax']             = is_ajax();
 

@@ -29,5 +29,7 @@
 {% endblock %}
 
 {% block content %}
-	{{- post.content -}}
+	{% apply shortcodes %}
+		[woocommerce_checkout]
+	{% endapply %}
 {% endblock  %}

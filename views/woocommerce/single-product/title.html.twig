@@ -6,16 +6,16 @@
  #}
 
 <h1 class="text-align-center m-0">
-    {{
+    {{-
 		include(
 			'partials/split-text.html.twig',
 			{
             	title: post.meta( 'long_title' ) ? post.meta( 'long_title' ) : post.title,
             	id: uniqid(),
-            	delay: 0.5,
-            	classes: [ 'product_title', 'entry-title' ]
+            	classes: [ 'product_title', 'entry-title' ],
+            	delay: 0.5
         	},
 			with_context = false
 		)
-	}}
+	-}}
 </h1>

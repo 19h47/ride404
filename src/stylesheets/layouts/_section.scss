@@ -20,7 +20,7 @@
 		@include margin(top 180px bottom 180px);
 	}
 
-	@include media-breakpoint-up(lg) {
+	@include media-breakpoint-up(hd) {
 		@include margin(top 324px bottom 324px);
 	}
 }

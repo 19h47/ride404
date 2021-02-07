@@ -52,12 +52,14 @@
 @import 'layouts/carousel';
 @import 'layouts/tags';
 @import 'layouts/site';
+@import 'layouts/sections';
 
 // Pages
 @import 'pages/page';
 @import 'pages/front-page';
 @import 'pages/about-page';
 @import 'pages/error404';
+@import 'pages/single-product';
 
 // Components
 @import 'components/guid';
@@ -126,6 +128,7 @@
 @import 'components/image-reveal';
 @import 'components/cursor';
 @import 'components/products';
+@import 'components/product';
 @import 'components/coordinates';
 @import 'components/bar';
 @import 'components/modal';

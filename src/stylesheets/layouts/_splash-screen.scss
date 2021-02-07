@@ -1,9 +1,10 @@
 /**
-* Splash Screen
-*
-* @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
-* @package Rider404
-*/
+ * Splash Screen
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package WordPress
+ * @subpackage Rider404
+ */
 .Splash-screen {
 	@extend %Pointer-events-none;
 	@include fixed(top 0 right 0 bottom 0 left 0);
