@@ -7,9 +7,32 @@
 {% extends 'index.html.twig' %}
 
 {% block hero %}
-    <div class="Error404__page">
+
+	<div class="Error404__body d-flex align-items-center justify-content-center">
+		<div class="row">
+			<div class="col-10 offset-1 text-align-center">
+				<h1 class="m-0">
+					{{-
+						include(
+							'partials/split-text.html.twig',
+							{
+								title: 'Ooops!',
+								id: uniqid(),
+								delay: 0.5
+							},
+							with_context = false
+						)
+					-}}
+				</h1>
+				<a class="Site-header__title Page__title Link-underline Link-underline--small Pointer-events-auto" href="{{ site.link }}">
+                    <div class="is-inview is-active">{{- __( 'Back to home', 'rider404' ) -}}</div>
+                </a>
+			</div>
+		</div>
+
 		{{- include( 'components/video.html.twig', { id: 'video-error404', animated: false, video: error_404_video_url, overlay: false } ) -}}
-    </div>
+	</div>
+
 {% endblock %}
 
 {% block content %}{% endblock %}
