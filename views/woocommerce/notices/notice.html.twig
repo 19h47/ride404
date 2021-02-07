@@ -6,16 +6,16 @@
  #}
 
 {% if notices %}
-	<div class="Site-container">
-		<div class="row">
-			<div class="col-10 offset-1">
-				{% for notice in notices %}
-					<div class="Info woocommerce-info"{{ function( 'wc_get_notice_data_attr', notice ) }}>
-						{{- include( 'svg/use.html.twig', { icon: 'face-with-mouth' }, with_context = false ) -}}
-						<span>{{- function( 'wc_kses_notice', notice.notice ) -}}</span>
-					</div>
-				{% endfor %}
-			</div>
+
+	<div class="row">
+		<div class="col-10 offset-1">
+			{% for notice in notices %}
+				<div class="Info woocommerce-info"{{ function( 'wc_get_notice_data_attr', notice ) }}>
+					{{- include( 'svg/use.html.twig', { icon: 'face-with-mouth' }, with_context = false ) -}}
+					<span>{{- function( 'wc_kses_notice', notice.notice ) -}}</span>
+				</div>
+			{% endfor %}
 		</div>
 	</div>
+
 {% endif %}

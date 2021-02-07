@@ -53,6 +53,10 @@ class Extras {
 			$classes[] = 'Error404';
 		}
 
+		if ( is_shop() ) {
+			$classes[] = 'Shop';
+		}
+
 		return $classes;
 	}
 

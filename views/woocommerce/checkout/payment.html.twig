@@ -8,7 +8,8 @@
 	{% do action( 'woocommerce_review_order_before_payment' ) %}
 {% endif %}
 
-<div id="payment" class="Checkout-payment woocommerce-checkout-payment">
+{# woocommerce-checkout-payment #}
+<div id="payment" class="Checkout-payment">
 
 	{% if cart.needs_payment() %}
 		<div class="Checkout-payment__methods wc_payment_methods payment_methods methods" data-module-radiogroup role="radiogroup">

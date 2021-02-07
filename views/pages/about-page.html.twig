@@ -10,171 +10,180 @@
 
 {% block content %}
 
-    <div class="Section About-page__introduction mt-0" data-scroll-section>
+	<div class="Sections">
+		<div class="Section About-page__introduction mt-0" data-scroll-section>
 
-        <div class="About-page__introduction__body">
-            <div class="row">
-                <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
-                    {{
-                        include(
-							'partials/split-text.html.twig',
-							{
-								title: post.meta( 'introduction' ),
-								id: uniqid(),
-								classes: [ 'h1', 'text-align-center', 'm-0' ],
-								delay: 0.5,
-							}
-						)
-					}}
-                </div>
+			<div class="About-page__introduction__body">
+				<div class="row">
+					<div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
+						{{
+							include(
+								'partials/split-text.html.twig',
+								{
+									title: post.meta( 'introduction' ),
+									id: uniqid(),
+									classes: [ 'h1', 'text-align-center', 'm-0' ],
+									delay: 0.5,
+								}
+							)
+						}}
+					</div>
+				</div>
 
 				{% if post.meta( 'catchphrase' ) %}
-					<div class="col-10 offset-1 col-md-4 offset-md-4">
-						<p class="h2 text-align-center mt-5 mb-0 my-md-4">
-							{{- post.meta( 'catchphrase' ) -}}
-						</p>
+					<div class="row About-page__catchphrase">
+						<div class="col-10 offset-1 col-md-4 offset-md-4">
+							<p class="h2 text-align-center mt-5 mb-0 my-md-4">
+								{{- post.meta( 'catchphrase' ) -}}
+							</p>
+						</div>
 					</div>
 				{% endif %}
 
-            </div>
-        </div>
+			</div>
 
 
-        <div class="About-page__introduction__images">
-            <div class="row h-100">
-                <div class="col-6 d-flex align-items-start" data-scroll data-scroll-speed="1.5">
-                    {% embed 'partials/image-reveal.html.twig' with { attributes: { style: 'transition-delay: 1.5s;' } } %}
-                        {% block content %}
-                            {{ include( 'partials/image.html.twig', { image: post.meta( 'images' )[0] }, with_context = false ) }}
-                        {% endblock %}
-                    {% endembed %}
-                </div>
-                <div class="col-3 offset-8 d-flex align-items-end" data-scroll data-scroll-speed="1.5">
-                     {% embed 'partials/image-reveal.html.twig' %}
-                        {% block content %}
-                            {{ include( 'partials/image.html.twig', { image: post.meta( 'images' )[1] }, with_context = false ) }}
-                        {% endblock %}
-                    {% endembed %}
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="smiley-404" class="Smiley-404 Section" data-scroll-section data-module-smiley404 style="transform-style: preserve-3d;">
-        <div class="Smiley-404__images">
-            <div class="row h-100">
-                <div class="col-10 offset-1 col-md-3 offset-md-2 d-flex align-items-start" data-scroll data-scroll-speed="1.5">
-                    {% embed 'partials/image-reveal.html.twig' with { classes: [ 'top' ] } %}
-                        {% block content %}
-                            {{ include( 'partials/image.html.twig', { image: post.meta( 'images' )[2] }, with_context = false ) }}
-                        {% endblock %}
-                    {% endembed %}
-                </div>
-
-                <div class="col-10 offset-1 col-md-2 offset-md-6 d-flex align-items-end" data-scroll data-scroll-speed="1.5">
-                    {% embed 'partials/image-reveal.html.twig' with { classes: [ 'bottom' ] } %}
-                        {% block content %}
-                            {{ include( 'partials/image.html.twig', { image: post.meta( 'images' )[3] }, with_context = false ) }}
-                        {% endblock %}
-                    {% endembed %}
-                </div>
-            </div>
-        </div>
-        <canvas id="smiley-404-canvas" height="900" data-smiley404="canvas"></canvas>
-        <div class="Smiley-404__background">
-            <img
-				data-scroll
-				data-scroll-direction="horizontal"
-				data-scroll-target="#smiley-404"
-				data-scroll-speed="9"
-				src="{{ theme.link }}/{{ theme.manifest['img/svg/rider-404.svg'] }}"
-				width="3204.3"
-				height="410.6"
-			>
-        </div>
-    </div>
-
-	<div class="About-map Section" data-scroll-section>
-		<img class="About-map__grid" data-scroll data-scroll-speed="2" src="{{ theme.link }}/{{ theme.manifest['img/svg/grid.svg'] }}" alt="" width="962" height="842">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="About-map__title">{{- site.title -}}</h2>
+			<div class="About-page__introduction__images">
+				<div class="row h-100">
+					<div class="col-6 d-flex align-items-start" data-scroll data-scroll-speed="1.5">
+						{% embed 'partials/image-reveal.html.twig' with { attributes: { style: 'transition-delay: 1.5s;' } } %}
+							{% block content %}
+								{{ include( 'partials/image.html.twig', { image: post.meta( 'images' )[0] }, with_context = false ) }}
+							{% endblock %}
+						{% endembed %}
+					</div>
+					<div class="col-3 offset-8 d-flex align-items-end" data-scroll data-scroll-speed="1.5">
+						{% embed 'partials/image-reveal.html.twig' %}
+							{% block content %}
+								{{ include( 'partials/image.html.twig', { image: post.meta( 'images' )[1] }, with_context = false ) }}
+							{% endblock %}
+						{% endembed %}
+					</div>
+				</div>
 			</div>
 		</div>
-		<div class="row align-items-md-center">
-			<div class="col-6 d-none d-md-block">
-				<div id="about-map" class="About-map__canvas" data-scroll  data-scroll-id="about-map" data-module-about-map data-lottie-json="about-map"></div>
-			</div>
-			{% if post.meta( 'map' ).content %}
-				<div class="col-10 offset-1 col-md-4 offset-md-0">
-					<p class="h2 text-align-center mb-0 m-y-4">
-						{{- post.meta( 'map' ).content -}}
-					</p>
+
+		<div id="smiley-404" class="Smiley-404 Section" data-scroll-section data-module-smiley404 style="transform-style: preserve-3d;">
+			<div class="Smiley-404__images">
+				<div class="row h-100">
+					<div class="col-10 offset-1 col-md-3 offset-md-2 d-flex align-items-start" data-scroll data-scroll-speed="1.5">
+						{% embed 'partials/image-reveal.html.twig' with { classes: [ 'top' ] } %}
+							{% block content %}
+								{{ include( 'partials/image.html.twig', { image: post.meta( 'images' )[2] }, with_context = false ) }}
+							{% endblock %}
+						{% endembed %}
+					</div>
+
+					<div class="col-10 offset-1 col-md-2 offset-md-6 d-flex align-items-end" data-scroll data-scroll-speed="1.5">
+						{% embed 'partials/image-reveal.html.twig' with { classes: [ 'bottom' ] } %}
+							{% block content %}
+								{{ include( 'partials/image.html.twig', { image: post.meta( 'images' )[3] }, with_context = false ) }}
+							{% endblock %}
+						{% endembed %}
+					</div>
 				</div>
-			{% endif %}
+			</div>
+			<canvas id="smiley-404-canvas" height="900" data-smiley404="canvas"></canvas>
+			<div class="Smiley-404__background">
+				<img
+					data-scroll
+					data-scroll-direction="horizontal"
+					data-scroll-target="#smiley-404"
+					data-scroll-speed="9"
+					src="{{ theme.link }}/{{ theme.manifest['img/svg/rider-404.svg'] }}"
+					width="3204.3"
+					height="410.6"
+				>
+			</div>
+		</div>
+
+		<div class="About-map Section" data-scroll-section>
+			<img class="About-map__grid" data-scroll data-scroll-speed="2" src="{{ theme.link }}/{{ theme.manifest['img/svg/grid.svg'] }}" alt="" width="962" height="842">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="About-map__title">{{- site.title -}}</h2>
+				</div>
+			</div>
+			<div class="row align-items-md-center">
+				<div class="col-6 d-none d-md-block">
+					<div id="about-map" class="About-map__canvas" data-scroll  data-scroll-id="about-map" data-module-about-map data-lottie-json="about-map"></div>
+				</div>
+				{% if post.meta( 'map' ).content %}
+					<div class="col-10 offset-1 col-md-4 offset-md-0">
+						<p class="h2 text-align-center mb-0 m-y-4">
+							{{- post.meta( 'map' ).content -}}
+						</p>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+
+		<div class="About-video Section" data-scroll-section>
+			<div class="row">
+				<div class="col-12 col-md-10 offset-md-1">
+					{% embed 'components/video.html.twig' with { id: 'video-about', video: post.meta( 'video' ).thumbnail.url, overlay: true } %}
+						{% block caption %}
+							{% if socials.youtube.url %}
+								<div class="Video__caption">
+									{{- __( 'All video Rider.404 Project on', 'rider404' ) }}
+									&nbsp;
+									<a href="{{ socials.youtube.url }}">
+										{% include 'svg/use.html.twig' with { icon: 'youtube' } only %}
+										&nbsp;&nbsp;<span>{{- __( 'YouTube', 'rider404' ) -}}</span>
+									</a>
+								</div>
+							{% endif %}
+						{% endblock %}
+					{% endembed %}
+				</div>
+			</div>
+		</div>
+
+		<div id="faq" class="Section Faq" data-module-faq data-scroll-section>
+			<img class="Faq__grid d-none d-md-block" data-scroll data-scroll-speed="2" src="{{ theme.link }}/{{ theme.manifest['img/svg/grid.svg'] }}" alt="" width="962" height="842">
+			<div class="row">
+				<div class="col-4 offset-1 d-none d-md-block">
+					<ul class="Faq__questions h2" data-scroll data-scroll-sticky data-scroll-target="#faq">
+						{% for item in post.meta( 'faq' ) %}
+							<li class="Faq__questions__item{{ loop.first ? ' is-active' : '' }}">
+								<a class="js-answer" href="#{{ item.question | sanitize }}" data-scroll-to>
+									{{- item.question -}}
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+				<div class="col-10 col-md-4 offset-1">
+					<ul class="Faq__answers">
+						{% for item in post.meta( 'faq' ) %}
+							<li id="{{ item.question | sanitize }}" class="Faq__answers__item" data-scroll-repeat data-scroll data-scroll-call="answer">
+								<p class="h2 mt-0 d-md-none">{{- item.question -}}</p>
+								{{- item.answer -}}
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div id="tags" class=" Section Tags" data-scroll-section>
+			<ul class="Tags__items">
+				{% for i in 0..5 %}
+					<li class="Tags__item">
+						<span data-scroll data-scroll-direction="horizontal" data-scroll-target="#tags" data-scroll-speed="{{ random( -20, 20 ) }}">
+							<img src="{{ theme.link }}/{{ theme.manifest['img/svg/rider-404.svg'] }}" alt="" width="3204.3" height="410.6">
+						</span>
+					</li>
+				{% endfor %}
+			</ul>
 		</div>
 	</div>
 
-    <div class="About-video" data-scroll-section>
-        <div class="row">
-            <div class="col-12 col-md-10 offset-md-1">
-                {% embed 'components/video.html.twig' with { id: 'video-about', video: post.meta( 'video' ).thumbnail.url, overlay: true } %}
-                    {% block caption %}
-						{% if socials.youtube.url %}
-							<div class="Video__caption">
-								{{- __( 'All video Rider.404 Project on', 'rider404' ) }}
-								&nbsp;
-								<a href="{{ socials.youtube.url }}">
-									{% include 'svg/use.html.twig' with { icon: 'youtube' } only %}
-									&nbsp;&nbsp;<span>{{- __( 'YouTube', 'rider404' ) -}}</span>
-								</a>
-							</div>
-						{% endif %}
-                    {% endblock %}
-                {% endembed %}
-            </div>
-        </div>
-    </div>
 
-    <div id="faq" class="Section Faq" data-module-faq data-scroll-section>
-		<img class="Faq__grid d-none d-md-block" data-scroll data-scroll-speed="2" src="{{ theme.link }}/{{ theme.manifest['img/svg/grid.svg'] }}" alt="" width="962" height="842">
-        <div class="row">
-            <div class="col-4 offset-1 d-none d-md-block">
-                <ul class="Faq__questions h2" data-scroll data-scroll-sticky data-scroll-target="#faq">
-                    {% for item in post.meta( 'faq' ) %}
-                        <li class="Faq__questions__item{{ loop.first ? ' is-active' : '' }}">
-                            <a class="js-answer" href="#{{ item.question | sanitize }}" data-scroll-to>
-                                {{- item.question -}}
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-             <div class="col-10 col-md-4 offset-1">
-                <ul class="Faq__answers">
-                    {% for item in post.meta( 'faq' ) %}
-                        <li id="{{ item.question | sanitize }}" class="Faq__answers__item" data-scroll-repeat data-scroll data-scroll-call="answer">
-							<p class="h2 mt-0 d-md-none">{{- item.question -}}</p>
-                            {{- item.answer -}}
-                        </li>
-                    {% endfor %}
-                </ul>
-             </div>
-        </div>
-    </div>
-
-    <div id="tags" class="Tags" data-scroll-section>
-        <ul class="Tags__items">
-            {% for i in 0..5 %}
-                <li class="Tags__item">
-                    <span data-scroll data-scroll-direction="horizontal" data-scroll-target="#tags" data-scroll-speed="{{ random( -20, 20 ) }}">
-                        <img src="{{ theme.link }}/{{ theme.manifest['img/svg/rider-404.svg'] }}" alt="" width="3204.3" height="410.6">
-                    </span>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
-
-	{{ include( 'components/modal.html.twig', { control: 'video-about', video: post.meta( 'video' ).youtube } ) }}
 
 {% endblock  %}
+
+{% block footer -%}
+	{{- parent() -}}
+	{{- include( 'components/modal.html.twig', { control: 'video-about', video: post.meta( 'video' ).youtube } ) -}}
+{%- endblock %}

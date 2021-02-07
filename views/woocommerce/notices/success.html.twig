@@ -6,10 +6,14 @@
  #}
 
 {% if notices %}
-	{% for notice in notices %}
-		<div class="Success woocommerce-message"{{ function( 'wc_get_notice_data_attr', notice ) }}>
-			{{- include( 'svg/use.html.twig', { icon: 'face-without-mouth' }, with_context = false ) -}}
-			{{- function( 'wc_kses_notice', notice.notice ) -}}
+	<div class="row" data-scroll-section>
+		<div class="col-10 offset-1">
+			{% for notice in notices %}
+				<div class="Success woocommerce-message"{{ function( 'wc_get_notice_data_attr', notice ) }}>
+					{{- include( 'svg/use.html.twig', { icon: 'face-without-mouth' }, with_context = false ) -}}
+					{{- function( 'wc_kses_notice', notice.notice ) -}}
+				</div>
+			{% endfor %}
 		</div>
-	{% endfor %}
+	</div>
 {% endif %}

@@ -8,15 +8,15 @@
 .Success {
 	@extend .d-flex, .align-items-center;
 	@include padding(top 16px right 20px bottom 16px left 20px);
-	@include margin(bottom 20px);
+	// @include margin(bottom 20px);
 
 	background-color: the_color(green, lime);
 	border: none;
 	color: the_color(white);
 
-	& > *:first-child {
-		@include margin(left auto);
-	}
+	// & > *:first-child {
+	// 	@include margin(left auto);
+	// }
 
 	svg {
 		@include size(28px);
@@ -33,7 +33,7 @@
 
 	a,
 	button {
-		@include margin(top 4px right 8px left auto);
+		@include margin(top 4px right 8px /* left auto */);
 		@extend %text-decoration-underline,
 			%text-transform-uppercase,
 			%font-family-title,

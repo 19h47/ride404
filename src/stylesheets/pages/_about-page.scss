@@ -9,6 +9,14 @@
 	&__introduction {
 		@extend %position-relative;
 
+		& > *:first-child {
+			@include margin(top 0);
+		}
+
+		& > *:last-child {
+			@include margin(bottom 0);
+		}
+
 		&__body {
 			@extend %position-relative;
 
@@ -25,6 +33,14 @@
 				@include size(100%, auto);
 				@extend .d-block;
 			}
+		}
+	}
+
+	&__catchphrase {
+		@include margin(top 120px bottom 120px);
+
+		@include media-breakpoint-up(md)  {
+			@include margin(top 160px bottom 160px);
 		}
 	}
 }

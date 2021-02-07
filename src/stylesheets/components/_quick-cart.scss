@@ -16,6 +16,7 @@
 		@include margin(left 45px);
 	}
 
+	.variation-date-text,
 	.Single-variation {
 		@extend .d-none;
 	}
@@ -30,6 +31,7 @@
 		font-size: 12px;
 		line-height: (28/12);
 	}
+
 
 	[role='radiogroup'] {
 		@extend .d-flex;

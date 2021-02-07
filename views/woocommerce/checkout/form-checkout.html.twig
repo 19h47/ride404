@@ -14,64 +14,61 @@
  #}
 {% do action( 'woocommerce_before_checkout_form', checkout ) %}
 
-<div class="Site-container" data-scroll-section>
-	<div class="row">
-		<div class="col-10 offset-1">
+{% if not checkout.is_registration_enabled() and checkout.is_registration_required() and not is_user_logged_in %}
 
-			{% if not checkout.is_registration_enabled() and checkout.is_registration_required() and not is_user_logged_in %}
+	{% filter apply_filters( 'woocommerce_checkout_must_be_logged_in_message' ) %}
+		{{- __( 'You must be logged in to checkout.', 'rider404' ) | e( 'esc_html' ) -}}
+	{% endfilter %}
 
-				{% filter apply_filters( 'woocommerce_checkout_must_be_logged_in_message' ) %}
-					{{- __( 'You must be logged in to checkout.', 'rider404' ) | e( 'esc_html' ) -}}
-				{% endfilter %}
+{% else %}
 
-			{% else %}
+	<form
+		class="checkout woocommerce-checkout"
+		name="checkout"
+		method="post"
+		action="{{ checkout_url | e( 'esc_url' ) }}"
+		enctype="multipart/form-data"
+		data-scroll-section
+	>
 
-				<form
-					class="checkout woocommerce-checkout"
-					name="checkout"
-					method="post"
-					action="{{ checkout_url | e( 'esc_url' ) }}"
-					enctype="multipart/form-data"
-				>
+		{% do action( 'woocommerce_checkout_before_customer_details' ) %}
 
-					{% if checkout.get_checkout_fields() %}
+		<div class="row" >
+			<div class="col-10 offset-1">
+				{% if checkout.get_checkout_fields() %}
 
-						{% do action( 'woocommerce_checkout_before_customer_details' ) %}
 
-						<div class="Customer-details" id="customer_details">
-							<div class="Customer-details__left">
-								{% do action( 'woocommerce_checkout_billing' ) %}
-							</div>
-
-							<div class="Customer-details__right">
-								{% do action( 'woocommerce_checkout_shipping' ) %}
-							</div>
+					<div class="Customer-details" id="customer_details">
+						<div class="Customer-details__left">
+							{% do action( 'woocommerce_checkout_billing' ) %}
 						</div>
 
-						{% do action( 'woocommerce_checkout_after_customer_details' ) %}
-
-					{% endif %}
-
-					{% do action( 'woocommerce_checkout_before_order_review_heading' ) %}
-
-
-					{% do action( 'woocommerce_checkout_before_order_review' ) %}
-
-					<div id="order_review" class="Checkout-review-order woocommerce-checkout-review-order">
-						<h3 class="Checkout-review-order__title" id="order_review_heading">
-							{{- __( 'Your order', 'rider404' ) | e( 'esc_html' ) -}}
-						</h3>
-						{% do action( 'woocommerce_checkout_order_review' ) %}
+						<div class="Customer-details__right">
+							{% do action( 'woocommerce_checkout_shipping' ) %}
+						</div>
 					</div>
 
-					{% do action( 'woocommerce_checkout_after_order_review' ) %}
+					{% do action( 'woocommerce_checkout_after_customer_details' ) %}
 
-				</form>
+				{% endif %}
 
-			{% endif %}
+				{% do action( 'woocommerce_checkout_before_order_review_heading' ) %}
+
+
+				{% do action( 'woocommerce_checkout_before_order_review' ) %}
+
+				<div id="order_review" class="Checkout-review-order woocommerce-checkout-review-order">
+					<h3 class="Checkout-review-order__title" id="order_review_heading">
+						{{- __( 'Your order', 'rider404' ) | e( 'esc_html' ) -}}
+					</h3>
+					{% do action( 'woocommerce_checkout_order_review' ) %}
+				</div>
+
+				{% do action( 'woocommerce_checkout_after_order_review' ) %}
+			</div>
 		</div>
-	</div>
+	</form>
 
-</div>
+{% endif %}
 
 {% do action( 'woocommerce_after_checkout_form', checkout ) %}

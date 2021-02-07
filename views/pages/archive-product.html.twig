@@ -18,24 +18,18 @@
 
 	{% if product_loop %}
 
-
-		<div class="Site-container" data-scroll-section>
-			<div class="row">
-				<div class="col-12 col-md-10 offset-md-1">
-					{#
-					 # Hook: woocommerce_before_shop_loop.
-					 #
-					 # @hooked woocommerce_output_all_notices - 10
-					 #}
-					{% do action( 'woocommerce_before_shop_loop' ) %}
-				</div>
-
-				<div class="col-10 offset-1">
-					{{- include( 'components/product-categories.html.twig' ) -}}
-				</div>
+		<div class="row" data-scroll-section>
+			<div class="col-10 offset-1">
+				{{- include( 'components/product-categories.html.twig' ) -}}
 			</div>
 		</div>
 
+		{#
+		 # Hook: woocommerce_before_shop_loop.
+		 #
+		 # @hooked woocommerce_output_all_notices - 10
+		 #}
+		{% do action( 'woocommerce_before_shop_loop' ) %}
 
 		{{- function( 'woocommerce_product_loop_start' ) -}}
 
