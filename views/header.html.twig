@@ -39,7 +39,9 @@
 
                 ></div>
             {% else %}
-                <p class="Site-header__title Page__title"><span>{{- post.title -}}</span></p>
+                <a class="Site-header__title Page__title Link-underline Link-underline--small Pointer-events-auto" href="{{ site.link }}">
+					<div class="is-inview is-active">{{- __( 'Back', 'rider404' ) -}}</div>
+				</a>
             {% endif %}
         </div>
 

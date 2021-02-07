@@ -82,7 +82,28 @@
 				{% include 'components/navigation.html.twig' with { menu: nav_menus.main } %}
 
 
-				{% block hero %}{% endblock %}
+				{% block hero %}
+					<div class="Hero" data-scroll-section>
+						<div class="row">
+							<div class="col-10 offset-1">
+								<h1 class="text-align-center m-0">
+									{{-
+										include(
+											'partials/split-text.html.twig',
+											{
+												title: post.meta( 'long_title' ) ? post.meta( 'long_title' ) : post.title,
+												id: uniqid(),
+												classes: [ 'product_title', 'entry-title' ],
+												delay: 0.5
+											},
+											with_context = false
+										)
+									-}}
+								</h1>
+							</div>
+						</div>
+					</div>
+				{% endblock %}
 
 				{% block content %}
 					<div class="row" data-scroll-section>

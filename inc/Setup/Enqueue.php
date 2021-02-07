@@ -105,8 +105,8 @@ class Enqueue {
 	 * @since  1.0.0
 	 */
 	public function enqueue_style() : void {
-		wp_dequeue_style( 'wc-block-style' );
-		wp_dequeue_style( 'wp-block-library' );
+		// wp_dequeue_style( 'wc-block-style' );
+		// wp_dequeue_style( 'wp-block-library' );
 
 		// Add custom fonts, used in the main stylesheet.
 		$webfonts = array();

@@ -19,4 +19,22 @@
 		@include margin(top 1em bottom 1em);
 		@include padding(left 1em);
 	}
+
+	h2 {
+		@include margin(bottom 120px);
+	}
+
+	.wp-block-columns {
+		@include margin(bottom 120px);
+	}
+
+	.wp-block-column {
+		& > *:first-child{
+			@include margin(top 0)
+		}
+
+		& > *:last-child {
+			@include margin(bottom 0);
+		}
+	}
 }
