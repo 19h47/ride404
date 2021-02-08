@@ -63,12 +63,12 @@
 			@include margin(top -170px);
 		}
 
-		@include media-breakpoint-up(lg) {
-			@include margin(top -350px);
-		}
+		// @include media-breakpoint-up(lg) {
+		// 	@include margin(top -350px);
+		// }
 
-		@include media-breakpoint-up(hd) {
-			@include margin(top -570px);
-		}
+		// @include media-breakpoint-up(hd) {
+		// 	@include margin(top -570px);
+		// }
 	}
 }
