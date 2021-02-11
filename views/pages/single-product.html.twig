@@ -89,12 +89,12 @@
 			{% if post.post_excerpt or post.post_content %}
 				<div class="Section">
 					<div class="row">
-						<div class="col-4 offset-2">
+						<div class="col-10 offset-1 col-md-4 offset-md-2">
 							<div class="h2 m-0">
 								{{- post.post_excerpt -}}
 							</div>
 						</div>
-						<div class="col-3{{ post.post_excerpt ? ' offset-1' : ' offset-6' -}}">
+						<div class="col-10 offset-1 col-md-3{{ post.post_excerpt ? ' mt-4 mt-md-0' : ' offset-md-6' -}}">
 							<div class="Wysiwyg">
 								{{- post.post_content -}}
 							</div>

@@ -9,7 +9,7 @@
 
     <div class="row">
         <div class="col-3 col-md-2">
-            <a id="logo" class="Site-header__smiley " href="{{ site.link }}" >
+            <a id="logo" class="Site-header__smiley " href="{{ site.link }}" aria-label="{{ site.title }}">
                 <div id="logo" data-module-logo data-logo="button" data-lottie-json="logo" data-lottie-autoplay="true" data-lottie-loop="true"></div>
             </a>
         </div>
@@ -62,6 +62,7 @@
 				data-lottie-json="bars"
 				data-lottie-autoplay="false"
 				data-lottie-loop="false"
+				aria-label="{{ __( 'Menu', 'rider404' ) }}"
 			></button>
 
         </div>

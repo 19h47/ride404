@@ -9,15 +9,16 @@
 	@extend .d-none, .d-md-flex, .align-items-md-center;
 	@include padding(top 20px right 30px bottom 20px left 30px);
 
-	@include fixed(top 0 right 0 left 0);
-	@include margin(top 75px right auto left auto);
+	@include fixed(top 0 left 50%);
+	@include margin(top 75px);
 	@extend %text-align-center;
 
 	border-radius: 35px;
 	border: 1px solid the_color(gray, very-dark-03);
 	background-color: the_color(gray, very-dark-01);
+	transform: translate3d(-50%, 0, 0);
+	will-change: transform;
 
-	width: min-content;
 	z-index: 20;
 
 	transition: opacity 1s map-get($easings, ease-out-expo),

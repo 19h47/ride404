@@ -133,8 +133,8 @@
 				<ul class="Partners__items"  data-scroll>
 					{% for partner in partners %}
 						<li class="Partners__item" style="transition-delay: {{ loop.index * 0.1 }}s;">
-							{{ partner.meta( 'link' ).url ? "<a href=\"#{ partner.meta( 'link' ).url }\"#{ partner.meta( 'link' ).target ? ' target="_blank" rel="noopener noreferer"' : '' }>" : '' }}
-								{{ include( 'partials/image.html.twig', { image: partner.thumbnail }, with_context = false ) }}
+							{{ partner.meta( 'link' ).url ? "<a aria-label=\"#{ partner.title }\" href=\"#{ partner.meta( 'link' ).url }\"#{ partner.meta( 'link' ).target ? ' target="_blank" rel="noopener noreferer"' : '' }>" : '' }}
+								{{ include( 'partials/image.html.twig', { size: 'medium', image: partner.thumbnail }, with_context = false ) }}
 							{{ partner.meta( 'link' ).url ? '</a>' : '' }}
 						</li>
 					{% endfor %}

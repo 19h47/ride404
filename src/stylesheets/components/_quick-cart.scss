@@ -8,6 +8,8 @@
 .Quick-cart {
 	$this: &;
 
+	@extend .d-flex;
+
 	.Price {
 		@include margin(right 45px bottom 0);
 	}
@@ -31,7 +33,6 @@
 		font-size: 12px;
 		line-height: (28/12);
 	}
-
 
 	[role='radiogroup'] {
 		@extend .d-flex;
