@@ -139,13 +139,13 @@
 			</div>
 		</div>
 
-		<div id="faq" class="Section Faq" data-module-faq data-scroll-section>
+		<div id="faq" class="Section Faq" data-scroll-section>
 			<img class="Faq__grid d-none d-md-block" data-scroll data-scroll-speed="2" src="{{ theme.link }}/{{ theme.manifest['img/svg/grid.svg'] }}" alt="" width="962" height="842">
 			<div class="row">
 				<div class="col-4 offset-1 d-none d-md-block">
 					<ul class="Faq__questions h2" data-scroll data-scroll-sticky data-scroll-target="#faq">
 						{% for item in post.meta( 'faq' ) %}
-							<li class="Faq__questions__item{{ loop.first ? ' is-active' : '' }}">
+							<li class="Faq__questions__item{{ loop.first ? ' is-active' : '' }}" data-id="{{ item.question | sanitize }}">
 								<a class="js-answer" href="#{{ item.question | sanitize }}" data-scroll-to>
 									{{- item.question -}}
 								</a>
@@ -156,7 +156,7 @@
 				<div class="col-10 col-md-4 offset-1">
 					<ul class="Faq__answers">
 						{% for item in post.meta( 'faq' ) %}
-							<li id="{{ item.question | sanitize }}" class="Faq__answers__item" data-scroll-repeat data-scroll data-scroll-call="answer">
+							<li id="{{ item.question | sanitize }}" class="Faq__answers__item" data-module-faq="{{ item.question | sanitize }}" data-scroll data-scroll-call="inview,Faq" data-scroll-repeat>
 								<p class="h2 mt-0 d-md-none">{{- item.question -}}</p>
 								{{- item.answer -}}
 							</li>

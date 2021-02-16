@@ -10,7 +10,7 @@ import getViewportSize from 'utils/getViewportSize';
 export default function mediaBreakpointUp(breakpoint) {
 	if (!breakpoints[breakpoint]) {
 		const errorMessage = `Breakpoint '${breakpoint}' do not exist`;
-		console.error(errorMessage);
+		// console.error(errorMessage);
 		throw new Error(errorMessage);
 	}
 

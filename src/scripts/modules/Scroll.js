@@ -26,10 +26,16 @@ class Scroll extends module {
 			}
 		});
 
+		this.scroll.on('call', (func, way, obj) => {
+			if (obj.el.id) {
+				this.call(func[0], { way, obj, direction: this.direction }, func[1], obj.el.id);
+			}
+		});
+
 		this.update = this.update.bind(this);
 
 		imgLoad.on('always', () => {
-			console.info('📸 All images have been loaded');
+			// console.info('📸 All images have been loaded');
 
 			this.update();
 		});

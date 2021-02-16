@@ -36,9 +36,9 @@ class Video extends module {
 
 			this.$('body')[0].classList.add('is-fixed');
 
-			const last = this.$('overlay')[0].getBoundingClientRect();
+			// const last = this.$('overlay')[0].getBoundingClientRect();
 
-			console.log({ first, last });
+			// console.log({ first, last });
 
 			const scaleX = window.innerWidth / first.width;
 			const scaleY = window.innerHeight / first.height;
@@ -73,7 +73,7 @@ class Video extends module {
 	}
 
 	click() {
-		console.log('Video.click');
+		// console.log('Video.click');
 
 		const event = new CustomEvent('Video.open', { detail: { id: this.el.id } });
 		return document.dispatchEvent(event);

@@ -7,30 +7,26 @@ import { module } from 'modujs';
  */
 class Faq extends module {
 	init() {
-		this.answers = [...this.el.querySelectorAll('.js-answer')];
-
-		this.answers.forEach($answer => {
-			$answer.addEventListener('click', event => {
-				const target = this.el.querySelector(event.target.hash);
-
-				this.modules.Scroll.main.scroll.scrollTo(target);
-			});
-		});
-
-		this.initEvents();
+		this.$link = document.querySelector(`[data-id="${this.el.id}"]`);
 	}
 
-	initEvents() {
-		this.modules.Scroll.main.scroll.on('call', (value, way, obj) => {
-			if ('answer' === value && 'enter' === way) {
-				console.log(obj.el.id)
-				const hash = `#${obj.el.id}`;
-				const $parent = this.el.querySelector(`a[href="${hash}"]`).parentElement;
+	inview({ way }) {
+		if ('enter' === way) {
+			this.call('deactive', false, 'Faq');
+			this.active();
+		}
 
-				this.answers.forEach(answer => answer.parentElement.classList.remove('is-active'));
-				$parent.classList.add('is-active');
-			}
-		});
+		if ('exit' === way) {
+			this.deactive();
+		}
+	}
+
+	deactive() {
+		this.$link.classList.remove('is-active');
+	}
+
+	active() {
+		this.$link.classList.add('is-active');
 	}
 }
 

@@ -77,7 +77,7 @@ export default class NavigationBlock extends module {
 	 * Navigation.toggle
 	 */
 	toggle() {
-		console.info('Navigation.toggle');
+		// console.info('Navigation.toggle');
 
 		if (this.isOpen) {
 			return this.close();

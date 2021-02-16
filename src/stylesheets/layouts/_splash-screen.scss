@@ -15,8 +15,6 @@
 	& > div {
 		@include absolute(top 0 right 0 bottom 0 left 0);
 		@include size(100%);
-
-		transform-origin: center top;
 	}
 
 	& > div:nth-child(1) {
