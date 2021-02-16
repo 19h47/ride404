@@ -8,7 +8,7 @@
 .Quick-cart {
 	$this: &;
 
-	@extend .d-flex;
+	@extend .d-flex, .align-items-center;
 
 	.Price {
 		@include margin(right 45px bottom 0);
@@ -24,7 +24,7 @@
 	}
 
 	.Add-to-cart {
-		@include size(24px);
+		@include size(38px, 36px);
 	}
 
 	.stock.out-of-stock {

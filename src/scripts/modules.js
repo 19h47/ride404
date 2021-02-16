@@ -25,3 +25,4 @@ export { default as Faq } from 'modules/Faq';
 export { default as Shipping } from 'modules/Shipping';
 export { default as ProductVariations } from 'modules/ProductVariations';
 export { default as Radiogroup } from 'modules/Radiogroup';
+export { default as AddToCart } from 'modules/AddToCart';

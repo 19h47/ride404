@@ -23,11 +23,23 @@
 
             {% do action( 'woocommerce_after_add_to_cart_quantity' ) %}
 
-            <button type="submit" name="add-to-cart" value="{{ function( 'absint', product.get_id() ) }}" class="Add-to-cart single_add_to_cart_button button alt">
+            {# <button type="submit" name="add-to-cart" value="{{ function( 'absint', product.get_id() ) }}" class="Add-to-cart single_add_to_cart_button button alt">
                 <span class="d-none">{{- product.single_add_to_cart_text() | e( 'esc_html' ) -}}</span>
                 {{- include('svg/use.html.twig', { icon: 'add-to-cart', classes: [ 'Pointer-events-none' ] }, with_context = false ) -}}
                 {{- include('svg/use.html.twig', { icon: 'add-to-cart-danger', classes: [ 'Pointer-events-none' ] }, with_context = false ) -}}
-            </button>
+            </button> #}
+
+			<button
+				id="bars"
+				class="Add-to-cart single_add_to_cart_button button alt"
+				type="sublit"
+				data-module-add-to-cart
+				data-add-to-cart="button"
+				data-lottie-json="add-to-cart"
+				data-lottie-autoplay="false"
+				data-lottie-loop="false"
+				aria-label="{{ product.single_add_to_cart_text() | e( 'esc_html' ) }}"
+			></button>
 
            {% do action( 'woocommerce_after_add_to_cart_button' ) %}
         </form>

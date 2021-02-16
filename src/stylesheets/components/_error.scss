@@ -5,6 +5,7 @@
  */
 .Error {
 	@extend .d-flex, .flex-column;
+	@extend %list-style-type-none;
 	@include padding(top 16px right 20px bottom 16px left 20px);
 
 	background-color: the_color(red, bright);
