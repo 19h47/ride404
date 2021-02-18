@@ -31,14 +31,16 @@
 
 			<button
 				id="bars"
+				name="add-to-cart"
 				class="Add-to-cart single_add_to_cart_button button alt"
-				type="sublit"
+				type="submit"
 				data-module-add-to-cart
 				data-add-to-cart="button"
 				data-lottie-json="add-to-cart"
 				data-lottie-autoplay="false"
 				data-lottie-loop="false"
 				aria-label="{{ product.single_add_to_cart_text() | e( 'esc_html' ) }}"
+				value="{{ function( 'absint', product.get_id() ) }}"
 			></button>
 
            {% do action( 'woocommerce_after_add_to_cart_button' ) %}

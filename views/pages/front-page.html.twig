@@ -51,7 +51,7 @@
         <div class="Push__background" data-scroll data-scroll-speed="4">
             <div class="row h-100">
                 <div class="col-8 offset-2 h-100">
-                    <img src="{{ theme.link }}/{{ theme.manifest['img/png/push.png'] }}" alt="" height="1523" height="1473">
+                    <img src="{{ theme.link }}/{{ theme.manifest['img/png/push.png'] }}" alt="" width="1523" height="1473">
                 </div>
             </div>
         </div>
@@ -85,7 +85,7 @@
                 <div class="col-10 offset-1 col-sm-6 offset-sm-3">
                     <div class="About__content">
                         {{- include( 'partials/split-text.html.twig', { id: uniqid(), title: post.meta( 'about' ).content } ) -}}
-                        <img data-scroll data-scroll-speed="2" src="{{ theme.link }}/{{ theme.manifest['img/svg/about.svg'] }}" width="719" height="585">
+                        <img data-scroll data-scroll-speed="2" src="{{ theme.link }}/{{ theme.manifest['img/svg/about.svg'] }}" width="719" height="585" alt="{{ __( 'About', 'rider404' ) }}">
                     </div>
                 </div>
                 <div class="col-10 offset-1 text-align-center">
