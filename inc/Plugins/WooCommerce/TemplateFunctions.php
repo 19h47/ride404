@@ -18,6 +18,7 @@ use Timber\{ Timber };
  * WordPress
  */
 class TemplateFunctions {
+
 	/**
 	 * Output placeholders for the single variation
 	 *
@@ -163,22 +164,20 @@ class TemplateFunctions {
 	public static function quick_variable_add_to_cart() {
 		global $product;
 
-		$context = Timber::context();
+		$filename = 'woocommerce/single-product/add-to-cart/quick-variable.html.twig';
 
-		$get_variations = count( $product->get_children() ) <= apply_filters( 'woocommerce_ajax_variation_threshold', 30, $product );
+		$get_variations       = count( $product->get_children() ) <= apply_filters( 'woocommerce_ajax_variation_threshold', 30, $product );
+		$available_variations = $get_variations ? $product->get_available_variations() : false;
 
-		$context['product'] = $product;
+		$data                         = Timber::context();
+		$data['product']              = $product;
+		$data['available_variations'] = $available_variations;
+		$data['attributes']           = $product->get_variation_attributes();
+		$data['selected_attributes']  = $product->get_default_attributes();
+		$data['variations_attr']      = wc_esc_json( wp_json_encode( $available_variations ) );
+		$data['form_action']          = apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() );
 
-		$context['available_variations'] = $get_variations ? $product->get_available_variations() : false;
-		$context['attributes']           = $product->get_variation_attributes();
-		$context['selected_attributes']  = $product->get_default_attributes();
-
-		$variations_json            = wp_json_encode( $context['available_variations'] );
-		$context['variations_attr'] = wc_esc_json( $variations_json );
-
-		$context['form_action'] = apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() );
-
-		return Timber::render( 'woocommerce/single-product/add-to-cart/quick-variable.html.twig', $context );
+		return Timber::render( $filename, $data );
 	}
 
 
@@ -205,6 +204,7 @@ class TemplateFunctions {
 	 * @access static
 	 * @return array $args
 	 *
+	 * @see https://github.com/woocommerce/woocommerce/blob/master/includes/wc-template-functions.php#L2685
 	 * @since 1.0.0
 	 */
 	public static function form_field_args( array $args, string $key, $value ) : array {

@@ -33,6 +33,8 @@ class WooCommerceGatewayStripe {
 	 * Payment icons
 	 *
 	 * @param array $icons Icons
+	 *
+	 * @return array $icons
 	 */
 	public function payment_icons( array $icons ) : array {
 

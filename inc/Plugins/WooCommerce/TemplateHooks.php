@@ -55,7 +55,7 @@ class TemplateHooks {
 		add_action( 'woocommerce_before_shop_loop_item_title', array( 'Rider404\Plugins\WooCommerce\TemplateFunctions', 'loop_product_thumbnail' ), 15 );
 		add_action( 'woocommerce_before_shop_loop_item_title', array( 'Rider404\Plugins\WooCommerce\TemplateFunctions', 'featured' ), 15 );
 
-				add_action( 'woocommerce_single_product_image', array( 'Rider404\Plugins\WooCommerce\TemplateFunctions', 'featured' ), 15 );
+		add_action( 'woocommerce_single_product_image', array( 'Rider404\Plugins\WooCommerce\TemplateFunctions', 'featured' ), 15 );
 
 		// Shop loop item title.
 		add_action( 'woocommerce_shop_loop_item_title', array( 'Rider404\Plugins\WooCommerce\TemplateFunctions', 'loop_product_title' ), 10 );
@@ -147,7 +147,11 @@ class TemplateHooks {
 	/**
 	 * PayPal icon
 	 *
-	 * @return string
+	 * @param string $icon Icon HTML.
+	 * @param string $id ID.
+	 *
+	 * @see https://github.com/woocommerce/woocommerce/blob/master/includes/gateways/paypal/class-wc-gateway-paypal.php#L164
+	 * @return string $icon
 	 */
 	public function paypal_icon( string $icon, string $id ) : string {
 		if ( 'paypal' !== $id ) {
@@ -167,6 +171,12 @@ class TemplateHooks {
 
 	/**
 	 * Stripe icon
+	 *
+	 * @param string $icon Icon HTML.
+	 * @param string $id ID.
+	 *
+	 * @see https://github.com/woocommerce/woocommerce/blob/master/includes/abstracts/abstract-wc-payment-gateway.php#L322
+	 * @return string $icon
 	 */
 	public function stripe_icon( string $icon, string $id ) : string {
 		if ( 'stripe' !== $id ) {
