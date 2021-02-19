@@ -1,4 +1,4 @@
-import { module } from 'modujs';
+import { module } from 'scripts/modujs';
 import LocomotiveScroll from 'locomotive-scroll';
 
 import { elements } from 'scripts/config';
@@ -32,13 +32,9 @@ class Scroll extends module {
 			}
 		});
 
-		this.update = this.update.bind(this);
+		// this.update = this.update.bind(this);
 
-		imgLoad.on('always', () => {
-			// console.info('📸 All images have been loaded');
-
-			this.update();
-		});
+		imgLoad.on('always', () => this.update());
 	}
 
 	update() {

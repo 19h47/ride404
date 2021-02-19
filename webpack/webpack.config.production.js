@@ -6,7 +6,7 @@
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const CompressionPlugin = require('compression-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 const PurgecssPlugin = require('purgecss-webpack-plugin');
 
 const glob = require('glob'); // eslint-disable-line import/no-extraneous-dependencies
@@ -83,7 +83,7 @@ module.exports = {
 		new MiniCssExtractPlugin({
 			filename: 'css/main.[chunkhash:8].css',
 		}),
-		// new CompressionPlugin(),
+		new CompressionPlugin(),
 		new PurgecssPlugin({
 			paths: glob.sync(resolve('views/**/*.twig'), { nodir: true }),
 			safelist,

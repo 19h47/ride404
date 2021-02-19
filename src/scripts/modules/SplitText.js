@@ -1,4 +1,4 @@
-import { module } from 'modujs';
+import { module } from 'scripts/modujs';
 import { gsap } from 'gsap';
 
 import S from 'vendors/SplitText';

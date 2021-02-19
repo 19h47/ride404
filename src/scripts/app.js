@@ -1,9 +1,7 @@
-import modular from 'modujs';
-// import { listen } from 'quicklink';
+import modular from 'scripts/modujs';
 import { gsap } from 'gsap';
 
 import Guid from 'common/Guid';
-import * as modules from '@/scripts/modules'
 import Splashscreen from 'common/Splashscreen'
 import { elements } from 'scripts/config';
 
@@ -16,16 +14,12 @@ if (production) {
 }
 
 // eslint-disable-next-line new-cap
-const app = new modular({
-	modules,
-})
+const app = new modular()
 
 const splashscreen = new Splashscreen();
 splashscreen.init();
 
 const init = async () => {
-	// listen();
-
 	app.init(app);
 	await splashscreen.play();
 

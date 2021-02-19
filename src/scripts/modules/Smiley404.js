@@ -1,5 +1,5 @@
 /* global CABLES, rider404 */
-import { module } from 'modujs';
+import { module } from 'scripts/modujs';
 
 const showError = (errId, errMsg) => {
 	console.log(`An error occured: ${errId}, ${errMsg}`);

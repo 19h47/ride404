@@ -1,5 +1,5 @@
 /* global YT */
-import { module } from 'modujs';
+import { module } from 'scripts/modujs';
 
 const url = 'https://www.youtube.com/iframe_api';
 

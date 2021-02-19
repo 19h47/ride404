@@ -1,5 +1,5 @@
 {#
- # Notices
+ # Notice
  #
  # @package WordPress
  # @subpackage Rider404
@@ -7,7 +7,7 @@
 
 {% if notices %}
 
-	<div class="row">
+	<div class="row" data-scroll-section>
 		<div class="col-10 offset-1">
 			{% for notice in notices %}
 				<div class="Info woocommerce-info"{{ function( 'wc_get_notice_data_attr', notice ) }}>

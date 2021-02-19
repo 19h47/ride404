@@ -1,4 +1,4 @@
-import { module } from 'modujs';
+import { module } from 'scripts/modujs';
 import C from '@19h47/checkbox';
 import $ from 'jquery';
 

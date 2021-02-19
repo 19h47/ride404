@@ -22,6 +22,7 @@
 		transition: opacity 0.5s map-get($easings, ease-out-expo),
 			visibility 0.5s map-get($easings, ease-out-expo);
 		fill: the_color(red, bright);
+		will-change: opacity, visibility;
 
 		@at-root #{ $this }.is-active svg {
 			@include autoAlpha(1);

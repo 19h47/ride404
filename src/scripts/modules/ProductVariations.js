@@ -1,4 +1,4 @@
-import { module } from 'modujs';
+import { module } from 'scripts/modujs';
 import RadioGroup from '@19h47/radiogroup';
 import $ from 'jquery'; // eslint-disable-line
 

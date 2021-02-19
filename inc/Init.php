@@ -2,8 +2,8 @@
 /**
  * Bootstraps WordPress theme related functions, most importantly enqueuing javascript and styles.
  *
- * @package Rider404
- * @subpackage Rider404/Init
+ * @package WordPress
+ * @subpackage Rider404
  */
 
 namespace Rider404;

@@ -1,4 +1,4 @@
-import { module } from 'modujs';
+import { module } from 'scripts/modujs';
 import Grain from 'common/Grain';
 import { gsap } from 'gsap';
 

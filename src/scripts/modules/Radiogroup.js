@@ -1,4 +1,4 @@
-import { module } from 'modujs';
+import { module } from 'scripts/modujs';
 import R from '@19h47/radiogroup';
 
 class Radiogroup extends module {

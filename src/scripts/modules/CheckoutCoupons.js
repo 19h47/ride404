@@ -1,4 +1,4 @@
-import { module } from 'modujs';
+import { module } from 'scripts/modujs';
 import $ from 'jquery';
 
 import { elements } from 'scripts/config';

@@ -17,7 +17,7 @@
 	border: 1px solid the_color(gray, very-dark-03);
 	background-color: the_color(gray, very-dark-01);
 	transform: translate3d(-50%, 0, 0);
-	will-change: transform;
+	will-change: transform, opacity, visibility;
 
 	z-index: 20;
 
@@ -28,7 +28,7 @@
 		@include autoAlpha(0);
 	}
 
-	@at-root .Menu--is-open & {
+	@at-root .Navigation--is-open & {
 		@include autoAlpha(0);
 	}
 }

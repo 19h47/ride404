@@ -2,7 +2,8 @@
  * Button play
  *
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
- * @package Rider404
+ * @package WordPress
+ * @subpackage Rider404
  */
 .Button-play {
 	@include size(140px);
@@ -26,6 +27,7 @@
 		content: '';
 		transform: scale(1.1);
 		transition: transform 0.5s map-get($easings, ease-out-expo);
+		will-change: transform;
 	}
 
 	span {
@@ -39,6 +41,7 @@
 			@extend .d-block;
 
 			transition: transform 0.5s map-get($easings, ease-out-expo);
+			will-change: transform;
 		}
 
 		svg:nth-child(1) {
