@@ -71,9 +71,12 @@
 					 # Hook: rider404_single_quick_variation.
 					 #
 					 # @hooked Rider404\Plugins\WooCommerce\TemplateFunctions::single_variation - 10
-					 # @hooked woocommerce_single_variation_add_to_cart_button - 20
 					 #}
 					{% do action( 'rider404_single_quick_variation' ) %}
+
+					<div class="Variation-add-to-cart">
+						{{- include( 'components/button-add-to-cart.html.twig', { product: product } ) -}}
+					</div>
 
 					{% do action( 'rider404_after_single_quick_variation' ) %}
 

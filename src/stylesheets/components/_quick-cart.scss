@@ -24,7 +24,10 @@
 	}
 
 	.Add-to-cart {
-		@include size(38px, 36px);
+		svg {
+			width: 38px !important;
+			height: 36px !important;
+		}
 	}
 
 	.stock.out-of-stock {

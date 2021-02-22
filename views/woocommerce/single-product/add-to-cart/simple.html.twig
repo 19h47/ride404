@@ -8,7 +8,9 @@
 {% if product.is_purchasable() %}
 
 	{% if false == product.is_in_stock() %}
-		{{- include( 'svg/use.html.twig', { icon: 'sold-out-cart' } ) -}}
+		<div class="Stock">
+			{{- include( 'svg/use.html.twig', { icon: 'sold-out-cart' }, with_context = false ) -}}
+		</div>
 	{% endif %}
 
 	{{- stock_html -}}
@@ -33,7 +35,9 @@
                 {{- include('svg/use.html.twig', { icon: 'add-to-cart-danger', classes: [ 'Pointer-events-none' ] }, with_context = false ) -}}
             </button> #}
 
-			{{- include( 'components/add-to-cart/html.twig', { product: product } ) -}}
+			<div class="Add-to-cart-hover" data-module-add-to-cart-hover data-add-to-cart-hover="button" data-lottie-json="add-to-cart-hover" data-lottie-autoplay="false" data-lottie-loop="false">
+				{{- include( 'components/button-add-to-cart.html.twig', { product: product } ) -}}
+			</div>
 
            {% do action( 'woocommerce_after_add_to_cart_button' ) %}
         </form>

@@ -1,6 +1,7 @@
 import AbstractLottieModule from 'abstracts/AbstractLottieModule';
 
 /**
+ * About map
  *
  * @constructor
  * @param {object} container

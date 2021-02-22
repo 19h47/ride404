@@ -71,7 +71,7 @@ class TemplateHooks {
 
 		// Single quick variation.
 		add_action( 'rider404_single_quick_variation', array( 'Rider404\Plugins\WooCommerce\TemplateFunctions', 'single_variation' ), 10 );
-		add_action( 'rider404_single_quick_variation', 'woocommerce_single_variation_add_to_cart_button', 20 );
+		// add_action( 'rider404_single_quick_variation', 'woocommerce_single_variation_add_to_cart_button', 20 );
 
 		// Quick variable add to cart.
 		add_action( 'rider404_quick_variable_add_to_cart', array( 'Rider404\Plugins\WooCommerce\TemplateFunctions', 'quick_variable_add_to_cart' ), 10 );

@@ -7,15 +7,21 @@
  */
 .Add-to-cart {
 	@extend %position-relative;
-	@include size(44px, 42px);
+
+	font-size: 12px;
+	line-height: (16/12);
 
 	svg {
-		@include absolute(top 0 right 0 bottom 0 left 0);
-		@include size(100%);
+		// @include absolute(top 0 right 0 bottom 0 left 0);
+		@include margin(right auto left auto);
 		@extend .d-block;
+
+		width: 44px !important;
+		height: 42px !important;
 
 		transition: fill 0.5s map-get($easings, ease-out-expo);
 		fill: the_color(white);
+		will-change: fill;
 	}
 
 	svg.add-to-cart-danger {

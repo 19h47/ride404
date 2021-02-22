@@ -1,11 +1,11 @@
 import AbstractLottieModule from 'abstracts/AbstractLottieModule';
 
 /**
- * Add to cart
+ * MiniCart
  *
  * @constructor
  */
-export default class AddToCart extends AbstractLottieModule {
+export default class AddToCartHover extends AbstractLottieModule {
 	constructor(m) {
 		super(m);
 
