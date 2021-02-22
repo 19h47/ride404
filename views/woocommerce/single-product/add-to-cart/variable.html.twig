@@ -48,7 +48,7 @@
 					{% for term in terms %}
 						<div class="Product-variations__item" role="radio" aria-checked="false" tabindex="-1">
 							<span>{{- term.name | e( 'esc_html' ) -}}</span>
-							{% include 'svg/use.html.twig' with { icon: 'oval-small' } only %}
+							{{- include( 'svg/use.html.twig', { icon: 'oval-small' }, with_context = false ) -}}
 							<input
 								class="d-none"
 								type="radio"

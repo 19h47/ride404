@@ -77,9 +77,8 @@
 					{% endfor %}
 				</div>
 
-				{% include 'header.html.twig' %}
-
-				{% include 'components/navigation.html.twig' with { menu: nav_menus.main } %}
+				{{- include( 'header.html.twig' ) -}}
+				{{- include( 'components/navigation.html.twig', { menu: nav_menus.main } ) -}}
 
 
 				{% block hero %}

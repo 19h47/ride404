@@ -15,7 +15,7 @@
 
 			<div class="About-page__introduction__body">
 				<div class="row">
-					<div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
+					<div class="col-12 col-sm-8 offset-sm-2">
 						{{
 							include(
 								'partials/split-text.html.twig',
@@ -64,36 +64,42 @@
 		</div>
 
 		<div id="smiley-404" class="Smiley-404 Section" data-scroll-section data-module-smiley404 style="transform-style: preserve-3d;">
-			<div class="Smiley-404__images">
+			<div class="Smiley-404__images Smiley-404__images--top">
 				<div class="row h-100">
-					<div class="col-10 offset-1 col-md-3 offset-md-2 d-flex align-items-start" data-scroll data-scroll-speed="1.5">
-						{% embed 'partials/image-reveal.html.twig' with { classes: [ 'top' ] } %}
+					<div class="col-10 offset-1 col-sm-6 offset-sm-3 col-md-3 offset-md-2 d-flex align-items-start" data-scroll data-scroll-speed="1.5">
+						{% embed 'partials/image-reveal.html.twig' %}
 							{% block content %}
 								{{ include( 'partials/image.html.twig', { image: post.meta( 'images' )[2] }, with_context = false ) }}
 							{% endblock %}
 						{% endembed %}
 					</div>
+				</div>
+			</div>
 
-					<div class="col-10 offset-1 col-md-2 offset-md-6 d-flex align-items-end" data-scroll data-scroll-speed="1.5">
-						{% embed 'partials/image-reveal.html.twig' with { classes: [ 'bottom' ] } %}
+			<div class="Smiley-404__body">
+				<canvas id="smiley-404-canvas" height="900" data-smiley404="canvas"></canvas>
+				<div class="Smiley-404__background">
+					<img
+						data-scroll
+						data-scroll-direction="horizontal"
+						data-scroll-target="#smiley-404"
+						data-scroll-speed="9"
+						src="{{ theme.link }}/{{ theme.manifest['img/svg/rider-404.svg'] }}"
+						width="3204.3"
+						height="410.6"
+					>
+				</div>
+			</div>
+			<div class="Smiley-404__images Smiley-404__images--bottom">
+				<div class="row h-100">
+					<div class="col-10 offset-1 col-sm-6 offset-sm-3 col-md-2 offset-md-6 d-flex align-items-end" data-scroll data-scroll-speed="1.5">
+						{% embed 'partials/image-reveal.html.twig' %}
 							{% block content %}
 								{{ include( 'partials/image.html.twig', { image: post.meta( 'images' )[3] }, with_context = false ) }}
 							{% endblock %}
 						{% endembed %}
 					</div>
 				</div>
-			</div>
-			<canvas id="smiley-404-canvas" height="900" data-smiley404="canvas"></canvas>
-			<div class="Smiley-404__background">
-				<img
-					data-scroll
-					data-scroll-direction="horizontal"
-					data-scroll-target="#smiley-404"
-					data-scroll-speed="9"
-					src="{{ theme.link }}/{{ theme.manifest['img/svg/rider-404.svg'] }}"
-					width="3204.3"
-					height="410.6"
-				>
 			</div>
 		</div>
 
@@ -109,7 +115,7 @@
 					<div id="about-map" class="About-map__canvas" data-scroll  data-scroll-id="about-map" data-module-about-map data-lottie-json="about-map"></div>
 				</div>
 				{% if post.meta( 'map' ).content %}
-					<div class="col-10 offset-1 col-md-4 offset-md-0">
+					<div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-4 offset-md-0">
 						<p class="h2 text-align-center mb-0 m-y-4">
 							{{- post.meta( 'map' ).content -}}
 						</p>
@@ -153,7 +159,7 @@
 						{% endfor %}
 					</ul>
 				</div>
-				<div class="col-10 col-md-4 offset-1">
+				<div class="col-10 col-sm-8 offset-sm-2 col-md-4 offset-1">
 					<ul class="Faq__answers">
 						{% for item in post.meta( 'faq' ) %}
 							<li id="{{ item.question | sanitize }}" class="Faq__answers__item" data-module-faq="{{ item.question | sanitize }}" data-scroll data-scroll-call="inview,Faq" data-scroll-repeat>

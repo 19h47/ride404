@@ -8,10 +8,10 @@
 <div id="footer" class="Site-footer" data-scroll-section>
     <div class="row">
         <div class="col-9 offset-1 order-1 d-flex align-items-end">
-            {% include 'partials/split-text.html.twig' with { id: uniqid(), classes: [ 'Site-footer__title' ], title: 'Follow<br>Rider.404' } %}
+            {{- include('partials/split-text.html.twig', { id: uniqid(), classes: [ 'Site-footer__title' ], title: 'Follow<br>Rider.404' } ) -}}
 		</div>
 		<div class="col-10 offset-1 col-sm-9 d-sm-flex align-items-sm-end order-3 order-sm-2">
-            {% include 'partials/socials.html.twig' %}
+            {{- include( 'partials/socials.html.twig' ) -}}
         </div>
         <div class="col-1 d-sm-flex align-items-sm-end justify-content-sm-end order-2 order-sm-3">
 

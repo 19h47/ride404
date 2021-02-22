@@ -34,25 +34,28 @@ class Enqueue {
 	 * @since  1.0.0
 	 */
 	public function enqueue_scripts() : void {
+		$deps = array( 'jquery' );
 		wp_deregister_script( 'wp-embed' );
 
-		wp_register_script( // phpcs:ignore
-			get_theme_text_domain() . '-main',
-			get_template_directory_uri() . '/' . get_theme_manifest()['main.js'],
-			array( 'jquery' ),
-			null,
-			true
-		);
-
 		if ( is_page_template( 'templates/about-page.php' ) ) {
-			wp_register_script( // phpcs:ignore
+			wp_enqueue_script( // phpcs:ignore
 				get_theme_text_domain() . '-patch',
 				get_template_directory_uri() . '/' . get_theme_manifest()['static/patch.js'],
 				array(),
 				null,
 				true
 			);
+
+			$deps[] = get_theme_text_domain() . '-patch';
 		}
+
+		wp_register_script( // phpcs:ignore
+			get_theme_text_domain() . '-main',
+			get_template_directory_uri() . '/' . get_theme_manifest()['main.js'],
+			$deps,
+			null,
+			true
+		);
 
 		$args = array(
 			'template_directory_uri' => get_template_directory_uri(),
@@ -93,7 +96,7 @@ class Enqueue {
 		}
 
 		wp_enqueue_script( get_theme_text_domain() . '-main' );
-		wp_enqueue_script( get_theme_text_domain() . '-patch' );
+		// wp_enqueue_script( get_theme_text_domain() . '-patch' );
 	}
 
 

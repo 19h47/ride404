@@ -6,10 +6,6 @@
  * @subpackage Rider404
  */
 .Smiley-404 {
-	@extend %position-relative, %overflow-hidden, %overflow-md-visible;
-
-	background-color: the_color(gray, very-dark-02);
-
 	canvas {
 		@extend %position-relative;
 		@extend .d-block;
@@ -23,27 +19,41 @@
 		}
 	}
 
+	&__body {
+		@extend %position-relative, %overflow-hidden, %overflow-md-visible;
+
+		background-color: the_color(gray, very-dark-02);
+		z-index: -1;
+	}
+
 	&__images {
-		@include absolute(top 0 right 0 bottom 0 left 0);
 		@extend %Pointer-events-none;
 
 		z-index: 2;
 
+		&--top {
+			margin-bottom: -30px;
+		}
+
+		&--bottom {
+			margin-top: -30px;
+		}
+
 		@include media-breakpoint-up(md) {
-			.Image-reveal.top {
-				transform: translate3d(0, -50%, 0);
+			&--top {
+				margin-bottom: -120px;
 			}
 
-			.Image-reveal.bottom {
-				@include margin(top auto);
-
-				transform: translate3d(0, 50%, 0);
+			&--bottom {
+				margin-top: -120px;
 			}
 		}
 
 		img {
-			@include size(100%, auto);
 			@extend .d-block;
+
+			height: auto;
+			max-width: 100%;
 
 			object-fit: contain;
 			object-position: center;
@@ -52,7 +62,7 @@
 
 	&__background {
 		@include absolute(top 0 right 0 left 0 bottom 0);
-		@include margin(top 245px bottom 245px);
+		@include margin(top 140px bottom 140px);
 
 		img {
 			@include absolute(top 0 right 0 bottom 0 left 0);

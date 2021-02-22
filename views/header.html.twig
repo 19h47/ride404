@@ -48,7 +48,7 @@
         <div class="col-3 offset-5 col-md-2 offset-md-3 d-flex align-items-center justify-content-end">
 
             <{{ ( cart.is_empty ? 'div' : "a href=\"#{cart_url}\"" ) | raw }} class="Site-header__mini-cart Mini-cart js-total">
-                {% include 'partials/cart-contents-count.html.twig' with { count: cart.get_cart_contents_count() } only %}
+                {{- include( 'partials/cart-contents-count.html.twig', { count: cart.get_cart_contents_count() }, with_context = false ) }}
                 {# {% include 'svg/use.html.twig' with { icon: 'cart' } only %} #}
 				<div id="mini-cart" class="Mini-cart__icon" data-module-mini-cart data-mini-cart="button" data-lottie-json="cart" data-lottie-autoplay="false" data-lottie-loop="false"></div>
             </{{ ( cart.is_empty ? 'div' : 'a' ) | raw }}>
