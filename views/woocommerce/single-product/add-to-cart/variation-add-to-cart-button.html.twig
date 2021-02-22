@@ -30,17 +30,8 @@
         {{- include( 'svg/use.html.twig', { icon: 'add-to-cart-danger', classes: [ 'Pointer-events-none' ] }, with_context = false ) -}}
     </button> #}
 
-	<button
-		class="Add-to-cart button alt"
-		type="sublit"
-		value="{{ product.get_id() }}"
-		data-module-add-to-cart
-		data-add-to-cart="button"
-		data-lottie-json="add-to-cart"
-		data-lottie-autoplay="false"
-		data-lottie-loop="false"
-		aria-label="{{ product.single_add_to_cart_text() | e( 'esc_html' ) }}"
-	></button>
+	{{- include( 'components/add-to-cart/html.twig', { product: product } ) -}}
+
     {#
      # Hook: woocommerce_after_add_to_cart_button.
      #}

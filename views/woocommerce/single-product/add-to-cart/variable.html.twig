@@ -85,7 +85,8 @@
 		</div>
 
 	{% else %}
-		<p class="stock out-of-stock white-space-nowrap m-0">
+		<p class="Stock stock out-of-stock white-space-nowrap m-0">
+			{{- include( 'svg/use.html.twig', { icon: 'sold-out-cart' }, with_context = false ) -}}
 			{% apply apply_filters( 'woocommerce_out_of_stock_message' ) %}
 				{{- __( 'This product is currently out of stock and unavailable.', 'rider404' ) | e( 'esc_html' ) -}}
 			{% endapply %}

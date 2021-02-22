@@ -1,0 +1,21 @@
+/**
+ * Stock
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package WordPress
+ * @subpackage Rider404
+ */
+.Stock {
+	@extend .d-flex, .flex-column, .justify-content-center, .align-items-center;
+
+	font-size: 12px;
+	line-height: (28/12);
+	color: the_color(gray, very-dark-02);
+
+	svg {
+		@include margin(bottom 10px);
+		@include size(30px);
+
+		fill: currentColor;
+	}
+}

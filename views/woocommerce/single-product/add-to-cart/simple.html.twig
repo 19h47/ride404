@@ -7,9 +7,13 @@
 
 {% if product.is_purchasable() %}
 
-   	{{- stock_html -}}
+	{% if false == product.is_in_stock() %}
+		{{- include( 'svg/use.html.twig', { icon: 'sold-out-cart' } ) -}}
+	{% endif %}
 
-    {% if product.is_in_stock() %}
+	{{- stock_html -}}
+
+    {% if true == product.is_in_stock() %}
 
         {% do action( 'woocommerce_before_add_to_cart_form' ) %}
 
@@ -29,19 +33,7 @@
                 {{- include('svg/use.html.twig', { icon: 'add-to-cart-danger', classes: [ 'Pointer-events-none' ] }, with_context = false ) -}}
             </button> #}
 
-			<button
-				id="bars"
-				name="add-to-cart"
-				class="Add-to-cart single_add_to_cart_button button alt"
-				type="submit"
-				data-module-add-to-cart
-				data-add-to-cart="button"
-				data-lottie-json="add-to-cart"
-				data-lottie-autoplay="false"
-				data-lottie-loop="false"
-				aria-label="{{ product.single_add_to_cart_text() | e( 'esc_html' ) }}"
-				value="{{ function( 'absint', product.get_id() ) }}"
-			></button>
+			{{- include( 'components/add-to-cart/html.twig', { product: product } ) -}}
 
            {% do action( 'woocommerce_after_add_to_cart_button' ) %}
         </form>
