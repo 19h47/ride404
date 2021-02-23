@@ -5,9 +5,8 @@
  # @subpackage Rider404
  #}
 <button
-	id="bars"
-	name="add-to-cart"
-	class="Add-to-cart single_add_to_cart_button button alt"
+	id="add-to-cart"
+	class="Add-to-cart "
 	type="submit"
 	data-module-add-to-cart
 	data-add-to-cart="button"
@@ -15,5 +14,5 @@
 	data-lottie-autoplay="false"
 	data-lottie-loop="false"
 	aria-label="{{ product.single_add_to_cart_text() | e( 'esc_html' ) }}"
-	value="{{ function( 'absint', product.get_id() ) }}"
 ></button>
+<input type="hidden" name="add-to-cart" value="{{ function( 'absint', product.get_id() ) }}">
