@@ -7,13 +7,22 @@
  */
 .Add-to-cart-hover {
 	@extend .d-flex, .align-items-center, .justify-content-center;
-	@include size(110px);
 	@extend %position-relative;
+	@include size(110px);
 
 	margin: 0 auto;
 
-	svg {
+	& > div {
 		@include absolute(top 0 right 0 bottom 0 left 0);
+		@include size(100%);
+
+		animation-name: spin;
+		animation-duration: 4s;
+		animation-iteration-count: infinite;
+		animation-timing-function: linear;
+	}
+
+	& > svg {
 		@include size(100%);
 	}
 
@@ -26,5 +35,11 @@
 		}
 
 		z-index: 2;
+	}
+
+	@keyframes spin {
+		100% {
+			transform: rotate(360deg);
+		}
 	}
 }

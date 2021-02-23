@@ -28,10 +28,12 @@ export default class AddToCart extends AbstractLottieModule {
 	activate() {
 		this.animation.setDirection(1);
 		this.animation.play();
+		this.call('activate', false, 'AddToCartHover');
 	}
 
 	deactivate() {
 		this.animation.setDirection(-1);
 		this.animation.play();
+		this.call('deactivate', false, 'AddToCartHover');
 	}
 }
