@@ -7,6 +7,6 @@
 .Variation-add-to-cart {
 	$this: &;
 
-	@extend .d-flex, .align-items-center, .justify-content-center;
+	@extend .d-flex, .flex-column, .align-items-center, .justify-content-center;
 	@include padding(top 0 right 0 bottom 0 left 0);
 }

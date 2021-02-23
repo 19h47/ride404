@@ -39,6 +39,7 @@
 				<div data-module-add-to-cart-hover data-add-to-cart-hover="button" data-lottie-json="add-to-cart-hover" data-lottie-autoplay="false" data-lottie-loop="false"></div>
 				{{- include( 'components/button-add-to-cart.html.twig', { product: product } ) -}}
 			</div>
+			{{ product.single_add_to_cart_text() | e( 'esc_html' ) }}
 
            {% do action( 'woocommerce_after_add_to_cart_button' ) %}
         </form>

@@ -35,6 +35,8 @@
 		{{- include( 'components/button-add-to-cart.html.twig', { product: product } ) -}}
 	</div>
 
+	{{ product.single_add_to_cart_text() | e( 'esc_html' ) }}
+
     {#
      # Hook: woocommerce_after_add_to_cart_button.
      #}
