@@ -35,7 +35,8 @@
                 {{- include('svg/use.html.twig', { icon: 'add-to-cart-danger', classes: [ 'Pointer-events-none' ] }, with_context = false ) -}}
             </button> #}
 
-			<div class="Add-to-cart-hover" data-module-add-to-cart-hover data-add-to-cart-hover="button" data-lottie-json="add-to-cart-hover" data-lottie-autoplay="false" data-lottie-loop="false">
+			<div class="Add-to-cart-hover">
+				<div data-module-add-to-cart-hover data-add-to-cart-hover="button" data-lottie-json="add-to-cart-hover" data-lottie-autoplay="false" data-lottie-loop="false"></div>
 				{{- include( 'components/button-add-to-cart.html.twig', { product: product } ) -}}
 			</div>
 
