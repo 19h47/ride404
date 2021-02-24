@@ -34,6 +34,7 @@
 
 		object-fit: cover;
 		object-position: center;
+		will-change: transform;
 
 		@include media-breakpoint-up(sm) {
 			object-fit: contain;
