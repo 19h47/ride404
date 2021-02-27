@@ -8,6 +8,7 @@
 .Navigation {
 	$this: &;
 
+	@include autoAlpha(0);
 	@include fixed(top 0 right 0 bottom 0 left 0);
 	@include size(100%, 100vh);
 	@include padding(bottom env(safe-area-inset-bottom));
@@ -17,6 +18,7 @@
 	color: the_color(black);
 
 	@at-root .Navigation--is-open & {
+		@include autoAlpha(1);
 		@extend %Pointer-events-auto;
 	}
 
