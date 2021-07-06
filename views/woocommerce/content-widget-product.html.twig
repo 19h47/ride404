@@ -11,8 +11,8 @@
     {{- include( 'partials/featured.html.twig', { product: product }, with_context = false ) -}}
 	{{- include( 'woocommerce/loop/loop-product-link-start.html.twig', { link: product.get_permalink() }, with_context = false ) -}}
 
-	{% include 'woocommerce/loop/loop-product-thumbnail.html.twig' with { product: product } only %}
-	{% include 'woocommerce/loop/loop-product-title.html.twig' with { title: product.get_name() } only %}
+	{{- include( 'woocommerce/loop/loop-product-thumbnail.html.twig', { product: product }, with_context = false ) -}}
+	{{- include( 'woocommerce/loop/loop-product-title.html.twig', { title: product.get_name() | e( 'wp_kses_post' ) }, with_context = false ) -}}
 
 	{{- include( 'woocommerce/loop/loop-product-link-end.html.twig' ) -}}
 

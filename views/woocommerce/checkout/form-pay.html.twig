@@ -24,7 +24,7 @@
 						<tr class="{{ 'order_item' | apply_filters( 'woocommerce_order_item_class', item, order ) | e }}">
 							<td class="product-name">
 								{% filter apply_filters( 'woocommerce_order_item_name', item, false ) %}
-									{{ item.get_name() | e( 'esc_html' ) }}
+									{{ item.get_name() | e( 'wp_kses_post' ) }}
 								{% endfilter %}
 
 								{% do action( 'woocommerce_order_item_meta_start', item_id, item, order, false ) %}
