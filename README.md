@@ -1,5 +1,7 @@
 # Rider.404
 
+> The source for this site was not created to be a template or theme, but for my own use. Feel free to take whatever inspiration from it that you want, but this code was not written with the intention of being cloned and deployed. As such, I do not provide support or guidance for doing that.
+
 ## WooCommerce
 
 ### Custom hook
@@ -37,3 +39,7 @@ rider404_after_single_quick_variation
 | gray very dark 03 | ![#323232](https://via.placeholder.com/10/323232?text=+) `#323232`  |
 | red bright        | ![#fd3e2d](https://via.placeholder.com/10/fd3e2d?text=+) `#fd3e2d`  |
 | green lime        | ![#0FCF84](https://via.placeholder.com/10/0FCF84?text=+) `#0FCF84`  |
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).

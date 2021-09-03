@@ -5,7 +5,7 @@
  * @package WordPress
  * @subpackage Rider404
  *
- * @version 3.4.4
+ * @version 5.6.0
  */
 
 defined( 'ABSPATH' ) || exit;
