@@ -1,4 +1,4 @@
-import { module } from 'scripts/modujs';
+import { module as M } from 'modujs';
 import $ from 'jquery';
 
 import { elements } from 'scripts/config';
@@ -8,7 +8,7 @@ import { elements } from 'scripts/config';
  * @constructor
  * @param {object} container
  */
-class CheckoutCoupons extends module {
+class CheckoutCoupons extends M {
 	constructor(m) {
 		super(m);
 

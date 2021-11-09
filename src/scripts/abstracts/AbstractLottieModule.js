@@ -1,4 +1,4 @@
-import { module } from 'modujs';
+import { module as M } from 'modujs';
 import lottie from 'lottie-web';
 
 /**
@@ -6,7 +6,7 @@ import lottie from 'lottie-web';
  * @constructor
  * @param {object} container
  */
-export default class AbstractLottieBlock extends module {
+export default class AbstractLottieBlock extends M {
 	constructor(m) {
 		super(m);
 

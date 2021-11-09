@@ -1,4 +1,4 @@
-import { module } from 'scripts/modujs';
+import { module as M } from 'modujs';
 import C from '@19h47/checkbox';
 import $ from 'jquery';
 
@@ -8,7 +8,7 @@ import $ from 'jquery';
  * @constructor
  * @param {object} container
  */
-class Checkbox extends module {
+class Checkbox extends M {
 	init() {
 		this.change = this.change.bind(this);
 

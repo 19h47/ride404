@@ -1,5 +1,5 @@
 /* global CABLES, rider404 */
-import { module } from 'scripts/modujs';
+import { module as M } from 'modujs';
 
 const showError = (errId, errMsg) => {
 	console.log(`An error occured: ${errId}, ${errMsg}`);
@@ -14,7 +14,7 @@ const patchInitialized = () => {
  * @constructor
  * @param {object} container
  */
-class Smiley404 extends module {
+class Smiley404 extends M {
 	init() {
 		super.init();
 

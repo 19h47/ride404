@@ -1,5 +1,5 @@
 /* global YT */
-import { module } from 'scripts/modujs';
+import { module as M } from 'modujs';
 
 const url = 'https://www.youtube.com/iframe_api';
 
@@ -18,7 +18,7 @@ const createTag = () => {
  * @constructor
  * @param {object} container
  */
-class Modal extends module {
+class Modal extends M {
 	constructor(m) {
 		super(m);
 

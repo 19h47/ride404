@@ -1,4 +1,4 @@
-import { module } from 'scripts/modujs';
+import { module as M } from 'modujs';
 import { gsap } from 'gsap';
 
 import { elements } from 'scripts/config';
@@ -8,7 +8,7 @@ import { elements } from 'scripts/config';
  * @constructor
  * @param {object} container
  */
-export default class NavigationBlock extends module {
+class Navigation extends M {
 	constructor(m) {
 		super(m);
 
@@ -107,7 +107,7 @@ export default class NavigationBlock extends module {
 	}
 
 	/**
-	 * NavigationBlock.close
+	 * Navigation.close
 	 */
 	close() {
 		if (!this.isOpen) {
@@ -121,3 +121,5 @@ export default class NavigationBlock extends module {
 		return true;
 	}
 }
+
+export default Navigation;

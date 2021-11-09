@@ -1,11 +1,11 @@
-import { module } from 'scripts/modujs';
+import { module as M } from 'modujs';
 
 /**
  *
  * @constructor
  * @param {object} container
  */
-export default class Shipping extends module {
+export default class Shipping extends M {
 	init() {
 		this.el.addEventListener(
 			'change',

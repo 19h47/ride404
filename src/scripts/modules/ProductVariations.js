@@ -1,4 +1,4 @@
-import { module } from 'scripts/modujs';
+import { module as M } from 'modujs';
 import RadioGroup from '@19h47/radiogroup';
 import $ from 'jquery'; // eslint-disable-line
 
@@ -7,7 +7,7 @@ import $ from 'jquery'; // eslint-disable-line
  * @constructor
  * @param {object} container
  */
-class ProductVariations extends module {
+class ProductVariations extends M {
 	init() {
 		super.init();
 

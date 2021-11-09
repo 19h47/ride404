@@ -1,4 +1,4 @@
-import { module } from 'scripts/modujs';
+import { module as M } from 'modujs';
 import { gsap } from 'gsap';
 import { TextPlugin } from 'gsap/TextPlugin';
 
@@ -9,7 +9,7 @@ gsap.registerPlugin(TextPlugin);
  * @constructor
  * @param {object} container
  */
-class Coordinate extends module {
+class Coordinate extends M {
 	init() {
 		this.number = JSON.parse(this.el.getAttribute('data-number'));
 

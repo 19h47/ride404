@@ -1,4 +1,4 @@
-import { module } from 'scripts/modujs';
+import { module as M } from 'modujs';
 import { gsap } from 'gsap';
 
 import S from 'vendors/SplitText';
@@ -10,7 +10,7 @@ gsap.registerPlugin(S);
  * @constructor
  * @param {object} container
  */
-export default class SplitText extends module {
+export default class SplitText extends M {
 	init() {
 		super.init();
 

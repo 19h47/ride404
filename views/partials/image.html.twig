@@ -4,26 +4,36 @@
  # @param array classes
  # @param string loading
  # @param array image
- # @param array attributes
- # @param string size Optional. The requested image size. This can be a size that was in WordPress. Example: medium or large. Default full.
+ # @param object attributes
+ # @param string size
  #
  # @package WordPress
  # @subpackage Rider404
  #}
-{% if image %}
 
+{% if image %}
 	{% set image = get_image( image ) %}
 
-	<img
-		class="{{ classes ? classes | join( ' ' ) }}"
-		loading="{{ loading | default( 'lazy' ) }}"
-		src="{{ image.src( size | default( 'full' ) ) }}"
-		alt="{{ image.alt }}"
-		width="{{ image.width }}"
-		height="{{ image.height }}"
-		srcset="{{ image.srcset }}"
-		sizes="{{ image.img_sizes }}"
-		{{ attributes ? attributes | map( ( value, key ) => "#{key}=\"#{value}\"" ) | join( ' ' )  | raw }}
-	>
+	<picture{{ size ? " data-size=\"#{ size }\"" : '' }}>
 
+		{% if 'image/svg+xml' != image.post_mime_type %}
+			<source type="image/webp" srcset="{{ image.src( size | default( 'full' ) ) | towebp( 100 ) }}">
+			<source type="{{ image.post_mime_type }}" srcset="{{ image.src( size | default( 'full' ) ) }}">
+		{% endif %}
+
+		<img
+			class="{{ classes ? classes | join( ' ' ) : '' }}"
+			loading="{{ loading | default( 'lazy' ) }}"
+			src="{{ image.src( size | default( 'full' ) ) }}"
+			alt="{{ image.alt }}"
+			width="{{ image.sizes[ size ].width | default( image.width ) }}"
+			height="{{ image.sizes[ size ].height | default( image.height ) }}"
+			{{ image.srcset ? "srcset=\"#{ image.srcset( size | default( 'full' ) ) }\"" : '' }}
+			{{ image.img_sizes ? "sizes=\"#{ image.img_sizes( size | default( 'full' ) ) }\"" : '' }}
+			{{ attributes ? attributes | map( ( value, key ) => "#{key}=\"#{value}\"" ) | join( ' ' ) | raw }}
+		>
+
+	</picture>
 {% endif %}
+
+

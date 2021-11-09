@@ -1,4 +1,4 @@
-import { module } from 'scripts/modujs';
+import { module as M } from 'modujs';
 import Grain from 'common/Grain';
 import { gsap } from 'gsap';
 
@@ -7,7 +7,7 @@ import { gsap } from 'gsap';
  * @constructor
  * @param {object} container
  */
-class Video extends module {
+class Video extends M {
 	constructor(m) {
 		super(m);
 

@@ -5,7 +5,7 @@ import AbstractLottieModule from 'abstracts/AbstractLottieModule';
  *
  * @constructor
  */
-export default class AddToCart extends AbstractLottieModule {
+class AddToCart extends AbstractLottieModule {
 	constructor(m) {
 		super(m);
 
@@ -37,3 +37,5 @@ export default class AddToCart extends AbstractLottieModule {
 		this.call('deactivate', false, 'AddToCartHover');
 	}
 }
+
+export default AddToCart;

@@ -6,7 +6,7 @@ import AbstractLottieModule from 'abstracts/AbstractLottieModule';
  * @constructor
  * @param {object} container
  */
-export default class AboutMapBlock extends AbstractLottieModule {
+class AboutMap extends AbstractLottieModule {
 	init() {
 		super.init();
 
@@ -19,3 +19,5 @@ export default class AboutMapBlock extends AbstractLottieModule {
 		});
 	}
 }
+
+export default AboutMap;

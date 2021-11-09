@@ -1,4 +1,4 @@
-import { module } from 'modujs';
+import { module as M } from 'modujs';
 import Flickity from 'flickity';
 import debounce from 'utils/debounce';
 
@@ -7,7 +7,7 @@ import debounce from 'utils/debounce';
  * @constructor
  * @param {object} container
  */
-export default class AbstractCarouselModule extends module {
+export default class AbstractCarouselModule extends M {
 	constructor(m) {
 		super(m);
 

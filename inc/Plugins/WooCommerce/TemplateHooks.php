@@ -41,8 +41,8 @@ class TemplateHooks {
 	 * @return void
 	 */
 	public function add_action() : void {
-		add_filter( 'woocommerce_gateway_icon', array( $this, 'paypal_icon' ), 10, 2 );
-		add_filter( 'woocommerce_gateway_icon', array( $this, 'stripe_icon' ), 10, 2 );
+		// add_filter( 'woocommerce_gateway_icon', array( $this, 'paypal_icon' ), 10, 2 );
+		// add_filter( 'woocommerce_gateway_icon', array( $this, 'stripe_icon' ), 10, 2 );
 
 		// Single variation.
 		add_action( 'woocommerce_single_variation', 'woocommerce_single_variation_add_to_cart_button', 10 );

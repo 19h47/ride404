@@ -1,4 +1,5 @@
 /**
+ * Common
  *
  * @file webpack.config.common.js
  * @author Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
@@ -10,7 +11,9 @@ const webpack = require('webpack');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+
 const dotenv = require('dotenv');
 
 const resolve = require('./webpack.utils');
@@ -18,7 +21,7 @@ const resolve = require('./webpack.utils');
 dotenv.config({ path: resolve('.env') });
 
 // Manifest plugin
-const webpackManifestPlugin = new WebpackManifestPlugin({
+const manifestPlugin = new WebpackManifestPlugin({
 	publicPath: 'dist/',
 });
 
@@ -27,13 +30,12 @@ module.exports = {
 		path: resolve('/dist'),
 		publicPath: process.env.PUBLIC_PATH,
 	},
-	devServer: {
-		contentBase: resolve('/'),
-		compress: true,
-		port: 3000,
-		inline: true,
-		disableHostCheck: true,
-		writeToDisk: true,
+	optimization: {
+		splitChunks: {
+			// include all types of chunks
+			chunks: 'all',
+			name: 'vendors'
+		},
 	},
 	externals: {
 		jquery: 'jQuery',
@@ -46,12 +48,13 @@ module.exports = {
 			scripts: resolve('src/scripts'),
 			abstracts: resolve('src/scripts/abstracts'),
 			common: resolve('src/scripts/common'),
+			modules: resolve('src/scripts/modules'),
 			pages: resolve('src/scripts/pages'),
 			transitions: resolve('src/scripts/transitions'),
 			factories: resolve('src/scripts/factories'),
 			services: resolve('src/scripts/services'),
 			utils: resolve('src/scripts/utils'),
-			modules: resolve('src/scripts/modules'),
+			blocks: resolve('src/scripts/blocks'),
 			polyfills: resolve('src/scripts/polyfills'),
 			vendors: resolve('src/scripts/vendors'),
 			videos: resolve('src/videos'),
@@ -70,12 +73,6 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				enforce: 'pre',
-				test: /\.js$/,
-				exclude: [/node_modules/, /vendors/],
-				loader: 'eslint-loader',
-			},
-			{
 				test: /\.js$/,
 				exclude: /node_modules/,
 				loader: 'babel-loader',
@@ -83,16 +80,10 @@ module.exports = {
 			{
 				test: /\.(woff2?|eot|ttf|otf|woff|svg)?$/,
 				exclude: [/img/, /icons/],
-				use: [
-					{
-						loader: 'file-loader',
-						options: {
-							name: '[name].[ext]',
-							outputPath: 'fonts/',
-							publicPath: '../fonts/',
-						},
-					},
-				],
+				type: 'asset/resource',
+				generator: {
+					filename: 'fonts/[hash][ext][query]',
+				},
 			},
 			{
 				test: /\.svg$/,
@@ -112,33 +103,11 @@ module.exports = {
 			{
 				test: /\.svg$/,
 				exclude: [/fonts/, /icons/],
-				use: [
-					{
-						loader: 'file-loader',
-						options: {
-							outputPath: 'img/svg',
-							name: '[name].[ext]',
-						},
-					},
-					{
-						loader: 'svgo-loader',
-						options: {
-							plugins: [
-								{
-									removeTitle: true,
-								},
-								{
-									convertColors: {
-										shorthex: false,
-									},
-								},
-								{
-									convertPathData: false,
-								},
-							],
-						},
-					},
-				],
+				type: 'asset/resource',
+				generator: {
+					filename: 'img/svg/[name][ext]',
+				},
+				use: 'svgo-loader',
 			},
 			{
 				test: /\.(mp4|webm|ogg|mp3|wav|flac|aac|ogv)(\?.*)?$/,
@@ -155,24 +124,34 @@ module.exports = {
 				],
 			},
 			{
-				test: /\.(gif|png|jpe?g)$/i,
+				test: /\.(gif)$/i,
 				exclude: [/animations/],
+				type: 'asset/resource',
+				generator: {
+					filename: 'img/gif/[name][ext]',
+				},
 				use: [
-					{
-						loader: 'file-loader',
-						options: {
-							outputPath: 'img/',
-							name: '[ext]/[name].[ext]',
-							// publicPath: '../img/',
-						},
-					},
 					{
 						loader: 'image-webpack-loader',
 						options: {
-							mozjpeg: {
-								progressive: true,
-								quality: [65],
+							gifsicle: {
+								interlaced: false,
 							},
+						},
+					},
+				],
+			},
+			{
+				test: /\.(png)$/i,
+				exclude: [/animations/],
+				type: 'asset/resource',
+				generator: {
+					filename: 'img/png/[name][ext]',
+				},
+				use: [
+					{
+						loader: 'image-webpack-loader',
+						options: {
 							optipng: {
 								enabled: false,
 							},
@@ -180,8 +159,24 @@ module.exports = {
 								quality: [0.65, 0.9],
 								speed: 4,
 							},
-							gifsicle: {
-								interlaced: false,
+						},
+					},
+				],
+			},
+			{
+				test: /\.(jpe?g)$/i,
+				exclude: [/animations/],
+				type: 'asset/resource',
+				generator: {
+					filename: 'img/jpg/[name][ext]',
+				},
+				use: [
+					{
+						loader: 'image-webpack-loader',
+						options: {
+							mozjpeg: {
+								progressive: true,
+								quality: [65],
 							},
 						},
 					},
@@ -190,7 +185,7 @@ module.exports = {
 		],
 	},
 	plugins: [
-		webpackManifestPlugin,
+		manifestPlugin,
 		new SpriteLoaderPlugin({ plainSprite: true }),
 		new WebpackNotifierPlugin({
 			title: 'Webpack',
@@ -200,6 +195,7 @@ module.exports = {
 		new webpack.DefinePlugin({
 			'process.env': dotenv.parsed,
 		}),
+		new ESLintPlugin(),
 		new CopyPlugin({
 			patterns: [
 				{ from: 'static/patch.js', to: 'patch.js' },

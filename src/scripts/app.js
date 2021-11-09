@@ -1,4 +1,5 @@
-import modular from 'scripts/modujs';
+import Modular from 'modujs';
+import * as modules from 'modules';
 import { gsap } from 'gsap';
 
 import Guid from 'common/Guid';
@@ -13,8 +14,7 @@ if (production) {
 	guid.init();
 }
 
-// eslint-disable-next-line new-cap
-const app = new modular()
+const app = new Modular({ modules });
 
 const splashscreen = new Splashscreen();
 splashscreen.init();

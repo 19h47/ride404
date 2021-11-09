@@ -1,11 +1,11 @@
-import { module } from 'scripts/modujs';
+import { module as M } from 'modujs';
 import LocomotiveScroll from 'locomotive-scroll';
 
 import { elements } from 'scripts/config';
 
 const imagesLoaded = require('imagesloaded');
 
-class Scroll extends module {
+class Scroll extends M {
 	init() {
 		const imgLoad = imagesLoaded(this.el);
 
