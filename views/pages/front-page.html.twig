@@ -109,7 +109,7 @@
                         <div class="Carousel__item js-item">
                             {% embed "partials/image-reveal.html.twig" %}
                                 {% block content %}
-                                    {{- include( 'partials/image.html.twig', { image: image, size: 'medium', loading: 'eager' }, with_context = false ) -}}
+                                    {{- include( 'partials/image.html.twig', { image: image, loading: 'eager' }, with_context = false ) -}}
                                 {% endblock %}
                             {% endembed %}
                         </div>
