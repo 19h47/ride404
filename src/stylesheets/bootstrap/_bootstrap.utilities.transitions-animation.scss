@@ -1,0 +1,29 @@
+$utilities: map-merge(
+	$utilities,
+	(
+		"transition-property": (
+			class: transition,
+			property: transition-property,
+			values: (
+				colors: unquote( 'color, background-color, border-color, text-decoration-color, fill, stroke' ),
+				all: 'all',
+				opacity: opacity
+			)
+		),
+		"transition-timing-function": (
+			class: ease,
+			property: transition-timing-function,
+			values: (
+				out-expo: cubic-bezier(0.19, 1, 0.22, 1)
+			)
+		),
+		"transition-duration": (
+			class: duration,
+			property: transition-duration,
+			values: (
+				500: 500ms,
+				1000: 1000ms
+			)
+		)
+	)
+);

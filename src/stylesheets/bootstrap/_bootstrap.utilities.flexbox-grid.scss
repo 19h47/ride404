@@ -1,0 +1,22 @@
+$utilities: map-merge(
+	$utilities,
+	(
+		gap: (
+			property: gap,
+			values: $spacers,
+			responsive: true,
+		),
+		column-gap: (
+			property: column-gap,
+			class: gap-x,
+			values: $spacers,
+			responsive: true,
+		),
+		row-gap: (
+			property: row-gap,
+			class: gap-y,
+			values: $spacers,
+			responsive: true,
+		)
+	)
+);

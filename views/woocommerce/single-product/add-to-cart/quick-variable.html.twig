@@ -10,7 +10,7 @@
 {% embed 'partials/bar.html.twig' %}
 	{% block content %}
 		<form
-			class="Quick-cart variations_form"
+			class="Quick-cart variations_form d-flex align-items-center"
 			action="{{ form_action | e( 'esc_url' ) }}"
 			method="post"
 			enctype="multipart/form-data"
@@ -22,44 +22,46 @@
 
 			{% if available_variations %}
 
-				{% include 'woocommerce/single-product/price.html.twig' %}
+				{{- include( 'woocommerce/single-product/price.html.twig' ) -}}
 
 				{% for name, options in attributes %}
-					{% set terms = function( 'wc_get_product_terms', product.get_id(), name, { 'fields': 'all' } ) %}
+					{% set terms = function( 'wc_get_product_terms', product.get_id(), name, { fields: 'all' } ) %}
 
-					<div id="product-variations-{{ name | sanitize }}" class="variations" data-module-product-variations>
+					{% if terms %}
+						<div id="product-variations-{{ name | sanitize }}" class="variations" data-module-product-variations>
 
-						{# @see https://github.com/woocommerce/woocommerce/blob/master/includes/wc-template-functions.php#L2988 #}
-						{{-
-							function( 'wc_dropdown_variation_attribute_options',
-								{
-									options: options,
-									attribute: name,
-									product: product,
-									class: 'd-none',
-									show_option_none: false,
-								}
-							)
-						-}}
+							{# @see https://github.com/woocommerce/woocommerce/blob/master/includes/wc-template-functions.php#L2988 #}
+							{{-
+								function( 'wc_dropdown_variation_attribute_options',
+									{
+										options: options,
+										attribute: name,
+										product: product,
+										class: 'd-none',
+										show_option_none: false,
+									}
+								)
+							-}}
 
-						<div role="radiogroup" data-product-variations="radiogroup">
-							{% for term in terms %}
-								{% if term.slug in options %}
-									<div role="radio" aria-checked="false" tabindex="-1">
-										<span class="white-space-nowrap">{{- term.name | e( 'esc_html' ) -}}</span>
-										<input
-											class="d-none"
-											type="radio"
-											name="attribute_{{ name | sanitize | e }}"
-											value="{{ term.slug | e }}"
-											{{ ( terms | length ) == 1 ? ' checked' : '' }}
-										>
-									</div>
-								{% endif %}
-							{% endfor %}
+							<div role="radiogroup" class="d-flex fw-normal mx-4" data-product-variations="radiogroup">
+								{% for term in terms %}
+									{% if term.slug in options %}
+										<div role="radio" aria-checked="false" tabindex="-1" class="mx-4 position-relative cursor-pointer">
+											<span class="white-space-nowrap">{{- term.name | e( 'esc_html' ) -}}</span>
+											<input
+												class="d-none"
+												type="radio"
+												name="attribute_{{ name | sanitize | e }}"
+												value="{{ term.slug | e }}"
+												{{ ( terms | length ) == 1 ? ' checked' : '' }}
+											>
+										</div>
+									{% endif %}
+								{% endfor %}
+							</div>
+
 						</div>
-
-					</div>
+					{% endif %}
 
 				{% endfor %}
 

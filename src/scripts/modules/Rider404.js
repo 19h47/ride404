@@ -8,6 +8,7 @@ import AbstractLottieModule from 'abstracts/AbstractLottieModule';
 export default class Rider404 extends AbstractLottieModule {
 	init() {
 		super.init();
+		// console.dir(this.el)
 
 		this.modules.Scroll.main.scroll.on('call', (value, way) => {
 			if ('rider-404' === value && 'enter' === way) {

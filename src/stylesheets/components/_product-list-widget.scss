@@ -4,26 +4,27 @@
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  * @package Rider404
  */
+@use "sass:math";
+
 .Product-list-widget {
-	@extend .row;
-	@extend %list-style-type-none;
-	@include margin(top 20px);
 
-	height: 516px;
+	// @include margin(top 20px);
 
-	.flickity-viewport {
-		width: 100%;
-		overflow: visible;
-	}
+	// height: 516px;
 
-	@include media-breakpoint-up(sm) {
-		@include margin(top 0);
-		height: auto;
-	}
+	// .flickity-viewport {
+	// 	width: 100%;
+	// 	overflow: visible;
+	// }
+
+	// @include media-breakpoint-up(sm) {
+	// 	// @include margin(top 0);
+	// 	height: auto;
+	// }
 
 	li {
-		@include size(percentage(10/12), 100%);
-		@include margin(right percentage(0.25/10) left percentage(0.25/10));
+		@include size(percentage(math.div(10, 12)), 100%);
+		@include margin(right percentage(0.25*0.1) left percentage(0.25*0.1));
 
 		@include media-breakpoint-up(sm) {
 			@include margin(right 0 left 0);
@@ -37,7 +38,7 @@
 		@include media-breakpoint-up(sm) {
 			@include margin(top -35px);
 
-			width: percentage(3/12);
+			width: percentage(math.div(3, 12));
 		}
 
 		@include media-breakpoint-up(md) {
@@ -56,7 +57,7 @@
 		@extend .offset-sm-6;
 
 		@include media-breakpoint-up(sm) {
-			width: percentage(6/12);
+			width: percentage(math.div(6, 12));
 		}
 
 		@include media-breakpoint-up(md) {

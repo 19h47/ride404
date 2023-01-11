@@ -6,12 +6,12 @@
  #}
 
 {% if socials is iterable %}
-	<ul class="Socials{{ classes ? ' ' ~ classes | join( ' ' ) }}" data-scroll>
+	<ul class="Socials p-0 m-n2 m-md-0 d-flex flex-wrap flex-md-nowrap list-style-type-none {{ classes ? ' ' ~ classes | join( ' ' ) }}" data-scroll>
 		{% for social in socials %}
 			{% if social.url %}
-				<li class="Socials__item">
+				<li class="Socials__item d-flex align-items-center justify-content-center m-2 my-md-0 mx-md-2.5">
 					<a
-						class="Socials__link"
+						class="Socials__link size-12.5 size-md-17.5 d-flex align-items-center justify-content-center position-relative"
 						href="{{ social.url }}"
 						target="_blank"
 						title="{{ social.title }}"
@@ -19,7 +19,7 @@
 						rel="noopener noreferrer"
 					>
 						{{ include( 'svg/use.html.twig', { icon: social.slug, attributes: { style: "transition-delay: #{ loop.index * 0.1 + 0.3 }s;" } }, with_context = false ) }}
-						<span style="transition-delay: {{ loop.index * 0.1 + 0.3 }}s;"></span>
+						<span class="position-absolute inset-0" style="transition-delay: {{ loop.index * 0.1 + 0.3 }}s;"></span>
 					</a>
 				</li>
 			{% endif %}

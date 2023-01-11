@@ -6,18 +6,20 @@
  #}
 <div
 	id="navigation"
-	class="Navigation{{ classes is defined ? ' ' ~ classes | join(' ') }}"
+	class="Navigation pe-none text-black w-full h-screen z-10 position-fixed inset-0 {{ classes is defined ? ' ' ~ classes | join( ' ' ) }}"
 	data-module-navigation
+	style="padding-bottom: env(safe-area-inset-bottom);"
 >
-	<div class="row h-100 d-flex align-items-center">
+
+	<div class="row h-full d-flex align-items-center">
 		<div class="col-6 offset-3">
-			<ul class="Navigation__items" itemscope itemtype="http://schema.org/SiteNavigationElement">
-				{% for item in menu.get_items() %}
-					<li class="Navigation__item js-item">
+			<ul class="m-0 list-style-type-none position-relative p-0 z-3" itemscope itemtype="http://schema.org/SiteNavigationElement">
+				{%- for item in menu.get_items() -%}
+					<li class="Navigation__item text-center overflow-hidden js-item">
 
 						<{{ item.current ? 'div' : "a href=\"#{ item.url }\"" }}
 							id="oval-{{ item.id }}"
-							class="Navigation__link{{ item.current ? ' is-active' : '' }}"
+							class="Navigation__link m-0 position-relative h1 d-inline-block {{ item.current ? ' is-active' : '' }}"
 							itemprop="url"
 							{{ item.current ? '' : 'data-module-oval' }}
 							{{ item.current ? '' : 'data-lottie-json="oval"' }}
@@ -28,31 +30,33 @@
 							{{- item.title -}}
 						</{{ item.current ? 'div' : 'a' }}>
 					</li>
-				{% endfor %}
+				{%- endfor -%}
 			</ul>
 		</div>
 	</div>
 
-	<footer class="Navigation__footer js-footer">
-		<div class="row">
-			<div class="col-10 offset-1 col-md-2 offset-md-5">
-				<a href="{{ terms_url | e( 'esc_url' ) }}">
-					{{- __( 'Terms & Conditions', 'rider404' ) -}}
-				</a>
+	{%- if terms_url -%}
+		<footer class="Navigation__footer z-3 js-footer position-absolute inset-x-0 bottom-0 mb-20 text-center text-decoration-underline">
+			<div class="row">
+				<div class="col-10 offset-1 col-md-2 offset-md-5">
+					<a class="text-gray-very-dark-02-hover" href="{{ terms_url | e( 'esc_url' ) }}">
+						{{- __( 'Terms & Conditions', 'rider404' ) -}}
+					</a>
+				</div>
 			</div>
-		</div>
-	</footer>
+		</footer>
+	{%- endif -%}
 
-	{{
+	{{-
 		include(
 			'components/video.html.twig',
-			{ id: 'video-menu', classes: [ 'js-video' ], video: nav_menus.main.meta('video').url }
+			{ id: 'video-menu', classes: [ 'js-video', 'position-absolute', 'inset-0' ], video: nav_menus.main.meta('video').url }
 		)
-	}}
+	-}}
 
 	<div
 		id="menu"
-		class="Navigation__background js-background"
+		class="position-absolute inset-0 z-1 js-background"
 		data-module-menu
 		data-lottie-json="menu"
 		data-lottie-autoplay="false"

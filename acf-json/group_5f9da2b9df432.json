@@ -1,66 +1,12 @@
 {
     "key": "group_5f9da2b9df432",
-    "title": "Options",
+    "title": "Home Page Options",
     "fields": [
-        {
-            "key": "field_5faeb96af7f80",
-            "label": "Video",
-            "name": "video",
-            "type": "group",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "block",
-            "sub_fields": [
-                {
-                    "key": "field_5f9f2530c4354",
-                    "label": "Thumbnail",
-                    "name": "thumbnail",
-                    "type": "file",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array",
-                    "library": "all",
-                    "min_size": "",
-                    "max_size": "",
-                    "mime_types": ""
-                },
-                {
-                    "key": "field_5faeba0df7f81",
-                    "label": "YouTube ID",
-                    "name": "youtube",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                }
-            ]
-        },
         {
             "key": "field_5f9f2130a6ddd",
             "label": "About",
             "name": "about",
+            "aria-label": "",
             "type": "group",
             "instructions": "",
             "required": 0,
@@ -76,6 +22,7 @@
                     "key": "field_5f9f215c02dae",
                     "label": "Titre",
                     "name": "title",
+                    "aria-label": "",
                     "type": "textarea",
                     "instructions": "",
                     "required": 0,
@@ -95,6 +42,7 @@
                     "key": "field_5f9f216502daf",
                     "label": "Contenu",
                     "name": "content",
+                    "aria-label": "",
                     "type": "textarea",
                     "instructions": "",
                     "required": 0,
@@ -114,6 +62,7 @@
                     "key": "field_5f9f216e02db0",
                     "label": "Lien",
                     "name": "link",
+                    "aria-label": "",
                     "type": "link",
                     "instructions": "",
                     "required": 0,
@@ -128,10 +77,11 @@
             ]
         },
         {
-            "key": "field_5fa3f74d4770f",
-            "label": "Carousel",
-            "name": "carousel",
-            "type": "gallery",
+            "key": "field_63b8133cee558",
+            "label": "Stories",
+            "name": "stories",
+            "aria-label": "",
+            "type": "group",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -140,19 +90,77 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array",
-            "preview_size": "medium",
-            "insert": "append",
-            "library": "all",
-            "min": "",
-            "max": "",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_63b81348ee559",
+                    "label": "Stories",
+                    "name": "stories",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Ajouter un élément",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_63b81357ee55a",
+                            "label": "Link",
+                            "name": "link",
+                            "aria-label": "",
+                            "type": "url",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "parent_repeater": "field_63b81348ee559"
+                        },
+                        {
+                            "key": "field_63b81367ee55b",
+                            "label": "image",
+                            "name": "image",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "id",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "preview_size": "medium",
+                            "parent_repeater": "field_63b81348ee559"
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "location": [
@@ -164,7 +172,7 @@
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 1,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -172,5 +180,6 @@
     "hide_on_screen": "",
     "active": true,
     "description": "Options de la Page d'Accueil",
-    "modified": 1607376639
+    "show_in_rest": 0,
+    "modified": 1673008079
 }

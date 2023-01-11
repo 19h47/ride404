@@ -5,27 +5,33 @@
  # @package WordPress
  # @subpackage Rider404
  #}
-<header class="Site-header">
+
+<header class="Site-header pe-none position-relative py-15 py-md-18.75 py-lg-23.75 py-hd-44">
 
     <div class="row">
         <div class="col-3 col-md-2">
-            <a id="logo" class="Site-header__smiley " href="{{ site.link }}" aria-label="{{ site.title }}">
-                <div id="logo" data-module-logo data-logo="button" data-lottie-json="logo" data-lottie-autoplay="true" data-lottie-loop="true"></div>
+            <a
+				id="logo"
+				class="Site-header__smiley text-current-hover d-block pe-auto overflow-hidden mx-auto w-12.5 w-md-17.5"
+				href="{{ site.link }}"
+				aria-label="{{ site.title }}"
+			>
+                <div data-module-logo data-logo="button" data-lottie-json="logo" data-lottie-autoplay="true" data-lottie-loop="true"></div>
             </a>
         </div>
 
         <div class="d-none d-md-flex col-2 offset-3 align-items-center justify-content-center">
 
             {% if is_product or is_cart or is_checkout %}
-                <a class="Site-header__title Page__title Link-underline Link-underline--small Pointer-events-auto" href="{{ shop_url }}">
+                <a class="Site-header__title Page__title overflow-hidden Link-underline Link-underline--small pe-auto" href="{{ shop_url }}">
                     <div class="is-inview is-active">{{- __( 'Back to shop', 'rider404' ) -}}</div>
                 </a>
             {% elseif is_shop %}
-                <p class="Site-header__title Page__title font-family-title font-weight-extrablack text-transform-uppercase m-0">
+                <p class="Site-header__title Page__title overflow-hidden font-family-title font-weight-extrablack text-transform-uppercase m-0">
                     <span>{{- __( 'Shop', 'rider404' ) -}}</span>
                 </p>
             {% elseif is_product_category %}
-                <p class="Site-header__title Page__title font-family-title font-weight-extrablack text-transform-uppercase m-0">
+                <p class="Site-header__title Page__title overflow-hidden font-family-title font-weight-extrablack text-transform-uppercase m-0">
                     <span>{{- product_cat_current.name -}}</span>
                 </p>
             {% elseif is_front_page %}
@@ -38,8 +44,16 @@
 					data-lottie-delay="1200"
 
                 ></div>
+			{% elseif is_home %}
+				<p class="Site-header__title Page__title overflow-hidden font-family-title font-weight-extrablack text-transform-uppercase m-0">
+                    <span>{{- post.title -}}</span>
+                </p>
+			{% elseif is_singular_post %}
+                <a class="Site-header__title Page__title overflow-hidden Link-underline Link-underline--small pe-auto" href="{{ posts_url }}">
+					<div class="is-inview is-active">{{- __( 'Back', 'rider404' ) -}}</div>
+				</a>
             {% else %}
-                <a class="Site-header__title Page__title Link-underline Link-underline--small Pointer-events-auto" href="{{ site.link }}">
+                <a class="Site-header__title Page__title overflow-hidden Link-underline Link-underline--small pe-auto" href="{{ site.link }}">
 					<div class="is-inview is-active">{{- __( 'Back', 'rider404' ) -}}</div>
 				</a>
             {% endif %}
@@ -47,15 +61,23 @@
 
         <div class="col-3 offset-5 col-md-2 offset-md-3 d-flex align-items-center justify-content-end">
 
-            <{{ ( cart.is_empty ? 'div' : "a href=\"#{cart_url}\"" ) | raw }} class="Site-header__mini-cart Mini-cart js-total">
+            <{{ ( cart.is_empty ? 'div' : "a href=\"#{cart_url}\"" ) | raw }} class="pe-auto Mini-cart js-total position-relative m-0 text-current-hover">
                 {{- include( 'partials/cart-contents-count.html.twig', { count: cart.get_cart_contents_count() }, with_context = false ) }}
                 {# {% include 'svg/use.html.twig' with { icon: 'cart' } only %} #}
-				<div id="mini-cart" class="Mini-cart__icon" data-module-mini-cart data-mini-cart="button" data-lottie-json="cart" data-lottie-autoplay="false" data-lottie-loop="false"></div>
+				<div
+					id="mini-cart"
+					class="Mini-cart__icon"
+					data-module-mini-cart
+					data-mini-cart="button"
+					data-lottie-json="cart"
+					data-lottie-autoplay="false"
+					data-lottie-loop="false"
+				></div>
             </{{ ( cart.is_empty ? 'div' : 'a' ) | raw }}>
 
             <button
 				id="bars"
-				class="Site-header__bars Bars js-menu-button"
+				class="Site-header__bars Bars ms-7.5 ms-md-10 mb-0 js-menu-button overflow-hidden pe-auto text-current"
 				type="button"
 				data-module-bars
 				data-bars="button"

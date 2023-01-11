@@ -7,7 +7,7 @@
 
 {% do action( 'woocommerce_before_cart' ) %}
 
-<div class="Site-container" data-scroll-section>
+<div>
 	<div class="row">
 		<div class="col-10 offset-1">
 			<form class="woocommerce-cart-form" action="{{ cart_url | e( 'esc_url' ) }}" method="post">
@@ -136,7 +136,7 @@
 
 								<div class="row">
 									{% if coupons_enabled %}
-										<div class="coupon col-12 col-md-6 d-flex align-items-center">
+										<div class="coupon col-md-6 d-flex align-items-center">
 											<label for="coupon_code">
 												{{ __( 'Coupon:', 'woocommerce' ) | e( 'esc_html' ) }}
 											</label>

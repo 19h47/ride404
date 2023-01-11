@@ -6,21 +6,23 @@
  #}
 {% extends 'index.html.twig' %}
 
+{% block hero %}{% endblock %}
+
 {% block content %}
 
 	{% embed 'partials/bar.html.twig' %}
 		{% block content %}
 			<div class="Quick-product-categories">
-				{{- include( 'components/product-categories.html.twig' ) -}}
+				{{- include( 'components/categories.html.twig', { current: product_cat_current, categories: product_cats, count: count_products } ) -}}
 			</div>
 		{% endblock %}
 	{% endembed %}
 
 	{% if product_loop %}
 
-		<div class="row" data-scroll-section>
+		<div class="row">
 			<div class="col-10 offset-1">
-				{{- include( 'components/product-categories.html.twig' ) -}}
+				{{- include( 'components/categories.html.twig', { current: product_cat_current, categories: product_cats, count: count_products } ) -}}
 			</div>
 		</div>
 
@@ -33,12 +35,12 @@
 
 		{{- function( 'woocommerce_product_loop_start' ) -}}
 
-		{% for product in products %}
-			{% do action( 'woocommerce_shop_loop' ) %}
+		{%- for product in products -%}
+			{%- do action( 'woocommerce_shop_loop' ) -%}
 
-			{{ include( 'woocommerce/content-product.html.twig', { product: product } ) }}
+			{{- include( 'woocommerce/content-product.html.twig', { product: product } ) -}}
 
-		{% endfor %}
+		{%- endfor -%}
 
 		{{- function( 'woocommerce_product_loop_end' ) -}}
 
@@ -50,7 +52,7 @@
 		{% do action( 'woocommerce_after_shop_loop' ) %}
 	{% else %}
 
-		<div class="Section" data-scroll-section>
+		<div class="Section">
 			<div class="row">
 				<div class="col-10 offset-1">
 					{#

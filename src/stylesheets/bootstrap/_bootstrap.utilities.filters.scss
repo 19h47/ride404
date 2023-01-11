@@ -1,0 +1,14 @@
+$utilities: map-merge(
+	$utilities,
+	(
+		'grayscale': (
+			property: filter,
+			state: hover,
+			class: grayscale,
+			values: (
+				0: grayscale(0),
+				1: grayscale(100%),
+			),
+		),
+	)
+);

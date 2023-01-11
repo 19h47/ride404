@@ -256,7 +256,7 @@ class TemplateFunctions {
 	 * @since 1.0.0
 	 */
 	public static function output_all_notices() : void {
-		echo '<div class="woocommerce-notices-wrapper" data-scroll-section>';
+		echo '<div class="woocommerce-notices-wrapper">';
 			wc_print_notices();
 		echo '</div>';
 	}

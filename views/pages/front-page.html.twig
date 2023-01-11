@@ -8,23 +8,25 @@
 
 {% block hero %}
     <div class="Hero">
-        <div class="row position-relative" data-scroll-section style="z-index: 2;">
-            <div class="col-12 col-md-10 offset-md-1">
-                <div
-					id="rider-404"
-					class="Rider-404"
-					data-scroll
-					data-scroll-call="rider-404"
-					data-module-rider-404
-					data-lottie-json="rider-404"
-					data-lottie-autoplay="false"
-				></div>
+        <div class="row position-relative z-2">
+            <div class="col-md-10 offset-md-1">
+				<div class="me-0.5/10 ms-1/10">
+					<div
+						id="rider-404"
+						class="Rider-404 position-relative d-block fill-white z-5"
+						data-scroll
+						data-scroll-call="rider-404"
+						data-module-rider-404
+						data-lottie-json="rider-404"
+						data-lottie-autoplay="false"
+					></div>
+				</div>
             </div>
         </div>
 
 		{% if post.meta( 'video' ).thumbnail.url %}
-			<div class="row position-relative" style="z-index: 1;">
-				<div class="col-12 col-sm-10 offset-sm-1">
+			<div class="row position-relative z-1 mt-n16 mt-sm-n10 mt-md-n11.5 mt-hd-n15">
+				<div class="col-sm-10 offset-sm-1">
 					{{- include( 'components/video.html.twig', { id: 'video-hero', animated: true, video: post.meta( 'video' ).thumbnail.url, overlay: true } ) -}}
 				</div>
 			</div>
@@ -35,11 +37,11 @@
 
 {% block content %}
 
-    <div class="Section Push" data-scroll-section>
+    <div class="Section Push position-relative overflow-hidden overflow-md-visible mt-md-57.5 mt-hd-77.5">
 
 		<div
 			id="star-circle"
-			class="Push__star-circle"
+			class="Push__star-circle position-absolute top-0 start-0 d-none d-sm-block"
 			data-scroll
 			data-scroll-call="star-circle"
 			data-scroll-speed="2"
@@ -48,22 +50,28 @@
 			data-lottie-loop="true"
 		></div>
 
-        <div class="Push__background" data-scroll data-scroll-speed="4">
-            <div class="row h-100">
-                <div class="col-8 offset-2 h-100">
-                    <img src="{{ theme.link }}/{{ theme.manifest['img/png/push.png'] }}" alt="" width="1523" height="1473">
+        <div class="position-absolute inset-0 z-1" data-scroll data-scroll-speed="4">
+            <div class="row h-full">
+                <div class="col-8 offset-2 h-full">
+                    <img
+						class="size-full object-fit-contain object-position-center"
+						src="{{ theme.link }}/{{ theme.manifest['img/png/push.png'] }}"
+						alt=""
+						width="1523"
+						height="1473"
+					>
                 </div>
             </div>
         </div>
 
-        <div id="push" class="Push__body" data-module-push>
-            {{ sidebar }}
-        </div>
+        <div id="push" class="position-relative z-2 swiper" data-module-carousel>
+			{{- sidebar -}}
+		</div>
 
-        <div class="Push__footer">
+        <div class="position-relative mt-25 mt-sm-0 z-2">
             <div class="row">
                 <div class="col-10 offset-1">
-                    <a class="Link-underline d-inline-block" href="{{ shop_url | e( 'esc_url' ) }}">
+                    <a class="Link-underline d-inline-block mt-md-12.5 mt-hd-25" href="{{ shop_url | e( 'esc_url' ) }}">
                         {{- include( 'partials/split-text.html.twig', { id: uniqid(), delay: 0.1, title: __( 'All products', 'rider404' ) } ) -}}
                     </a>
                 </div>
@@ -72,69 +80,174 @@
 
     </div>
 
-    <div class="Section About" data-scroll-section>
+	{%- if post.meta( 'stories' ).stories -%}
+		<div class="Section Stories position-relative pt-20 pt-sm-50">
+			<div class="position-relative z-2">
+				<div class="row text-center mb-40">
+					<div class="col-10 offset-1">
+						<h2 class="h1 m-0">
+							{{- include( 'partials/split-text.html.twig', { id: uniqid(), title: 'More stories on our social media' } ) -}}
+						</h2>
+					</div>
+				</div>
 
-        <ul class="About__icons">
-            <li data-scroll data-scroll-speed="{{ random( 1, 9 ) }}">{{- include( 'svg/use.html.twig', { icon: 'lightning' }, with_context = false ) -}}</li>
-            <li data-scroll data-scroll-speed="{{ random( 1, 9 ) }}">{{- include( 'svg/use.html.twig', { icon: 'lightning' }, with_context = false ) -}}</li>
-            <li data-scroll data-scroll-speed="{{ random( 1, 9 ) }}">{{- include( 'svg/use.html.twig', { icon: 'lightning' }, with_context = false ) -}}</li>
+
+				<div class="swiper h-90 js-carousel-stories" data-module-carousel data-carousel-parameters='{"grabCursor":true}'>
+					<div class="swiper-wrapper">
+						{% for story in post.meta( 'stories' ).stories %}
+							<div class="swiper-slide {{ loop.index is odd ? 'w-3/12' : 'w-4/12' }} {{ loop.last ? '' : 'mr-n9' }}">
+								{{-
+									include(
+										'partials/image.html.twig',
+										{
+											image: story.image,
+											classes: [ 'w-full', 'h-full', 'object-fit-contain', 'object-position-center' ],
+											size: loop.index is odd ? 'size-3' : 'size-4'
+										} ) -}}
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+
+
+				<div class="row mt-44">
+					<div class="col-10 offset-1">
+						<p class="m-0 fs-lg fw-light text-center">#ride404 #ridebeyond #keepsmiling</p>
+					</div>
+				</div>
+			</div>
+			<img
+				data-scroll
+				data-scroll-speed="1"
+				src="{{ theme.link }}/{{ theme.manifest['img/svg/stories.svg'] }}"
+				width="719"
+				height="585"
+				alt="{{ __( 'Sotires', 'rider404' ) }}"
+				class="opacity-10 position-absolute inset-0 z-1 w-8/12 h-auto object-fit-contain object-position-center-top m-auto"
+			>
+		</div>
+	{%- endif -%}
+
+    <div class="Section About overflow-hidden overflow-md-visible position-relative pt-20 pt-sm-50">
+
+        <ul class="About__icons list-style-type-none position-absolute inset-0 d-none d-sm-block z-2 m-0 p-0">
+            <li class="position-absolute size-17.5 top-0" data-scroll data-scroll-speed="{{ random( 1, 9 ) }}">{{- include( 'svg/use.html.twig', { classes: [ 'size-full' ], icon: 'lightning' }, with_context = false ) -}}</li>
+            <li class="position-absolute size-35" data-scroll data-scroll-speed="{{ random( 1, 9 ) }}">{{- include( 'svg/use.html.twig', { classes: [ 'size-full' ], icon: 'lightning' }, with_context = false ) -}}</li>
+            <li class="position-absolute size-17.5" data-scroll data-scroll-speed="{{ random( 1, 9 ) }}">{{- include( 'svg/use.html.twig', { classes: [ 'size-full' ], icon: 'lightning' }, with_context = false ) -}}</li>
         </ul>
 
-        <div class="About__body">
+        <div class="position-relative z-3">
             <div class="row">
                 <div class="col-10 offset-1 col-sm-6 offset-sm-3">
-                    <div class="About__content">
+                    <div class="About__content text-center fw-light">
                         {{- include( 'partials/split-text.html.twig', { id: uniqid(), title: post.meta( 'about' ).content } ) -}}
-                        <img data-scroll data-scroll-speed="2" src="{{ theme.link }}/{{ theme.manifest['img/svg/about.svg'] }}" width="719" height="585" alt="{{ __( 'About', 'rider404' ) }}">
                     </div>
                 </div>
-                <div class="col-10 offset-1 text-align-center">
-                    <h2 class="About__title">
+                <div class="col-10 offset-1 text-center mt-20">
+
+					<h2 class="h1 m-0">
                         {{- include( 'partials/split-text.html.twig', { id: uniqid(), title: post.meta( 'about' ).title } ) -}}
                     </h2>
-                    <a class="Link-underline d-inline-block" href="{{ post.meta( 'about' ).link.url }}">
-                        {{- include( 'partials/split-text.html.twig', { id: uniqid(), delay: 0.1, title: post.meta( 'about' ).link.title | default( __( 'About', 'rider404' ) ) } ) -}}
-                    </a>
+
+					{%- if post.meta( 'about' ).link.url -%}
+						<a class="Link-underline d-inline-block mt-15" href="{{ post.meta( 'about' ).link.url | e( 'esc_url' ) }}">
+							{{- include( 'partials/split-text.html.twig', { id: uniqid(), delay: 0.1, title: post.meta( 'about' ).link.title | default( __( 'About', 'rider404' ) ) } ) -}}
+						</a>
+					{%- endif -%}
                 </div>
             </div>
         </div>
+
+		<img
+			data-scroll
+			data-scroll-speed="2"
+			src="{{ theme.link }}/{{ theme.manifest['img/svg/about.svg'] }}"
+			width="719"
+			height="585"
+			alt="{{ __( 'About', 'rider404' ) }}"
+			class="opacity-10 position-absolute inset-y-0 end-0 start-50 z-1 max-w-full my-auto start-auto w-auto h-full w-md-full h-md-auto mx-md-auto inset-x-md-0"
+		>
     </div>
 
-    <div id="carousel" class="Section Carousel" data-scroll-section data-module-carousel>
-        <img class="Carousel__background" src="{{ theme.link }}/{{ theme.manifest['img/png/carousel.png'] }}" alt="" width="1440" height="1153" data-scroll data-scroll-speed="2">
-        <div class="row">
+    <div id="carousel" class="Section Carousel overflow-hidden position-relative py-20 py-sm-32.5 py-md-65 py-lg-72.5 py-hd-115">
+
+		<div class="row" >
             <div class="col-10 offset-1 col-sm-6 offset-sm-3 col-md-8 offset-md-2">
-                <div class="Carousel__items js-items">
-                    {% for image in post.meta( 'carousel' ) %}
-                        <div class="Carousel__item js-item">
-                            {% embed "partials/image-reveal.html.twig" %}
-                                {% block content %}
-                                    {{- include( 'partials/image.html.twig', { image: image, loading: 'eager' }, with_context = false ) -}}
-                                {% endblock %}
-                            {% endembed %}
-                        </div>
-                    {% endfor %}
+                <div class="swiper overflow-visible Carousel__items z-2 position-relative" data-module-carousel data-carousel-parameters='{"navigation":{"nextEl":".swiper-button-next","prevEl":".swiper-button-prev"},"initialSlide":1,"keyboard":true}'>
+					<div class="swiper-wrapper">
+						{% for image in post.meta( 'carousel' ) %}
+							<div class="Carousel__item me-0.2/4 me-sm-0.75/4 swiper-slide size-full overflow-hidden">
+								{% embed "partials/image-reveal.html.twig" with { classes: [ 'size-full' ] }  %}
+									{% block content %}
+										{{-
+											include(
+												'partials/image.html.twig',
+												{
+													classes: [ 'd-block', 'size-full', 'object-fit-cover', 'object-position-center' ],
+													image: image,
+													loading: 'eager',
+													size: 'size-8'
+												},
+												with_context = false
+											)
+										-}}
+									{% endblock %}
+								{% endembed %}
+							</div>
+						{% endfor %}
+					</div>
+					<div data-carousel-previous class="swiper-button swiper-button-prev previous w-1/4 h-full position-absolute inset-y-0 end-full start-auto"></div>
+					<div data-carousel-next class="swiper-button swiper-button-next next w-1/4 h-full position-absolute inset-y-0 end-auto start-full"></div>
                 </div>
+
+
+				<img
+					class="position-absolute z-1 inset-0 size-full object-fit-cover object-position-center object-fit-sm-contain"
+					src="{{ theme.link }}/{{ theme.manifest['img/png/carousel.png'] }}"
+					alt=""
+					width="1440"
+					height="1153"
+					data-scroll
+					data-scroll-speed="2"
+				/>
             </div>
         </div>
     </div>
 
-     <div class="Section Partners position-relative" data-scroll-section>
-	 	<img class="Partners__grid" data-scroll data-scroll-speed="2" src="{{ theme.link }}/{{ theme.manifest['img/svg/grid.svg'] }}" alt="" width="962" height="842">
+     <div class="Section Partners position-relative">
+	 	<img
+			class="Partners__grid d-none d-md-block position-absolute top-0 start-0"
+			data-scroll
+			data-scroll-speed="2"
+			src="{{ theme.link }}/{{ theme.manifest['img/svg/grid.svg'] }}"
+			alt=""
+			width="962"
+			height="842"
+		>
         <img class="Partners__decor d-none d-sm-block" data-scroll data-scroll-speed="2" src="{{ theme.link }}/{{ theme.manifest['img/svg/partners.svg'] }}" alt="" height="134" width="76">
         <div class="row">
-            <div class="col-10 offset-1 col-sm-3 offset-sm-5 offset-md-6">
-                <h2>
+            <div class="col-10 offset-1 col-sm-3 offset-sm-5 offset-md-6 mb-12.5 mb-md-20">
+                <h2 class="m-0">
                     {{- include( 'partials/split-text.html.twig', { title: __( 'Partners &\nCollaboraters', 'rider404' ) | nl2br, id: uniqid() } ) -}}
                 </h2>
             </div>
 
             <div class="col-10 offset-1 col-sm-6 offset-sm-5 offset-md-6 col-lg-5 col-hd-3">
-				<ul class="Partners__items"  data-scroll>
+				<ul class="list-style-type-none p-0 d-flex flex-wrap m-n5 m-hd-n6"  data-scroll>
 					{% for partner in partners %}
-						<li class="Partners__item" style="transition-delay: {{ loop.index * 0.1 }}s;">
+						<li class="Partners__item w-6/12 w-sm-3/12 h-80px" style="transition-delay: {{ loop.index * 0.1 }}s;">
 							{{ partner.meta( 'link' ).url ? "<a aria-label=\"#{ partner.title }\" href=\"#{ partner.meta( 'link' ).url }\"#{ partner.meta( 'link' ).target ? ' target="_blank" rel="noopener noreferer"' : '' }>" : '' }}
-								{{ include( 'partials/image.html.twig', { size: 'medium', image: partner.thumbnail }, with_context = false ) }}
+								{{-
+									include(
+										'partials/image.html.twig',
+										{
+											classes: [ 'p-5', 'p-hd-6', 'd-block', 'size-full', 'object-fit-contain', 'object-position-center' ],
+											size: 'medium',
+											image: partner.thumbnail,
+										},
+										with_context = false
+									)
+								-}}
 							{{ partner.meta( 'link' ).url ? '</a>' : '' }}
 						</li>
 					{% endfor %}

@@ -5,10 +5,12 @@
  * @package WordPress
  * @subpackage Rider404
  */
+@use "sass:math";
+
 .Quick-cart {
 	$this: &;
 
-	@extend .d-flex, .align-items-center;
+	// @extend .d-flex, .align-items-center;
 
 	.Price {
 		@include margin(right 45px bottom 0);
@@ -34,29 +36,29 @@
 		color: the_color(red, bright);
 
 		font-size: 12px;
-		line-height: (28/12);
+		line-height: math.div(28, 12);
 	}
 
-	[role='radiogroup'] {
-		@extend .d-flex;
-		@extend %font-weight-regular;
-		@include margin(right 15px left 15px);
+	[role="radiogroup"] {
+
+		// @include margin(right 15px left 15px);
 
 		font-size: 14px;
-		line-height: (28/14);
+		line-height: math.div(28, 14);
 
 		color: the_color(gray, very-dark-02);
 
-		[role='radio'] {
-			@extend %position-relative;
-			@include margin(right 15px left 15px);
-			@extend %cursor-pointer;
+		[role="radio"] {
+
+			// @include margin(right 15px left 15px);
+
 
 			transition: color 0.5s map-get($easings, ease-out-expo);
 
 			&:first-child {
 				@include margin(left 0);
 			}
+
 			&:last-child {
 				@include margin(right 0);
 			}

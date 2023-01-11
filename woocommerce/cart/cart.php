@@ -4,7 +4,7 @@
  *
  * @package WordPress
  * @subpackage Rider404
- * @version 3.8.0
+ * @version 7.0.1
  */
 
 use Timber\{ Timber };

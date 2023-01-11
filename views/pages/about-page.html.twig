@@ -11,18 +11,18 @@
 {% block content %}
 
 	<div class="Sections">
-		<div class="Section About-page__introduction mt-0" data-scroll-section>
+		<div class="Section About-page__introduction mt-0">
 
 			<div class="About-page__introduction__body">
 				<div class="row">
-					<div class="col-12 col-sm-8 offset-sm-2">
+					<div class="col-sm-8 offset-sm-2">
 						{{
 							include(
 								'partials/split-text.html.twig',
 								{
 									title: post.meta( 'introduction' ),
 									id: uniqid(),
-									classes: [ 'h1', 'text-align-center', 'm-0' ],
+									classes: [ 'h1', 'text-center', 'm-0' ],
 									delay: 0.5,
 								}
 							)
@@ -33,7 +33,7 @@
 				{% if post.meta( 'catchphrase' ) %}
 					<div class="row About-page__catchphrase">
 						<div class="col-10 offset-1 col-md-4 offset-md-4">
-							<p class="h2 text-align-center mt-5 mb-0 my-md-4">
+							<p class="h2 text-center mt-5 mb-0 my-md-4">
 								{{- post.meta( 'catchphrase' ) -}}
 							</p>
 						</div>
@@ -44,7 +44,7 @@
 
 
 			<div class="About-page__introduction__images">
-				<div class="row h-100">
+				<div class="row h-full">
 					<div class="col-6 d-flex align-items-start" data-scroll data-scroll-speed="1.5">
 						{% embed 'partials/image-reveal.html.twig' with { attributes: { style: 'transition-delay: 1.5s;' } } %}
 							{% block content %}
@@ -63,9 +63,9 @@
 			</div>
 		</div>
 
-		<div id="smiley-404" class="Smiley-404 Section" data-scroll-section data-module-smiley404 style="transform-style: preserve-3d;">
+		<div id="smiley-404" class="Smiley-404 Section" data-module-smiley404 style="transform-style: preserve-3d;">
 			<div class="Smiley-404__images Smiley-404__images--top">
-				<div class="row h-100">
+				<div class="row h-full">
 					<div class="col-10 offset-1 col-sm-6 offset-sm-3 col-md-3 offset-md-2 d-flex align-items-start" data-scroll data-scroll-speed="1.5">
 						{% embed 'partials/image-reveal.html.twig' %}
 							{% block content %}
@@ -76,9 +76,9 @@
 				</div>
 			</div>
 
-			<div class="Smiley-404__body">
-				<canvas id="smiley-404-canvas" height="900" data-smiley404="canvas"></canvas>
-				<div class="Smiley-404__background">
+			<div class="Smiley-404__body position-relative overflow-hidden overflow-md-visible">
+				<canvas id="smiley-404-canvas" height="900" data-smiley404="canvas" class="z-1 position-relative d-block w-full"></canvas>
+				<div class="Smiley-404__background position-absolute inset-0">
 					<img
 						data-scroll
 						data-scroll-direction="horizontal"
@@ -87,11 +87,12 @@
 						src="{{ theme.link }}/{{ theme.manifest['img/svg/rider-404.svg'] }}"
 						width="3204.3"
 						height="410.6"
+						class="position-absolute inset-0 mx-auto w-auto h-full"
 					>
 				</div>
 			</div>
 			<div class="Smiley-404__images Smiley-404__images--bottom">
-				<div class="row h-100">
+				<div class="row h-full">
 					<div class="col-10 offset-1 col-sm-6 offset-sm-3 col-md-2 offset-md-6 d-flex align-items-end" data-scroll data-scroll-speed="1.5">
 						{% embed 'partials/image-reveal.html.twig' %}
 							{% block content %}
@@ -103,38 +104,50 @@
 			</div>
 		</div>
 
-		<div class="About-map Section" data-scroll-section>
-			<img class="About-map__grid" data-scroll data-scroll-speed="2" src="{{ theme.link }}/{{ theme.manifest['img/svg/grid.svg'] }}" alt="" width="962" height="842">
-			<div class="row">
-				<div class="col-12">
-					<h2 class="About-map__title">{{- site.title -}}</h2>
+		<div class="Section text-white position-relative">
+			<img
+				class="d-none d-md-block position-absolute top-0 start-0"
+				style="margin-left: {{ ( -35 * 100 ) / 1440 }}%;"
+				data-scroll
+				data-scroll-speed="2"
+				src="{{ theme.link }}/{{ theme.manifest['img/svg/grid.svg'] }}"
+				alt=""
+				width="962"
+				height="842"
+			>
+
+			<div class="row mb-7.5">
+				<div>
+					<h2 class="h1 text-center m-0">{{- site.title -}}</h2>
 				</div>
 			</div>
+
 			<div class="row align-items-md-center">
 				<div class="col-6 d-none d-md-block">
-					<div id="about-map" class="About-map__canvas" data-scroll  data-scroll-id="about-map" data-module-about-map data-lottie-json="about-map"></div>
+					<div id="about-map" class="translate-x-n2/10" data-scroll  data-scroll-id="about-map" data-module-about-map data-lottie-json="about-map"></div>
 				</div>
 				{% if post.meta( 'map' ).content %}
 					<div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-4 offset-md-0">
-						<p class="h2 text-align-center mb-0 m-y-4">
+						<p class="h2 text-center mb-0 m-y-4">
 							{{- post.meta( 'map' ).content -}}
 						</p>
 					</div>
 				{% endif %}
 			</div>
+
 		</div>
 
-		<div class="About-video Section" data-scroll-section>
+		<div class="About-video Section">
 			<div class="row">
-				<div class="col-12 col-md-10 offset-md-1">
+				<div class="col-md-10 offset-md-1">
 					{% embed 'components/video.html.twig' with { id: 'video-about', video: post.meta( 'video' ).thumbnail.url, overlay: true } %}
 						{% block caption %}
 							{% if socials.youtube.url %}
-								<div class="Video__caption">
-									{{- __( 'All video Rider.404 Project on', 'rider404' ) }}
+								<div class="Video__caption d-flex justify-content-center align-items-center">
+									{{- __( 'All video Ride.404 Project on', 'rider404' ) }}
 									&nbsp;
-									<a href="{{ socials.youtube.url }}">
-										{% include 'svg/use.html.twig' with { icon: 'youtube' } only %}
+									<a class="d-flex align-items-center" href="{{ socials.youtube.url }}">
+										{{- include( 'svg/use.html.twig', { classes: [ 'd-block' ], icon: 'youtube' }, with_context = false ) -}}
 										&nbsp;&nbsp;<span>{{- __( 'YouTube', 'rider404' ) -}}</span>
 									</a>
 								</div>
@@ -145,13 +158,23 @@
 			</div>
 		</div>
 
-		<div id="faq" class="Section Faq" data-scroll-section>
-			<img class="Faq__grid d-none d-md-block" data-scroll data-scroll-speed="2" src="{{ theme.link }}/{{ theme.manifest['img/svg/grid.svg'] }}" alt="" width="962" height="842">
+		<div id="faq" class="Section Faq mt-0">
+			<img
+				class="Faq__grid d-none d-md-block z-1 position-absolute top-0 end-0"
+				data-scroll data-scroll-speed="2"
+				src="{{ theme.link }}/{{ theme.manifest['img/svg/grid.svg'] }}"
+				alt=""
+				width="962"
+				height="842"
+			>
 			<div class="row">
 				<div class="col-4 offset-1 d-none d-md-block">
-					<ul class="Faq__questions h2" data-scroll data-scroll-sticky data-scroll-target="#faq">
+					<ul class="Faq__questions fw-light h2 list-style-type-none position-relative z-2 m-0" data-scroll data-scroll-sticky data-scroll-target="#faq">
 						{% for item in post.meta( 'faq' ) %}
-							<li class="Faq__questions__item{{ loop.first ? ' is-active' : '' }}" data-id="{{ item.question | sanitize }}">
+							<li
+								class="Faq__questions__item position-relative {{ loop.first ? ' is-active' : '' }}"
+								data-id="{{ item.question | sanitize }}"
+							>
 								<a class="js-answer" href="#{{ item.question | sanitize }}" data-scroll-to>
 									{{- item.question -}}
 								</a>
@@ -160,7 +183,7 @@
 					</ul>
 				</div>
 				<div class="col-10 col-sm-8 offset-sm-2 col-md-4 offset-1">
-					<ul class="Faq__answers">
+					<ul class="Faq__answers fw-light list-style-type-none">
 						{% for item in post.meta( 'faq' ) %}
 							<li id="{{ item.question | sanitize }}" class="Faq__answers__item" data-module-faq="{{ item.question | sanitize }}" data-scroll data-scroll-call="inview,Faq" data-scroll-repeat>
 								<p class="h2 mt-0 d-md-none">{{- item.question -}}</p>
@@ -172,8 +195,8 @@
 			</div>
 		</div>
 
-		<div id="tags" class=" Section Tags" data-scroll-section>
-			<ul class="Tags__items">
+		<div id="tags" class=" Section Tags overflow-hidden position-relative overflow-md-visible">
+			<ul class="list-style-type-none p-0">
 				{% for i in 0..5 %}
 					<li class="Tags__item">
 						<span data-scroll data-scroll-direction="horizontal" data-scroll-target="#tags" data-scroll-speed="{{ random( -20, 20 ) }}">

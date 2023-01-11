@@ -15,7 +15,7 @@
 	}
 
 	button {
-		@extend %position-relative;
+		@extend .position-relative;
 		@include size(30px);
 		@include margin(right 30px);
 

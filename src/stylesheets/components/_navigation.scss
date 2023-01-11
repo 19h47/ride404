@@ -5,25 +5,18 @@
  * @package WordPress
  * @subpackage Rider404
  */
+@use "sass:math";
+
 .Navigation {
-	$this: &;
-
 	@include autoAlpha(0);
-	@include fixed(top 0 right 0 bottom 0 left 0);
-	@include size(100%, 100vh);
-	@include padding(bottom env(safe-area-inset-bottom));
-	@extend %Pointer-events-none;
-
-	z-index: 10;
-	color: the_color(black);
 
 	@at-root .Navigation--is-open & {
 		@include autoAlpha(1);
-		@extend %Pointer-events-auto;
+		@extend .pe-auto;
 	}
 
 	.Video {
-		@include absolute(top 0 right 0 bottom 0 left 0);
+
 		@include autoAlpha(0);
 
 		z-index: 2;
@@ -34,22 +27,12 @@
 		}
 	}
 
-	&__items {
-		@extend %list-style-type-none, %position-relative;
-
-		z-index: 3;
-	}
-
 	&__item {
-		@extend %text-align-center, %overflow-hidden;
-		// @include autoAlpha(0);
+		.Navigation__link {
+			@extend %font-family-title;
+			// @include margin(top 0 right 0 bottom 0 left 0);
 
-		#{ $this }__link {
-			@extend %font-family-title, %position-relative;
-			@extend .h1, .d-inline-block;
-			@include margin(top 0 right 0 bottom 0 left 0);
-
-			line-height: (140/110);
+			line-height: math.div(140, 110);
 			transition: color 0.5s map-get($easings, ease-out-expo);
 
 			svg {
@@ -66,13 +49,7 @@
 	}
 
 	&__footer {
-		@include absolute(right 0 bottom 0 left 0);
-		@include margin(bottom 80px);
-		@extend %text-align-center, %text-decoration-underline;
 		@include autoAlpha(0);
-
-		color: the_color(gray, very-dark-02);
-		z-index: 3;
 
 		font-size: 12px;
 		line-height: 17px;
@@ -81,11 +58,5 @@
 			font-size: 18px;
 			line-height: 28px;
 		}
-	}
-
-	&__background {
-		@include absolute(top 0 right 0 bottom 0 left 0);
-
-		z-index: 1;
 	}
 }

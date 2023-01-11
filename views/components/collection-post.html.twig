@@ -1,0 +1,36 @@
+<div class="row">
+	{% for row in posts | batch( ( posts | length ) / 2 ) %}
+		<div class="offset-1 d-flex flex-column gap-y-20 gap-y-md-40 col-10 col-md-5 {{ loop.index is even ? 'mt-20 mt-md-40' : '' }}">
+			{% for post in row %}
+				<div class="{{ loop.index is even ? ( loop.parent.loop.index is even ? 'w-full' : 'w-md-4/5' ) : '' }} {{ loop.index is odd ? ( loop.parent.loop.index is even ? 'w-md-4/5' : 'w-full' ) : '' }}">
+					<a class="Post-link d-block text-white-hover" href="{{ post.link }}">
+						{% embed 'partials/image-reveal.html.twig' with { classes: [] } %}
+							{% block content %}
+								<div class="Post-thumbnail overflow-hidden">
+									{{-
+										include(
+											'partials/image.html.twig',
+											{
+												image: post.thumbnail,
+												classes: [ 'grayscale-1', 'grayscale-0-hover', 'd-block', 'size-full', 'object-fit-cover', 'object-position-center', 'object-fit-sm-fill', 'h-sm-auto' ],
+												size: loop.parent.loop.index is odd and loop.index is odd ? 'size-4' : ( loop.parent.loop.index is even and loop.index is odd ? 'size-4' : 'size-5' )
+											},
+											with_context = false
+										)
+									-}}
+								</div>
+							{% endblock %}
+						{% endembed %}
+						<h2 class="mt-14 mb-0 d-flex gap-x-2">
+							{{- post.title -}}
+							{{- include( 'svg/use.html.twig', { icon: 'plus', classes: [ 'w-4', 'h-4', 'flex-shrink-0', 'my-2', 'me-2', 'ms-auto', 'fill-current' ] } ) -}}
+						</h2>
+						{%- if post.date -%}
+							<p class="mt-4 text-gray-very-dark-02 fs-sm mb-0">{{- post.date( 'j.m.Y' ) -}}</p>
+						{%- endif -%}
+					</a>
+				</div>
+			{% endfor %}
+		</div>
+	{% endfor %}
+</div>

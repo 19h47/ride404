@@ -1,6 +1,6 @@
 {
 	"require": {
-		"timber/timber": "2.0.0-alpha.1",
+		"timber/timber": "2.0.0-beta.1",
 		"vlucas/phpdotenv": "^4.1"
 	},
 	"name": "19h47/rider404",
@@ -25,6 +25,9 @@
 		"wp-coding-standards/wpcs": "^2.2"
 	},
 	"config": {
-		"preferred-install": "dist"
+		"preferred-install": "dist",
+		"allow-plugins": {
+			"composer/installers": true
+		}
 	}
 }

@@ -5,11 +5,13 @@
  * @package WordPress
  * @subpackage Rider404
  */
+@use "sass:math";
+
 .Stock {
 	@extend .d-flex, .flex-column, .justify-content-center, .align-items-center;
 
 	font-size: 12px;
-	line-height: (28/12);
+	line-height: math.div(28, 12);
 	color: the_color(gray, very-dark-02);
 
 	svg {

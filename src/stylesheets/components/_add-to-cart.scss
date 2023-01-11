@@ -5,11 +5,13 @@
  * @package WordPress
  * @subpackage Rider404
  */
+@use "sass:math";
+
 .Add-to-cart {
-	@extend %position-relative;
+	@extend .position-relative;
 
 	font-size: 12px;
-	line-height: (16/12);
+	line-height: math.div(16, 12);
 
 	svg {
 		// @include absolute(top 0 right 0 bottom 0 left 0);
@@ -29,7 +31,7 @@
 	}
 
 	&.wc-variation-is-unavailable {
-		@extend %cursor-not-allowed;
+		@extend .cursor-not-allowed;
 
 		// svg.add-to-cart-danger {
 		// 	@extend .d-inline-block;
@@ -48,7 +50,7 @@
 	}
 
 	&.wc-variation-selection-needed {
-		@extend %cursor-not-allowed;
+		@extend .cursor-not-allowed;
 
 		// svg.add-to-cart-danger {
 		// 	@extend .d-inline-block;
@@ -67,7 +69,7 @@
 	}
 
 	@at-root .woocommerce-variation-add-to-cart-disabled & {
-		@extend %cursor-not-allowed;
+		@extend .cursor-not-allowed;
 
 		svg {
 			// fill: the_color(gray, very-dark-02);

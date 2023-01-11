@@ -6,23 +6,18 @@
  * @subpackage Rider404
  */
 .Bar {
-	@extend .d-none, .d-md-flex, .align-items-md-center;
-	@include padding(top 20px right 30px bottom 20px left 30px);
-
-	@include fixed(top 0 left 50%);
-	@include margin(top 75px);
-	@extend %text-align-center;
-
-	border-radius: 35px;
-	border: 1px solid the_color(gray, very-dark-03);
-	background-color: the_color(gray, very-dark-01);
-	transform: translate3d(-50%, 0, 0);
-	will-change: transform, opacity, visibility;
-
-	z-index: 20;
+	@extend .pe-none;
 
 	transition: opacity 1s map-get($easings, ease-out-expo),
 		visibility 1s map-get($easings, ease-out-expo);
+
+	> div {
+		@extend .pe-auto;
+
+		border-radius: 35px;
+		border: 0.0625rem solid the_color(gray, very-dark-03);
+		background-color: the_color(gray, very-dark-01);
+	}
 
 	@at-root .is-ontop & {
 		@include autoAlpha(0);
@@ -30,5 +25,13 @@
 
 	@at-root .Navigation--is-open & {
 		@include autoAlpha(0);
+	}
+
+	@at-root .is-ontop & > div {
+		@extend .pe-none;
+	}
+
+	@at-root .Navigation--is-open & > div {
+		@extend .pe-none;
 	}
 }

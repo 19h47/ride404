@@ -1,0 +1,22 @@
+/**
+ * Loop product
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package Rider404
+ */
+@use "sass:math";
+
+.Post-link {
+
+	@include media-breakpoint-up(sm) {
+		&:hover {
+			.Post-thumbnail {
+				transform: scale(0.9);
+			}
+
+			.Post-thumbnail img {
+				transform: scale(math.div(1, 0.9));
+			}
+		}
+	}
+}

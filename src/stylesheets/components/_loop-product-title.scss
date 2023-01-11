@@ -4,14 +4,14 @@
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  * @package Rider404
  */
+@use "sass:math";
+
 .Loop-product-title {
-	@extend %font-family-body, %font-weight-semibold;
-	@include margin(top 40px);
+	@extend %font-family-body;
 
 	font-size: 18px;
-	line-height: (28/18);
+	line-height: math.div(28, 18);
 
 	white-space: nowrap;
-	overflow: hidden;
 	text-overflow: ellipsis;
 }

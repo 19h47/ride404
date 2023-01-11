@@ -1,5 +1,5 @@
 /* global CABLES, rider404 */
-import { module as M } from 'modujs';
+import { module as M } from '@19h47/modular';
 
 const showError = (errId, errMsg) => {
 	console.log(`An error occured: ${errId}, ${errMsg}`);
@@ -16,12 +16,10 @@ const patchInitialized = () => {
  */
 class Smiley404 extends M {
 	init() {
-		super.init();
-
 		CABLES.patch = new window.CABLES.Patch({
 			patch: CABLES.exportedPatch,
 			prefixAssetPath: `${rider404.template_directory_uri}/dist/`,
-			// patchFile: `${rider404.template_directory_uri}/dist/smiley.json`,
+			patchFile: `${rider404.template_directory_uri}/dist/smiley.json`,
 			glCanvasId: this.$('canvas')[0].id,
 			glCanvasResizeToWindow: false,
 			silent: true,

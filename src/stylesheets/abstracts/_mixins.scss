@@ -4,11 +4,13 @@
  * @param int value
  * @param str property
  */
+@use "sass:list";
+
 @mixin aspect-ratio-size($value, $property) {
-	@media (max-aspect-ratio: #{$prototype-width-unitless}/#{$prototype-height-unitless}) {
+	@media (max-aspect-ratio: list.slash($prototype-width-unitless, $prototype-height-unitless)) {
 		#{ $property }: vw_size($value);
 	}
-	@media (min-aspect-ratio: #{$prototype-width-unitless}/#{$prototype-height-unitless}) {
+	@media (min-aspect-ratio: list.slash($prototype-width-unitless, $prototype-height-unitless)) {
 		#{ $property }: vh_size($value);
 	}
 }

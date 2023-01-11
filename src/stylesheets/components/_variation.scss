@@ -4,13 +4,15 @@
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  * @package Rider404
  */
+@use "sass:math";
+
 .Variation {
 	$this: &;
 
-	@extend %font-weight-regular, %text-align-center;
+	@extend .fw-normal, .text-center;
 
 	font-size: 12px;
-	line-height: (28/12);
+	line-height: math.div(28, 12);
 
 	&__description {
 	}

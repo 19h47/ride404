@@ -6,7 +6,7 @@
  #}
 
 {% if product.get_price_html() %}
-	<p class="{{ ( 'Price price' | apply_filters( 'woocommerce_product_price_class' ) ) | e }}">
+	<p class="{{ ( 'Price price fw-semibold text-center white-space-nowrap' | apply_filters( 'woocommerce_product_price_class' ) ) | e }}">
 		{{- product.get_price_html() -}}
 	</p>
 {% endif %}

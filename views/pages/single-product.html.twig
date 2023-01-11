@@ -12,7 +12,7 @@
 
 	{% do action( 'woocommerce_before_single_product' ) %}
 
-    <div id="product-{{ post.id }}" class="Product{{ product_class ? ' ' ~ product_class | join( ' ' ) }}" data-scroll-section>
+    <div id="product-{{ post.id }}" class="Product{{ product_class ? ' ' ~ product_class | join( ' ' ) }}">
 
 
 		{#
@@ -43,7 +43,7 @@
 
 			<div class="Section">
 				<div class="row">
-					<div class="col-8 offset-2 text-align-center">
+					<div class="col-8 offset-2 text-center">
 
 						{#
 						# Hook: woocommerce_single_product_summary.
@@ -63,24 +63,27 @@
 
 			<div class="Section overflow-hidden">
 				<div class="row">
-                	<div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
-						{#
-						 # Hook: woocommerce_single_product_image.
-						 #
-						 # @hooked Rider404\Plugins\WooCommerce\TemplateFunctions::featured - 15
-						 #}
-						{% do action( 'woocommerce_single_product_image' ) %}
-						{# {{- include( 'partials/featured.html.twig', { product: post }, with_context = false ) -}} #}
-						{{-
-							include(
-								'partials/image.html.twig',
-								{
-									image: post.thumbnail,
-									classes: [ 'Product-thumbnail' ]
-								},
-								with_context = false
-							)
-						-}}
+                	<div class="col-sm-10 offset-sm-1 col-md-8 offset-md-2">
+						<div class="position-relative">
+							{#
+							 # Hook: woocommerce_single_product_image.
+							 #
+							 # @hooked Rider404\Plugins\WooCommerce\TemplateFunctions::featured - 15
+							 #}
+							{% do action( 'woocommerce_single_product_image' ) %}
+							{# {{- include( 'partials/featured.html.twig', { product: post }, with_context = false ) -}} #}
+							{{-
+								include(
+									'partials/image.html.twig',
+									{
+										image: post.thumbnail,
+										classes: [ 'Product-thumbnail' ],
+										size: 'size-8',
+									},
+									with_context = false
+								)
+							-}}
+						</div>
 					</div>
 				</div>
 			</div>

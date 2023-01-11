@@ -5,7 +5,7 @@
  * @package Rider404
  */
 .Link-underline {
-	@extend %font-weight-extrablack, %font-family-title;
+	@extend .fw-extrablack, %font-family-title;
 
 	font-size: 19px;
 	line-height: 1.2;
@@ -22,7 +22,7 @@
 	}
 
 	&:disabled {
-		@extend %Pointer-events-none;
+		@extend .pe-none;
 
 		color: the_color(gray, very-dark-03);
 	}
@@ -32,7 +32,7 @@
 	}
 
 	& > div {
-		@extend %position-relative;
+		@extend .position-relative;
 
 		&.is-inview::after {
 			transform: scaleX(1);

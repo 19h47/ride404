@@ -7,6 +7,8 @@
  *
  * @see https://github.com/twbs/bootstrap-sass/blob/master/assets/stylesheets/bootstrap/_variables.scss#L329
  */
+@use "sass:math";
+
 $grid-columns: 12;
 
 /**
@@ -19,7 +21,9 @@ $grid-columns: 12;
  * @see https://github.com/twbs/bootstrap-sass/blob/master/assets/stylesheets/bootstrap/_variables.scss#L331
  */
 $grid-gutter-width-unitless: 0;
-$grid-gutter-width: ($grid-gutter-width-unitless * 1px);
+$grid-gutter-width: (
+	$grid-gutter-width-unitless * 1px
+);
 
 /**
  * Grid breakpoints
@@ -35,4 +39,60 @@ $grid-breakpoints: (
 	md: 1440px,
 	lg: 1600px,
 	hd: 2560px,
+);
+
+$spacer: 1rem;
+
+$spacers: (
+	0: 0,
+	2: math.div(8, 16) * $spacer,
+	2\.5: math.div(10, 16) * $spacer,
+	3: math.div(12, 16) * $spacer,
+	3\.5: math.div(14, 16) * $spacer,
+	4: math.div(16, 16) * $spacer,
+	5: math.div(20, 16) * $spacer,
+	6: math.div(24, 16) * $spacer,
+	7\.5: math.div( 30, 16 ) * $spacer,
+	9: math.div( 36, 16 ) * $spacer,
+	10: math.div( 40, 16 ) * $spacer,
+	11\.5: math.div( 46, 16 ) * $spacer,
+	12\.5: math.div( 50, 16 ) * $spacer,
+	14: math.div( 56, 16 ) * $spacer,
+	15: math.div( 60, 16 ) * $spacer,
+	16: math.div( 64, 16 ) * $spacer,
+	17\.5: math.div( 70, 16 ) * $spacer,
+	18\.75: math.div( 75, 16 ) * $spacer,
+	20: math.div( 80, 16 ) * $spacer,
+	23\.75: math.div( 95, 16 ) * $spacer,
+	25: math.div( 100, 16 ) * $spacer,
+	27\.5: math.div( 110, 16 ) * $spacer,
+	30: math.div( 120, 16 ) * $spacer,
+	32\.5: math.div( 130, 16 ) * $spacer,
+	35: math.div( 140, 16 ) * $spacer,
+	40: math.div( 160, 16 ) * $spacer,
+	44: math.div( 176, 16 ) * $spacer,
+	50: math.div( 200, 16 ) * $spacer,
+	55: math.div( 220, 16 ) * $spacer,
+	57\.5: math.div( 230, 16 ) * $spacer,
+	65: math.div( 260, 16 ) * $spacer,
+	72\.5: math.div( 290, 16 ) * $spacer,
+	77\.5: math.div( 310, 16 ) * $spacer,
+	90: math.div( 360, 16 ) * $spacer,
+	105: math.div( 420, 16 ) * $spacer,
+	115: math.div( 460, 16 ) * $spacer,
+	129: math.div( 516, 16 ) * $spacer,
+	1\/12: percentage( math.div(1,12)),
+	0\.1\/4: 2.5%,
+	0\.2\/4: 5%,
+	0\.375\/4: 9.375%,
+	0\.75\/4: 18.75%,
+	1\/10: percentage(math.div(1,10)),
+	0\.5\/10: percentage(math.div(0.5,10)),
+);
+
+$enable-negative-margins: true;
+
+$border-width: 0.0625rem;
+$border-widths: (
+  px: $border-width,
 );

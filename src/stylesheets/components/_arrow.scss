@@ -5,6 +5,8 @@
  * @package WordPress
  * @subpackage Rider404
  */
+@use "sass:math";
+
 .Arrow {
 	@include size(7px, 84.36px);
 	@include autoAlpha(0);
@@ -16,22 +18,12 @@
 		@include autoAlpha(1);
 	}
 
-	& > div {
-		@include size(100%);
-	}
-
 	svg {
-		@extend .d-block;
-		@include size(100%);
+		@extend .d-block, .w-full, .h-auto;
 
 		fill: the_color(white);
 	}
 
-	@at-root #{ & }#{ & }--down {
-		@extend %Pointer-events-none;
-		@include fixed(bottom 0 left 0);
-		@include margin(top auto bottom 30px left percentage(120/1440));
-	}
 	@at-root #{ & }#{ & }--up {
 		@extend .d-block;
 		@include margin(right 25.5px bottom 35px);

@@ -5,12 +5,12 @@
  # @subpackage Rider404
  #}
 <button
-	class="Button-play"
+	class="Button-play d-flex align-items-center justify-content-center position-relative"
 	type="button"
 	aria-label="{{ __( 'Play', 'rider404' ) }}"
 	{{ attributes ? attributes | map( ( value, key ) => "#{key}=\"#{value}\"" ) | join( ' ' )  | raw }}
 >
-    <span class="Pointer-events-none">
+    <span class="pe-none d-block overflow-hidden">
         {{- include( 'svg/use.html.twig', { icon: 'play' }, with_context = false ) -}}
         {{- include( 'svg/use.html.twig', { icon: 'play' }, with_context = false ) -}}
     </span>

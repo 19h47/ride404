@@ -272,7 +272,7 @@ class Partner {
 			'description'         => __( 'Partner Description', 'rider404' ),
 			'labels'              => $labels,
 			'supports'            => array( 'title', 'thumbnail' ),
-			'public'              => true,
+			'public'              => false,
 			'show_ui'             => true,
 			'show_in_menu'        => true,
 			'menu_position'       => 5,
@@ -282,9 +282,10 @@ class Partner {
 			'can_export'          => true,
 			'has_archive'         => false,
 			'exclude_from_search' => true,
-			'publicly_queryable'  => true,
+			'publicly_queryable'  => false,
 			'show_in_rest'        => true,
 		);
+
 		register_post_type( 'partner', $args );
 	}
 }

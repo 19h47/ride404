@@ -1,0 +1,21 @@
+$utilities: map-merge(
+	$utilities,
+	(
+		"fill": (
+			property: fill,
+			state: hover focus,
+			values: map-merge(
+				map-get(
+					map-get( $utilities, 'color' ),
+					'values'
+				),
+				(
+					current: currentColor,
+					gray-very-dark-02: #646464,
+					red-bright: #fd3e2d,
+					// white: #ffffff
+				)
+			)
+		)
+	)
+);

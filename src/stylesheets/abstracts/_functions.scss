@@ -4,8 +4,10 @@
  *
  *
  */
+@use "sass:math";
+
 @function vh_size($size) {
-	@return #{($size * 100) / $prototype-height-unitless}vh;
+	@return #{math.div($size * 100, $prototype-height-unitless)}vh;
 }
 
 /**
@@ -15,5 +17,5 @@
  *
  */
 @function vw_size($size) {
-	@return #{($size * 100) / $prototype-width-unitless}vw;
+	@return #{math.div($size * 100, $prototype-width-unitless)}vw;
 }

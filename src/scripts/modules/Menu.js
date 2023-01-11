@@ -5,7 +5,7 @@ import AbstractLottieModule from 'abstracts/AbstractLottieModule';
  *
  * @constructor
  */
-export default class Menu extends AbstractLottieModule {
+class Menu extends AbstractLottieModule {
 	constructor(m) {
 		super(m);
 
@@ -32,3 +32,5 @@ export default class Menu extends AbstractLottieModule {
 		this.animation.play();
 	}
 }
+
+export default Menu

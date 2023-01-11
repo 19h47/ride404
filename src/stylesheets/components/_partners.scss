@@ -4,27 +4,17 @@
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  * @package Rider404
  */
+@use "sass:math";
+
 .Partners {
 	$this: &;
 
-	@extend %position-relative;
-
 	@include media-breakpoint-up(md) {
-		@include margin(right percentage(0.5/6));
-	}
-
-	h2 {
-		@include margin(bottom 50px);
-
-		@include media-breakpoint-up(md) {
-			@include margin(bottom 80px);
-		}
+		@include margin(right percentage(math.div(0.5, 6)));
 	}
 
 	&__grid {
-		@extend .d-none, .d-md-block;
-		@include absolute(top 0 left 0);
-		@include margin(left percentage(1080/1440));
+		@include margin(left percentage(math.div(1080, 1440)));
 	}
 
 	&__decor {
@@ -32,40 +22,17 @@
 		@include absolute(top 0 bottom 0 left 0);
 	}
 
-	&__items {
-		@include margin(top -20px right -20px bottom -20px left -20px);
-		@extend %list-style-type-none;
-		@extend .d-flex, .flex-wrap;
-
-		@include media-breakpoint-up(hd) {
-			@include margin(top -25px right -25px bottom -25px left -25px);
-		}
-	}
-
 	&__item {
-		@include size(percentage(1/2), 80px);
+
 
 		transform: translate3d(0, 100%, 0);
 		opacity: 0;
 		transition: opacity 0.5s map-get($easings, ease-out-expo),
 			transform 1.5s map-get($easings, ease-out-expo);
 
-		@include media-breakpoint-up(sm) {
-			width: percentage(1/4);
-		}
-
 		img {
-			@include padding(top 20px right 20px bottom 20px left 20px);
-			@include size(100%);
-
-			object-fit: contain;
-			object-position: center;
 			opacity: 0.3;
 			transition: opacity 0.5s map-get($easings, ease-out-expo);
-
-			@include media-breakpoint-up(hd) {
-				@include padding(top 25px right 25px bottom 25px left 25px);
-			}
 		}
 
 		a {
@@ -77,7 +44,7 @@
 			}
 		}
 
-		@at-root #{$this}__items.is-inview & {
+		@at-root #{$this} ul.is-inview & {
 			transform: translate3d(0, 0, 0);
 			opacity: 1;
 		}

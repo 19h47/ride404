@@ -7,8 +7,7 @@
  */
 .Button-play {
 	@include size(140px);
-	@extend .d-flex, .align-items-center, .justify-content-center;
-	@extend %position-relative;
+
 
 	transition: opacity 0.4s map-get($easings, ease-out-expo),
 		visibility 0.4s map-get($easings, ease-out-expo);
@@ -31,8 +30,7 @@
 	}
 
 	span {
-		@extend .d-block;
-		@extend %overflow-hidden;
+
 		@include margin(left 3px);
 		@include size(16px);
 

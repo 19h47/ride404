@@ -3,19 +3,22 @@
  *
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  * @package Rider404
+ * @purgecss [role=radiogroup]
  */
+@use "sass:math";
+
 .Product-variations {
-	$this: &;
+	// $this: &;
 
-	@extend %font-weight-regular;
-	@include margin(top 40px bottom 40px);
+	// @extend .fw-normal;
+	// @include margin(top 40px bottom 40px);
 
-	[role='radiogroup'] {
-		@extend .d-flex, .justify-content-center;
-	}
+	// [role="radiogroup"] {
+	// 	@extend .d-flex, .justify-content-center;
+	// }
 
 	&__item {
-		@extend %position-relative;
+		// @extend .position-relative;
 		// @extend %text-transform-uppercase;
 		@include margin(right 30px left 30px);
 
@@ -23,7 +26,7 @@
 		color: the_color(gray, very-dark-02);
 
 		font-size: 14px;
-		line-height: (28/14);
+		line-height: math.div(28, 14);
 
 		&:first-child {
 			@include margin(left 0);
@@ -34,7 +37,7 @@
 		}
 
 		span {
-			@extend %position-relative;
+			@extend .position-relative;
 			z-index: 2;
 		}
 
@@ -52,7 +55,7 @@
 
 		&:focus,
 		&:hover {
-			@extend %cursor-pointer;
+			@extend .cursor-pointer;
 
 			color: the_color(white);
 			outline: none;

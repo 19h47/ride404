@@ -7,7 +7,6 @@
  */
 .Bars {
 	@include size(32px);
-	@include margin(bottom 0);
 
 	min-width: 32px;
 

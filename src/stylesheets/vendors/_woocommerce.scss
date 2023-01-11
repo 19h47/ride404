@@ -71,7 +71,7 @@
 	}
 
 	.product-subtotal {
-		@extend %text-align-right;
+		@extend .text-end;
 	}
 }
 
@@ -89,7 +89,7 @@
 
 	.cart-subtotal td,
 	.order-total td {
-		@extend %text-align-right;
+		@extend .text-end;
 	}
 }
 

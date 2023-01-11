@@ -5,11 +5,13 @@
  * @package WordPress
  * @subpackage Rider404
  */
+@use "sass:math";
+
 .Site-header {
 	$this: &;
+	// py-15 py-md-18.75 py-lg-23.75 py-hd-44
 
-	@include padding(top 60px bottom 60px);
-	@extend %Pointer-events-none, %position-relative;
+	// @include padding(top 60px bottom 60px);
 	@include autoAlpha(1);
 
 	transition: transform 1.5s map-get($easings, ease-out-expo),
@@ -30,27 +32,20 @@
 		color: the_color(black);
 	}
 
-	@include media-breakpoint-up(md) {
-		@include padding(top 75px bottom 75px);
-	}
+	// @include media-breakpoint-up(md) {
+	// 	@include padding(top 75px bottom 75px);
+	// }
 
-	@include media-breakpoint-up(lg) {
-		@include padding(top 95px bottom 95px);
-	}
+	// @include media-breakpoint-up(lg) {
+	// 	@include padding(top 95px bottom 95px);
+	// }
 
-	@include media-breakpoint-up(hd) {
-		@include padding(top 170px bottom 170px);
-	}
+	// @include media-breakpoint-up(hd) {
+	// 	@include padding(top 170px bottom 170px);
+	// }
 
 	&__smiley {
-		@include size(50px);
-		@extend .d-block;
-		@include margin(right auto left auto);
-		@extend %Pointer-events-auto, %overflow-hidden;
 
-		@include media-breakpoint-up(md) {
-			@include size(70px);
-		}
 
 		div {
 			opacity: 0;
@@ -108,13 +103,8 @@
 		}
 	}
 
-	&__mini-cart {
-		@extend %Pointer-events-auto;
-	}
-
 	&__bars {
-		@extend %Pointer-events-auto, %overflow-hidden;
-		@include margin(left 30px);
+		// @include margin(left 30px);
 
 		opacity: 0;
 		transform: translate3d(0, -100%, 0);
@@ -122,7 +112,7 @@
 			opacity 0.5s map-get($easings, ease-out-expo) 0.7s;
 
 		@include media-breakpoint-up(md) {
-			@include margin(right percentage(100/ ((1440/12) * 2)) left 40px);
+			@include margin(right percentage(math.div(100, math.div(1440, 12) * 2)) );
 		}
 
 		@at-root .is-loaded & {

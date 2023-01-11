@@ -54,7 +54,7 @@
 
 		<tr class="cart-subtotal">
 			<th>{{- __( 'Subtotal', 'woocommerce' ) | e( 'esc_html' ) -}}</th>
-			<td class="text-align-right">{{- function( 'wc_cart_totals_subtotal_html' ) -}}</td>
+			<td class="text-end">{{- function( 'wc_cart_totals_subtotal_html' ) -}}</td>
 		</tr>
 
 		{% for code, coupon in cart.get_coupons() %}
@@ -101,7 +101,7 @@
 
 		<tr class="order-total">
 			<th>{{- __( 'total', 'rider404' ) | e( 'esc_html' ) -}}</th>
-			<td class="text-align-right">{{- function( 'wc_cart_totals_order_total_html' ) -}}</td>
+			<td class="text-end">{{- function( 'wc_cart_totals_order_total_html' ) -}}</td>
 		</tr>
 
 		{% do action( 'woocommerce_review_order_after_order_total' ) %}

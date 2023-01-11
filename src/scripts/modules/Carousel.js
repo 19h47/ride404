@@ -1,7 +1,4 @@
-import { gsap } from 'gsap';
-
 import AbstractCarouselModule from 'abstracts/AbstractCarouselModule';
-import mediaBreakpointUp from 'utils/mediaBreakpointUp';
 
 /**
  *
@@ -12,55 +9,53 @@ export default class CarouselBlock extends AbstractCarouselModule {
 	constructor(m) {
 		super(m);
 
-		this.$cursor = document.querySelector('.js-cursor');
-		this.clientX = 0;
-		this.clientY = 0;
+		// this.$cursor = document.querySelector('.js-cursor');
+		// this.clientX = 0;
+		// this.clientY = 0;
 
-		this.render = this.render.bind(this);
+		// this.render = this.render.bind(this);
 
-		this.onResize();
+		// this.onResize();
+
 		this.initEvents();
 	}
 
-	onResize() {
-		this.options.initialIndex = 1;
+	// onResize() {
+	// 	// this.options.initialIndex = 1;
 
-		if (mediaBreakpointUp('sm')) {
-			this.options.prevNextButtons = true;
-			gsap.ticker.add(this.render);
-		}
+	// 	if (mediaBreakpointUp('sm')) {
+	// 		// this.options.prevNextButtons = true;
+	// 		gsap.ticker.add(this.render);
+	// 	}
 
-		if (this.carousel) {
-			this.carousel.destroy();
-		}
+	// 	// if (this.carousel) {
+	// 	// 	this.swiper.destroy();
+	// 	// }
 
-		super.onResize();
-	}
+	// 	// super.onResize();
+	// }
 
 	initEvents() {
-		window.addEventListener('mousemove', event => {
-			this.clientX = event.clientX;
-			this.clientY = event.clientY;
-		});
-
 		this.el.addEventListener(
 			'mouseleave',
 			({ target }) => {
 				if (target.matches('.next')) {
-					this.$cursor.classList.remove('is-active');
-					this.$cursor.classList.remove('next');
-
-					this.carousel.viewport.classList.remove('is-pointer-down');
-
-					gsap.to(this.$cursor, { scale: 1 });
+					this.modules.Cursor.main.el.classList.remove('next');
 				}
+
 				if (target.matches('.previous')) {
-					this.$cursor.classList.remove('is-active');
-					this.$cursor.classList.remove('previous');
+					this.modules.Cursor.main.el.classList.remove('previous');
+				}
 
-					this.carousel.viewport.classList.remove('is-pointer-down');
+				if (target.matches('.next') || target.matches('.previous')) {
+					// this.$cursor.classList.remove('is-active');
+					this.modules.Cursor.main.deactivate();
+					this.swiper.$wrapperEl[0].classList.remove('is-pointer-down');
+					this.modules.Cursor.main.scale();
+				}
 
-					gsap.to(this.$cursor, { scale: 1 });
+				if (this.el.classList.contains('js-carousel-stories')) {
+					this.modules.Cursor.main.deactivate();
 				}
 			},
 			true,
@@ -70,12 +65,16 @@ export default class CarouselBlock extends AbstractCarouselModule {
 			'mouseenter',
 			({ target }) => {
 				if (target.matches('.next')) {
-					this.$cursor.classList.add('is-active');
-					this.$cursor.classList.add('next');
+					this.modules.Cursor.main.activate();
+					this.modules.Cursor.main.el.classList.add('next');
 				}
 				if (target.matches('.previous')) {
-					this.$cursor.classList.add('is-active');
-					this.$cursor.classList.add('previous');
+					this.modules.Cursor.main.activate();
+					this.modules.Cursor.main.el.classList.add('previous');
+				}
+
+				if (this.el.classList.contains('js-carousel-stories')) {
+					this.modules.Cursor.main.activate();
 				}
 			},
 			true,
@@ -84,10 +83,10 @@ export default class CarouselBlock extends AbstractCarouselModule {
 		this.el.addEventListener(
 			'pointerdown',
 			({ target }) => {
-				if (target.matches('.next') || target.matches('.previous')) {
-					this.carousel.viewport.classList.add('is-pointer-down');
+				this.swiper.$wrapperEl[0].classList.add('is-pointer-down');
 
-					gsap.to(this.$cursor, { scale: 0.7 });
+				if (target.matches('.next') || target.matches('.previous')) {
+					this.modules.Cursor.main.scale(0.7);
 				}
 			},
 			false,
@@ -96,35 +95,31 @@ export default class CarouselBlock extends AbstractCarouselModule {
 		this.el.addEventListener(
 			'pointerup',
 			({ target }) => {
-				if (target.matches('.previous') || target.matches('.next')) {
-					this.carousel.viewport.classList.remove('is-pointer-down');
+				this.swiper.$wrapperEl[0].classList.remove('is-pointer-down');
 
-					gsap.to(this.$cursor, { scale: 1 });
+				if (target.matches('.previous') || target.matches('.next')) {
+					this.modules.Cursor.main.scale();
 				}
 			},
 			false,
 		);
+
+		// console.log(this.$cursor('next')[0]);
 
 		this.el.addEventListener(
 			'click',
 			({ target }) => {
-				if (target.matches('.next') && false === this.carousel.nextButton.isEnabled) {
-					this.$cursor.classList.remove('is-active');
-					this.$cursor.classList.remove('next');
+				if (target.matches('.next') && target.classList.contains('swiper-button-disabled')) {
+					this.modules.Cursor.main.deactivate();
+					this.modules.Cursor.el.classList.remove('next');
 				}
 
-				if (target.matches('.previous') && false === this.carousel.prevButton.isEnabled) {
-					this.$cursor.classList.remove('is-active');
-					this.$cursor.classList.remove('previous');
+				if (target.matches('.previous') && target.classList.contains('swiper-button-disabled')) {
+					this.modules.Cursor.main.deactivate();
+					this.modules.Cursor.el.classList.remove('previous');
 				}
 			},
 			false,
 		);
-	}
-
-	render() {
-		gsap.to(this.$cursor, { x: this.clientX, y: this.clientY, duration: 0.1, force3D: true });
-
-		return gsap.ticker.add(this.render);
 	}
 }

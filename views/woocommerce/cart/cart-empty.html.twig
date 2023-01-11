@@ -13,11 +13,14 @@
 {% do action( 'woocommerce_cart_is_empty' ) %}
 
 {% if 0 < function( 'wc_get_page_id', 'shop' ) %}
-	<div class="Site-container" data-scroll-section>
+	<div>
 		<div class="row">
 			<div class="col-10 offset-1">
 				<p class="return-to-shop">
-					<a class="Button button wc-backward" href="{{ function( 'wc_get_page_permalink', 'shop' ) | apply_filters( 'woocommerce_return_to_shop_redirect' ) | e( 'esc_url' ) }}">
+					<a
+						class="Button button wc-backward"
+						href="{{ function( 'wc_get_page_permalink', 'shop' ) | apply_filters( 'woocommerce_return_to_shop_redirect' ) | e( 'esc_url' ) }}"
+					>
 						{#
 						 # Filter "Return To Shop" text.
 						 #

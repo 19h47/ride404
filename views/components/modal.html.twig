@@ -10,24 +10,27 @@
 {% if video %}
 	<div
 		id="modal-{{ control }}"
-		class="Modal"
+		class="Modal w-full h-screen py-25 position-fixed inset-0 z-15"
 		data-video-id="{{ video }}"
 		data-video-control="{{ control }}"
 		data-module-modal
+		data-scroll
+		data-scroll-sticky
+		data-scroll-target="#page"
 	>
-		<header class="Modal__header">
-			<div class="row h-100">
-				<div class="col-1 offset-11 h-100 d-flex">
+		<header class="Modal__header position-absolute inset-x-0 top-0">
+			<div class="row h-full">
+				<div class="col-1 offset-11 h-full d-flex">
 					<button class="Modal__button" type="button" data-modal="button">
-						{{ include( 'svg/use.html.twig', { icon: 'times', classes: [ 'Pointer-events-none' ] }, with_context = false ) }}
+						{{ include( 'svg/use.html.twig', { icon: 'times', classes: [ 'pe-none', 'size-full' ] }, with_context = false ) }}
 					</button>
 				</div>
 			</div>
 		</header>
 
-		<div class="row h-100">
-			<div class="col-10 offset-1 h-100">
-				<div class="Modal__body">
+		<div class="row h-full">
+			<div class="col-10 offset-1 h-full">
+				<div class="Modal__body position-relative size-full">
 					<div data-modal="player"></div>
 				</div>
 			</div>

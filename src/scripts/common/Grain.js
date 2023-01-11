@@ -95,8 +95,6 @@ class Grain {
 			this.update();
 			this.draw();
 		}
-
-		gsap.ticker.add(this.loop);
 	}
 }
 

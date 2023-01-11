@@ -6,6 +6,13 @@
  # @author Jérémy Levron <jermeylevron@19h47.fr> (https://19h47.fr)
  #}
 
-<div class="Bar">
-	{% block content %}{% endblock %}
+<div
+	class="Bar position-absolute inset-x-0 top-0 z-20 d-none d-md-flex justify-content-center mt-18.75"
+	data-scroll-sticky
+	data-scroll
+	data-scroll-target="#page"
+>
+	<div class="d-flex align-items-md-center py-5 px-7.5">
+		{% block content %}{% endblock %}
+	</div>
 </div>

@@ -1,4 +1,4 @@
-import { module as M } from 'modujs';
+import { module as M } from '@19h47/modular';
 import Grain from 'common/Grain';
 import { gsap } from 'gsap';
 
@@ -27,7 +27,9 @@ class Video extends M {
 	}
 
 	init() {
-		this.grain = new Grain(this.$('canvas')[0]);
+		if (this.$('canvas')[0]) {
+			new Grain(this.$('canvas')[0]); // eslint-disable-line no-new
+		}
 
 		if (this.animated) {
 			this.$('button')[0].classList.add('is-hidden');
@@ -56,7 +58,6 @@ class Video extends M {
 				delay: 1.3,
 				clearProps: 'all',
 				onComplete: () => {
-					this.$('body')[0].closest('.row').setAttribute('data-scroll-section', true);
 					this.$('button')[0].classList.remove('is-hidden');
 					this.call('update', false, 'Scroll', 'main');
 				},

@@ -5,7 +5,7 @@
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  */
 .Guid {
-	@extend %Pointer-events-none;
+	@extend .pe-none;
 
 	z-index: 10000;
 

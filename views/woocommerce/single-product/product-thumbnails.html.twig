@@ -5,29 +5,10 @@
  # @subpackage Rider404
  #}
 
-{% if gallery_image_ids %}
-	<div class="Section Product-thumbnails">
+{%- if gallery_image_ids -%}
+	<div class="Section">
 		<div class="row">
-			{% set classes = [ 'col-md-5 offset-md-4', 'col-md-3 offset-md-2', 'col-md-4 offset-md-6' ] %}
-
-			{% for gallery_image_id in gallery_image_ids %}
-				<div class="col-10 offset-1 col-sm-8 offset-sm-2 {{ cycle( classes, loop.index0 ) }}">
-					{% embed 'partials/image-reveal.html.twig' with { classes: [] } %}
-						{% block content %}
-							{{-
-								include(
-									'partials/image.html.twig',
-									{
-										image: gallery_image_id | apply_filters( 'woocommerce_single_product_image_thumbnail_html', gallery_image_id ),
-										classes: [ 'Product-thumbnail' ],
-									},
-									with_context = false
-								)
-							-}}
-						{% endblock %}
-					{% endembed %}
-				</div>
-			{% endfor %}
+			{{- include( 'components/gallery.html.twig', { images: gallery_image_ids, classes: [] } ) -}}
 		</div>
 	</div>
-{% endif %}
+{%- endif -%}

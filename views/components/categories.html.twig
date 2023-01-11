@@ -1,0 +1,28 @@
+{#
+ # Product categories
+ #
+ # @package WordPress
+ # @subpackage Rider404
+ #}
+<div class="scrollbar-hide fw-normal overflow-x-auto lh-loose fs-sm text-gray-very-dark-02">
+	<ul class="d-inline-flex list-style-type-none m-0 p-0 gap-x-10 gap-x-sm-12.5">
+		<li>
+			<{{ current ? 'a' : 'p' }} class="transition-colors ease-out-expo duration-500 m-0 white-space-nowrap text-white-hover text-white-focus {{ current ? '' : 'is-active text-white' }}"{{ current ? " href=\"#{ shop_url }\"" : '' }}>
+				<span class="{{ current ? '' : 'text-decoration-underline' }}">
+					{{- __( 'All', 'rider404' ) -}}
+				</span>
+				<sup class="ms-3 lh-loose fs-sm">{{- count -}}</sup>
+			</{{ current ? 'a' : 'p' }}>
+		</li>
+		{% for category in categories %}
+			<li>
+				<{{ current and current.id == category.id ? 'p' : 'a' }} class="transition-colors ease-out-expo duration-500 m-0 white-space-nowrap text-white-hover text-white-focus {{ current and current.id == category.id ? 'is-active text-white' : '' }}"{{ current and current.id == category.id ? '' : " href=\"#{ category.link }\"" }}">
+					<span class="{{ current and current.id == category.id ? 'text-decoration-underline' : '' }}">
+						{{- category.name -}}
+					</span>
+					<sup class="ms-3 lh-loose fs-sm">{{- category.count -}}</sup>
+				</{{ current and current.id == category.id ? 'p' : 'a' }}>
+			</li>
+		{% endfor %}
+	</ul>
+</div>

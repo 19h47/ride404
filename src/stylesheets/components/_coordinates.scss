@@ -6,17 +6,7 @@
  * @subpackage Rider404
  */
 .Coordinates {
-	$this: &;
-
-	@extend .d-none, .d-sm-block;
-	@extend %Pointer-events-none, %overflow-hidden;
-	@include absolute(top 0 right 0 bottom 0 left 0);
-
 	span {
-		@extend .d-inline-block;
-
-		position: absolute;
-
 		font-feature-settings: 'tnum';
 		font-variant-numeric: tabular-nums;
 		white-space: nowrap;

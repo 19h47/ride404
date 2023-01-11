@@ -4,13 +4,15 @@
 
 // @include reset-selection( get_color( black ), get_color( white ) );
 
+@use "sass:math";
+
 h1,
 .h1 {
-	@extend %font-weight-extrablack, %font-family-title;
+	@extend .fw-extrablack, %font-family-title;
 	@include margin(top 1em bottom 2em);
 
 	font-size: 50px;
-	line-height: (55/50);
+	line-height: (55*0.02);
 
 	@include media-breakpoint-up(md) {
 		font-size: vw_size(110);
@@ -20,42 +22,42 @@ h1,
 
 h2,
 .h2 {
-	@extend %font-weight-light, %font-family-title;
+	@extend .fw-light, %font-family-title;
 	@include margin(top 1em bottom 1em);
 
 	font-size: 28px;
-	line-height: (32/28);
+	line-height: math.div(32, 28);
 
 	@include media-breakpoint-up(md) {
 		font-size: 44px;
-		line-height: (52/44);
+		line-height: math.div(52, 44);
 	}
 
 	@include media-breakpoint-up(lg) {
 		font-size: 48px;
-		line-height: (52/48);
+		line-height: math.div(52, 48);
 	}
 
 	@include media-breakpoint-up(hd) {
 		font-size: 78px;
-		line-height: (92/78);
+		line-height: math.div(92, 78);
 	}
 }
 
 h3,
 .h3 {
-	@extend %font-weight-light, %font-family-title;
+	@extend .fw-light, %font-family-title;
 	@include margin(top 1em bottom 0);
 
 	@include media-breakpoint-up(md) {
 		font-size: 38px;
-		line-height: (23/38);
+		line-height: math.div(23, 38);
 	}
 }
 
 h4,
 .h4 {
-	@extend %font-weight-extrablack, %font-family-title;
+	@extend .fw-extrablack, %font-family-title;
 	@include margin(top 1em bottom 0);
 
 	font-size: 36px;
@@ -64,11 +66,11 @@ h4,
 
 h5,
 .h5 {
-	@extend %font-weight-extrablack, %font-family-title;
+	@extend .fw-extrablack, %font-family-title;
 
 	@include media-breakpoint-up(md) {
 		font-size: 30px;
-		line-height: (39/30);
+		line-height: math.div(39, 30);
 	}
 }
 

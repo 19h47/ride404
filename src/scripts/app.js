@@ -1,26 +1,28 @@
-import Modular from 'modujs';
-import * as modules from 'modules';
+/* global rider404 */
+import modular from '@19h47/modular';
 import { gsap } from 'gsap';
 
 import Guid from 'common/Guid';
 import Splashscreen from 'common/Splashscreen'
 import { elements } from 'scripts/config';
 
-const production = 'production' !== process.env.NODE_ENV;
+const dev = 'production' !== process.env.NODE_ENV;
 
-if (production) {
+if (dev) {
 	const guid = new Guid(12);
 
 	guid.init();
 }
 
-const app = new Modular({ modules });
+// eslint-disable-next-line new-cap
+const app = new modular({ modules: [] });
 
 const splashscreen = new Splashscreen();
 splashscreen.init();
 
 const init = async () => {
 	app.init(app);
+
 	await splashscreen.play();
 
 	elements.html.classList.add('is-loaded');
@@ -29,12 +31,16 @@ const init = async () => {
 };
 
 window.onload = () => {
-	const $style = document.getElementById('rider404-main-css');
+	const $style = document.getElementById(`${rider404.text_domain}-main-css`);
 
-	if ($style.isLoaded) {
-		init();
+	if ($style) {
+		if ($style.isLoaded) {
+			init();
+		} else {
+			$style.addEventListener('load', () => init());
+		}
 	} else {
-		$style.addEventListener('load', () => init());
+		console.warn(`The "${rider404.text_domain}-main-css" stylesheet not found`);
 	}
 };
 

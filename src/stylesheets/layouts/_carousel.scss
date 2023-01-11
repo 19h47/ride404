@@ -5,40 +5,14 @@
  * @package WordPress
  * @subpackage Rider404
  */
+@use "sass:math";
+
 .Carousel {
 	$this: &;
 
-	@extend %overflow-hidden, %position-relative;
-
-	@include padding(top 80px bottom 80px);
-
-	@include media-breakpoint-up(sm) {
-		@include padding(top 130px bottom 130px);
-	}
-
-	@include media-breakpoint-up(md) {
-		@include padding(top 260px bottom 260px);
-	}
-
-	@include media-breakpoint-up(lg) {
-		@include padding(top 290px bottom 290px);
-	}
-
-	@include media-breakpoint-up(hd) {
-		@include padding(top 460px bottom 460px);
-	}
-
-	&__background {
-		@include absolute(top 0 right 0 bottom 0 left 0);
-		@include size(100%);
-
-		object-fit: cover;
-		object-position: center;
-		will-change: transform;
-
-		@include media-breakpoint-up(sm) {
-			object-fit: contain;
-		}
+	.swiper-button {
+		// @include absolute(top 0 bottom 0);
+		// @include size(percentage(2*0.125), 100%)
 	}
 
 	&__items {
@@ -60,57 +34,31 @@
 			height: 1130px;
 		}
 
-		.flickity-viewport {
-			overflow: visible;
-		}
+		// .flickity-viewport {
+		// 	overflow: visible;
+		// }
 
-		.flickity-button {
-			@include absolute(top 0 bottom 0);
-			@include size(percentage(2/8), 100%);
 
-			transform: none;
-			border-radius: 0;
-			background-color: transparent;
-
-			svg {
-				@extend .d-none;
-			}
-
-			&.previous {
-				right: 100%;
-				left: auto;
-			}
-			&.next {
-				right: auto;
-				left: 100%;
-			}
-
-			&:hover {
-				background-color: transparent;
-			}
-		}
 	}
 	&__item {
-		@include size(100%);
-		@include margin(right percentage(0.25/10) left percentage(0.25/10));
-		@extend %overflow-hidden;
+
+		// @include margin(right percentage(0.25*0.1) left percentage(0.25*0.1));
+
+		// my-0.1/4 my-sm-0.375/4
+
 
 		transition: transform 1.5s map-get($easings, ease-out-expo);
 
-		@include media-breakpoint-up(sm) {
-			@include margin(right percentage(0.75/8) left percentage(0.75/8));
-		}
+		// @include media-breakpoint-up(sm) {
+		// 	@include margin(right percentage(0.75*0.125) left percentage(0.75*0.125));
+		// }
 
-		.Image-reveal {
-			@include size(100%);
-		}
+		// .Image-reveal {
+		// 	@include size(100%);
+		// }
 
 		img {
-			@extend .d-block;
-			@include size(100%);
 
-			object-fit: cover;
-			object-position: center;
 			filter: grayscale(100%);
 
 			transition: filter 1s map-get($easings, ease-out-expo),
@@ -121,7 +69,7 @@
 			transform: scale(0.9);
 
 			img {
-				transform: scale(((1/0.9)) + 0.1) rotate(7deg);
+				transform: scale((math.div(1, 0.9)) + 0.1) rotate(7deg);
 				filter: grayscale(0);
 			}
 		}

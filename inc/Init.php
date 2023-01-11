@@ -40,6 +40,9 @@ class Init {
 			Core\Product::class,
 			Core\ProductCat::class,
 			Core\Partner::class,
+			Post\Post::class,
+			Media::class,
+			WPImageEditor::class,
 		);
 	}
 

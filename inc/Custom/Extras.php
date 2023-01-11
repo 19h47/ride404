@@ -50,7 +50,7 @@ class Extras {
 		}
 
 		if ( is_404() ) {
-			$classes[] = 'Error404';
+			$classes[] = 'Error404 overflow-hidden';
 		}
 
 		if ( is_shop() ) {

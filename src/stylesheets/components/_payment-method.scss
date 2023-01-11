@@ -5,6 +5,8 @@
  * @package WordPress
  * @subpackage Rider404
  */
+@use "sass:math";
+
 .Payment-method {
 	$this: &;
 
@@ -24,7 +26,7 @@
 	}
 
 	&__input {
-		@extend %position-relative;
+		@extend .position-relative;
 		@include margin(right 30px);
 		@include size(30px);
 		@extend .d-block;
@@ -61,7 +63,7 @@
 		display: none;
 		background-color: the_color(gray, very-dark-03) !important; // WooCommerce
 		font-size: 14px !important; // WooCommerce
-		line-height: (28/14) !important; //WooCommerce
+		line-height: math.div(28, 14) !important; //WooCommerce
 		color: the_color(white) !important; //WooCommerce
 		padding: 15px 20px !important; // WooCommerce
 		margin-bottom: 0 !important; // WooCommerce
@@ -78,7 +80,7 @@
 	&__label {
 		@extend .d-flex, .align-items-center;
 
-		width: percentage(180/1200);
+		width: percentage(math.div(180, 1200));
 	}
 
 	&__icon {

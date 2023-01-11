@@ -1,0 +1,84 @@
+$utilities: map-merge(
+	$utilities,
+	(
+		'inset': (
+			property: top right bottom left,
+			responsive: true,
+			class: inset,
+			values: ( 0: 0 ),
+		),
+		'inset-x': (
+			property: right left,
+			responsive: true,
+			class: inset-x,
+			values: ( 0: 0 ),
+		),
+		'inset-y': (
+			property: top bottom,
+			responsive: true,
+			class: inset-y,
+			values: ( 0: 0 ),
+		),
+	)
+);
+
+$utilities: map-merge(
+	$utilities,
+	(
+		'z-index': (
+			property: z-index,
+			class: z,
+			responsive: true,
+			values: 0 1 2 3 4 5 10 15 20 100,
+		),
+	)
+);
+
+$utilities: map-merge(
+	$utilities,
+	(
+		'object-position': (
+			property: object-position,
+			values: (
+				center: center,
+				center-top: center top,
+				left-center: left center,
+				right-bottom: right bottom,
+			),
+		),
+		'object-fit': (
+			property: object-fit,
+			responsive: true,
+			values: (
+				cover: cover,
+				contain: contain,
+				scale-down: scale-down,
+				fill: fill
+			),
+		),
+	)
+);
+
+$utilities: map-merge(
+	$utilities,
+	(
+		'overflow':
+			map-merge(
+				map-get(
+					$utilities,
+					'overflow'
+				),
+				(
+					responsive: true,
+				)
+			),
+		'overflow-x': (
+			property: overflow-x,
+			values: map-get( map-get( $utilities, 'overflow'), 'values' ),
+		),
+		'overflow-y': (
+			property: overflow-y,
+			values: map-get( map-get( $utilities, 'overflow'), 'values' ),
+		),
+	)
+);

@@ -1,4 +1,4 @@
-import { module as M } from 'modujs';
+import { module as M } from '@19h47/modular';
 import lottie from 'lottie-web';
 
 /**
@@ -6,12 +6,12 @@ import lottie from 'lottie-web';
  * @constructor
  * @param {object} container
  */
-export default class AbstractLottieBlock extends M {
-	constructor(m) {
-		super(m);
+class AbstractLottieBlock extends M {
+	// constructor(m) {
+	// 	super(m);
 
-		this.animation = null;
-	}
+	// 	this.animation = null;
+	// }
 
 	init() {
 		this.params = {
@@ -29,6 +29,7 @@ export default class AbstractLottieBlock extends M {
 		this.delay = JSON.parse(this.el.getAttribute('data-lottie-delay')) || false;
 
 		this.json = import(`@/json/${this.el.getAttribute('data-lottie-json')}.json`);
+		// console.log(this.json);
 
 		this.json.then(animationData => {
 			this.params.animationData = animationData;
@@ -41,3 +42,5 @@ export default class AbstractLottieBlock extends M {
 		return this.animation.goToAndPlay(0);
 	}
 }
+
+export default AbstractLottieBlock;

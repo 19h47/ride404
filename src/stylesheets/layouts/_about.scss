@@ -5,86 +5,61 @@
  * @package WordPress
  * @subpackage Rider404
  */
+@use "sass:math";
+
 .About {
-	@extend %overflow-hidden, %overflow-md-visible, %position-relative;
 
-	@include padding(top 80px);
 
-	@include media-breakpoint-up(sm) {
-		@include padding(top 200px);
-	}
+	// @include padding(top 80px);
 
-	&__body {
-		@extend %position-relative;
-
-		z-index: 2;
-	}
+	// @include media-breakpoint-up(sm) {
+	// 	@include padding(top 200px);
+	// }
 
 	&__content {
-		@extend %text-align-center, %font-family-title, %font-weight-light;
+		@extend  %font-family-title;
 
 		font-size: 28px;
-		line-height: (38/28);
+		line-height: math.div(38, 28);
 
 		@include media-breakpoint-up(md) {
 			font-size: 44px;
-			line-height: (52/44);
+			line-height: math.div(52, 44);
 		}
 
 		@include media-breakpoint-up(lg) {
 			font-size: 48px;
-			line-height: (58/48);
+			line-height: math.div(58, 48);
 		}
 
 		@include media-breakpoint-up(hd) {
 			font-size: 78px;
-			line-height: (92/78);
+			line-height: math.div(92, 78);
 		}
 
 		& > div {
-			@extend %position-relative;
+			@extend .position-relative;
 
 			z-index: 2;
 		}
 
 		img {
-			@include absolute(top 0 right 0 bottom 0 left 50%);
-			@include margin(top auto bottom auto);
-			@include size(auto, 100%);
-
 			transform: translate3d(-50%, 0, 0);
 
-			opacity: 0.1;
-			z-index: 1;
-
 			@include media-breakpoint-up(md) {
-				@include size(100%, auto);
-				@include margin(right auto left auto);
-
-				right: 0;
-				left: 0;
 				transform: none;
 			}
 		}
 	}
 
-	&__title {
-		@extend .h1;
-		@include margin(top 80px bottom 60px);
-	}
-
 	&__icons {
-		@extend %list-style-type-none, %Pointer-events-none;
-		@include absolute(top 0 right 0 bottom 0 left 0);
-		@extend .d-none, .d-sm-block;
 
-		z-index: 1;
 
 		li {
-			position: absolute;
+
 
 			svg {
-				@include size(100%);
+				// @include size(100%);
 
 				fill: the_color(gray, very-dark-03);
 				transform: rotate(45deg);
@@ -101,24 +76,25 @@
 			}
 
 			&:nth-child(1) {
-				@include size(70px);
+				// @include size(70px);
 
-				top: 0;
-				left: percentage(7.5/12);
+
+				// top: 0;
+				left: percentage(math.div(7.5, 12));
 			}
 
 			&:nth-child(2) {
-				@include size(140px);
+				// @include size(140px);
 
 				top: 300px;
 				left: percentage(0);
 			}
 
 			&:nth-child(3) {
-				@include size(70px);
+				// @include size(70px);
 
 				top: 550px;
-				left: percentage(10.5/12);
+				left: percentage(math.div(10.5, 12));
 			}
 		}
 	}

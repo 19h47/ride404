@@ -5,19 +5,21 @@
  * @package WordPress
  * @subpackage Rider404
  */
+@use "sass:math";
+
 .Rider-404 {
-	@extend %position-relative;
-	@include margin(right percentage(0.5/10) left percentage(1/10));
-	@extend .d-block;
 
-	fill: the_color(white);
-	z-index: 5;
+	// @include margin(right percentage(0.5*0.1) left percentage(1*0.1));
 
-	@include padding(bottom percentage(310/1200));
+
+	// fill: the_color(white);
+	// z-index: 5;
+
+	@include padding(bottom percentage(math.div(350, 1025)));
 
 	svg {
 		@include absolute(top 0 right 0 bottom 0 left 0);
 
-		width: auto !important;
+		height: auto !important;
 	}
 }

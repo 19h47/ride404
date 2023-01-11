@@ -14,28 +14,28 @@
 
 	@at-root .Front-page & {
 		.Logo {
-			@extend %position-relative;
+			@extend .position-relative;
 
 			z-index: 2;
 		}
 
 		.Video {
-			@include margin(top -15px);
+			// @include margin(top -15px);
 
 			position: relative;
 			z-index: 1;
 
 			@include media-breakpoint-up(sm) {
-				@include margin(top -40px right percentage(0.5/10) left percentage(0.5/10));
+				@include margin(right percentage(0.5*0.1) left percentage(0.5*0.1));
 			}
 
-			@include media-breakpoint-up(md) {
-				@include margin(top -45px);
-			}
+			// @include media-breakpoint-up(md) {
+			// 	@include margin(top -45px);
+			// }
 
-			@include media-breakpoint-up(hd) {
-				@include margin(top -60px);
-			}
+			// @include media-breakpoint-up(hd) {
+			// 	@include margin(top -60px);
+			// }
 		}
 	}
 }

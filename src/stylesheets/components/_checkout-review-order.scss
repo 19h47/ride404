@@ -4,6 +4,8 @@
  * @package WordPress
  * @subpackage Rider404
  */
+@use "sass:math";
+
 .Checkout-review-order {
 	@include padding(top 70px /* bottom 70px */);
 	@include margin(top 70px /* bottom 70px */);
@@ -24,11 +26,11 @@
 		margin: 0 !important; // WooCommerce
 
 		.product-total {
-			@extend %text-align-right;
+			@extend .text-end;
 		}
 
 		.amount {
-			@extend %text-align-right;
+			@extend .text-end;
 
 			font-weight: 300 !important; // WooCommerce
 		}
@@ -38,7 +40,7 @@
 		tfoot th {
 			border-top: none !important; // WooCommerce
 			padding: 15px 0 !important; // WooCommerce
-			line-height: (28/18) !important;
+			line-height: math.div(28, 18) !important;
 		}
 
 		th {

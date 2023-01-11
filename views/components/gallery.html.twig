@@ -1,0 +1,29 @@
+{#
+ # Gallery
+ #
+ # @package WordPress
+ # @subpackage Rider404
+ #}
+
+{% if images %}
+	{% for image in images %}
+		<div class="col-10 offset-1 {{ classes ? classes | join( ' ' ) : '' }} {{ cycle( [ 'col-md-5 offset-md-4 mt-md-40', 'col-md-3 offset-md-2 mt-md-n27.5', 'col-md-4 offset-md-6 mt-md-55' ], loop.index0 ) }}">
+			{% embed "partials/image-reveal.html.twig" with { classes: [ 'size-full' ] }  %}
+				{% block content %}
+					{{-
+						include(
+							'partials/image.html.twig',
+							{
+								classes: [ 'd-block', 'size-full', 'object-fit-cover', 'object-position-center' ],
+								image: image,
+								loading: 'eager',
+								size: cycle( [ 'size-5', 'size-3', 'size-4' ], loop.index0 )
+							},
+							with_context = false
+						)
+					-}}
+				{% endblock %}
+			{% endembed %}
+		</div>
+	{% endfor %}
+{% endif %}

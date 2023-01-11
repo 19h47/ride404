@@ -1,0 +1,23 @@
+$utilities: map-merge(
+	$utilities,
+	(
+		"opacity": map-merge(
+			map-get(
+				$utilities,
+				"opacity"
+			),
+			(
+				values: map-merge(
+					map-get(
+						map-get( $utilities, 'opacity' ),
+						'values'
+					),
+					(
+						10: 0.1,
+						50: 0.5
+					)
+				)
+			)
+		)
+	)
+);

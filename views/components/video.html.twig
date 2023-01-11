@@ -6,12 +6,18 @@
  # @package WordPress
  # @subpackage Rider404
  #}
-{% if video %}
-	<div id="{{ id }}" class="Video{{ classes ? ' ' ~ classes | join( ' ' ) }}" data-module-video="{{ id }}" data-animated="{{ animated ? 'true' : 'false' }}">
 
-		<div class="Video__body" data-video="body">
+{% if video %}
+	<div
+		id="{{ id }}"
+		class="Video {{ classes ? ' ' ~ classes | join( ' ' ) }}"
+		data-module-video="{{ id }}"
+		data-animated="{{ animated ? 'true' : 'false' }}"
+	>
+
+		<div class="Video__body position-relative overflow-hidden" data-video="body">
 			{% if overlay %}
-				<div class="Video__overlay" data-video="overlay">
+				<div class="Video__overlay position-absolute inset-0 d-flex align-items-center justify-content-center z-3" data-video="overlay">
 					{{-
 						include(
 							'components/button-play.html.twig',
@@ -21,9 +27,9 @@
 				</div>
 			{% endif %}
 
-			<canvas data-video="canvas"></canvas>
+			<canvas class="position-absolute inset-0 size-full z-2" data-video="canvas"></canvas>
 
-			<video playsInline autoplay loop preload="auto" muted>
+			<video playsInline autoplay loop preload="auto" muted class="position-absolute inset-0 size-full object-fit-cover object-position-center z-1">
 				<source src="{{ video }}" type="video/mp4">
 			</video>
 		</div>

@@ -5,12 +5,14 @@
  * @package WordPress
  * @subpackage Rider404
  */
+@use "sass:math";
+
 .Shipping-fields {
 	&__title {
 		@extend .h2;
 
 		.Checkbox {
-			line-height: (44/52);
+			line-height: math.div(44, 52);
 		}
 	}
 }

@@ -8,22 +8,8 @@
 .Socials {
 	$this: &;
 
-	@extend %list-style-type-none;
-	@extend .d-flex, .flex-wrap, .flex-md-nowrap;
-
-	@include margin(top -8px right -8px bottom -8px left -8px);
-
-	@include media-breakpoint-up(md) {
-		@include margin(top 0 right 0 bottom 0 left 0);
-	}
-
 	&__item {
-		@include margin(top 8px right 8px bottom 8px left 8px);
-		@extend .d-flex, .align-items-center, .justify-content-center;
-
 		@include media-breakpoint-up(md) {
-			@include margin(top 0 right 10px bottom 0 left 10px);
-
 			&:last-child {
 				@include margin(right 0);
 			}
@@ -34,15 +20,11 @@
 	}
 
 	&__link {
-		@extend .d-flex, .align-items-center, .justify-content-center;
-		@extend %position-relative;
-		@include size(50px);
+
 
 		transition: transform 0.5s map-get($easings, ease-out-expo);
 
-		@include media-breakpoint-up(md) {
-			@include size(70px);
-		}
+
 
 		svg {
 			@include size(22px);
@@ -57,8 +39,6 @@
 		}
 
 		span {
-			@include absolute(top 0 right 0 bottom 0 left 0);
-
 			border: 1px solid the_color(gray, very-dark-03);
 			border-radius: 50%;
 

@@ -4,14 +4,10 @@
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  * @package Rider.404
  */
+@use "sass:math";
+
 .Tags {
-	@extend %position-relative, %overflow-hidden, %overflow-md-visible;
-
 	height: 900px;
-
-	&__items {
-		@extend %list-style-type-none;
-	}
 
 	&__item {
 		position: absolute;
@@ -20,17 +16,17 @@
 
 		&:nth-child(1) {
 			top: 0;
-			left: percentage(1095/1440);
+			left: percentage(math.div(1095, 1440));
 			transform: rotate(-32deg);
 		}
 		&:nth-child(2) {
 			top: 125px;
-			left: percentage(-90/1440);
+			left: percentage(math.div(-90, 1440));
 			transform: rotate(-2deg);
 		}
 		&:nth-child(3) {
 			top: 310px;
-			left: percentage(600/1440);
+			left: percentage(math.div(600, 1440));
 			transform: rotate(14deg);
 		}
 		&:nth-child(4) {
@@ -40,12 +36,12 @@
 		}
 		&:nth-child(5) {
 			top: 530px;
-			left: percentage(660/1440);
+			left: percentage(math.div(660, 1440));
 			transform: rotate(-9deg);
 		}
 		&:nth-child(6) {
 			top: 740px;
-			left: percentage(870/1440);
+			left: percentage(math.div(870, 1440));
 			transform: rotate(33deg);
 		}
 

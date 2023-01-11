@@ -6,7 +6,7 @@
  #}
 
 {% if notices %}
-	<div class="row" data-scroll-section>
+	<div class="row">
 		<div class="col-10 offset-1">
 			{% for notice in notices %}
 				<div class="Success woocommerce-message"{{ function( 'wc_get_notice_data_attr', notice ) }}>

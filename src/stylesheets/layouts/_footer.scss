@@ -5,46 +5,40 @@
  * @package WordPress
  * @subpackage Rider404
  */
+@use "sass:math";
+
 .Site-footer {
-	@extend %position-relative;
-	@include padding(top 40px bottom 40px);
+	// py-40px py-sm-100px py-lg-120px py-hd-200px
+	// @include padding(top 40px bottom 40px);
 
-	@include media-breakpoint-up(sm) {
-		@include padding(top 100px bottom 100px);
-	}
+	// @include media-breakpoint-up(sm) {
+	// 	@include padding(top 100px bottom 100px);
+	// }
 
-	@include media-breakpoint-up(lg) {
-		@include padding(top 120px bottom 120px);
-	}
+	// @include media-breakpoint-up(lg) {
+	// 	@include padding(top 120px bottom 120px);
+	// }
 
-	@include media-breakpoint-up(hd) {
-		@include padding(top 200px bottom 200px);
-	}
+	// @include media-breakpoint-up(hd) {
+	// 	@include padding(top 200px bottom 200px);
+	// }
 
-	&__title {
-		@include margin(top 0 bottom 35px);
-		@extend .h2;
+	// &__title {
+	// 	// mt-0 mb-35px mb-md-65px
+	// 	@include margin(top 0 bottom 35px);
+	// 	// @extend .h2;
 
-		@include media-breakpoint-up(md) {
-			@include margin(bottom 65px);
-		}
-	}
+	// 	@include media-breakpoint-up(md) {
+	// 		@include margin(bottom 65px);
+	// 	}
+	// }
 
 	&__copyright {
-		@include margin(top 70px);
-		@extend .d-flex, .justify-content-between, .align-items-center;
-
 		color: the_color(gray, very-dark-02);
 		font-size: 12px;
-		line-height: (18/12);
-
-		@include media-breakpoint-up(md) {
-			@include margin(top 100px);
-		}
+		line-height: math.div(18, 12);
 
 		p {
-			@include margin(top 0);
-
 			transform: translate3d(0, 100%, 0);
 			opacity: 0;
 
@@ -58,14 +52,7 @@
 		}
 
 		a {
-			@extend %text-decoration-underline;
-
 			transition: color 0.5s map-get($easings, ease-out-expo);
-
-			&:focus,
-			&:hover {
-				color: the_color(white);
-			}
 		}
 	}
 }

@@ -7,7 +7,7 @@
  */
 .Split-text {
 	> div {
-		@extend %overflow-hidden;
+		@extend .overflow-hidden;
 
 		> div {
 			word-wrap: break-word;

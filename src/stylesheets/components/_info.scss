@@ -5,6 +5,8 @@
  * @subpackage Rider404
  * @since 1.0.0
  */
+@use "sass:math";
+
 .Info {
 	@extend .d-flex;
 	@include padding(top 16px right 20px bottom 16px left 20px);
@@ -34,12 +36,12 @@
 	a,
 	button {
 		@include margin(top 4px right 8px left auto);
-		@extend %text-decoration-underline,
+		@extend .text-decoration-underline,
 			%text-transform-uppercase,
 			%font-family-title,
-			%font-weight-heavy;
+			.fw-extrablack;
 
 		font-size: 16px;
-		line-height: (28/16);
+		line-height: math.div(28, 16);
 	}
 }

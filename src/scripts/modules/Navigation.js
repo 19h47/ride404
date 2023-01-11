@@ -1,4 +1,4 @@
-import { module as M } from 'modujs';
+import { module as M } from '@19h47/modular';
 import { gsap } from 'gsap';
 
 import { elements } from 'scripts/config';
@@ -21,7 +21,7 @@ class Navigation extends M {
 				document.dispatchEvent(new Event('Navigation.close'));
 
 				elements.body.classList.remove('Navigation--is-open');
-				this.call('start', false, 'Scroll', 'main');
+				// this.call('start', false, 'Scroll', 'main');
 			},
 		});
 
@@ -99,7 +99,7 @@ class Navigation extends M {
 		document.dispatchEvent(new Event('Navigation.open'));
 
 		elements.body.classList.add('Navigation--is-open');
-		this.call('stop', false, 'Scroll', 'main');
+		// this.call('stop', false, 'Scroll', 'main');
 
 		setTimeout(() => this.timeline.play(), 500);
 

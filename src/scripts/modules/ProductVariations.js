@@ -1,4 +1,4 @@
-import { module as M } from 'modujs';
+import { module as M } from '@19h47/modular';
 import RadioGroup from '@19h47/radiogroup';
 import $ from 'jquery'; // eslint-disable-line
 
@@ -57,7 +57,10 @@ class ProductVariations extends M {
 			});
 		});
 
-		$(this.radiogroup.radios[0].$input.form).trigger('check_variations');
+		if (this.radiogroup.radios[0]) {
+			console.log('check_variations')
+			$(this.radiogroup.radios[0].$input.form).trigger('check_variations');
+		}
 	}
 }
 

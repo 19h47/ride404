@@ -8,15 +8,14 @@
 .Cursor {
 	$this: &;
 
-	@extend %Pointer-events-none;
-	@extend .d-flex, .align-items-center, .justify-content-center;
-	@include size(140px);
-	@include fixed(top -70px left -70px);
 
-	z-index: 15;
+	// @include size(140px);
+	// @include fixed(top -70px left -70px);
+
+	// z-index: 15;
 
 	svg {
-		@include size(14px);
+		// @include size(14px);
 		@include autoAlpha(0);
 
 		transition: opacity 0.5s map-get($easings, ease-out-expo),
@@ -24,11 +23,15 @@
 		fill: the_color(red, bright);
 		will-change: opacity, visibility;
 
-		@at-root #{ $this }.is-active svg {
+		@at-root #{ $this }.is-active.previous svg {
 			@include autoAlpha(1);
 		}
 
-		@at-root #{ $this }.previous svg {
+		@at-root #{ $this }.is-active.next svg {
+			@include autoAlpha(1);
+		}
+
+		@at-root #{ $this }.is-active.previous svg {
 			&.chevron-right {
 				@extend .d-none;
 			}
@@ -36,7 +39,7 @@
 				@extend .d-block;
 			}
 		}
-		@at-root #{ $this }.next svg {
+		@at-root #{ $this }.is-active.next svg {
 			&.chevron-right {
 				@extend .d-block;
 			}

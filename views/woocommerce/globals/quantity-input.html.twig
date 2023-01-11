@@ -26,6 +26,7 @@
 
 		<input
 			type="number"
+			{{ is_readonly ? 'readonly="readonly"' : '' }}
 			id="{{ input_id | e }}"
 			class="{{ classes | join( ' ' ) | e }}"
 			step="{{ step | e }}"

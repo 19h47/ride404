@@ -5,14 +5,15 @@
  # @file views/index.html.twig
  # @package WordPress
  # @subpackage Rider404
+ # @purgecss iframe video embed
  #}
-
 <!DOCTYPE html>
-<!--[if IE 9]>
-<html {{ html_class( 'ie9 no-js no-touch' ) }} {{ site.language_attributes }}>
-<![endif]-->
-<!--[if !(IE 9)]><!-->
-	<html {{ site.language_attributes }} {{ html_class( 'no-js no-touch is-loading is-ontop' ) }}> <!--<![endif]-->
+<html
+    itemscope
+    itemtype="http://schema.org/WebPage"
+    {{ html_class( 'no-js no-touch is-ontop is-loading' ) }}
+    {{ site.language_attributes }}
+>
 
 	<head>
 
@@ -27,28 +28,27 @@
 
 	<body class="{{ body_class }}{{ post.body_classes ? ( ' ' ~ post.body_classes | join( ' ' ) ) }}">
 
-		<div id="svg-sprite" class="d-none">{{- include( 'icons.svg' ) -}}</div>
-
 		<div data-module-scroll="main" data-scroll-smooth="{{ scroll_smooth and scroll_smooth == 'false' ? 'false' : 'true' }}">
 
 			{% do action( 'woocommerce_before_main_content' ) %}
 
-			<div id="splashscreen" class="Splash-screen">
+			<div id="splashscreen" class="Splash-screen pe-none overflow-hidden position-fixed inset-0 w-full">
 				<div></div>
 				<div></div>
 			</div>
 
 			{% if is_front_page %}
-				<div class="Cursor js-cursor">
-					{{ include( 'svg/use.html.twig', { icon: 'chevron-right' }, with_context = false ) }}
-					{{ include( 'svg/use.html.twig', { icon: 'chevron-left' }, with_context = false ) }}
+				<div data-module-cursor="main" class="Cursor js-cursor position-absolute pe-none z-15 size-35 top-n17.5 start-n17.5 d-flex align-items-center justify-content-center">
+					{{ include( 'svg/use.html.twig', { classes: [ 'size-3.5' ], icon: 'chevron-right' }, with_context = false ) }}
+					{{ include( 'svg/use.html.twig', { classes: [ 'size-3.5' ], icon: 'chevron-left' }, with_context = false ) }}
 				</div>
 			{% endif %}
 
-			<div id="{{ post.id ? "page-#{post.id}" : 'page' }}" class="Site-content">
+			<div id="page" class="Site-content {{ post.id ? "page-#{post.id}" : 'page' }}">
+
 
 				{% if is_front_page %}
-					<div class="Arrow Arrow--down d-none d-md-block" data-scroll-section>
+					<div class="Arrow d-none d-md-flex position-absolute pe-none h-screen py-7.5 ms-1/12">
 						<div
 							id="arrow-down"
 							data-scroll
@@ -58,11 +58,12 @@
 							data-module-arrow
 							data-lottie-json="arrow-down"
 							data-lottie-loop="true"
+							class="mt-auto"
 						></div>
 					</div>
 				{% endif %}
 
-				<div class="Coordinates" data-scroll-section>
+				<div class="Coordinates pe-none position-absolute inset-0 overflow-hidden d-none d-sm-block">
 					{% for i in 0..9 %}
 						<span
 							id="coordinate-{{ i }}"
@@ -73,6 +74,7 @@
 							data-scroll-call="coordinate-{{ i }}"
 							style="top: {{ i + random( 0, 100 ) }}%; left: {{ i + random( 0, 100 ) }}%;"
 							data-module-coordinate
+							class="d-inline-block position-absolute"
 						>0</span>
 					{% endfor %}
 				</div>
@@ -81,11 +83,11 @@
 				{{- include( 'components/navigation.html.twig', { menu: nav_menus.main } ) -}}
 
 
-				{% block hero %}
-					<div class="Hero" data-scroll-section>
+                {% block hero %}
+					<div class="Hero position-relative z-2">
 						<div class="row">
 							<div class="col-10 offset-1">
-								<h1 class="text-align-center m-0">
+								<h1 class="text-center m-0">
 									{{-
 										include(
 											'partials/split-text.html.twig',
@@ -105,7 +107,7 @@
 				{% endblock %}
 
 				{% block content %}
-					<div class="row" data-scroll-section>
+					<div class="row">
 						<div class="col-10 offset-1 col-md-8 offset-md-2">
 							<div class="Wysiwyg">{{- post.content -}}</div>
 						</div>
@@ -121,7 +123,9 @@
 			{% do action( 'woocommerce_after_main_content' ) %}
 		</div>
 
-		{{ function( 'wp_footer' ) }}
+		{{- function( 'wp_footer' ) -}}
+
+		<div id="svg-sprite" style="display: none;">{{- include( 'icons.svg', ignore_missing = true ) -}}</div>
 
 	</body>
 </html>

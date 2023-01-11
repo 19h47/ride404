@@ -1,0 +1,68 @@
+@use "sass:math";
+
+$sizes: map-merge(
+	$spacers,
+	(
+		1\/4: percentage(math.div(1,4)),
+		4\/5: percentage(math.div(4,5)),
+		4\/12: percentage(math.div(4,12)),
+		3\/12: percentage(math.div(3,12)),
+		6\/12: percentage(math.div(6,12)),
+		8\/12: percentage(math.div(8,12)),
+		full: percentage(math.div(12,12)),
+		auto: auto
+	)
+);
+
+$utilities: map-merge(
+	$utilities,
+	(
+		'size': (
+			property: width height,
+			responsive: true,
+			class: size,
+			values: $sizes,
+		),
+		'width': map-merge(
+			map-get(
+				$utilities,
+				'width'
+			),
+			(
+				responsive: true,
+				values: map-merge(
+					$sizes,
+					(
+						screen: 100vw
+					)
+				)
+			)
+		),
+		'height': map-merge(
+			map-get(
+				$utilities,
+				'height'
+			),
+			(
+				responsive: true,
+				values: map-merge(
+					$sizes,
+					(
+						screen: 100vh
+					)
+				)
+			)
+		),
+		"max-width": map-merge(
+			map-get(
+				$utilities,
+				'max-width'
+			),
+			(
+				class: max-w,
+				// responsive: true,
+				values: $sizes,
+			),
+		)
+	)
+);

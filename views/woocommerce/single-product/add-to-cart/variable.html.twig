@@ -27,11 +27,11 @@
 
 			<div
 				id="product-variations-{{ name | sanitize }}"
-				class="Product-variations variations"
+				class="Product-variations variations fw-normal my-10"
 				data-module-product-variations
 			>
 
-				{# @see https://github.com/woocommerce/woocommerce/blob/master/includes/wc-template-functions.php#L2988 #}
+				{# @see https://github.com/woocommerce/woocommerce/blob/master/includes/wc-template-functions.php#L2994 #}
 				{{-
 					function( 'wc_dropdown_variation_attribute_options',
 						{
@@ -44,19 +44,21 @@
 					)
 				-}}
 
-				<div role="radiogroup" data-product-variations="radiogroup">
+				<div role="radiogroup" data-product-variations="radiogroup" class="d-flex justify-content-center">
 					{% for term in terms %}
-						<div class="Product-variations__item" role="radio" aria-checked="false" tabindex="-1">
-							<span>{{- term.name | e( 'esc_html' ) -}}</span>
-							{{- include( 'svg/use.html.twig', { icon: 'oval-small' }, with_context = false ) -}}
-							<input
-								class="d-none"
-								type="radio"
-								name="attribute_{{ name | sanitize | e }}"
-								value="{{ term.slug | e }}"
-								{{ ( terms | length ) == 1 ? ' checked' : '' }}
-							>
-						</div>
+						{% if term.slug in options %}
+							<div class="Product-variations__item position-relative" role="radio" aria-checked="false" tabindex="-1">
+								<span>{{- term.name | e( 'esc_html' ) -}}</span>
+								{{- include( 'svg/use.html.twig', { icon: 'oval-small' }, with_context = false ) -}}
+								<input
+									class="d-none"
+									type="radio"
+									name="attribute_{{ name | sanitize | e }}"
+									value="{{ term.slug | e }}"
+									{{ ( terms | length ) == 1 ? ' checked' : '' }}
+								>
+							</div>
+						{% endif %}
 					{% endfor %}
 				</div>
 

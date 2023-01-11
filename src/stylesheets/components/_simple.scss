@@ -8,6 +8,6 @@
 .Simple {
 	$this: &;
 
-	@extend %text-align-center;
+	@extend .text-center;
 	@include padding(top 0 right 0 bottom 0 left 0);
 }

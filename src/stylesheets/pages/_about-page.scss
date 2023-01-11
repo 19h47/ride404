@@ -7,7 +7,7 @@
  */
 .About-page {
 	&__introduction {
-		@extend %position-relative;
+		@extend .position-relative;
 
 		& > *:first-child {
 			@include margin(top 0);
@@ -18,7 +18,7 @@
 		}
 
 		&__body {
-			@extend %position-relative;
+			@extend .position-relative;
 
 			z-index: 2;
 		}

@@ -1,5 +1,5 @@
 /* global YT */
-import { module as M } from 'modujs';
+import { module as M } from '@19h47/modular';
 
 const url = 'https://www.youtube.com/iframe_api';
 

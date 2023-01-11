@@ -1,61 +1,117 @@
-// Core variables and mixins
-@import '~bootstrap/scss/functions';
+@use "sass:math";
 
-@import '~bootstrap/scss/variables';
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "~bootstrap/scss/functions";
 
-@import '~bootstrap/scss/mixins';
+// 2. Include any default variable overrides here
+@import "bootstrap-variables";
 
-@import 'bootstrap-variables';
+// 3. Include remainder of required Bootstrap stylesheets
+@import "~bootstrap/scss/variables";
 
-// @import '~bootstrap/scss/alert';
-// @import '~bootstrap/scss/badge';
-// @import '~bootstrap/scss/breadcrumb';
-// @import '~bootstrap/scss/button-group';
-// @import '~bootstrap/scss/buttons';
-// @import '~bootstrap/scss/card';
-// @import '~bootstrap/scss/carousel';
-// @import '~bootstrap/scss/close';
-// @import '~bootstrap/scss/code';
-// @import '~bootstrap/scss/custom-forms';
-// @import '~bootstrap/scss/dropdown';
-// @import '~bootstrap/scss/forms';
-@import '~bootstrap/scss/grid';
-// @import '~bootstrap/scss/images';
-// @import '~bootstrap/scss/input-group';
-// @import '~bootstrap/scss/jumbotron';
-// @import '~bootstrap/scss/list-group';
-// @import '~bootstrap/scss/media';
-// @import '~bootstrap/scss/modal';
-// @import '~bootstrap/scss/nav';
-// @import '~bootstrap/scss/navbar';
-// @import '~bootstrap/scss/pagination';
-// @import '~bootstrap/scss/popover';
-// @import '~bootstrap/scss/print';
-// @import '~bootstrap/scss/progress';
-// @import '~bootstrap/scss/reboot';
-// @import '~bootstrap/scss/root';
-// @import '~bootstrap/scss/spinners';
-// @import '~bootstrap/scss/tables';
-// @import '~bootstrap/scss/toasts';
-// @import '~bootstrap/scss/tooltip';
-// @import '~bootstrap/scss/transitions';
-// @import '~bootstrap/scss/type';
+// 4. Include any default map overrides here
 
-// Utilities
-// @import '~bootstrap/scss/utilities/align';
-// @import '~bootstrap/scss/utilities/background';
-// @import '~bootstrap/scss/utilities/borders';
-// @import '~bootstrap/scss/utilities/clearfix';
-@import '~bootstrap/scss/utilities/display';
-// @import '~bootstrap/scss/utilities/embed';
-@import '~bootstrap/scss/utilities/flex';
-// @import '~bootstrap/scss/utilities/float';
-// @import '~bootstrap/scss/utilities/overflow';
-@import '~bootstrap/scss/utilities/position';
-// @import '~bootstrap/scss/utilities/screenreaders';
-// @import '~bootstrap/scss/utilities/shadows';
-// @import '~bootstrap/scss/utilities/sizing';
-@import '~bootstrap/scss/utilities/spacing';
-// @import '~bootstrap/scss/utilities/stretched-link';
-// @import '~bootstrap/scss/utilities/text';
-// @import '~bootstrap/scss/utilities/visibility';
+$position-values: map-merge(
+	$position-values,
+	(
+		n17\.5: math.div( -70, 16 ) * $spacer,
+		full: 100%,
+		auto: auto
+	)
+);
+
+$font-sizes: (
+	sm: 0.875rem,
+	lg: 1.125rem,
+	h2: 2.75rem,
+);
+
+// 5. Include remainder of required parts
+@import "~bootstrap/scss/maps";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/root";
+
+// 6. Optionally include any other parts as needed
+@import "~bootstrap/scss/utilities";
+
+@import "~bootstrap/scss/reboot";
+// @import "~bootstrap/scss/type";
+// @import "~bootstrap/scss/images";
+// @import "~bootstrap/scss/containers";
+@import "~bootstrap/scss/grid";
+// @import "~bootstrap/scss/tables";
+// @import "~bootstrap/scss/forms";
+// @import "~bootstrap/scss/buttons";
+// @import "~bootstrap/scss/transitions";
+// @import "~bootstrap/scss/dropdown";
+// @import "~bootstrap/scss/button-group";
+// @import "~bootstrap/scss/nav";
+// @import "~bootstrap/scss/navbar";
+// @import "~bootstrap/scss/card";
+// @import "~bootstrap/scss/accordion";
+// @import "~bootstrap/scss/breadcrumb";
+// @import "~bootstrap/scss/pagination";
+// @import "~bootstrap/scss/badge";
+// @import "~bootstrap/scss/alert";
+// @import "~bootstrap/scss/progress";
+// @import "~bootstrap/scss/list-group";
+// @import "~bootstrap/scss/close";
+// @import "~bootstrap/scss/toasts";
+// @import "~bootstrap/scss/modal";
+// @import "~bootstrap/scss/tooltip";
+// @import "~bootstrap/scss/popover";
+// @import "~bootstrap/scss/carousel";
+// @import "~bootstrap/scss/spinners";
+// @import "~bootstrap/scss/offcanvas";
+// @import "~bootstrap/scss/placeholders";
+// @import "~bootstrap/scss/helpers";
+
+@import '../bootstrap/bootstrap.utilities.effects';
+@import '../bootstrap/bootstrap.utilities.filters';
+@import '../bootstrap/bootstrap.utilities.flexbox-grid';
+@import '../bootstrap/bootstrap.utilities.interactivity';
+@import '../bootstrap/bootstrap.utilities.layout';
+@import '../bootstrap/bootstrap.utilities.sizing';
+@import '../bootstrap/bootstrap.utilities.svg';
+@import '../bootstrap/bootstrap.utilities.transforms';
+@import '../bootstrap/bootstrap.utilities.transitions-animation';
+@import '../bootstrap/bootstrap.utilities.typography';
+
+// 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
+@import "~bootstrap/scss/utilities/api";
+
+// 8. Add additional custom code here
+
+@include media-breakpoint-up(sm) {
+	.row-sm {
+		@include make-row();
+	}
+}
+
+@include media-breakpoint-up(md) {
+	.row-md {
+		@include make-row();
+	}
+}
+
+@include media-breakpoint-up(lg) {
+	.row-lg {
+		@include make-row();
+	}
+}
+
+@include media-breakpoint-up(hd) {
+	.row-hd {
+		@include make-row();
+	}
+}
+
+.space-y-20 > * + * {
+	margin-top: 5rem;
+}
+
+@include media-breakpoint-up(md) {
+	.space-y-md-40 > * + * {
+		margin-top: 10rem;
+	}
+}

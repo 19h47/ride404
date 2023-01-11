@@ -6,10 +6,7 @@
  * @subpackage Rider404
  */
 .Splash-screen {
-	@extend %Pointer-events-none, %overflow-hidden;
-	@include fixed(top 0 right 0 bottom 0 left 0);
 
-	width: 100%;
 	z-index: 1040;
 
 	& > div {

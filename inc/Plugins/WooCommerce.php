@@ -70,6 +70,6 @@ class WooCommerce {
 	 * @return string
 	 */
 	public function before_widget_product_list() {
-		return '<ul class="Product-list-widget product_list_widget js-items">';
+		return '<ul class="Product-list-widget h-129 h-sm-auto product_list_widget js-items p-0 swiper-wrapper row-sm list-style-type-none mt-5 mt-sm-0">';
 	}
 }

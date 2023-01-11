@@ -7,12 +7,7 @@
  */
 .Smiley-404 {
 	canvas {
-		@extend %position-relative;
-		@extend .d-block;
-
-		width: 100% !important;
 		height: 460px !important;
-		z-index: 1;
 
 		@include media-breakpoint-up(md) {
 			height: 900px !important;
@@ -20,14 +15,12 @@
 	}
 
 	&__body {
-		@extend %position-relative, %overflow-hidden, %overflow-md-visible;
-
 		background-color: the_color(gray, very-dark-02);
 		z-index: -1;
 	}
 
 	&__images {
-		@extend %Pointer-events-none;
+		@extend .pe-none;
 
 		z-index: 2;
 
@@ -61,13 +54,6 @@
 	}
 
 	&__background {
-		@include absolute(top 0 right 0 left 0 bottom 0);
 		@include margin(top 140px bottom 140px);
-
-		img {
-			@include absolute(top 0 right 0 bottom 0 left 0);
-			@include margin(right auto left auto);
-			@include size(auto, 100%);
-		}
 	}
 }

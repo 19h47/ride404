@@ -9,18 +9,20 @@ export default class MiniCart extends AbstractLottieModule {
 	constructor(m) {
 		super(m);
 
-		this.events = {
-			mouseenter: {
-				button: 'activate'
-			},
-			mouseleave: {
-				button: 'deactivate'
-			},
-			focus: {
-				button: 'activate'
-			},
-			blur: {
-				button: 'deactivate'
+		if ('A' === this.el.parentNode.tagName) {
+			this.events = {
+				mouseenter: {
+					button: 'activate'
+				},
+				mouseleave: {
+					button: 'deactivate'
+				},
+				focus: {
+					button: 'activate'
+				},
+				blur: {
+					button: 'deactivate'
+				}
 			}
 		}
 	}

@@ -1,0 +1,50 @@
+{#
+ # Single: Post
+ #
+ # @package WordPress
+ # @subpackage Rider404
+ #}
+
+{% extends 'index.html.twig' %}
+
+{% block content %}
+
+	{% if post.thumbnail and post.meta( 'video' ).thumbnail.url == '' %}
+		<div class="row mt-n9 mt-md-n17.5 position-relative z-1">
+			<div class="col-8 offset-2">
+				{% embed 'partials/image-reveal.html.twig' with { classes: [] } %}
+					{% block content %}
+						{{- include( 'partials/image.htmL.twig', { image: post.thumbnail, size: 'size-8', classes: [ 'w-full', 'h-auto', 'd-block' ] } ) -}}
+					{% endblock %}
+				{% endembed %}
+			</div>
+		</div>
+	{%- endif -%}
+
+	{% if post.meta( 'video' ).thumbnail.url %}
+		<div class="row mt-n9 mt-md-n17.5 position-relative z-1">
+			<div class="col-md-10 offset-md-1">
+				{{- include( 'components/video.html.twig', { id: 'video-hero', animated: false, video: post.meta( 'video' ).thumbnail.url, overlay: true } ) -}}
+			</div>
+		</div>
+	{% endif %}
+
+	<div class="row mt-40 mb-25">
+		<div class="col-10 col-md-4 offset-1 offset-md-2">
+			<p class="text-gray-very-dark-02 fs-sm mb-0">{{- post.date( 'j.m.Y' ) -}}</p>
+			<p class="mt-9 mt-md-16 fs-h2 lh-13 mb-0">
+				{{- post.excerpt( { read_more: false } ) -}}
+			</p>
+		</div>
+
+		<div class="col-10 col-md-3 offset-1 Wysiwyg mt-4 mt-md-0">
+			{{- post.content -}}
+		</div>
+
+		{{- include( 'components/gallery.html.twig', { images: post.meta( 'carousel' ), classes: [ 'mt-9' ] } ) -}}
+	</div>
+
+	{%- if post.meta( 'video' ).youtube -%}
+		{{- include( 'components/modal.html.twig', { control: 'video-hero', video: post.meta( 'video' ).youtube } ) -}}
+	{%- endif -%}
+{% endblock %}

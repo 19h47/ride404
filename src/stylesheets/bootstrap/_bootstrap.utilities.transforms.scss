@@ -1,0 +1,13 @@
+$utilities: map-merge(
+	$utilities,
+	(
+		"translate-x": (
+			class: translate-x,
+			property: transform,
+			values: (
+				2\/10: translateX(20%),
+				n2\/10: translateX(-20%)
+			)
+		),
+	)
+);

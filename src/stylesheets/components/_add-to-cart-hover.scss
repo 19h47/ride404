@@ -7,7 +7,7 @@
  */
 .Add-to-cart-hover {
 	@extend .d-flex, .align-items-center, .justify-content-center;
-	@extend %position-relative;
+	@extend .position-relative;
 	@include size(110px);
 
 	margin: 0 auto;

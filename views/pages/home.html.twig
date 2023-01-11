@@ -1,0 +1,58 @@
+{#
+ # Page: Home
+ #
+ # @package WordPress
+ # @subpackage Rider404
+ #}
+{% extends 'index.html.twig' %}
+
+{% block hero %}{% endblock %}
+
+{% block content %}
+
+	{% embed 'partials/bar.html.twig' %}
+		{% block content %}
+			<div class="Quick-product-categories">
+				{{-
+					include(
+						'components/categories.html.twig',
+						{ current: false, categories: get_terms( { taxonomy: 'category' } ), count: count_posts  }
+					)
+				-}}
+			</div>
+		{% endblock %}
+	{% endembed %}
+
+	<div class="row">
+		<div class="col-10 offset-1">
+			{{- include( 'components/categories.html.twig', { current: false, categories: get_terms( { taxonomy: 'category' } ), count: count_posts  } ) -}}
+		</div>
+	</div>
+
+	{% if count_posts %}
+		<div
+			data-module-load-more-posts
+			data-load-more-posts-found-posts="{{ posts.found_posts }}"
+			data-load-more-posts-posts-per-page="5"
+			data-load-more-posts-post-type="post"
+		>
+			<div class="transition-opacity duration-1000 ease-in-out my-15 my-md-30 space-y-20 space-y-md-40" data-load-more-posts="container">
+				{{- include( 'components/collection-post.html.twig', { posts: posts } ) -}}
+			</div>
+
+			<div class="row" >
+				<div class="d-flex justify-content-center">
+					<button
+						type="button"
+						class="size-35 rounded-circle border border-px flex align-items-center justify-content-center"
+						data-load-more-posts="button"
+						style="display: {{ posts.found_posts > 5 ? 'flex' : 'none' }}"
+					>
+						{{- include( 'svg/use.html.twig', { icon: 'plus', classes: [ 'w-4', 'h-4', 'fill-red-bright' ] } ) -}}
+					</button>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+
+{% endblock %}

@@ -9,10 +9,10 @@
 namespace Rider404\Setup;
 
 use Rider404\Core\{ Transients };
-use Timber\{ Timber, Menu };
+use Timber\{ Timber };
 use Twig\{ TwigFunction };
 
-$timber = new Timber();
+// $timber = new Timber();
 
 Timber::$dirname = array( 'views', 'templates', 'dist' );
 
@@ -201,15 +201,18 @@ class Theme {
 		$context['shop_url']     = wc_get_page_permalink( 'shop' );
 		$context['terms_url']    = get_permalink( wc_terms_and_conditions_page_id() );
 		$context['privacy_url']  = get_permalink( wc_privacy_policy_page_id() );
+		$context['posts_url']    = get_post_type_archive_link( 'post' );
 
 		$context['is_front_page']       = is_front_page();
 		$context['is_product']          = is_product();
 		$context['is_shop']             = is_shop();
+		$context['is_home']             = is_home();
 		$context['is_front_page']       = is_front_page();
 		$context['is_product_category'] = is_product_category();
 		$context['is_cart']             = is_cart();
 		$context['is_checkout']         = is_checkout();
 		$context['is_ajax']             = is_ajax();
+		$context['is_singular_post']    = is_singular( 'post' );
 
 		$context['is_user_logged_in'] = is_user_logged_in();
 

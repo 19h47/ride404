@@ -1,0 +1,15 @@
+/**
+ * Post thumbnail
+ *
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
+ * @package WordPress
+ * @subpackage Rider404
+ */
+
+.Post-thumbnail {
+	transition: transform 2s map-get($easings, ease-out-expo);
+
+	img {
+		transition: filter 1s map-get($easings, ease-out-expo), transform 2s map-get($easings, ease-out-expo);
+	}
+}

@@ -5,17 +5,18 @@
  * @subpackage Rider404
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  */
+@use "sass:math";
+
 .Video {
 	$this: &;
 
 	&__body {
-		@extend %position-relative, %overflow-hidden;
-		@include padding(bottom percentage(611/416));
+		@include padding(bottom percentage(math.div(611, 416)));
 
 		transition: transform 2s map-get($easings, ease-out-expo);
 
 		@include media-breakpoint-up(sm) {
-			@include padding(bottom percentage(600/1076));
+			@include padding(bottom percentage(math.div(600, 1076)));
 		}
 
 		&.is-fixed {
@@ -25,11 +26,11 @@
 
 	&.is-over {
 		video {
-			transform: scale((1/0.95));
+			transform: scale(math.div(1, 0.95));
 		}
 
 		canvas {
-			transform: scale((1/0.95));
+			transform: scale(math.div(1, 0.95));
 		}
 
 		#{ $this }__body {
@@ -37,57 +38,37 @@
 		}
 
 		#{ $this }__overlay {
-			transform: scale((1/0.95));
+			transform: scale(math.div(1, 0.95));
 		}
 	}
 
 	video {
-		@include absolute(top 0 right 0 bottom 0 left 0);
-		@include size(100%);
-
 		transition: transform 2s map-get($easings, ease-out-expo);
-
-		object-fit: cover;
-		object-position: center;
-
-		z-index: 1;
 	}
 
 	canvas {
-		@include absolute(top 0 right 0 bottom 0 left 0);
-		@include size(100%);
-
 		transition: transform 2s map-get($easings, ease-out-expo);
-		z-index: 2;
 	}
 
 	&__overlay {
-		@include absolute(top 0 right 0 bottom 0 left 0);
-		@extend .d-flex, .align-items-center, .justify-content-center;
-
 		transition: transform 1.5s map-get($easings, ease-out-expo);
-		z-index: 3;
 	}
 
 	&__caption {
 		@include margin(top 50px);
-		@extend .d-flex, .justify-content-center, .align-items-center;
 
 		font-size: 14px;
-		line-height: (28/14);
+		line-height: math.div(28, 14);
 		color: the_color(gray, very-dark-02);
 
 		a {
-			@extend .d-flex, .align-items-center;
-
 			transition: color 0.5s map-get($easings, ease-out-expo);
 
 			span {
-				@extend %text-decoration-underline;
+				@extend .text-decoration-underline;
 			}
 
 			svg {
-				@extend .d-block;
 				@include size(30px);
 
 				fill: the_color(gray, very-dark-02);

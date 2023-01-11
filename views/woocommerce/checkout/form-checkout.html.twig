@@ -28,7 +28,6 @@
 		method="post"
 		action="{{ checkout_url | e( 'esc_url' ) }}"
 		enctype="multipart/form-data"
-		data-scroll-section
 	>
 
 		{% do action( 'woocommerce_checkout_before_customer_details' ) %}

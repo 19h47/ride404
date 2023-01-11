@@ -1,6 +1,5 @@
-import { module as M } from 'modujs';
-import Flickity from 'flickity';
-import debounce from 'utils/debounce';
+import { module as M } from '@19h47/modular';
+import Swiper, { Navigation } from 'swiper';
 
 /**
  *
@@ -11,31 +10,11 @@ export default class AbstractCarouselModule extends M {
 	constructor(m) {
 		super(m);
 
-		this.$items = this.el.querySelector('.js-items');
+		const parameters = JSON.parse(this.getData('parameters')) || {};
 
-		this.carousel = false;
-		this.options = {
-			pageDots: false,
-			prevNextButtons: false,
-			cellSelector: '.js-item',
-			draggable: true,
-			freeScroll: false,
-			arrowShape: '',
-		};
-
-		this.onResize = this.onResize.bind(this);
-		this.onResizeDebounce = debounce(this.onResize, 50, false);
-
-		window.addEventListener('resize', this.onResizeDebounce);
-	}
-
-	initPlugins() {
-		this.carousel = new Flickity(this.$items, this.options);
-
-		this.carousel.on('ready', () => this.call('update', false, 'Scroll', 'main'));
-	}
-
-	onResize() {
-		this.initPlugins();
+		this.swiper = new Swiper(this.el, {
+			...{ modules: [Navigation], slidesPerView: 'auto' },
+			...parameters,
+		});
 	}
 }

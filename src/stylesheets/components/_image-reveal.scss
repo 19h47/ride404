@@ -5,26 +5,15 @@
  * @package WordPress
  * @subpackage Rider404
  */
-.Image-reveal {
-	$this: &;
 
-	@extend %overflow-hidden;
-
-	height: 100%;
-
-	@include media-breakpoint-up(md) {
-		height: auto;
-	}
-
+ .Image-reveal {
 	&__content {
-		@include size(100%);
-
 		transform: translate3d(100%, 0, 0);
 		transition: transform 1.5s map-get($easings, ease-out-expo);
 		will-change: transform;
 	}
 
-	&.is-inview #{ $this }__content {
+	&.is-inview .Image-reveal__content {
 		transform: translate3d(0, 0, 0);
 	}
 }

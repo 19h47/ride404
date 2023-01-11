@@ -10,14 +10,14 @@
 
 	&__left {
 		@include media-breakpoint-up(md) {
-			width: percentage(5/10);
+			width: percentage(5*0.1);
 		}
 	}
 	&__right {
 		@include media-breakpoint-up(md) {
-			@include margin(left percentage(1/10));
+			@include margin(left percentage(1*0.1));
 
-			width: percentage(4/10);
+			width: percentage(4*0.1);
 		}
 	}
 }

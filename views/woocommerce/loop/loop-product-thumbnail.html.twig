@@ -8,8 +8,15 @@
 
 {% embed 'partials/image-reveal.html.twig' %}
     {% block content %}
-        <div class="Loop-product-thumbnail">
-            {{- product.get_image( 'woocommerce_single' ) -}}
+        <div class="Loop-product-thumbnail Post-thumbnail overflow-hidden h-105 h-sm-auto">
+            {{-
+				product.get_image(
+					'woocommerce_single',
+					{
+						class: 'grayscale-1 grayscale-0-hover d-block size-full object-fit-cover object-position-center object-fit-sm-fill h-sm-auto'
+					}
+				)
+			-}}
         </div>
     {% endblock %}
 {% endembed %}

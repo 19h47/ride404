@@ -1,4 +1,4 @@
-import { module as M } from 'modujs';
+import { module as M } from '@19h47/modular';
 import LocomotiveScroll from 'locomotive-scroll';
 
 import { elements } from 'scripts/config';
@@ -9,17 +9,19 @@ class Scroll extends M {
 	init() {
 		const imgLoad = imagesLoaded(this.el);
 
-
 		this.scroll = new LocomotiveScroll({
 			el: this.el,
 			smooth: JSON.parse(this.el.getAttribute('data-scroll-smooth')),
 			getDirection: true,
 		});
 
+		this.direction = 'down';
+
 		this.scroll.on('scroll', ({ direction, scroll }) => {
 			elements.html.setAttribute('data-direction', direction);
+			this.direction = direction;
 
-			if (0 >= scroll.y) {
+			if (0 === scroll.y) {
 				elements.html.classList.add('is-ontop');
 			} else {
 				elements.html.classList.remove('is-ontop');
@@ -31,8 +33,6 @@ class Scroll extends M {
 				this.call(func[0], { way, obj, direction: this.direction }, func[1], obj.el.id);
 			}
 		});
-
-		// this.update = this.update.bind(this);
 
 		imgLoad.on('always', () => this.update());
 	}
@@ -50,7 +50,7 @@ class Scroll extends M {
 	}
 
 	destroy() {
-		this.scroll.destroy();
+		return this.scroll.destroy();
 	}
 
 	scroll() {

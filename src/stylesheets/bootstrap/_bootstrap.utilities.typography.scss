@@ -1,0 +1,70 @@
+$utilities: map-merge(
+	$utilities,
+	(
+		"line-height": map-merge(
+			map-get(
+				$utilities,
+				'line-height'
+			),
+			(
+				values: map-merge(
+					map-get( map-get( $utilities, 'line-height' ), 'values' ),
+					(
+						13: 3.25rem,
+						loose: 2
+					)
+				)
+			)
+		)
+	)
+);
+
+$utilities: map-merge(
+	$utilities,
+	(
+		"color": map-merge(
+			map-get(
+				$utilities,
+				'color'
+			),
+			(
+				state: hover focus,
+				values: map-merge(
+					map-get( map-get( $utilities, 'color' ), 'values' ),
+					(
+						current: currentColor,
+						gray-very-dark-02: #646464,
+					)
+				)
+			)
+		),
+		'list-style-type': (
+			property: list-style-type,
+			values: none,
+		),
+		"font-weight": map-merge(
+			map-get(
+				$utilities,
+				'font-weight'
+			),
+			(
+				values: map-merge(
+					map-get(
+						map-get(
+							$utilities,
+							'font-weight'
+						),
+						'values'
+					),
+					(
+						extrablack: 900
+					)
+				)
+			)
+		),
+		"white-space": (
+			values: nowrap,
+			property: white-space
+		)
+	)
+);

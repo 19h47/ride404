@@ -10,7 +10,7 @@
 
 @import '~locomotive-scroll/src/locomotive-scroll';
 @import '~ress/ress';
-@import '~flickity/css/flickity';
+@import "~swiper/swiper.min.css";
 
 // Functions
 @import '~@19h47/architecture/src/stylesheets/abstracts/functions';
@@ -44,7 +44,6 @@
 @import 'layouts/section';
 @import 'layouts/hero';
 @import 'layouts/about';
-@import 'layouts/about-map';
 @import 'layouts/about-video';
 @import 'layouts/content';
 @import 'layouts/splash-screen';
@@ -71,18 +70,16 @@
 @import 'components/mini-cart';
 @import 'components/bars';
 @import 'components/rider-404';
+@import 'components/scrollbar-hide';
 @import 'components/stock';
 @import 'components/add-to-cart-hover';
 
 @import 'components/product-variations';
-@import 'components/product-categories';
 @import 'components/product-list-widget';
 @import 'components/product-thumbnail';
-@import 'components/product-thumbnails';
 
 @import 'components/variation-add-to-cart';
 @import 'components/variation';
-@import 'components/price';
 @import 'components/quick-cart';
 @import 'components/arrow';
 
@@ -96,14 +93,15 @@
 @import 'components/place-order';
 @import 'components/remove';
 
+@import 'components/post-link';
+@import 'components/post-thumbnail';
+
 @import 'components/shipping-fields';
 @import 'components/shipping-methods';
 
-@import 'components/loop-product';
 @import 'components/loop-product-title';
 @import 'components/loop-price';
 @import 'components/loop-product-link';
-@import 'components/loop-product-thumbnail';
 
 @import 'components/checkout-payment';
 @import 'components/checkout-coupon';
@@ -138,19 +136,19 @@
 
 // Utilities.
 @import '~@19h47/architecture/src/stylesheets/utilities/colors';
-@import '~@19h47/architecture/src/stylesheets/utilities/cursors';
+// @import '~@19h47/architecture/src/stylesheets/utilities/cursors';
 // @import	'~@19h47/architecture/src/stylesheets/utilities/displays',
 // @import '~@19h47/architecture/src/stylesheets/utilities/floats';
 @import '~@19h47/architecture/src/stylesheets/utilities/fonts';
 // @import '~@19h47/architecture/src/stylesheets/utilities/margins';
-@import '~@19h47/architecture/src/stylesheets/utilities/overflows';
+// @import '~@19h47/architecture/src/stylesheets/utilities/overflows';
 // @import '~@19h47/architecture/src/stylesheets/utilities/paddings';
-@import '~@19h47/architecture/src/stylesheets/utilities/positions';
-@import '~@19h47/architecture/src/stylesheets/utilities/sizes';
-@import '~@19h47/architecture/src/stylesheets/utilities/text-aligns';
-@import '~@19h47/architecture/src/stylesheets/utilities/text-decorations';
+// @import '~@19h47/architecture/src/stylesheets/utilities/positions';
+// @import '~@19h47/architecture/src/stylesheets/utilities/sizes';
+// @import '~@19h47/architecture/src/stylesheets/utilities/text-aligns';
+// @import '~@19h47/architecture/src/stylesheets/utilities/text-decorations';
 @import '~@19h47/architecture/src/stylesheets/utilities/text-transforms';
 @import '~@19h47/architecture/src/stylesheets/utilities/vertical-aligns';
 // @import '~@19h47/architecture/src/stylesheets/utilities/visibilities';
-@import '~@19h47/architecture/src/stylesheets/utilities/white-spaces';
-@import '~@19h47/architecture/src/stylesheets/utilities/lists';
+// @import '~@19h47/architecture/src/stylesheets/utilities/white-spaces';
+// @import '~@19h47/architecture/src/stylesheets/utilities/lists';

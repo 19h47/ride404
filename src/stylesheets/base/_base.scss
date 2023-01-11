@@ -2,16 +2,18 @@
  * Base
  */
 
+@use "sass:math";
+
 html {
 	min-height: 100%;
 
 	&.is-loading {
-		@extend %cursor-wait;
+		@extend .cursor-wait;
 	}
 }
 
 body {
-	@extend %font-weight-light, %font-family-body;
+	@extend .fw-light, %font-family-body;
 
 	-webkit-text-size-adjust: none;
 	-webkit-font-smoothing: subpixel-antialiased;
@@ -21,7 +23,7 @@ body {
 	text-rendering: optimizeLegibility;
 
 	font-size: #{$base-font-size}px;
-	line-height: $base-line-height / $base-font-size;
+	line-height: math.div($base-line-height, $base-font-size);
 
 	background-color: the_color(gray, very-dark-01);
 	color: the_color(white);
@@ -43,5 +45,5 @@ p {
 }
 
 strong {
-	@extend %font-weight-bold;
+	@extend .fw-bold;
 }

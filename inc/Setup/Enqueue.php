@@ -21,7 +21,9 @@ class Enqueue {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'dequeue_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-		add_action( 'wp_head', array( $this, 'preload' ) );
+		add_action( 'wp_head', array( $this, 'preload_wp_scripts' ) );
+		add_action( 'wp_head', array( $this, 'preload_wp_styles' ) );
+		add_action( 'wp_head', array( $this, 'preload_fonts' ) );
 		add_filter( 'style_loader_tag', array( $this, 'style_loader_tag' ), 10, 4 );
 	}
 
@@ -33,7 +35,7 @@ class Enqueue {
 	 * @since  1.0.0
 	 */
 	public function enqueue_scripts() : void {
-		$deps = array( 'jquery', get_theme_text_domain() . '-vendors' );
+		$deps = array( 'jquery' );
 		wp_deregister_script( 'wp-embed' );
 
 		if ( is_page_template( 'templates/about-page.php' ) ) {
@@ -45,16 +47,19 @@ class Enqueue {
 				true
 			);
 
-			$deps[] = get_theme_text_domain() . '-patch';
+			array_push( $deps, get_theme_text_domain() . '-patch' );
 		}
 
-		wp_enqueue_script( // phpcs:ignore
-			get_theme_text_domain() . '-vendors',
-			get_template_directory_uri() . '/' . get_theme_manifest()['vendors.js'],
-			array(),
-			null,
-			true
-		);
+		if ( isset( get_theme_manifest()['vendors.js'] ) ) {
+			wp_enqueue_script( // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
+				get_theme_text_domain() . '-vendors',
+				get_template_directory_uri() . '/' . get_theme_manifest()['vendors.js'],
+				array(),
+				null,
+				true
+			);
+			array_push( $deps, get_theme_text_domain() . '-vendors' );
+		}
 
 		wp_register_script( // phpcs:ignore
 			get_theme_text_domain() . '-main',
@@ -64,7 +69,7 @@ class Enqueue {
 			true
 		);
 
-		$args = array(
+		$data = array(
 			'template_directory_uri' => get_template_directory_uri(),
 			'base_url'               => site_url(),
 			'home_url'               => home_url( '/' ),
@@ -72,36 +77,29 @@ class Enqueue {
 			'api_url'                => home_url( 'wp-json' ),
 			'current_url'            => get_permalink(),
 			'nonce'                  => wp_create_nonce( 'security' ),
+			'text_domain'            => get_theme_text_domain(),
 		);
 
 		wp_add_inline_script(
 			get_theme_text_domain() . '-main',
-			'var ' . get_theme_text_domain() . ' = ' . json_encode(
-				$args
+			'var ' . get_theme_text_domain() . ' = ' . wp_json_encode(
+				$data
 			),
 			'before',
 		);
 
-		wp_register_script( get_theme_text_domain() . '-feature', false );
-		wp_add_inline_script(
-			get_theme_text_domain() . '-feature',
-			'!function(e,n,o){("ontouchstart"in e||e.DocumentTouch&&n instanceof DocumentTouch||o.MaxTouchPoints>0||o.msMaxTouchPoints>0)&&(n.documentElement.className=n.documentElement.className.replace(/\bno-touch\b/,"touch")),n.documentElement.className=n.documentElement.className.replace(/\bno-js\b/,"js")}(window,document,navigator);window.isMobile=/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)||1<navigator.maxTouchPoints;'
-		);
+		wp_register_script( get_theme_text_domain() . '-feature', false ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.NotInFooter, WordPress.WP.EnqueuedResourceParameters.MissingVersion
+		wp_add_inline_script( get_theme_text_domain() . '-feature', '!function(e,n,o){("ontouchstart"in e||e.DocumentTouch&&n instanceof DocumentTouch||o.MaxTouchPoints>0||o.msMaxTouchPoints>0)&&(n.documentElement.className=n.documentElement.className.replace(/\bno-touch\b/,"touch")),n.documentElement.className=n.documentElement.className.replace(/\bno-js\b/,"js")}(window,document,navigator);' );
 
-		if ( is_page_template( 'templates/page-bookings.php' ) ) {
-			wp_register_script( 'iframe', '', array(), null, false ); // phpcs:ignore
-			wp_enqueue_script( 'iframe' );
-			wp_add_inline_script(
-				'iframe',
-				'!function(e,t){var r=e.createElement(t),a=e.getElementsByTagName(t)[0],n=new Date,s=""+n.getFullYear()+("0"+(n.getMonth()+1)).slice(-2)+("0"+n.getDate()).slice(-2);r.defer=1,r.src="https://groove-box-karaoke.4escape.io/public/js/iframe.min.js?v="+s,a.parentNode.insertBefore(r,a)}(document,"script");'
-			);
-		}
-
+		wp_enqueue_script( get_theme_text_domain() . '-feature' );
 		wp_enqueue_script( get_theme_text_domain() . '-main' );
-		// wp_enqueue_script( get_theme_text_domain() . '-patch' );
 	}
 
-
+	/**
+	 * Dequeue styles
+	 *
+	 * @return void
+	 */
 	public function dequeue_styles() {
 		wp_dequeue_style( 'wp-block-library' );
 		wp_dequeue_style( 'wp-block-library-theme' );
@@ -147,7 +145,7 @@ class Enqueue {
 	 * @return string
 	 */
 	public function style_loader_tag( string $html, string $handle, string $href, string $media ) : string {
-		if ( 'rider404-main' === $handle ) {
+		if ( get_theme_text_domain() . '-main' === $handle ) {
 			$html = str_replace( '/>', ' onload="this.media=\'all\'; this.onload=null; this.isLoaded=true" />', $html );
 		}
 
@@ -156,12 +154,16 @@ class Enqueue {
 
 
 	/**
-	 * Preload
+	 * Preload scripts
+	 *
+	 * Preload scripts for faster loading.
+	 *
+	 * @access public
+	 * @return void
 	 */
-	function preload() {
-		global $wp_scripts, $wp_styles;
+	public function preload_wp_scripts() : void {
+		global $wp_scripts;
 
-		// Scripts
 		foreach ( $wp_scripts->queue as $handle ) {
 			$script = $wp_scripts->registered[ $handle ];
 
@@ -171,11 +173,22 @@ class Enqueue {
 
 			if ( isset( $script->extra['group'] ) && 1 === $script->extra['group'] ) {
 				$href = $script->src . ( $script->ver ? "?ver={$script->ver}" : '' );
-				echo '<link rel="preload" as="script" href="' . $href . '">';
+				echo '<link rel="preload" as="script" href="' . esc_attr( $href ) . '">';
 			}
 		}
+	}
 
-		// Styles
+	/**
+	 * Preload styles
+	 *
+	 * Preload styles for faster loading.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function preload_wp_styles() : void {
+		global $wp_styles;
+
 		foreach ( $wp_styles->queue as $handle ) {
 			$style = $wp_styles->registered[ $handle ];
 
@@ -184,17 +197,27 @@ class Enqueue {
 			}
 
 			$href = $style->src . ( $style->ver ? "?ver={$style->ver}" : '' );
-			echo '<link rel="preload" as="style" href="' . $href . '">';
+			echo '<link rel="preload" as="style" href="' . esc_attr( $href ) . '">';
 
 		}
+	}
 
-		// Fonts
+
+	/**
+	 * Preload fonts
+	 *
+	 * Preload fonts for faster loading.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function preload_fonts() : void {
 		foreach ( get_theme_manifest() as $key => $value ) {
 			if ( substr( $key, 0, 6 ) === 'fonts/' ) {
 				$extension = pathinfo( $key, PATHINFO_EXTENSION );
 				$href      = get_template_directory_uri() . '/' . $value;
 
-				echo '<link rel="preload" as="font" href="' . $href . '" type="font/' . $extension . '" crossorigin>';
+				echo '<link rel="preload" as="font" href="' . esc_attr( $href ) . '" type="font/' . esc_attr( $extension ) . '" crossorigin>';
 			}
 		}
 	}

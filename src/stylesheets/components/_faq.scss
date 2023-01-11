@@ -6,50 +6,19 @@
  * @subpackage Rider404
  * @since 1.0.0
  */
+@use "sass:math";
+
 .Faq {
-	$this: &;
-
-	@include margin(top 0);
-
 	&__grid {
-		@extend .d-none, .d-md-block;
-		@include absolute(top 0 right 0);
-		@include margin(top percentage(-200/1440));
-
-		z-index: 1;
+		@include margin(top percentage(math.div(-200, 1440)));
 	}
 
 	&__questions {
-		@extend %list-style-type-none, %font-weight-light, %position-relative;
 		@include padding(top 130px);
-		@include margin(top 0 right 0 bottom 0 left 0);
-
-		z-index: 2;
-
-		// @include media-breakpoint-up(sm) {
-		// 	@include padding(top 180px);
-		// }
-
-		// @include media-breakpoint-up(md) {
-		// 	@include padding(top 240px);
-		// }
-
-		// @include media-breakpoint-up(lg) {
-		// 	@include padding(top 266px);
-		// }
-
-		// @include media-breakpoint-up(lg) {
-		// 	@include padding(top 266px);
-		// }
-
-		// @include media-breakpoint-up(hd) {
-		// 	@include padding(top 423px);
-		// }
 
 		&__item {
-			@include margin(left percentage(0.5/4));
-			@include padding(left percentage(0.5/4));
-			@extend %position-relative;
+			@include margin(left percentage(0.5*0.25));
+			@include padding(left percentage(0.5*0.25));
 
 			border-left: 1px solid the_color(gray, very-dark-03);
 
@@ -99,26 +68,8 @@
 	}
 
 	&__answers {
-		@extend %list-style-type-none, %font-weight-light;
-
 		&__item {
 			@include padding(top 130px);
-
-			// @include media-breakpoint-up(md) {
-			// 	@include padding(top 240px);
-			// }
-
-			// @include media-breakpoint-up(lg) {
-			// 	@include padding(top 266px);
-			// }
-
-			// @include media-breakpoint-up(lg) {
-			// 	@include padding(top 266px);
-			// }
-
-			// @include media-breakpoint-up(hd) {
-			// 	@include padding(top 423px);
-			// }
 		}
 	}
 }

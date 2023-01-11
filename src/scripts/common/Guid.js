@@ -50,8 +50,8 @@ export default class Guid {
 	static render(columns) {
 		const div = document.createElement('div');
 		const column = index => `
-			<div class="col-1 text-align-center h-100">
-				<div class="Guid__column text-align-xs-center">${index}</div>
+			<div class="col-1 text-center h-full">
+				<div class="Guid__column text-center">${index}</div>
 			</div>
 		`;
 		let inner = '';
@@ -61,7 +61,7 @@ export default class Guid {
 		for (let i = 1; i <= columns; i += 1) {
 			inner += column(i);
 		}
-		div.innerHTML = `<div class="Site-container h-100"><div class="row h-100">${inner}</div></div>`;
+		div.innerHTML = `<div class="h-full"><div class="row h-full">${inner}</div></div>`;
 		return div;
 	}
 }

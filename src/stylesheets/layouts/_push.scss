@@ -5,34 +5,13 @@
  * @package WordPress
  * @subpackage Rider404
  */
+@use "sass:math";
+
 .Push {
-	@extend %position-relative, %overflow-hidden, %overflow-md-visible;
-
-	@include media-breakpoint-up(md) {
-		@include margin(top 230px);
-	}
-
-	@include media-breakpoint-up(hd) {
-		@include margin(top 310px);
-	}
-
-	.Link-underline {
-		@include media-breakpoint-up(md) {
-			@include margin(top 50px);
-		}
-
-		@include media-breakpoint-up(hd) {
-			@include margin(top 100px);
-		}
-	}
-
 	&__star-circle {
-		@include absolute(top 0 left 0);
-		@extend .d-none, .d-sm-block;
-
 		@include media-breakpoint-up(sm) {
 			@include size(56px, 63px);
-			@include margin(top 230px left percentage(1292/1440));
+			@include margin(top 230px left percentage(math.div(1292, 1440)));
 		}
 
 		@include media-breakpoint-up(md) {
@@ -41,37 +20,7 @@
 
 		@include media-breakpoint-up(hd) {
 			@include size(85px, 96px);
-			@include margin(top 400px left percentage(2303/2560));
-		}
-	}
-
-	&__background {
-		@include absolute(top 0 right 0 bottom 0 left 0);
-
-		z-index: 1;
-
-		img {
-			@include size(100%);
-
-			object-fit: contain;
-			object-position: center;
-		}
-	}
-
-	&__body {
-		@extend %position-relative;
-
-		z-index: 2;
-	}
-
-	&__footer {
-		@extend %position-relative;
-		@include margin(top 100px);
-
-		z-index: 2;
-
-		@include media-breakpoint-up(sm) {
-			@include margin(top 0);
+			@include margin(top 400px left percentage(math.div(2303, 2560)));
 		}
 	}
 }
