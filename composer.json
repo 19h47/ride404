@@ -1,6 +1,6 @@
 {
 	"require": {
-		"timber/timber": "2.0.0-beta.1",
+		"timber/timber": "2.x-dev",
 		"vlucas/phpdotenv": "^4.1"
 	},
 	"name": "19h47/rider404",

@@ -26,9 +26,9 @@
 		"gsap": "^3.11.4",
 		"imagesloaded": "^5.0.0",
 		"locomotive-scroll": "^4.1.4",
-		"lottie-web": "^5.8.1",
+		"lottie-web": "^5.10.2",
 		"ress": "^5.0.2",
-		"swiper": "^8.4.5"
+		"swiper": "^8.4.6"
 	},
 	"devDependencies": {
 		"@19h47/prettier-config": "^1.0.0",

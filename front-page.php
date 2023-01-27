@@ -15,7 +15,6 @@ use Timber\{ Timber, Helper };
 $filename = 'pages/front-page.html.twig';
 
 $data             = Timber::context();
-$data['post']     = Timber::get_post();
 $data['partners'] = Helper::transient(
 	'rider404_partners',
 	function() {

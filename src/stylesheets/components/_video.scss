@@ -29,6 +29,10 @@
 			transform: scale(math.div(1, 0.95));
 		}
 
+		img {
+			transform: scale(math.div(1, 0.95));
+		}
+
 		canvas {
 			transform: scale(math.div(1, 0.95));
 		}
@@ -43,6 +47,10 @@
 	}
 
 	video {
+		transition: transform 2s map-get($easings, ease-out-expo);
+	}
+
+	img {
 		transition: transform 2s map-get($easings, ease-out-expo);
 	}
 

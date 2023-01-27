@@ -140,7 +140,7 @@
 		<div class="About-video Section">
 			<div class="row">
 				<div class="col-md-10 offset-md-1">
-					{% embed 'components/video.html.twig' with { id: 'video-about', video: post.meta( 'video' ).thumbnail.url, overlay: true } %}
+					{% embed 'components/video.html.twig' with { id: 'video-about', media: post.meta( 'video' ).thumbnail, youtube: post.meta( 'video' ).youtube, overlay: true } %}
 						{% block caption %}
 							{% if socials.youtube.url %}
 								<div class="Video__caption d-flex justify-content-center align-items-center">

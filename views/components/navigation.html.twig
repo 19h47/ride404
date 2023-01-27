@@ -50,7 +50,7 @@
 	{{-
 		include(
 			'components/video.html.twig',
-			{ id: 'video-menu', classes: [ 'js-video', 'position-absolute', 'inset-0' ], video: nav_menus.main.meta('video').url }
+			{ id: 'video-menu', classes: [ 'js-video', 'position-absolute', 'inset-0' ], media: { type: 'video', url: nav_menus.main.meta('video').url } }
 		)
 	-}}
 

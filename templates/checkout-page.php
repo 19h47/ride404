@@ -12,7 +12,6 @@ use Timber\{ Timber };
 $filename = 'pages/checkout-page.html.twig';
 
 $data                  = Timber::context();
-$data['post']          = Timber::get_post();
 $data['scroll_smooth'] = 'false';
 
 Timber::render( $filename, $data );

@@ -7,7 +7,7 @@
  # @subpackage Rider404
  #}
 
-{% if video %}
+{% if media %}
 	<div
 		id="{{ id }}"
 		class="Video {{ classes ? ' ' ~ classes | join( ' ' ) }}"
@@ -16,7 +16,7 @@
 	>
 
 		<div class="Video__body position-relative overflow-hidden" data-video="body">
-			{% if overlay %}
+			{% if overlay and youtube %}
 				<div class="Video__overlay position-absolute inset-0 d-flex align-items-center justify-content-center z-3" data-video="overlay">
 					{{-
 						include(
@@ -29,9 +29,15 @@
 
 			<canvas class="position-absolute inset-0 size-full z-2" data-video="canvas"></canvas>
 
-			<video playsInline autoplay loop preload="auto" muted class="position-absolute inset-0 size-full object-fit-cover object-position-center z-1">
-				<source src="{{ video }}" type="video/mp4">
-			</video>
+			{% if 'image' == media.type %}
+				{{- include( 'partials/image.html.twig', { image: media, classes: [ 'position-absolute inset-0 size-full object-fit-cover object-position-center z-1' ], size: 'size-8' } ) -}}
+			{%- endif -%}
+
+			{% if 'video' == media.type %}
+				<video playsInline autoplay loop preload="auto" muted class="position-absolute inset-0 size-full object-fit-cover object-position-center z-1">
+					<source src="{{ media.url }}" type="{{ media.mime_type | default( 'video/mp4' ) }}">
+				</video>
+			{% endif %}
 		</div>
 
 		{% block caption %}{% endblock %}

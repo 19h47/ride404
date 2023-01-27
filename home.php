@@ -15,7 +15,6 @@ use Timber\{ Timber };
 $filename = 'pages/home.html.twig';
 
 $data                = Timber::context();
-$data['post']        = Timber::get_post();
 $data['posts']       = Timber::get_posts();
 $data['count_posts'] = wp_count_posts()->publish;
 

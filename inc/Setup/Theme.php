@@ -9,17 +9,16 @@
 namespace Rider404\Setup;
 
 use Rider404\Core\{ Transients };
-use Timber\{ Timber };
+use Timber\{ Timber, Menu, Site };
 use Twig\{ TwigFunction };
 
-// $timber = new Timber();
-
+Timber::init();
 Timber::$dirname = array( 'views', 'templates', 'dist' );
 
 /**
  * Theme
  */
-class Theme {
+class Theme extends Site {
 
 	/**
 	 * Constructor
@@ -31,6 +30,23 @@ class Theme {
 		add_filter( 'timber/context', array( $this, 'add_socials_to_context' ) );
 		add_filter( 'timber/context', array( $this, 'add_to_theme' ) );
 		add_filter( 'timber/context', array( $this, 'add_to_context' ) );
+
+		add_filter( 'timber/twig/environment/options', array( $this, 'set_environment_options' ), 10, 1 );
+	}
+
+
+	/**
+	 * Set options
+	 *
+	 * @param array $options Array of options.
+	 *
+	 * @return array $options
+	 */
+	public function set_environment_options( array $options ) : array {
+		$options['cache']       = WP_DEBUG ? false : true;
+		$options['auto_reload'] = WP_DEBUG;
+
+		return $options;
 	}
 
 
@@ -201,7 +217,7 @@ class Theme {
 		$context['shop_url']     = wc_get_page_permalink( 'shop' );
 		$context['terms_url']    = get_permalink( wc_terms_and_conditions_page_id() );
 		$context['privacy_url']  = get_permalink( wc_privacy_policy_page_id() );
-		$context['posts_url']    = get_post_type_archive_link( 'post' );
+		$context['posts_url']     = get_post_type_archive_link( 'post' );
 
 		$context['is_front_page']       = is_front_page();
 		$context['is_product']          = is_product();

@@ -27,7 +27,7 @@
 		{% if post.meta( 'video' ).thumbnail.url %}
 			<div class="row position-relative z-1 mt-n16 mt-sm-n10 mt-md-n11.5 mt-hd-n15">
 				<div class="col-sm-10 offset-sm-1">
-					{{- include( 'components/video.html.twig', { id: 'video-hero', animated: true, video: post.meta( 'video' ).thumbnail.url, overlay: true } ) -}}
+					{{- include( 'components/video.html.twig', { id: 'video-hero', animated: true, media: post.meta( 'video' ).thumbnail, youtube: post.meta( 'video' ).youtube, overlay: true } ) -}}
 				</div>
 			</div>
 		{% endif %}

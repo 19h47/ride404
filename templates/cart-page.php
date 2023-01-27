@@ -12,7 +12,6 @@ use Timber\{ Timber };
 $filenames = array( 'pages/cart-page.html.twig' );
 
 $data                  = Timber::context();
-$data['post']          = Timber::get_post();
 $data['scroll_smooth'] = 'false';
 
 Timber::render( $filenames, $data );

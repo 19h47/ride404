@@ -10,8 +10,6 @@
 use Timber\{ Timber };
 
 $filenames = array( 'pages/about-page.html.twig' );
-
-$data         = Timber::context();
-$data['post'] = Timber::get_post();
+$data      = Timber::context();
 
 Timber::render( $filenames, $data );

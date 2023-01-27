@@ -30,7 +30,7 @@
 			</div>
 		</div>
 
-		{{- include( 'components/video.html.twig', { id: 'video-error404', animated: false, video: error_404_video_url, overlay: false } ) -}}
+		{{- include( 'components/video.html.twig', { id: 'video-error404', animated: false, media: { type: 'video', url: error_404_video_url }, overlay: false } ) -}}
 	</div>
 
 {% endblock %}
