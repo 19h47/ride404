@@ -96,14 +96,22 @@
 					<div class="swiper-wrapper">
 						{% for story in post.meta( 'stories' ).stories %}
 							<div class="swiper-slide {{ loop.index is odd ? 'w-3/12' : 'w-4/12' }} {{ loop.last ? '' : 'mr-n9' }}">
-								{{-
-									include(
-										'partials/image.html.twig',
-										{
-											image: story.image,
-											classes: [ 'w-full', 'h-full', 'object-fit-contain', 'object-position-center' ],
-											size: loop.index is odd ? 'size-3' : 'size-4'
-										} ) -}}
+								{%- if story.link -%}
+									<a class="d-block" href="{{ story.link }}" rel="noopener noreferer" target="_blank">
+								{%- endif -%}
+									{{-
+										include(
+											'partials/image.html.twig',
+											{
+												image: story.image,
+												classes: [ 'w-full', 'h-full', 'object-fit-contain', 'object-position-center' ],
+												size: loop.index is odd ? 'size-3' : 'size-4'
+											}
+										)
+									-}}
+								{%- if story.link -%}
+									</a>
+								{%- endif -%}
 							</div>
 						{% endfor %}
 					</div>
