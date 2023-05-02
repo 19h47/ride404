@@ -6,7 +6,7 @@
  * @package WordPress
  * @subpackage Rider404/Plugins/WooCommerce
  *
- * @link https://rider404.com/
+ * @link https://ride404.com/
  * @since 0.0.0
  */
 

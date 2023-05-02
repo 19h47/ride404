@@ -2,7 +2,7 @@
 /**
  * Extras
  *
- * @link https://rider404.com/
+ * @link https://ride404.com/
  * @since 0.0.0
  *
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)

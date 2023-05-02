@@ -4,7 +4,7 @@
  *
  * PHP version 7.4.1
  *
- * @link https://rider404.com/
+ * @link https://ride404.com/
  * @since 0.0.0
  *
  * @author Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
@@ -49,9 +49,7 @@ class Partner {
 	 * @param  bool    $update  Is update or not.
 	 * @return void
 	 */
-	public function save( int $post_id, WP_Post $post, bool $update ) : void {
-		delete_transient( 'rider404_partners' );
-	}
+	public function save( int $post_id, WP_Post $post, bool $update ) : void {}
 
 
 	/**

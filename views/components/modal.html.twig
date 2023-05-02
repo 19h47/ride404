@@ -11,9 +11,8 @@
 	<div
 		id="modal-{{ control }}"
 		class="Modal w-full h-screen py-25 position-fixed inset-0 z-15"
-		data-video-id="{{ video }}"
 		data-video-control="{{ control }}"
-		data-module-modal
+		data-module-modal="{{ control }}"
 		data-scroll
 		data-scroll-sticky
 		data-scroll-target="#page"
@@ -31,7 +30,7 @@
 		<div class="row h-full">
 			<div class="col-10 offset-1 h-full">
 				<div class="Modal__body position-relative size-full">
-					<div data-modal="player"></div>
+					<div data-module-you-tube="{{ control }}" data-you-tube-video-id="{{ get_youtube_id_from_iframe( video ) }}"></div>
 				</div>
 			</div>
 		</div>

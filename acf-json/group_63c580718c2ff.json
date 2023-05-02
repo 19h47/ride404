@@ -40,11 +40,11 @@
                 },
                 {
                     "key": "field_63c580b83173a",
-                    "label": "YouTube ID",
+                    "label": "YouTube",
                     "name": "youtube",
                     "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
+                    "type": "oembed",
+                    "instructions": "Insérer l'URL YouTube de la vidéo.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -52,11 +52,8 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "YouTube ID",
-                    "prepend": "",
-                    "append": ""
+                    "width": "",
+                    "height": ""
                 }
             ]
         }
@@ -80,6 +77,18 @@
                 "operator": "==",
                 "value": "front_page"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            },
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates\/about-page.php"
+            }
         ]
     ],
     "menu_order": 0,
@@ -91,5 +100,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1673890038
+    "modified": 1683026622
 }

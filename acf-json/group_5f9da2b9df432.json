@@ -1,6 +1,6 @@
 {
     "key": "group_5f9da2b9df432",
-    "title": "Home Page Options",
+    "title": "Front Page Options",
     "fields": [
         {
             "key": "field_5f9f2130a6ddd",
@@ -177,9 +177,11 @@
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
-    "hide_on_screen": "",
+    "hide_on_screen": [
+        "the_content"
+    ],
     "active": true,
     "description": "Options de la Page d'Accueil",
     "show_in_rest": 0,
-    "modified": 1673008079
+    "modified": 1683014108
 }

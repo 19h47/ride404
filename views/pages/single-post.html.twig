@@ -14,7 +14,7 @@
 			<div class="col-8 offset-2">
 				{% embed 'partials/image-reveal.html.twig' with { classes: [] } %}
 					{% block content %}
-						{{- include( 'partials/image.htmL.twig', { image: post.thumbnail, size: 'size-8', classes: [ 'w-full', 'h-auto', 'd-block' ] } ) -}}
+						{{- include( 'partials/image.html.twig', { image: post.thumbnail, size: 'size-8', classes: [ 'w-full', 'h-auto', 'd-block' ] } ) -}}
 					{% endblock %}
 				{% endembed %}
 			</div>
@@ -41,10 +41,22 @@
 			{{- post.content -}}
 		</div>
 
+		{% if post.meta( 'content_video' ).thumbnail.url %}
+
+			<div class="col-10 col-md-3 offset-1 mt-4 mt-md-0">
+				{{- include( 'components/video.html.twig', { id: 'content-video', animated: false, youtube: post.meta( 'content_video' ).youtube, media: post.meta( 'content_video' ).thumbnail, overlay: true } ) -}}
+			</div>
+
+		{% endif %}
+
 		{{- include( 'components/gallery.html.twig', { images: post.meta( 'carousel' ), classes: [ 'mt-9' ] } ) -}}
 	</div>
 
 	{%- if post.meta( 'video' ).youtube -%}
 		{{- include( 'components/modal.html.twig', { control: 'video-hero', video: post.meta( 'video' ).youtube } ) -}}
+	{%- endif -%}
+
+	{%- if post.meta( 'content_video' ).youtube -%}
+		{{- include( 'components/modal.html.twig', { control: 'content-video', video: post.meta( 'content_video' ).youtube } ) -}}
 	{%- endif -%}
 {% endblock %}

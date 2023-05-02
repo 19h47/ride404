@@ -34,8 +34,8 @@
 					class="m-0"
 					data-scroll
 				>
-					© 2022 RIDE.404. All rights reserved.<br class="d-md-none">
-					Created by <a class="text-decoration-underline text-white-hover text-white-focus" href="https://maaad.studio/" target="_blank" rel="noopener noreferer">Maaad</a> & <a class="text-decoration-underline text-white-hover text-white-focus" href="https://19h47.fr" target="_blank" rel="noopener noreferer">19h47</a>
+					{{- __( '© %s RIDE.404. All rights reserved.', 'rider404' ) | format( 'now' | date( 'Y' ) ) -}}<br class="d-md-none">
+					Created by <a class="text-decoration-underline text-white-hover text-white-focus" href="https://maaad.fr/" target="_blank" rel="noopener noreferer">Maaad</a> & <a class="text-decoration-underline text-white-hover text-white-focus" href="https://19h47.fr" target="_blank" rel="noopener noreferer">19h47</a>
 				</p>
                 <div
 					id="globe-{{ uniqid() }}"

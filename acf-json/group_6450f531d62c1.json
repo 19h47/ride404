@@ -1,11 +1,12 @@
 {
-    "key": "group_5fa5922e719f2",
-    "title": "Options",
+    "key": "group_6450f531d62c1",
+    "title": "Content",
     "fields": [
         {
-            "key": "field_5fa59245041a0",
-            "label": "Video",
-            "name": "video",
+            "key": "field_6450f531d9cd0",
+            "label": "Content Video",
+            "name": "content_video",
+            "aria-label": "",
             "type": "group",
             "instructions": "",
             "required": 0,
@@ -18,9 +19,10 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_5fa592d0041a2",
+                    "key": "field_6450f531db21c",
                     "label": "Thumbnail",
                     "name": "thumbnail",
+                    "aria-label": "",
                     "type": "file",
                     "instructions": "",
                     "required": 0,
@@ -37,11 +39,12 @@
                     "mime_types": ""
                 },
                 {
-                    "key": "field_5faeeb9414f3a",
-                    "label": "YouTube ID",
+                    "key": "field_6450f531db228",
+                    "label": "YouTube",
                     "name": "youtube",
-                    "type": "text",
-                    "instructions": "",
+                    "aria-label": "",
+                    "type": "oembed",
+                    "instructions": "Insérer l'URL YouTube de la vidéo.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -49,11 +52,8 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "width": "",
+                    "height": ""
                 }
             ]
         }
@@ -61,19 +61,20 @@
     "location": [
         [
             {
-                "param": "page_template",
+                "param": "post_type",
                 "operator": "==",
-                "value": "templates\/about-page.php"
+                "value": "post"
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 1,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Options du template About",
-    "modified": 1612708738
+    "description": "Options de l'Article",
+    "show_in_rest": 0,
+    "modified": 1683027317
 }

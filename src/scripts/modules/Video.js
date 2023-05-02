@@ -74,10 +74,8 @@ class Video extends M {
 	}
 
 	click() {
-		// console.log('Video.click');
-
-		const event = new CustomEvent('Video.open', { detail: { id: this.el.id } });
-		return document.dispatchEvent(event);
+		this.call('open', null, 'Modal', this.el.id);
+		this.call('play', null, 'YouTube', this.el.id);
 	}
 }
 

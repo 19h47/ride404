@@ -6,6 +6,7 @@
             "key": "field_5fa1e38264f54",
             "label": "Video",
             "name": "video",
+            "aria-label": "",
             "type": "file",
             "instructions": "",
             "required": 0,
@@ -38,6 +39,7 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Options du Main menu",
-    "modified": 1604445073
+    "description": "Options du Menu principal",
+    "show_in_rest": 0,
+    "modified": 1683026844
 }

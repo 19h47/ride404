@@ -9,7 +9,7 @@
 namespace Rider404\Setup;
 
 use Rider404\Core\{ Transients };
-use Timber\{ Timber, Menu, Site };
+use Timber\{ Timber, Site };
 use Twig\{ TwigFunction };
 
 Timber::init();
@@ -130,6 +130,14 @@ class Theme extends Site {
 		}
 
 		$twig->addFunction( new TwigFunction( 'uniqid', 'uniqid' ) );
+		$twig->addFunction(
+			new TwigFunction(
+				'get_youtube_id_from_iframe',
+				function( string $url ) : string {
+					return get_youtube_id_from_iframe( $url );
+				}
+			)
+		);
 
 		return $twig;
 	}
@@ -217,7 +225,7 @@ class Theme extends Site {
 		$context['shop_url']     = wc_get_page_permalink( 'shop' );
 		$context['terms_url']    = get_permalink( wc_terms_and_conditions_page_id() );
 		$context['privacy_url']  = get_permalink( wc_privacy_policy_page_id() );
-		$context['posts_url']     = get_post_type_archive_link( 'post' );
+		$context['posts_url']    = get_post_type_archive_link( 'post' );
 
 		$context['is_front_page']       = is_front_page();
 		$context['is_product']          = is_product();
